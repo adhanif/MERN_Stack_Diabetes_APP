@@ -11,7 +11,7 @@ function Hero() {
       <div>
         <PrimaryBtn />
         <SecondaryBtn />
-        <OutlineBtn />
+        <OutlineBtn text='Hallo' />
       </div>
     </div>
   );

@@ -8,7 +8,8 @@ export default {
           base: 'var(--color-text-base)',
           primary: 'var(--color-text-primary)',
           inverted: 'var(--color-text-inverted)',
-          'outline-hover': 'var(--color-fill)',
+          secondary: 'var(--color-text-secondary)',
+          'outline-hover': 'var(--color-text-outline-hover)',
         },
       },
       backgroundColor: {
@@ -18,6 +19,7 @@ export default {
           'button-primary-hover': 'var(--color-button-primary-hover)',
           'button-secondary': 'var(--color-button-secondary)',
           'button-outline': 'var(--color-button-outline)',
+          'button-outline-hover': 'var(--color-button-outline-hover)',
         },
       },
       borderColor: {
