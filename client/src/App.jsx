@@ -9,7 +9,8 @@ function App() {
       <h1 className='text-4xl font-bold underline '>Hello world!</h1>
       <Hero />
       <Test theme='theme-secondary' />
-      <Test theme='theme-3rd' />
+      <Test theme='theme-3' />
+      <Test theme='theme-4' />
     </>
   );
 }
