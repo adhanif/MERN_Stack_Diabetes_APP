@@ -1,11 +1,11 @@
 import React from 'react';
+import StandardBtn from './StandardBtn';
 
-function SecondaryBtn() {
-  return (
-    <button className='bg-skin-button-secondary text-skin-secondary text-2xl font-bold my-2 py-3 px-10 rounded-full mx-6 hover:scale-110 duration-300'>
-      Secondary
-    </button>
-  );
+function SecondaryBtn({ text }) {
+  const classNames =
+    'bg-skin-button-secondary text-skin-secondary hover:scale-110 duration-300';
+
+  return <StandardBtn text={text} classNames={classNames} />;
 }
 
 export default SecondaryBtn;

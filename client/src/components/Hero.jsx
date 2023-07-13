@@ -9,8 +9,8 @@ function Hero() {
       <h1 className='text-9xl text-skin-base'>HERO TypeONE</h1>
       <h2 className='text-6xl text-skin-base'>Make Diabetes Your Buddy</h2>
       <div>
-        <PrimaryBtn />
-        <SecondaryBtn />
+        <PrimaryBtn text='Hallo' />
+        <SecondaryBtn text='Secondary' />
         <OutlineBtn text='Hallo' />
       </div>
     </div>
