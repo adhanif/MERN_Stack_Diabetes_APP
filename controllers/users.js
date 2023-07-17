@@ -2,14 +2,14 @@ const User = require("../models/userSchema");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
-
+const ErrorResponse = require("../utils/ErrorResponse");
 // new user Signup
-const signUp = async (req, res) => {
+const signUp = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
     const alreadyUser = await User.findOne({ email });
     if (alreadyUser) {
-      throw new Error("User already exists");
+      throw new ErrorResponse("User already exists", 400);
     } else {
       const hashedPassword = await bcrypt.hash(password, saltRounds);
       const createUser = await User.create({
@@ -20,12 +20,13 @@ const signUp = async (req, res) => {
       res.status(201).json(createUser);
     }
   } catch (error) {
-    res.status(500).send(error.message);
+    next(error);
+    // res.status(500).send(error.message);
   }
 };
 
 // user login
-const signIn = async (req, res) => {
+const signIn = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const matchUser = await User.findOne({ email }).select("+password");
@@ -37,30 +38,40 @@ const signIn = async (req, res) => {
           expiresIn: "800000s",
         });
         res
-          .cookie("access token", token, {
+          .cookie("access_token", token, {
             maxAge: 1000 * 2000,
           })
           .json(payload);
       } else {
-        throw new Error("Incorrect password");
+        throw new ErrorResponse("Incorrect password", 401);
       }
     } else {
-      throw new Error("User does not exist");
+      throw new ErrorResponse("User does not exist", 404);
     }
   } catch (error) {
-    res.status(500).send(error.message);
+    next(error);
   }
 };
 
 // user logout
-const logOut = async (req, res) => {
+const logOut = async (req, res, next) => {
   try {
     res
-      .cookie("access token", "", { maxAge: 0 })
+      .cookie("access_token", "", { maxAge: 0 })
       .end("You have been logged out successfully!");
   } catch (error) {
-    res.status(500).send(error.message);
+    next(error);
   }
 };
 
-module.exports = { signUp, signIn, logOut };
+const getProfile = async (req, res) => {
+  try {
+    const { id } = req.user;
+    const userProfile = await User.findById(id);
+    res.json(userProfile);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { signUp, signIn, logOut, getProfile };
