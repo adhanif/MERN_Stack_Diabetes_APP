@@ -1,8 +1,9 @@
 const jwt = require("jsonwebtoken");
 const verifyToken = async (req, res, next) => {
   try {
+    console.log(req.cookies.access_token);
     const token = req.cookies.access_token;
-    console.log(token);
+    // console.log(token);
     if (token) {
       const payload = jwt.verify(token, process.env.JWT_SECRET);
       req.user = payload;
@@ -11,7 +12,7 @@ const verifyToken = async (req, res, next) => {
       throw new Error();
     }
   } catch (error) {
-    res.status(403).send("Cookies is expired or Forbidden");
+    res.status(403).send(" Forbidden");
   }
 };
 

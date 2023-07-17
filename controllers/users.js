@@ -37,7 +37,7 @@ const signIn = async (req, res) => {
           expiresIn: "800000s",
         });
         res
-          .cookie("access token", token, {
+          .cookie("access_token", token, {
             maxAge: 1000 * 2000,
           })
           .json(payload);
@@ -56,11 +56,21 @@ const signIn = async (req, res) => {
 const logOut = async (req, res) => {
   try {
     res
-      .cookie("access token", "", { maxAge: 0 })
+      .cookie("access_token", "", { maxAge: 0 })
       .end("You have been logged out successfully!");
   } catch (error) {
     res.status(500).send(error.message);
   }
 };
 
-module.exports = { signUp, signIn, logOut };
+const getProfile = async (req, res) => {
+  try {
+    const { id } = req.user;
+    const userProfile = await User.findById(id);
+    res.json(userProfile);
+  } catch (error) {
+    res.status(500).send("Error retrieving user profile");
+  }
+};
+
+module.exports = { signUp, signIn, logOut, getProfile };
