@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Hero from './components/Hero';
 import Test from './components/Test';
+import Navbar from './components/navbar';
 
 function App() {
   return (
