@@ -2,14 +2,14 @@ const User = require("../models/userSchema");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
-
+const ErrorResponse = require("../utils/ErrorResponse");
 // new user Signup
 const signUp = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
     const alreadyUser = await User.findOne({ email });
     if (alreadyUser) {
-      throw new Error("User already exists");
+      throw new ErrorResponse("User already exists", 400);
     } else {
       const hashedPassword = await bcrypt.hash(password, saltRounds);
       const createUser = await User.create({
@@ -43,10 +43,10 @@ const signIn = async (req, res, next) => {
           })
           .json(payload);
       } else {
-        throw new Error("Incorrect password");
+        throw new ErrorResponse("Incorrect password", 401);
       }
     } else {
-      throw new Error("User does not exist");
+      throw new ErrorResponse("User does not exist", 404);
     }
   } catch (error) {
     next(error);
@@ -60,7 +60,7 @@ const logOut = async (req, res, next) => {
       .cookie("access_token", "", { maxAge: 0 })
       .end("You have been logged out successfully!");
   } catch (error) {
-    res.status(500).send(error.message);
+    next(error);
   }
 };
 
