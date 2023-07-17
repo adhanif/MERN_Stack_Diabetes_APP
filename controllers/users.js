@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 
+// new user Signup
 const signUp = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -23,6 +24,7 @@ const signUp = async (req, res) => {
   }
 };
 
+// user login
 const signIn = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -50,6 +52,15 @@ const signIn = async (req, res) => {
   }
 };
 
-const logOut = async (req, res) => {};
+// user logout
+const logOut = async (req, res) => {
+  try {
+    res
+      .cookie("access token", "", { maxAge: 0 })
+      .end("You have been logged out successfully!");
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
 
 module.exports = { signUp, signIn, logOut };
