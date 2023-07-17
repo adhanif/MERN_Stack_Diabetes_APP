@@ -23,8 +23,33 @@ const signUp = async (req, res) => {
   }
 };
 
-const signIn = async (req, res) => {};
+const signIn = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const matchUser = await User.findOne({ email }).select("+password");
+    if (matchUser) {
+      const matchPassword = await bcrypt.compare(password, matchUser.password);
+      if (matchPassword) {
+        const payload = { email: matchUser.email, id: matchUser._id };
+        const token = jwt.sign(payload, process.env.JWT_SECRET, {
+          expiresIn: "800000s",
+        });
+        res
+          .cookie("access token", token, {
+            maxAge: 1000 * 2000,
+          })
+          .json(payload);
+      } else {
+        throw new Error("Incorrect password");
+      }
+    } else {
+      throw new Error("User does not exist");
+    }
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
 
-const logout = async (req, res) => {};
+const logOut = async (req, res) => {};
 
-module.exports = { signUp, signIn, logout };
+module.exports = { signUp, signIn, logOut };
