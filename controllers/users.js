@@ -4,7 +4,7 @@ const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 
 // new user Signup
-const signUp = async (req, res) => {
+const signUp = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
     const alreadyUser = await User.findOne({ email });
@@ -20,12 +20,13 @@ const signUp = async (req, res) => {
       res.status(201).json(createUser);
     }
   } catch (error) {
-    res.status(500).send(error.message);
+    next(error);
+    // res.status(500).send(error.message);
   }
 };
 
 // user login
-const signIn = async (req, res) => {
+const signIn = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const matchUser = await User.findOne({ email }).select("+password");
@@ -48,12 +49,12 @@ const signIn = async (req, res) => {
       throw new Error("User does not exist");
     }
   } catch (error) {
-    res.status(500).send(error.message);
+    next(error);
   }
 };
 
 // user logout
-const logOut = async (req, res) => {
+const logOut = async (req, res, next) => {
   try {
     res
       .cookie("access_token", "", { maxAge: 0 })
@@ -69,7 +70,7 @@ const getProfile = async (req, res) => {
     const userProfile = await User.findById(id);
     res.json(userProfile);
   } catch (error) {
-    res.status(500).send("Error retrieving user profile");
+    next(error);
   }
 };
 
