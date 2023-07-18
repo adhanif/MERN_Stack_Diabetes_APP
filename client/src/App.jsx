@@ -25,7 +25,7 @@ function App() {
 
       <Test theme="theme-4" />
 
-      <ContactUs theme="theme-secondary" />
+      {/* <ContactUs theme="theme-secondary" /> */}
     </>
   );
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import google from "../assets/Google_Logo1.svg";
-import login from "../assets/Login-amico.svg";
-
+import login from "../assets/Login-amico1.svg";
+import facebook from "../assets/facebook.svg";
 import PrimaryBtn from "./buttons/PrimaryBtn";
 import axiosClient from "../axiosClient";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +37,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="container flex flex-row  mx-auto justify-center md:justify-center mt-20 md:space-x-10">
+      <div className="container flex flex-row  mx-auto justify-center md:justify-center mt-20 md:space-x-40">
         <div className="w-1/2 max-w-md hidden lg:flex">
           <img src={login} alt="" />
         </div>
@@ -45,6 +45,7 @@ export default function Login() {
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="bg-white border shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            style={{ boxShadow: "0 4px 6px -1px #BDB2C9" }}
           >
             <h1 className="max-w-2xl text-3xl font-bold mb-7">Sign in</h1>
             <div className="mb-4">
@@ -84,8 +85,9 @@ export default function Login() {
             </div>
             <div className="flex flex-col items-center justify-between mb-5">
               <button
-                className="p-2 w-32   font-bold text-white bg-red-900 rounded-full  hover:bg-red-500  hover:scale-110 mb-6 "
+                className="p-2 w-32   font-bold text-white rounded-full  hover:bg-red-500  hover:scale-110 mb-6 "
                 type="submit"
+                style={{ backgroundColor: "#383740" }}
               >
                 {" "}
                 Login
@@ -104,10 +106,15 @@ export default function Login() {
                   Create account
                 </a>
               </p>
-              <button className="flex items-center justify-center p-2 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-6 ">
+              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-3 ">
                 {" "}
-                <img src={google} alt="" className=" w-10 " />
+                <img src={google} alt="" className=" w-10 h-10" />
                 Sign in with Google
+              </button>
+              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-6 ">
+                {" "}
+                <img src={facebook} alt="" className=" w-12 h-10" />
+                Sign in with Facebook
               </button>
             </div>
 
