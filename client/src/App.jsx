@@ -5,6 +5,7 @@ import "./App.css";
 import Login from "./components/Login";
 import Hero from './components/Hero';
 import Test from './components/Test';
+import ContactUs from './components/ContactUs';
 
 
 function App() {
@@ -25,7 +26,11 @@ function App() {
       <Hero />
       <Test theme='theme-secondary' />
       <Test theme='theme-3' />
+
       <Test theme='theme-4' /> */}
+
+      <ContactUs theme='theme-secondary' />
+
 
     </>
   );
