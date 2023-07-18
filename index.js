@@ -7,8 +7,13 @@ const { userRouter } = require("./routes/users");
 const { errorHandler } = require("./middlewares/errorHandler");
 const app = express();
 const port = 3000;
+// Configure CORS
+const corsOptions = {
+  // origin: "http://localhost:5173",
+  credentials: true,
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 
