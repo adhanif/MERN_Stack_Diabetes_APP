@@ -15,6 +15,9 @@ export default function Login() {
   const navigateToSignUp = useNavigate();
   const notify = () => toast.success("The form has been submitted");
   const notifyError = () => toast.error("The form has not submitted");
+
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const {
     register,
     handleSubmit,
@@ -29,8 +32,6 @@ export default function Login() {
   });
 
   const onSubmit = (data) => {
-    console.log(data.password);
-    //
     axiosClient
       .post("/login", data)
       .then((res) => {
@@ -38,7 +39,17 @@ export default function Login() {
         navigate("/");
       })
       .catch((err) => {
-        notifyError();
+        // console.log(err.response);
+        if (err.response) {
+          if (err.response.status === 404) {
+            setEmailError(err.response.data);
+            setPasswordError("");
+          } else if (err.response.status === 401) {
+            setEmailError("");
+            setPasswordError(err.response.data);
+          }
+        }
+        // notifyError();
         console.log(err);
       });
   };
@@ -91,7 +102,9 @@ export default function Login() {
                   errors.email ? "border-red-500" : ""
                 }`}
               />
-              <p style={{ color: "red" }}>{errors.email?.message}</p>
+              <p style={{ color: "red" }}>
+                {errors.email?.message || emailError}
+              </p>
             </div>
 
             <div className="mb-10">
@@ -110,7 +123,9 @@ export default function Login() {
                   errors.password ? "border-red-500" : ""
                 }`}
               />
-              <p style={{ color: "red" }}>{errors.password?.message}</p>
+              <p style={{ color: "red" }}>
+                {errors.password?.message || passwordError}
+              </p>
             </div>
             <div className="flex flex-col items-center justify-between mb-5">
               <button

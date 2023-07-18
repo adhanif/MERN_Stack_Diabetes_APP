@@ -9,7 +9,7 @@ const app = express();
 const port = 3000;
 // Configure CORS
 const corsOptions = {
-  // origin: "http://localhost:5173",
+  origin: "http://localhost:5173",
   credentials: true,
 };
 
