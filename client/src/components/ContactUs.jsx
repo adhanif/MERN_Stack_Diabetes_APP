@@ -7,7 +7,11 @@ function ContactUs({ theme }) {
     <div
       className={`${theme} box-border p-16 border-2 border-red-600 flex justify-center bg-skin-fill`}
     >
-      <div className='w-2/5 border-2 border-green-500'></div>
+      {/* Left Side */}
+      <div className='w-2/5 border-2 border-green-500 flex'>
+        <img src='/src/images/28998.jpg' alt='bla' />
+      </div>
+      {/* Right Side */}
       <div className='w-2/5 border-2 border-blue-500 flex justify-center '>
         <form className='flex flex-col w-3/4 py-10'>
           {/* Name */}
