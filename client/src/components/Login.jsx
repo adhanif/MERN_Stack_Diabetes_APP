@@ -49,7 +49,7 @@ export default function Login() {
         <div className="w-full max-w-md md:w-1/2 lg:w-1/2">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            className="bg-white border shadow-md rounded px-8 pt-6 pb-8 mb-4"
           >
             <h1 className="max-w-2xl text-3xl font-bold mb-7">Sign in</h1>
             <div className="mb-4">
@@ -87,13 +87,13 @@ export default function Login() {
             {/* {errors.password && <span>This field is required</span>} */}
             <div className="flex flex-col items-center justify-between mb-5">
               <button
-                className="p-2 w-32   text-bold text-white bg-red-900 rounded-full  hover:bg-red-500  hover:scale-110 mb-6 "
+                className="p-2 w-32   font-bold text-white bg-red-900 rounded-full  hover:bg-red-500  hover:scale-110 mb-6 "
                 type="submit"
               >
                 {" "}
-                Submit
+                Login
               </button>
-              <p className="text-neutral-800 dark:text-neutral-200 text-sm mb-5">
+              <p className="text-neutral-800 dark:text-neutral-200 text-sm font-bold mb-5">
                 New User?{" "}
                 <a
                   className="inline-block align-baseline font-bold text-sm text-blue-500 hover:underline hover:text-blue-800"
@@ -106,7 +106,7 @@ export default function Login() {
                   Create account
                 </a>
               </p>
-              <button className="flex items-center justify-center p-2 w-80 border  text-bold text-blck  rounded-full  hover:border-blue-500  mb-6 ">
+              <button className="flex items-center justify-center p-2 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-6 ">
                 {" "}
                 <img src={google} alt="" className=" w-10 " />
                 Sign in with Google

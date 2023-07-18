@@ -1,18 +1,14 @@
-
 import { useState } from "react";
 import { Routes, Route, NavLink } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
-import Hero from './components/Hero';
-import Test from './components/Test';
-import ContactUs from './components/ContactUs';
-
+import Hero from "./components/Hero";
+import Test from "./components/Test";
+import ContactUs from "./components/ContactUs";
 
 function App() {
-  
   return (
     <>
-
       <nav>
         <NavLink to="/">Home</NavLink>
         <NavLink to="login">Login</NavLink>
@@ -29,9 +25,7 @@ function App() {
 
       <Test theme='theme-4' /> */}
 
-      <ContactUs theme='theme-secondary' />
-
-
+      {/* <ContactUs theme='theme-secondary' /> */}
     </>
   );
 }
