@@ -6,7 +6,7 @@ import SecondaryBtn from './buttons/SecondaryBtn';
 function Hero() {
   return (
     <div className='flex flex-col theme-hero bg-skin-fill'>
-      <h1 className='text-9xl text-skin-base'>HERO TypeONE</h1>
+      <h1 className='xl:text-9xl sm:text-2xl text-skin-base'>HERO TypeONE</h1>
       <h2 className='text-6xl text-skin-base'>Make Diabetes Your Buddy</h2>
       <div>
         <PrimaryBtn text='Hallo' />
