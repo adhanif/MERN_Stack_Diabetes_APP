@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import google from "../assets/Google_Logo1.svg";
 import login from "../assets/Login-amico1.svg";
@@ -6,10 +7,14 @@ import facebook from "../assets/facebook.svg";
 import PrimaryBtn from "./buttons/PrimaryBtn";
 import axiosClient from "../axiosClient";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import axios from "axios";
 export default function Login() {
   const navigate = useNavigate();
   const navigateToSignUp = useNavigate();
+  const notify = () => toast.success("The form has been submitted");
+  const notifyError = () => toast.error("The form has not submitted");
   const {
     register,
     handleSubmit,
@@ -24,19 +29,36 @@ export default function Login() {
   });
 
   const onSubmit = (data) => {
+    console.log(data.password);
     //
-    // axiosClient
-    //   .post("/login", data)
-    //   .then((res) => {
-    //     navigate("/");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    axiosClient
+      .post("/login", data)
+      .then((res) => {
+        notify();
+        navigate("/");
+      })
+      .catch((err) => {
+        notifyError();
+        console.log(err);
+      });
   };
 
   return (
     <>
+      <div>
+        <ToastContainer
+          position="top-right"
+          autoClose={500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+      </div>
       <div className="container flex flex-row  mx-auto justify-center md:justify-center mt-20 md:space-x-40">
         <div className="w-1/2 max-w-md hidden lg:flex">
           <img src={login} alt="" />
@@ -57,7 +79,12 @@ export default function Login() {
                 {...register("email", {
                   required: "Please enter an email address.",
                   maxLength: { value: 30, message: "Maximum length is 30" },
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: "Please enter a valid email address.",
+                  },
                 })}
+                type="email"
                 placeholder="Email"
                 // className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
@@ -76,7 +103,9 @@ export default function Login() {
                   required: "Please enter the password.",
                   minLength: { value: 6, message: "Minimum length is 6" },
                 })}
-                placeholder="Password."
+                type="password"
+                // type="password"
+                placeholder="Password"
                 className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                   errors.password ? "border-red-500" : ""
                 }`}
