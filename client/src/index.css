@@ -67,17 +67,18 @@
 
   .theme-4 {
     --color-text-base: #383740;
-    --color-text-inverted: #383740;
+    --color-text-inverted: #fff;
     --color-text-primary: #383740;
     --color-text-secondary: #383740;
     --color-text-outline-hover: var(--color-fill);
     /* Background-Colors */
-    --color-fill: #f4f4f4;
+    --color-fill: #fff;
     --color-button-primary: #bdb2c9;
     --color-button-primary-hover: #d7d5d5;
-    --color-button-secondary: #b8c4b9;
+    --color-button-secondary: #7f1d1d;
+    --color-button-secondary-hover: #ef4444;
     --color-button-outline: #ffffff00;
-    --color-button-outline-hover: var(--color-text-base);
+    --color-button-outline-hover: #ef4444;
     /* BorderColors */
     --color-border-outline: var(--color-text-base)
   }

@@ -1,13 +1,14 @@
 import React from 'react';
 
-function StandardBtn({ text, classNames, onClick, onSubmit }) {
+function StandardBtn({ text, classNames, onClick, onSubmit, type }) {
   return (
     <button
       className={`
-    text-2xl font-bold my-2 py-1 px-8x
-    rounded-full mx-6 uppercase ${classNames}`}
+    text-xl my-2 py-1 mx-auto
+    rounded-full px-10 ${classNames}`}
       onClick={onClick}
       onSubmit={onSubmit}
+      type={type}
     >
       {text}
     </button>
