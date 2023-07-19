@@ -1,4 +1,6 @@
-import { useState } from "react";
+
+import Hero2 from './components/Hero2';
+import Navbar from './components/navbar';
 import { Routes, Route, NavLink } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
@@ -10,24 +12,17 @@ import ContactUs from "./components/ContactUs";
 function App() {
   return (
     <>
-      <nav className="container flex flex-row font-bold p-5  mx-auto space-x-20">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="login">Login</NavLink>
-        <NavLink to="signUp">Sign up</NavLink>
-      </nav>
+      <Navbar />
+      <Hero2 />
+  
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/articles" element={<h1>Articles</h1>} />
+        <Route path="/events" element={<h1>Events</h1>} />
+        <Route path="/about" element={<h1>About Us</h1>} />
+        <Route path="/login" element={<Test />} />
         <Route path="/signUp" element={<SignUp />} />
       </Routes>
-
-      {/* <h1 className="text-4xl font-bold underline ">Hello world!</h1>
-      <Hero />
-      <Test theme="theme-secondary" />
-      <Test theme="theme-3" />
-      <Test theme="theme-4" /> */}
-
-      {/* <ContactUs theme="theme-secondary" /> */}
     </>
   );
 }
