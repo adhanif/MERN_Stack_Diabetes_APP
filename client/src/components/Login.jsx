@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import google from "../assets/Google_Logo1.svg";
 import login from "../assets/Login-amico1.svg";
 import facebook from "../assets/facebook.svg";
+import TypeOne_black from "../assets/TypeOne_black.png";
 import PrimaryBtn from "./buttons/PrimaryBtn";
 import axiosClient from "../axiosClient";
 import { useNavigate } from "react-router-dom";
@@ -70,19 +71,26 @@ export default function Login() {
           theme="dark"
         />
       </div>
-      <div className="container flex flex-row  mx-auto justify-center md:justify-center mt-20 md:space-x-40">
+      <div className="container flex flex-row  mx-auto justify-center md:justify-center mt-10 md:space-x-40">
         <div className="w-1/2 max-w-md hidden lg:flex">
           <img src={login} alt="" />
         </div>
-        <div className="w-full max-w-md md:w-1/2 lg:w-1/2">
+        <div className="w-full max-w-md  lg:w-1/2">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-white border shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            className="bg-white border shadow-md rounded px-8 pt-6 pb-8 "
             style={{ boxShadow: "0 4px 6px -1px #BDB2C9" }}
           >
+            <img
+              src={TypeOne_black}
+              alt=""
+              className="object-contain h-14 w-full mx-auto mb-6  lg:hidden"
+            />
+
             <h1 className="max-w-2xl text-center md:text-left lg:text-left text-3xl font-bold mb-7">
               Sign in
             </h1>
+
             <p className="text-neutral-500 dark:text-neutral-200 text-sm font-bold mb-6">
               New User?{" "}
               <a
@@ -144,7 +152,7 @@ export default function Login() {
             </div>
             <div className="flex flex-col items-center justify-between mb-5">
               <button
-                className="p-2 w-32   font-bold text-white rounded-full  hover:bg-red-500  hover:scale-110 mb-6 "
+                className="p-2 w-32   font-bold text-white rounded-full  hover:bg-red-500  hover:scale-110 mb-8  "
                 type="submit"
                 style={{ backgroundColor: "#383740" }}
               >
@@ -158,7 +166,7 @@ export default function Login() {
                 <img src={google} alt="" className=" w-10 h-10" />
                 Sign in with Google
               </button>
-              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-6 text-sm ">
+              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500   text-sm ">
                 {" "}
                 <img src={facebook} alt="" className=" w-12 h-10" />
                 Sign in with Facebook

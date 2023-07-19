@@ -4,6 +4,7 @@ import { useState } from "react";
 import google from "../assets/Google_Logo1.svg";
 import signup from "../assets/signup.svg";
 import facebook from "../assets/facebook.svg";
+import TypeOne_black from "../assets/TypeOne_black.png";
 import PrimaryBtn from "./buttons/PrimaryBtn";
 import axiosClient from "../axiosClient";
 import { useNavigate } from "react-router-dom";
@@ -65,16 +66,22 @@ export default function SignUp() {
           theme="dark"
         />
       </div>
-      <div className="container flex flex-row  mx-auto justify-center md:justify-center mt-20 md:space-x-40">
+      <div className="container flex flex-row  mx-auto justify-center md:justify-center mt-10 md:space-x-40">
         <div className="w-1/2 max-w-md hidden lg:flex">
           <img src={signup} alt="" />
         </div>
-        <div className="w-full max-w-md md:w-1/2 lg:w-1/2">
+        <div className="w-full max-w-md  lg:w-1/2">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-white border shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            className="bg-white border shadow-md rounded px-8 pt-6 pb-8 "
             style={{ boxShadow: "0 4px 6px -1px #BDB2C9" }}
           >
+            <img
+              src={TypeOne_black}
+              alt=""
+              className="object-contain h-14 w-full mx-auto mb-6   lg:hidden"
+            />
+
             <h1 className="max-w-2xl text-3xl font-bold text-center md:text-left lg:text-left mb-7">
               Sign Up
             </h1>
@@ -159,7 +166,7 @@ export default function SignUp() {
             </div>
             <div className="flex flex-col items-center justify-between mb-5">
               <button
-                className="p-2 w-32   font-bold text-white rounded-full  hover:bg-red-500  hover:scale-110 mb-6 "
+                className="p-2 w-32   font-bold text-white rounded-full  hover:bg-red-500  hover:scale-110 mb-8 "
                 type="submit"
                 style={{ backgroundColor: "#383740" }}
               >
@@ -173,7 +180,7 @@ export default function SignUp() {
                 <img src={google} alt="" className=" w-10 h-10" />
                 Continue with Google
               </button>
-              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500 text-sm mb-3 ">
+              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500 text-sm  ">
                 {" "}
                 <img src={facebook} alt="" className=" w-12 h-10" />
                 Continue with Facebook
