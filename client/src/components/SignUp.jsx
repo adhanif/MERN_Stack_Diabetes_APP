@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import google from "../assets/Google_Logo1.svg";
 import signup from "../assets/signup.svg";
 import facebook from "../assets/facebook.svg";
@@ -8,12 +9,15 @@ import axiosClient from "../axiosClient";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import axios from "axios";
+
 export default function SignUp() {
   const navigate = useNavigate();
   const navigateToLogin = useNavigate();
   const notify = () => toast.success("The form has been submitted");
   const notifyError = () => toast.error("The form has not submitted");
+
+  const [userError, setUserError] = useState("");
+  //   const [passwordError, setPasswordError] = useState("");
 
   const {
     register,
@@ -29,7 +33,6 @@ export default function SignUp() {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
     axiosClient
       .post("/signup", data)
       .then((res) => {
@@ -37,7 +40,12 @@ export default function SignUp() {
         navigate("/");
       })
       .catch((err) => {
-        notifyError();
+        if (err.response) {
+          if (err.response.status === 400) {
+            setUserError(err.response.data);
+          }
+        }
+        // notifyError();
         console.log(err);
       });
   };
@@ -125,7 +133,9 @@ export default function SignUp() {
                   errors.email ? "border-red-500" : ""
                 }`}
               />
-              <p style={{ color: "red" }}>{errors.email?.message}</p>
+              <p style={{ color: "red" }}>
+                {errors.email?.message || userError}
+              </p>
             </div>
 
             <div className="mb-10">

@@ -9,7 +9,7 @@ import axiosClient from "../axiosClient";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import axios from "axios";
+
 export default function Login() {
   const navigate = useNavigate();
   const navigateToSignUp = useNavigate();
