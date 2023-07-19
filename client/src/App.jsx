@@ -9,14 +9,14 @@ import ContactUs from './components/ContactUs';
 function App() {
   return (
     <>
-      <nav>
+      {/* <nav>
         <NavLink to='/'>Home</NavLink>
         <NavLink to='login'>Login</NavLink>
       </nav>
       <Routes>
         <Route path='/' element={<h1>Home</h1>} />
         <Route path='/login' element={<Login />} />
-      </Routes>
+      </Routes> */}
 
       {/* <h1 className='text-4xl font-bold underline '>Hello world!</h1>
       <Hero />

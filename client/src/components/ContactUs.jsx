@@ -36,94 +36,110 @@ function ContactUs({ theme }) {
           <h1 className='max-w-2xl text-3xl font-bold mb-7'>Contact Us</h1>
 
           {/* Name */}
-          <label
-            className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
-            htmlFor='name'
-          >
-            Name
-          </label>
-          <input
-            {...register('name', {
-              required: {
-                value: true,
-                message: 'Name is required',
-              },
-            })}
-            className='shadow appearance-none border rounded w-full py-2 px-3 mb-4 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
-            type='text'
-            id='name'
-            name='name'
-            placeholder='Max Mustermann'
-          />
-          <p>{errors.name?.message}</p>
+          <div className='mb-4'>
+            <label
+              className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
+              htmlFor='name'
+            >
+              Name
+            </label>
+            <input
+              {...register('name', {
+                required: {
+                  value: true,
+                  message: '* Name is required',
+                },
+              })}
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
+              type='text'
+              id='name'
+              name='name'
+              placeholder='Max Mustermann'
+            />
+            <p className='text-skin-form-error italic'>
+              {errors.name?.message}
+            </p>
+          </div>
 
           {/* Email */}
-          <label
-            className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
-            htmlFor='email'
-          >
-            Email
-          </label>
-          <input
-            {...register('email', {
-              required: {
-                value: true,
-                message: 'Email is required to get an Answer',
-              },
-            })}
-            className='shadow appearance-none border rounded w-full py-2 px-3 mb-4 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
-            type='email'
-            id='email'
-            name='email'
-            placeholder='max@mustermann.de'
-          />
-          <p>{errors.email?.message}</p>
+          <div className='mb-4'>
+            <label
+              className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
+              htmlFor='email'
+            >
+              Email
+            </label>
+            <input
+              {...register('email', {
+                required: {
+                  value: true,
+                  message: '* Email is required to get an Answer',
+                },
+              })}
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
+              type='email'
+              id='email'
+              name='email'
+              placeholder='max@mustermann.de'
+            />
+            <p className='text-skin-form-error italic'>
+              {errors.email?.message}
+            </p>
+          </div>
 
           {/* Subject */}
-          <label
-            className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
-            htmlFor='subject'
-          >
-            Subject
-          </label>
-          <input
-            {...register('subject', {
-              required: {
-                value: true,
-                message: 'Subject is required',
-              },
-            })}
-            className='shadow appearance-none border rounded w-full py-2 px-3 mb-4 text-skin-base leading-tight focus:outline-none focus:shadow-outline '
-            type='text'
-            id='subject'
-            name='subject'
-            placeholder='Event'
-          />
-          <p>{errors.subject?.message}</p>
+          <div className='mb-4'>
+            <label
+              className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
+              htmlFor='subject'
+            >
+              Subject
+            </label>
+            <input
+              {...register('subject', {
+                required: {
+                  value: true,
+                  message: '*Subject is required',
+                },
+              })}
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline '
+              type='text'
+              id='subject'
+              name='subject'
+              placeholder='Event'
+            />
+            <p className='text-skin-form-error italic'>
+              {errors.subject?.message}
+            </p>
+          </div>
 
           {/* Message */}
-          <label
-            className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
-            htmlFor='message'
-          >
-            Message
-          </label>
-          <textarea
-            {...register('message', {
-              required: {
-                value: true,
-                message: 'We would like to know what you have to say',
-              },
-            })}
-            className='shadow appearance-none border rounded w-full py-2 px-3 mb-6 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
-            name='message'
-            id='message'
-            cols='30'
-            rows='5'
-          ></textarea>
-          <p>{errors.message?.message}</p>
+          <div className='mb-6'>
+            <label
+              className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
+              htmlFor='message'
+            >
+              Message
+            </label>
+            <textarea
+              {...register('message', {
+                required: {
+                  value: true,
+                  message: '*We would like to know what you have to say',
+                },
+              })}
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
+              name='message'
+              id='message'
+              cols='30'
+              rows='5'
+            ></textarea>
+            <p className='text-skin-form-error italic'>
+              {errors.message?.message}
+            </p>
+          </div>
 
-          <OutlineBtn text='Sign in with Google' />
+          {/* <OutlineBtn text='Sign in with Google' /> */}
           <SecondaryBtn text='Submit' />
         </form>
       </div>

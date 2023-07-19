@@ -19,6 +19,7 @@ export default {
           inverted: 'var(--color-text-inverted)',
           secondary: 'var(--color-text-secondary)',
           'outline-hover': 'var(--color-text-outline-hover)',
+          'form-error': 'var(--color-text-form-error)',
         },
       },
       backgroundColor: {

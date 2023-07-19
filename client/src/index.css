@@ -71,6 +71,7 @@
     --color-text-primary: #383740;
     --color-text-secondary: #383740;
     --color-text-outline-hover: var(--color-fill);
+    --color-text-form-error: #ef4444;
     /* Background-Colors */
     --color-fill: #fff;
     --color-button-primary: #bdb2c9;
