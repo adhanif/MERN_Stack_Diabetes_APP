@@ -17,7 +17,6 @@ export default function SignUp() {
   const notifyError = () => toast.error("The form has not submitted");
 
   const [userError, setUserError] = useState("");
-  //   const [passwordError, setPasswordError] = useState("");
 
   const {
     register,
@@ -76,7 +75,9 @@ export default function SignUp() {
             className="bg-white border shadow-md rounded px-8 pt-6 pb-8 mb-4"
             style={{ boxShadow: "0 4px 6px -1px #BDB2C9" }}
           >
-            <h1 className="max-w-2xl text-3xl font-bold mb-7">Sign Up</h1>
+            <h1 className="max-w-2xl text-3xl font-bold text-center md:text-left lg:text-left mb-7">
+              Sign Up
+            </h1>
             <p className="text-neutral-500 dark:text-neutral-200 text-sm font-medium mb-6">
               Already User?{" "}
               <a
@@ -100,10 +101,10 @@ export default function SignUp() {
                 {...register("name", {
                   required: "Please enter your name.",
                   maxLength: { value: 30, message: "Maximum length is 30" },
-                  //   pattern: {
-                  //     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                  //     message: "Please enter a valid email address.",
-                  //   },
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: "Please enter a valid email address.",
+                  },
                 })}
                 type="text"
                 placeholder="Name"
@@ -116,7 +117,7 @@ export default function SignUp() {
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 {" "}
-                Username
+                Email
               </label>
               <input
                 {...register("email", {

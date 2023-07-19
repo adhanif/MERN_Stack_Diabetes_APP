@@ -80,7 +80,9 @@ export default function Login() {
             className="bg-white border shadow-md rounded px-8 pt-6 pb-8 mb-4"
             style={{ boxShadow: "0 4px 6px -1px #BDB2C9" }}
           >
-            <h1 className="max-w-2xl text-3xl font-bold mb-7">Sign in</h1>
+            <h1 className="max-w-2xl text-center md:text-left lg:text-left text-3xl font-bold mb-7">
+              Sign in
+            </h1>
             <p className="text-neutral-500 dark:text-neutral-200 text-sm font-bold mb-6">
               New User?{" "}
               <a
@@ -97,7 +99,7 @@ export default function Login() {
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 {" "}
-                Username
+                Email
               </label>
               <input
                 {...register("email", {
