@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useForm } from "react-hook-form";
 import google from "../assets/Google_Logo1.svg";
 import signup from "../assets/signup.svg";
@@ -30,16 +29,17 @@ export default function SignUp() {
   });
 
   const onSubmit = (data) => {
-    // axiosClient
-    //   .post("/login", data)
-    //   .then((res) => {
-    //     notify();
-    //     navigate("/");
-    //   })
-    //   .catch((err) => {
-    //     // notifyError();
-    //     console.log(err);
-    //   });
+    console.log(data);
+    axiosClient
+      .post("/signup", data)
+      .then((res) => {
+        notify();
+        navigate("/");
+      })
+      .catch((err) => {
+        notifyError();
+        console.log(err);
+      });
   };
 
   return (
@@ -68,10 +68,8 @@ export default function SignUp() {
             className="bg-white border shadow-md rounded px-8 pt-6 pb-8 mb-4"
             style={{ boxShadow: "0 4px 6px -1px #BDB2C9" }}
           >
-            <h1 className="max-w-2xl text-3xl font-bold mb-7">
-              Create an account
-            </h1>
-            <p className="text-neutral-800 dark:text-neutral-200 text-sm font-bold mb-5">
+            <h1 className="max-w-2xl text-3xl font-bold mb-7">Sign Up</h1>
+            <p className="text-neutral-500 dark:text-neutral-200 text-sm font-medium mb-6">
               Already User?{" "}
               <a
                 className="inline-block align-baseline font-bold text-sm text-blue-500 hover:underline hover:text-blue-800"
@@ -84,6 +82,29 @@ export default function SignUp() {
                 Sign in
               </a>
             </p>
+
+            <div className="mb-4 ">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                {" "}
+                Name
+              </label>
+              <input
+                {...register("name", {
+                  required: "Please enter your name.",
+                  maxLength: { value: 30, message: "Maximum length is 30" },
+                  //   pattern: {
+                  //     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                  //     message: "Please enter a valid email address.",
+                  //   },
+                })}
+                type="text"
+                placeholder="Name"
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                  errors.name ? "border-red-500" : ""
+                }`}
+              />
+              <p style={{ color: "red" }}>{errors.name?.message}</p>
+            </div>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 {" "}
@@ -132,19 +153,19 @@ export default function SignUp() {
                 style={{ backgroundColor: "#383740" }}
               >
                 {" "}
-                Login
+                Sign up
               </button>
               {/* <PrimaryBtn text="Login" /> */}
 
-              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-3 ">
+              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-3 text-sm">
                 {" "}
                 <img src={google} alt="" className=" w-10 h-10" />
-                Sign in with Google
+                Continue with Google
               </button>
-              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-6 ">
+              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500 text-sm mb-3 ">
                 {" "}
                 <img src={facebook} alt="" className=" w-12 h-10" />
-                Sign in with Facebook
+                Continue with Facebook
               </button>
             </div>
 

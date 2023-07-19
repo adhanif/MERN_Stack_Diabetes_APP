@@ -81,6 +81,19 @@ export default function Login() {
             style={{ boxShadow: "0 4px 6px -1px #BDB2C9" }}
           >
             <h1 className="max-w-2xl text-3xl font-bold mb-7">Sign in</h1>
+            <p className="text-neutral-500 dark:text-neutral-200 text-sm font-bold mb-6">
+              New User?{" "}
+              <a
+                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:underline hover:text-blue-800"
+                href="#"
+                to=""
+                onClick={(handleNavigate) => {
+                  navigateToSignUp("/signUp");
+                }}
+              >
+                Create account
+              </a>
+            </p>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 {" "}
@@ -137,25 +150,13 @@ export default function Login() {
                 Login
               </button>
               {/* <PrimaryBtn text="Login" /> */}
-              <p className="text-neutral-800 dark:text-neutral-200 text-sm font-bold mb-5">
-                New User?{" "}
-                <a
-                  className="inline-block align-baseline font-bold text-sm text-blue-500 hover:underline hover:text-blue-800"
-                  href="#"
-                  to=""
-                  onClick={(handleNavigate) => {
-                    navigateToSignUp("/signUp");
-                  }}
-                >
-                  Create account
-                </a>
-              </p>
-              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-3 ">
+
+              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-3 text-sm">
                 {" "}
                 <img src={google} alt="" className=" w-10 h-10" />
                 Sign in with Google
               </button>
-              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-6 ">
+              <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-6 text-sm ">
                 {" "}
                 <img src={facebook} alt="" className=" w-12 h-10" />
                 Sign in with Facebook
