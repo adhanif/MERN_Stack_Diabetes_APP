@@ -1,6 +1,5 @@
-
-import Hero2 from './components/Hero2';
-import Navbar from './components/navbar';
+import Hero2 from "./components/Hero2";
+import Navbar from "./components/navbar";
 import { Routes, Route, NavLink } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
@@ -13,14 +12,13 @@ function App() {
   return (
     <>
       <Navbar />
-      <Hero2 />
-  
+
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/" element={<Hero2 />} />
         <Route path="/articles" element={<h1>Articles</h1>} />
         <Route path="/events" element={<h1>Events</h1>} />
         <Route path="/about" element={<h1>About Us</h1>} />
-        <Route path="/login" element={<Test />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
       </Routes>
     </>
