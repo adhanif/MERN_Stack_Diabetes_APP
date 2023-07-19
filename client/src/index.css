@@ -78,8 +78,9 @@
     --color-button-secondary: #7f1d1d;
     --color-button-secondary-hover: #ef4444;
     --color-button-outline: #ffffff00;
-    --color-button-outline-hover: #ef4444;
+    --color-button-outline-hover: #ffffff00;
     /* BorderColors */
-    --color-border-outline: var(--color-text-base)
+    --color-border-outline: #a1a2a2;
+    --color-border-outline-hover: #3b82f6
   }
 }

@@ -21,14 +21,14 @@ function ContactUs({ theme }) {
 
   return (
     <div
-      className={`${theme} fluid mx-auto md:p-16 border-2 border-red-600 flex justify-center bg-skin-fill`}
+      className={`${theme} fluid mx-auto p-8 md:py-16 md:px-16 lg:px-32 xl:px-60 max-h-screen border-2 border-red-600 flex justify-center bg-skin-fill`}
     >
       {/* Left Side */}
-      <div className='hidden lg:flex md:w-1/2 border-2 border-green-500'>
+      <div className='hidden lg:flex lg:w-1/2 border-2 border-green-500'>
         <img src='/src/images/28998.jpg' alt='bla' />
       </div>
       {/* Right Side */}
-      <div className=' w-4/5 sm:w-3/5 md:w-1/2 border shadow flex flex-col justify-center '>
+      <div className='w-full sm:w-4/5 md:w-3/5 lg:w-1/2 border shadow flex flex-col justify-center '>
         <form
           onSubmit={handleSubmit(sendMessage)}
           className='flex flex-col w-full px-8 py-6'
@@ -98,7 +98,7 @@ function ContactUs({ theme }) {
             cols='30'
             rows='5'
           ></textarea>
-          <OutlineBtn text='bla' />
+          <OutlineBtn text='Sign in with Google' />
           <SecondaryBtn text='Submit' />
         </form>
       </div>

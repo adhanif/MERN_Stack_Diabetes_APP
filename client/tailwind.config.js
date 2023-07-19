@@ -35,6 +35,7 @@ export default {
       borderColor: {
         skin: {
           'border-outline': 'var(--color-border-outline)',
+          'border-outline-hover': 'var(--color-border-outline-hover)',
         },
       },
     },
