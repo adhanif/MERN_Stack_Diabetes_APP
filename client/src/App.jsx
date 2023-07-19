@@ -1,20 +1,18 @@
-//import { useState } from 'react';
-import { Route, Routes, NavLink } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import './App.css';
 import Hero2 from './components/Hero2';
-import What from './components/Example';
 import Test from './components/Test';
 import Navbar from './components/navbar';
-import Example from './components/Example';
-import Simple from './components/Simple';
+//import Example from './components/Example';
+//import Simple from './components/Simple';
 
 function App() {
   return (
     <>
       {/* <h1 className='text-4xl font-bold underline '>Hello world!</h1> */}
-      {/* <Hero2 /> */}
-      {/* <Navbar /> */}
-      <Example />
+      <Navbar />
+      <Hero2 />
+      {/* <Example /> */}
       {/* <Simple /> */}
       {/* <Test theme='theme-secondary' />
       <Test theme='theme-3' />
