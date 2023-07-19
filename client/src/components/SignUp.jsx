@@ -1,8 +1,8 @@
 import React from "react";
-import { useState } from "react";
+
 import { useForm } from "react-hook-form";
 import google from "../assets/Google_Logo1.svg";
-import login from "../assets/Login-amico1.svg";
+import signup from "../assets/signup.svg";
 import facebook from "../assets/facebook.svg";
 import PrimaryBtn from "./buttons/PrimaryBtn";
 import axiosClient from "../axiosClient";
@@ -10,14 +10,12 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import axios from "axios";
-export default function Login() {
+export default function SignUp() {
   const navigate = useNavigate();
-  const navigateToSignUp = useNavigate();
+  const navigateToLogin = useNavigate();
   const notify = () => toast.success("The form has been submitted");
   const notifyError = () => toast.error("The form has not submitted");
 
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
   const {
     register,
     handleSubmit,
@@ -32,26 +30,16 @@ export default function Login() {
   });
 
   const onSubmit = (data) => {
-    axiosClient
-      .post("/login", data)
-      .then((res) => {
-        notify();
-        navigate("/");
-      })
-      .catch((err) => {
-        // console.log(err.response);
-        if (err.response) {
-          if (err.response.status === 404) {
-            setEmailError(err.response.data);
-            setPasswordError("");
-          } else if (err.response.status === 401) {
-            setEmailError("");
-            setPasswordError(err.response.data);
-          }
-        }
-        // notifyError();
-        console.log(err);
-      });
+    // axiosClient
+    //   .post("/login", data)
+    //   .then((res) => {
+    //     notify();
+    //     navigate("/");
+    //   })
+    //   .catch((err) => {
+    //     // notifyError();
+    //     console.log(err);
+    //   });
   };
 
   return (
@@ -72,7 +60,7 @@ export default function Login() {
       </div>
       <div className="container flex flex-row  mx-auto justify-center md:justify-center mt-20 md:space-x-40">
         <div className="w-1/2 max-w-md hidden lg:flex">
-          <img src={login} alt="" />
+          <img src={signup} alt="" />
         </div>
         <div className="w-full max-w-md md:w-1/2 lg:w-1/2">
           <form
@@ -80,7 +68,22 @@ export default function Login() {
             className="bg-white border shadow-md rounded px-8 pt-6 pb-8 mb-4"
             style={{ boxShadow: "0 4px 6px -1px #BDB2C9" }}
           >
-            <h1 className="max-w-2xl text-3xl font-bold mb-7">Sign in</h1>
+            <h1 className="max-w-2xl text-3xl font-bold mb-7">
+              Create an account
+            </h1>
+            <p className="text-neutral-800 dark:text-neutral-200 text-sm font-bold mb-5">
+              Already User?{" "}
+              <a
+                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:underline hover:text-blue-800"
+                href="#"
+                to=""
+                onClick={(handleNavigate) => {
+                  navigateToLogin("/login");
+                }}
+              >
+                Sign in
+              </a>
+            </p>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 {" "}
@@ -88,7 +91,7 @@ export default function Login() {
               </label>
               <input
                 {...register("email", {
-                  required: "Please enter an email address.",
+                  required: "Please enter an valid email address.",
                   maxLength: { value: 30, message: "Maximum length is 30" },
                   pattern: {
                     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -97,14 +100,11 @@ export default function Login() {
                 })}
                 type="email"
                 placeholder="Email"
-                // className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                   errors.email ? "border-red-500" : ""
                 }`}
               />
-              <p style={{ color: "red" }}>
-                {errors.email?.message || emailError}
-              </p>
+              <p style={{ color: "red" }}>{errors.email?.message}</p>
             </div>
 
             <div className="mb-10">
@@ -123,9 +123,7 @@ export default function Login() {
                   errors.password ? "border-red-500" : ""
                 }`}
               />
-              <p style={{ color: "red" }}>
-                {errors.password?.message || passwordError}
-              </p>
+              <p style={{ color: "red" }}>{errors.password?.message}</p>
             </div>
             <div className="flex flex-col items-center justify-between mb-5">
               <button
@@ -137,19 +135,7 @@ export default function Login() {
                 Login
               </button>
               {/* <PrimaryBtn text="Login" /> */}
-              <p className="text-neutral-800 dark:text-neutral-200 text-sm font-bold mb-5">
-                New User?{" "}
-                <a
-                  className="inline-block align-baseline font-bold text-sm text-blue-500 hover:underline hover:text-blue-800"
-                  href="#"
-                  to=""
-                  onClick={(handleNavigate) => {
-                    navigateToSignUp("/signUp");
-                  }}
-                >
-                  Create account
-                </a>
-              </p>
+
               <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-3 ">
                 {" "}
                 <img src={google} alt="" className=" w-10 h-10" />
