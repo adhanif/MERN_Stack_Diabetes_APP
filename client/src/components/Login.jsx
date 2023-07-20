@@ -27,8 +27,8 @@ export default function Login() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
   });
 
@@ -57,6 +57,7 @@ export default function Login() {
 
   return (
     <>
+
       <div>
         <ToastContainer
           position="top-right"
@@ -130,11 +131,12 @@ export default function Login() {
               </p>
             </div>
 
-            <div className="mb-10">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+            <div className='mb-10'>
+              <label className='block text-gray-700 text-sm font-bold mb-2'>
                 Password
               </label>
               <input
+
                 {...register("password", {
                   required: "Please enter the password.",
                   minLength: { value: 6, message: "Minimum length is 6" },
@@ -164,6 +166,7 @@ export default function Login() {
               <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-3 text-sm">
                 {" "}
                 <img src={google} alt="" className=" w-10 h-10" />
+
                 Sign in with Google
               </button>
               <button className="flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500   text-sm ">

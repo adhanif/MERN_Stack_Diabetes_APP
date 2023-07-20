@@ -3,6 +3,7 @@ import OutlineBtn from './buttons/OutlineBtn';
 import PrimaryBtn from './buttons/PrimaryBtn';
 import { useForm } from 'react-hook-form';
 import { postMessage } from '../utils/axiosFunctions';
+import SecondaryBtn from './buttons/SecondaryBtn';
 
 function ContactUs({ theme }) {
   const {
@@ -20,70 +21,126 @@ function ContactUs({ theme }) {
 
   return (
     <div
-      className={`${theme} fluid md:p-16 border-2 border-red-600 flex justify-center bg-skin-fill`}
+      className={`${theme} fluid mx-auto p-8 md:py-16 md:px-16 lg:px-32 xl:px-60 max-h-screen border-2 border-red-600 flex justify-center bg-skin-fill`}
     >
       {/* Left Side */}
-      <div className='hidden md:flex md:w-1/2 border-2 border-green-500'>
+      <div className='hidden lg:flex lg:w-1/2 border-2 border-green-500'>
         <img src='/src/images/28998.jpg' alt='bla' />
       </div>
       {/* Right Side */}
-      <div className=' w-4/5 sm:w-3/5 md:w-1/2 border-2 border-blue-500 flex justify-center '>
+      <div className='w-full sm:w-4/5 md:w-3/5 lg:w-1/2 border shadow flex flex-col justify-center '>
         <form
           onSubmit={handleSubmit(sendMessage)}
-          className='flex flex-col w-3/4 py-10'
+          className='flex flex-col w-full px-8 py-6'
         >
+          <h1 className='max-w-2xl text-3xl font-bold mb-7'>Contact Us</h1>
+
           {/* Name */}
-          <label className='text-xl' htmlFor='name'>
-            Name
-          </label>
-          <input
-            {...register('name', { required: true })}
-            className='text-xl p-2 mb-4 rounded'
-            type='text'
-            id='name'
-            name='name'
-            placeholder='Max Mustermann'
-          />
+          <div className='mb-4'>
+            <label
+              className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
+              htmlFor='name'
+            >
+              Name
+            </label>
+            <input
+              {...register('name', {
+                required: {
+                  value: true,
+                  message: '* Name is required',
+                },
+              })}
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
+              type='text'
+              id='name'
+              name='name'
+              placeholder='Max Mustermann'
+            />
+            <p className='text-skin-form-error italic'>
+              {errors.name?.message}
+            </p>
+          </div>
 
           {/* Email */}
-          <label className='text-xl' htmlFor='email'>
-            Email
-          </label>
-          <input
-            {...register('email', { required: true })}
-            className='p-2 mb-4 rounded'
-            type='email'
-            id='email'
-            name='email'
-            placeholder='max@mustermann.de'
-          />
+          <div className='mb-4'>
+            <label
+              className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
+              htmlFor='email'
+            >
+              Email
+            </label>
+            <input
+              {...register('email', {
+                required: {
+                  value: true,
+                  message: '* Email is required to get an Answer',
+                },
+              })}
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
+              type='email'
+              id='email'
+              name='email'
+              placeholder='max@mustermann.de'
+            />
+            <p className='text-skin-form-error italic'>
+              {errors.email?.message}
+            </p>
+          </div>
 
           {/* Subject */}
-          <label className='text-xl' htmlFor='subject'>
-            Subject
-          </label>
-          <input
-            {...register('subject', { required: true })}
-            className='p-2 mb-4 rounded'
-            type='text'
-            id='subject'
-            name='subject'
-            placeholder='Event'
-          />
+          <div className='mb-4'>
+            <label
+              className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
+              htmlFor='subject'
+            >
+              Subject
+            </label>
+            <input
+              {...register('subject', {
+                required: {
+                  value: true,
+                  message: '*Subject is required',
+                },
+              })}
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline '
+              type='text'
+              id='subject'
+              name='subject'
+              placeholder='Event'
+            />
+            <p className='text-skin-form-error italic'>
+              {errors.subject?.message}
+            </p>
+          </div>
 
           {/* Message */}
-          <label className='text-xl' htmlFor='message'>
-            Message
-          </label>
-          <textarea
-            {...register('message', { required: true })}
-            className='p-2 mb-6 rounded'
-            name='message'
-            id='message'
-            cols='30'
-            rows='5'
-          ></textarea>
-          <OutlineBtn text='Submit' />
+          <div className='mb-6'>
+            <label
+              className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
+              htmlFor='message'
+            >
+              Message
+            </label>
+            <textarea
+              {...register('message', {
+                required: {
+                  value: true,
+                  message: '*We would like to know what you have to say',
+                },
+              })}
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
+              name='message'
+              id='message'
+              cols='30'
+              rows='5'
+            ></textarea>
+            <p className='text-skin-form-error italic'>
+              {errors.message?.message}
+            </p>
+          </div>
+
+          {/* <OutlineBtn text='Sign in with Google' /> */}
+          <SecondaryBtn text='Submit' />
         </form>
       </div>
     </div>

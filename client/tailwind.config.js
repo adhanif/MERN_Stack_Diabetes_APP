@@ -19,6 +19,7 @@ export default {
           inverted: 'var(--color-text-inverted)',
           secondary: 'var(--color-text-secondary)',
           'outline-hover': 'var(--color-text-outline-hover)',
+          'form-error': 'var(--color-text-form-error)',
         },
       },
       backgroundColor: {
@@ -27,6 +28,7 @@ export default {
           'button-primary': 'var(--color-button-primary)',
           'button-primary-hover': 'var(--color-button-primary-hover)',
           'button-secondary': 'var(--color-button-secondary)',
+          'button-secondary-hover': 'var(--color-button-secondary-hover)',
           'button-outline': 'var(--color-button-outline)',
           'button-outline-hover': 'var(--color-button-outline-hover)',
         },
@@ -34,6 +36,7 @@ export default {
       borderColor: {
         skin: {
           'border-outline': 'var(--color-border-outline)',
+          'border-outline-hover': 'var(--color-border-outline-hover)',
         },
       },
     },

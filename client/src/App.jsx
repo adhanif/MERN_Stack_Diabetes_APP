@@ -11,6 +11,7 @@ import ContactUs from "./components/ContactUs";
 function App() {
   return (
     <>
+
       <Navbar />
 
       <Routes>
