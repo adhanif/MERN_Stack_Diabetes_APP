@@ -20,18 +20,35 @@ const addEvent = async (req, res, next) => {
 };
 
 const deleteEvent = async (req, res) => {
+  //TODO
+  console.log('delete Event function called');
   console.log(req.body);
   return true;
 };
 
-const getAllEvents = async (req, res) => {
+const getAllEvents = async (req, res, next) => {
+  console.log('getAllEvents function called');
   console.log(req.body);
+  try {
+    const events = await Event.find({});
+    res.status(201).json(events);
+  } catch (error) {
+    next(error);
+  }
+
   return true;
 };
 
 const getEvent = async (req, res) => {
+  console.log('getEvent function called');
   console.log(req.body);
-  return true;
+  const { _id } = req.body;
+  try {
+    const event = await Event.findById(_id);
+    res.status(201).json(event);
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = { addEvent, deleteEvent, getAllEvents, getEvent };
