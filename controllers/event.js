@@ -2,6 +2,7 @@ const Event = require('../models/event');
 
 const addEvent = async (req, res, next) => {
   try {
+    console.log('AddEvent');
     console.log(req.body);
     const { title, eventDate, creator, location } = req.body;
     //create Event
@@ -15,6 +16,7 @@ const addEvent = async (req, res, next) => {
     });
     res.status(201).json(newEvent);
   } catch (error) {
+    console.log('error creating event');
     next(error);
   }
 };
