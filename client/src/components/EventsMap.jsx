@@ -36,7 +36,7 @@ export default function EventsMap() {
   return (
     <>
       <MapContainer
-        center={{ lat: 52.52, lng: 13.405 }}
+        center={{ lat: 52.52, lng: 13.4 }}
         zoom={13}
         scrollWheelZoom={true}
         style={{ height: "80vh", width: "100%" }}
