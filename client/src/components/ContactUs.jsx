@@ -5,6 +5,9 @@ import { useForm } from 'react-hook-form';
 import { postMessage } from '../utils/axiosFunctions';
 import SecondaryBtn from './buttons/SecondaryBtn';
 
+//Test
+import { ToastContainer, toast } from 'react-toastify';
+
 function ContactUs({ theme }) {
   const {
     register,
@@ -16,7 +19,8 @@ function ContactUs({ theme }) {
     // event.preventDefault();
     // console.log(event);
     console.log(data);
-    postMessage(data);
+    toast('Super typ');
+    //postMessage(data);
   };
 
   return (
@@ -143,6 +147,7 @@ function ContactUs({ theme }) {
           <SecondaryBtn text='Submit' />
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }
