@@ -9,7 +9,8 @@ import {
   Popup,
   useMapEvents,
 } from "react-leaflet";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 function LocationMarker() {
   const [position, setPosition] = useState(null);
   const map = useMapEvents({
@@ -21,6 +22,9 @@ function LocationMarker() {
       map.flyTo(e.latlng, map.getZoom());
     },
   });
+  useEffect(() => {
+    map.locate();
+  }, [map]);
 
   return position === null ? null : (
     <Marker position={position}>
@@ -32,10 +36,10 @@ export default function EventsMap() {
   return (
     <>
       <MapContainer
-        center={{ lat: 51.505, lng: -0.09 }}
+        center={{ lat: 52.52, lng: 13.405 }}
         zoom={13}
-        scrollWheelZoom={false}
-        style={{ height: "100vh", width: "100%" }}
+        scrollWheelZoom={true}
+        style={{ height: "80vh", width: "100%" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
