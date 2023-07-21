@@ -8,8 +8,8 @@ const {
 } = require('../controllers/event');
 
 eventRouter.get('/', getAllEvents);
-eventRouter.get('/:id', getEvent);
+eventRouter.get('/id', getEvent);
 eventRouter.post('/create', addEvent);
-eventRouter.delete('/:id', deleteEvent);
+eventRouter.delete('/id', deleteEvent);
 
 module.exports = { eventRouter };
