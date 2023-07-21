@@ -1,6 +1,7 @@
 import React from "react";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
+import axiosClient from "../axiosClient";
 import {
   MapContainer,
   TileLayer,
@@ -13,6 +14,7 @@ import { useState, useEffect } from "react";
 
 function LocationMarker() {
   const [position, setPosition] = useState(null);
+  const [events, setEvents] = useState(null);
   const map = useMapEvents({
     click() {
       map.locate();
@@ -22,6 +24,16 @@ function LocationMarker() {
       map.flyTo(e.latlng, map.getZoom());
     },
   });
+
+  axiosClient
+    .get("/events")
+    .then((res) => {
+      // console.log(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
   useEffect(() => {
     map.locate();
   }, [map]);
