@@ -10,7 +10,7 @@ function Card({ theme, person }) {
       className={`${theme} bg-skin-fill shadow-2xl rounded-xl relative mx-auto m-5 flex h-full w-full max-h-[300px] max-w-[300px] flex-col items-center  bg-clip-border`}
     >
       <div
-        className='relative  flex h-32 w-full justify-center rounded-xl'
+        className='relative  flex h-32 w-full justify-center rounded-t-xl'
         style={{
           backgroundImage: 'url(' + banner.image + ')',
           backgroundRepeat: banner.repeat,
