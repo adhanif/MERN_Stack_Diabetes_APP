@@ -2,6 +2,7 @@ import React from "react";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
 import axiosClient from "../axiosClient";
+import LocationMarker from "../components/LocationMarker";
 import {
   MapContainer,
   TileLayer,
@@ -12,39 +13,20 @@ import {
 } from "react-leaflet";
 import { useState, useEffect } from "react";
 
-function LocationMarker() {
-  const [position, setPosition] = useState(null);
+export default function EventsMap() {
   const [events, setEvents] = useState(null);
-  const map = useMapEvents({
-    click() {
-      map.locate();
-    },
-    locationfound(e) {
-      setPosition(e.latlng);
-      map.flyTo(e.latlng, map.getZoom());
-    },
-  });
-
-  axiosClient
-    .get("/events")
-    .then((res) => {
-      // console.log(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
 
   useEffect(() => {
-    map.locate();
-  }, [map]);
-
-  return position === null ? null : (
-    <Marker position={position}>
-      <Popup>You are here</Popup>
-    </Marker>
-  );
-}
-export default function EventsMap() {
+    axiosClient
+      .get("/events")
+      .then((res) => {
+        console.log(res.data);
+        setEvents(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       <MapContainer
@@ -57,7 +39,18 @@ export default function EventsMap() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <LocationMarker />
+
+        {events &&
+          events.map((event) => {
+            return (
+              <Marker
+                key={event._id}
+                position={[event.location.lat, event.location.long]}
+              >
+                <Popup>{event.title}</Popup>
+              </Marker>
+            );
+          })}
       </MapContainer>
     </>
   );
