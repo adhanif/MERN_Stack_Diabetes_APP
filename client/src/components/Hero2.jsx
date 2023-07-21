@@ -20,7 +20,7 @@ export default function Hero2() {
             {/* ---------------Big Logo--------------- */}
             <img src={LogoWhiteInline} alt='' className='h-30'></img>
             {/* ---------------Text Buddy--------------- */}
-            <p className='text-2xl font-bold my-6 text-gray-200'>
+            <p className='text-xl font-bold my-6 text-gray-200'>
               make diabetes your buddy
             </p>
             {/* ---------------Get Started Button--------------- */}
