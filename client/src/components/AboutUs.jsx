@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './Card';
-import { anne, adnan, elvis } from '../data/about';
+import { anne, adnan, elvis } from '../aboutus/about';
 
 function AboutUs({ theme }) {
   return (

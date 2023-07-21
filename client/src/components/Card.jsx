@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { BsLinkedin, BsGithub, BsFillEnvelopeFill } from 'react-icons/bs';
 
 function Card({ theme, person }) {
-  const { name, position, profilePic, banner } = person;
-  console.log(banner.image);
+  const { name, position, profilePic, banner, email } = person;
+  console.log(email);
 
   return (
     <div
@@ -31,7 +31,9 @@ function Card({ theme, person }) {
 
       <div className='mt-6 mb-3 w-full flex justify-around p-2'>
         <div class='flex flex-col items-center justify-center text-3xl'>
-          <BsFillEnvelopeFill />
+          <a href={`mailto:${email}?subject= Das ist ein Betreff`}>
+            <BsFillEnvelopeFill />
+          </a>
         </div>
         <div class='flex flex-col items-center justify-center text-3xl text-blue-700'>
           <BsLinkedin />

@@ -42,5 +42,5 @@ export const elvis = {
   },
   linkedIn: '',
   github: '',
-  email: '',
+  email: 'elvis.bevab@mailbox.org',
 };
