@@ -16,6 +16,7 @@
     --white: hsla(0, 0%, 100%, 1);
     --denim: hsla(216, 63%, 42%, 1);
     --rose-red: hsla(348, 52%, 46%, 1);
+    /* CSS custom theme */
     --color-text-base: #ffffff;
     --color-text-muted: #d7d5d5;
     --color-text-inverted: #4f46e5;

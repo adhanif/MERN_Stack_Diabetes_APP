@@ -18,7 +18,7 @@ export default function Example() {
     <header className='theme-hero'>
       {/* ---------------Navbar--------------- */}
       <nav
-        className='flex items-center justify-between p-6 lg:px-16'
+        className='flex items-center justify-between py-4 px-6 lg:px-16'
         aria-label='Global'
       >
         <div className='flex lg:flex-1'>
