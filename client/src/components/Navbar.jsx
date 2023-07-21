@@ -15,7 +15,7 @@ export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className=''>
+    <header className='theme-hero'>
       {/* ---------------Navbar--------------- */}
       <nav
         className='flex items-center justify-between p-6 lg:px-16'
@@ -50,25 +50,25 @@ export default function Example() {
             ))} */}
           <NavLink
             to='/'
-            className='text-lg font-semibold leading-6 text-gray-900'
+            className='text-lg font-semibold leading-6 text-gray-900 hover:text-skin-base'
           >
             Home
           </NavLink>
           <NavLink
             to='/articles'
-            className='text-lg font-semibold leading-6 text-gray-900'
+            className='text-lg font-semibold leading-6 text-gray-900 hover:text-skin-base'
           >
             Articles
           </NavLink>
           <NavLink
             to='/events'
-            className='text-lg font-semibold leading-6 text-gray-900'
+            className='text-lg font-semibold leading-6 text-gray-900 hover:text-skin-base'
           >
             Events
           </NavLink>
           <NavLink
             to='/about'
-            className='text-lg font-semibold leading-6 text-gray-900'
+            className='text-lg font-semibold leading-6 text-gray-900 hover:text-skin-base'
           >
             About Us
           </NavLink>
@@ -76,7 +76,7 @@ export default function Example() {
         <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
           <NavLink
             to='/login'
-            className='text-lg font-semibold leading-6 text-gray-900'
+            className='text-lg font-semibold leading-6 text-gray-900 hover:text-skin-base'
           >
             Log in <span aria-hidden='true'>&rarr;</span>
           </NavLink>

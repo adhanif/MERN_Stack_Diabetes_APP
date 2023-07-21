@@ -1,6 +1,7 @@
 import LogoWhiteInline from '../images/TypeOne_white_noBG_inline-hiQ.png';
 import HappyKids2 from '../images/happy-kids2.png';
-import StandardBtn from './buttons/StandardBtn';
+import SecondaryBtn from './buttons/SecondaryBtn';
+import OutlineBtn from './buttons/OutlineBtn';
 
 export default function Hero2() {
   return (
@@ -19,12 +20,12 @@ export default function Hero2() {
             {/* ---------------Big Logo--------------- */}
             <img src={LogoWhiteInline} alt='' className='h-30'></img>
             {/* ---------------Text Buddy--------------- */}
-            <p className='text-lg font-bold my-6 text-gray-200'>
+            <p className='text-2xl font-bold my-6 text-gray-200'>
               make diabetes your buddy
             </p>
             {/* ---------------Get Started Button--------------- */}
-            <div className='mt-10 flex items-center justify-center gap-x-6'>
-              <StandardBtn />
+            <div className='theme-hero mt-10 flex items-center justify-center gap-x-6'>
+              {/* <SecondaryBtn text /> */}
               {/* <a
                   href="#"
                   className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -32,12 +33,13 @@ export default function Hero2() {
                   Get started
                 </a> */}
               {/* ---------------Learn More Arrow--------------- */}
-              <a
+              {/* <a
                 href='#'
-                className='text-sm font-semibold leading-6 text-gray-900'
+                className='text-xl font-semibold leading-6 text-gray-900'
               >
                 Learn more <span aria-hidden='true'>→</span>
-              </a>
+              </a> */}
+              <OutlineBtn text='Learn more' />
             </div>
           </div>
         </div>

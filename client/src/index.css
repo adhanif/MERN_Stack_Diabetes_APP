@@ -19,7 +19,7 @@
     --color-text-inverted: #383740;
     --color-text-primary: #bdb2c9;
     --color-text-secondary: #383740;
-    --color-text-outline-hover: var(--color-fill);
+    --color-text-outline-hover: #383740;
     /* Background-Colors */
     --color-fill: #bdb2c9;
     --color-button-primary: #ffffff;
@@ -28,7 +28,8 @@
     --color-button-outline: #ffffff00;
     --color-button-outline-hover: var(--color-text-base);
     /* BorderColors */
-    --color-border-outline: var(--color-text-base)
+    --color-border-outline: var(--color-text-base);
+    --color-border-outline-hover: #3b82f600;
   }
 
   .theme-secondary {
