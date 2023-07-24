@@ -9,7 +9,7 @@ export const anne = {
     repeat: 'no-repeat',
     size: 'cover',
   },
-  linkedIn: '',
+  linkedIn: 'https://www.linkedin.com/in/annepohlmann/',
   github: '',
   email: '',
 };
@@ -25,7 +25,7 @@ export const adnan = {
     repeat: 'no-repeat',
     size: 'cover',
   },
-  linkedIn: '',
+  linkedIn: 'https://www.linkedin.com/in/adnan-hanif/',
   github: '',
   email: '',
 };
@@ -40,7 +40,7 @@ export const elvis = {
     repeat: 'no-repeat',
     size: 'cover',
   },
-  linkedIn: '',
+  linkedIn: 'https://www.linkedin.com/in/elvis-bevab/',
   github: '',
   email: 'elvis.bevab@mailbox.org',
 };
