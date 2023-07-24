@@ -11,13 +11,12 @@ const navigation = [
   { name: 'About Us' },
 ];
 
-export default function Example() {
+export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div id='navbarelvis' className=''>
       <header className=''>
-        {/* ---------------Navbar--------------- */}
         <nav
           className='flex items-center justify-between p-6 lg:px-16'
           aria-label='Global'
@@ -51,25 +50,25 @@ export default function Example() {
             ))} */}
             <NavLink
               to='/'
-              className='text-sm font-semibold leading-6 text-gray-900'
+              className='text-large font-semibold leading-6 text-gray-900'
             >
               Home
             </NavLink>
             <NavLink
               to='/articles'
-              className='text-sm font-semibold leading-6 text-gray-900'
+              className='text-large font-semibold leading-6 text-gray-900'
             >
               Articles
             </NavLink>
             <NavLink
               to='/events'
-              className='text-sm font-semibold leading-6 text-gray-900'
+              className='text-large font-semibold leading-6 text-gray-900'
             >
               Events
             </NavLink>
             <NavLink
               to='/about'
-              className='text-sm font-semibold leading-6 text-gray-900'
+              className='text-large font-semibold leading-6 text-gray-900'
             >
               About Us
             </NavLink>
@@ -77,7 +76,7 @@ export default function Example() {
           <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
             <NavLink
               to='/login'
-              className='text-sm font-semibold leading-6 text-gray-900'
+              className='text-large font-semibold leading-6 text-gray-900'
             >
               Log in <span aria-hidden='true'>&rarr;</span>
             </NavLink>

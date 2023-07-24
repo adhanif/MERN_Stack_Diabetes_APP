@@ -11,6 +11,15 @@ function Test({ theme }) {
       <PrimaryBtn text='Primary' />
       <SecondaryBtn text='Secondary' />
       <OutlineBtn text='Hallo' />
+      <div className='flex flex-col theme-hero bg-skin-fill'>
+      <h1 className='xl:text-9xl sm:text-2xl text-skin-base'>HERO TypeONE</h1>
+      <h2 className='text-6xl text-skin-base'>Make Diabetes Your Buddy</h2>
+      <div>
+        <PrimaryBtn text='Hallo' />
+        <SecondaryBtn text='Secondary' />
+        <OutlineBtn text='Hallo' />
+      </div>
+    </div>
     </div>
   );
 }

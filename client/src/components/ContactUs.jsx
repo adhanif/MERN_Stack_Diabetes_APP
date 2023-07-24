@@ -25,7 +25,7 @@ function ContactUs({ theme }) {
     >
       {/* Left Side */}
       <div className='hidden lg:flex lg:w-1/2 border-2 border-green-500'>
-        <img src='/src/images/28998.jpg' alt='bla' />
+        <img src='/src/images/Monstera.jpg' alt='bla' />
       </div>
       {/* Right Side */}
       <div className='w-full sm:w-4/5 md:w-3/5 lg:w-1/2 border shadow flex flex-col justify-center '>
