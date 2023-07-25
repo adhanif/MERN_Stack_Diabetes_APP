@@ -12,14 +12,14 @@ import EventsMap from "./components/EventsMap";
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         {/* <Route path="/" element={<Hero2 />} /> */}
-        <Route path="/articles" element={<h1>Articles</h1>} />
+        {/* <Route path="/articles" element={<h1>Articles</h1>} />
         <Route path="/events" element={<h1>Events</h1>} />
         <Route path="/about" element={<h1>About Us</h1>} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/signUp" element={<SignUp />} /> */}
       </Routes>
       <EventsMap />
       {/* <ContactUs theme="theme-4" /> */}

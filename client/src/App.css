@@ -8,6 +8,12 @@ body {
   
 }
 
+.leaflet-popup-content-wrapper {
+  padding: 0px;
+  text-align: left;
+  border-radius: 0.25rem;
+}
+
 .leaflet-container a.leaflet-popup-close-button{
   color: white;
 }
