@@ -12,7 +12,7 @@ import EventsMap from "./components/EventsMap";
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         {/* <Route path="/" element={<Hero2 />} /> */}
         <Route path="/articles" element={<h1>Articles</h1>} />

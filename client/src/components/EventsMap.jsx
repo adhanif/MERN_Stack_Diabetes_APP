@@ -3,6 +3,7 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
 import axiosClient from "../axiosClient";
 import LocationMarker from "../components/LocationMarker";
+import UserMapLocation from "../components/UserMapLocation";
 import {
   MapContainer,
   TileLayer,
@@ -31,6 +32,7 @@ export default function EventsMap() {
     <>
       <MapContainer
         center={{ lat: 52.52, lng: 13.4 }}
+        // center={position}
         zoom={13}
         scrollWheelZoom={true}
         style={{ height: "80vh", width: "100%" }}
@@ -39,7 +41,6 @@ export default function EventsMap() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-
         {events &&
           events.map((event) => {
             return (
@@ -47,10 +48,11 @@ export default function EventsMap() {
                 key={event._id}
                 position={[event.location.lat, event.location.long]}
               >
-                <Popup>{event.title}</Popup>
+                <LocationMarker event={event} />
               </Marker>
             );
           })}
+        <UserMapLocation />
       </MapContainer>
     </>
   );
