@@ -53,15 +53,51 @@ const getEvent = async (req, res, next) => {
   }
 };
 
-const getNextEvent = async (req, res) => {
+const getNextEvents = async (req, res, next) => {
   console.log('getNExtEvents');
-  console.log(req.body);
-  const { amount } = req.body;
+  // console.log(req.params);
+  const { amount } = req.params;
+  //console.log(amount);
+  const date = new Date();
+  // console.log(date.toString());
+  // console.log(date.getDate());
+  // console.log(date.getMonth());
+  // console.log(date.getFullYear());
   try {
     //Get amounnt of events from Database
+    console.log('before db');
+    const events = await Event.find({ eventDate: { $gte: date } }).sort({
+      eventDate: -1,
+    });
+    /*get with date string
+    const dateString =
+      '' +
+      date.getFullYear() +
+      '-' +
+      (date.getMonth() + 1) +
+      '-' +
+      date.getDate();
+    const events = await Event.find({ eventDate: { $gte: dateString } }).sort({
+      eventDate: -1,
+    };
+    */
+    console.log('after db');
+    console.log(events);
+    if (events.length == 0) {
+      res.status(201).json(['No upmcoming Events']);
+    } else {
+      res.status(201).json(events);
+    }
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };
 
-module.exports = { addEvent, deleteEvent, getAllEvents, getEvent };
+module.exports = {
+  addEvent,
+  deleteEvent,
+  getAllEvents,
+  getEvent,
+  getNextEvents,
+};

@@ -2,17 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { getNextEvents } from '../../utils/axiosFunctions';
 
 function NextEvents() {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState(['hallo', 'du']);
   const amountEventsWanted = 2;
+
   useEffect(() => {
-    const eve = getNextEvents(amountEventsWanted);
-    console.log(eve);
-    setEvents(eve);
+    const getEvents = async () => {
+      const nextEvents = await getNextEvents(amountEventsWanted);
+      console.log(nextEvents);
+      setEvents(nextEvents.data);
+    };
+
+    getEvents();
   }, []);
   return (
     <div>
       <h4>Next Events</h4>
-      {events.length != 0 ? <div>Yes</div> : <div>No</div>}
+      {events ? (
+        <div>
+          {events.map((event) => (
+            <div>{event}</div>
+          ))}
+        </div>
+      ) : (
+        <div>No</div>
+      )}
     </div>
   );
 }
