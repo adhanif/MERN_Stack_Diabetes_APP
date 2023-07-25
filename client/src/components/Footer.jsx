@@ -12,10 +12,10 @@ function Footer() {
         <StayInTouch />
       </dvi>
       <dvi className='px-2 w-2/3 xxs:w-1/2 xs:w-1/4 sm:w-1/4 lg:w-1/5'>
-        <ReadedArticels />
+        <Social />
       </dvi>
       <dvi className='px-2 w-2/3 xxs:w-1/2 xs:w-1/4 sm:w-1/4 lg:w-1/5'>
-        <Social />
+        <ReadedArticels />
       </dvi>
       <dvi className='px-2 w-2/3 xxs:w-1/2 xs:w-1/4 sm:w-1/4 lg:w-1/5'>
         <NextEvents />
