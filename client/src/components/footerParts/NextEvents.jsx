@@ -16,7 +16,7 @@ function NextEvents() {
   }, []);
   return (
     <div>
-      <h4>Next Events</h4>
+      <h4 className='text-lg font-bold mb-2'>Next Events</h4>
       {events ? (
         <div>
           {events.map((event) => (
