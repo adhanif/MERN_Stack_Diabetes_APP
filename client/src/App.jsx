@@ -11,6 +11,8 @@ import EventsMap from './components/EventsMap';
 import Card from './components/Card';
 import AboutUs from './components/AboutUs';
 import EventForm from './components/EventForm';
+import Footer from './components/Footer';
+
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
 
       </Routes>
       <AboutUs theme='theme-secondary' />
+      <Footer />
       {/* <EventsMap /> */}
       {/* <ContactUs theme="theme-4" /> */}
     </>
