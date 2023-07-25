@@ -4,8 +4,28 @@ body {
   background-size: cover;
 }
 
+.leaflet-popup-content{
+  margin: 0;
+  
+}
+
+.leaflet-popup-content-wrapper {
+  padding: 0px;
+  text-align: left;
+  border-radius: 0.25rem;
+}
+
+.leaflet-container a.leaflet-popup-close-button{
+  color: white;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover{
+  color: white;
+
+
 .banner-anne-img {
   background-image: url("https://media.licdn.com/dms/image/D4E16AQFrvycMf6HNeQ/profile-displaybackgroundimage-shrink_350_1400/0/1687941091720?e=1695254400&v=beta&t=tclhbUIgVgZpMJn05HIHq_uhP-QSsxnxX5AM8rV5eVM");
   background-repeat: no-repeat;
   background-size: cover;
+
 }
