@@ -46,7 +46,11 @@ export default function EventsMap() {
             return (
               <Marker
                 key={event._id}
-                position={[event.location.lat, event.location.long]}
+                position={[
+                  event.location.coordinates[0],
+                  event.location.coordinates[1],
+                ]}
+                // position={[event.location.lat, event.location.long]}
               >
                 <LocationMarker event={event} />
               </Marker>

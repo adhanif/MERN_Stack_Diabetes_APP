@@ -57,17 +57,6 @@ export default function LocationMarker({ event }) {
                 starts
               </p>
             </div>
-            {/* <div
-              className="flex flex-col bg-amber-700 rounded text-white text-center px-4 py-1 justify-center"
-              style={{ flex: "1 0 0" }}
-            >
-              <p style={{ margin: "0" }} className="font-bold text-base">
-                {day}-{month}-{year}
-              </p>
-              <p style={{ margin: "0" }} className="font">
-                Date
-              </p>
-            </div> */}
           </div>
 
           <div className="bg-orange-500 py-2 rounded">
