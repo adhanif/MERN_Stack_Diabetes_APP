@@ -3,7 +3,7 @@ import React from 'react';
 function Service() {
   return (
     <div>
-      <h4>Client Service</h4>
+      <h4 className='text-lg font-bold'>Client Service</h4>
       <ul>
         <li>
           <a href='http://'>Impressum</a>
