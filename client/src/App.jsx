@@ -10,6 +10,7 @@ import ContactUs from './components/ContactUs';
 import EventsMap from './components/EventsMap';
 import Card from './components/Card';
 import AboutUs from './components/AboutUs';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/signUp' element={<SignUp />} />
       </Routes>
       <AboutUs theme='theme-secondary' />
+      <Footer />
       {/* <EventsMap /> */}
       {/* <ContactUs theme="theme-4" /> */}
     </>
