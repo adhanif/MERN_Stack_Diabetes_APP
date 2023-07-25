@@ -13,6 +13,8 @@ export default {
         "5xl": "3.052rem",
       },
       textColor: {
+        thistle: 'var(--thistle)',
+        denim: 'var(--denim)',
         skin: {
           base: "var(--color-text-base)",
           primary: "var(--color-text-primary)",

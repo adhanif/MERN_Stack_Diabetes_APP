@@ -4,6 +4,19 @@
 
 @layer base {
   :root {
+    /* CSS HEX */
+    --thistle: #bdb2c9ff;
+    --ash-gray: #b8c4b9ff;
+    --white: #ffffffff;
+    --denim: #275dadff;
+    --rose-red: #b33951ff;
+    /* CSS HSL */
+    --thistle: hsla(269, 18%, 74%, 1);
+    --ash-gray: hsla(125, 9%, 75%, 1);
+    --white: hsla(0, 0%, 100%, 1);
+    --denim: hsla(216, 63%, 42%, 1);
+    --rose-red: hsla(348, 52%, 46%, 1);
+    /* CSS custom theme */
     --color-text-base: #ffffff;
     --color-text-muted: #d7d5d5;
     --color-text-inverted: #4f46e5;
@@ -19,7 +32,7 @@
     --color-text-inverted: #383740;
     --color-text-primary: #bdb2c9;
     --color-text-secondary: #383740;
-    --color-text-outline-hover: var(--color-fill);
+    --color-text-outline-hover: #383740;
     /* Background-Colors */
     --color-fill: #bdb2c9;
     --color-button-primary: #ffffff;
@@ -28,7 +41,8 @@
     --color-button-outline: #ffffff00;
     --color-button-outline-hover: var(--color-text-base);
     /* BorderColors */
-    --color-border-outline: var(--color-text-base)
+    --color-border-outline: var(--color-text-base);
+    --color-border-outline-hover: #3b82f600;
   }
 
   .theme-secondary {

@@ -12,13 +12,12 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendMail = async (req, res) => {
+const sendMail = async (req, res, next) => {
   console.log(`Send Mail`);
 
   console.log(req.body);
   const data = req.body;
 
-  res.send('In send Mail');
   const mailOptions = {
     from: {
       name: data.name,
@@ -32,8 +31,10 @@ const sendMail = async (req, res) => {
   try {
     await transporter.sendMail(mailOptions);
     console.log(`Mail has been sended`);
+    res.send('Mail sent succesfully');
   } catch (error) {
     console.error(error);
+    next(error);
   }
 };
 

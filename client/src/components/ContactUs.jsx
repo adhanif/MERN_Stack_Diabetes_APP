@@ -5,18 +5,29 @@ import { useForm } from 'react-hook-form';
 import { postMessage } from '../utils/axiosFunctions';
 import SecondaryBtn from './buttons/SecondaryBtn';
 
+//Test
+import { ToastContainer, toast } from 'react-toastify';
+import { failToast, successToast } from '../utils/toasts.js';
+
 function ContactUs({ theme }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const sendMessage = (data) => {
+  const sendMessage = async (data) => {
     // event.preventDefault();
     // console.log(event);
     console.log(data);
-    postMessage(data);
+    const status = await postMessage(data);
+    if (status) {
+      successToast('Thanks for the Message.\nWe will answer in two years');
+      reset();
+    } else {
+      failToast('Hallo');
+    }
   };
 
   return (
@@ -143,6 +154,7 @@ function ContactUs({ theme }) {
           <SecondaryBtn text='Submit' />
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }

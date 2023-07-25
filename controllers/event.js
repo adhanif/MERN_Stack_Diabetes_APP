@@ -2,7 +2,8 @@ const Event = require("../models/event");
 const geocoder = require("../utils/geocoder");
 const addEvent = async (req, res, next) => {
   try {
-    // console.log(req.body);
+
+   
     const { title, eventDate, creator, address } = req.body;
     const loc = await geocoder.geocode(address);
     console.log(loc);
@@ -11,7 +12,8 @@ const addEvent = async (req, res, next) => {
 
       coordinates: [loc[0].latitude, loc[0].longitude],
     };
-    // console.log(loc.latitude);
+    
+
     //create Event
     participants = [];
     const newEvent = await Event.create({
@@ -24,6 +26,7 @@ const addEvent = async (req, res, next) => {
     });
     res.status(201).json(newEvent);
   } catch (error) {
+    console.log('error creating event');
     next(error);
   }
 };
