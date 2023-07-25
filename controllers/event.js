@@ -41,13 +41,24 @@ const getAllEvents = async (req, res, next) => {
   return true;
 };
 
-const getEvent = async (req, res) => {
+const getEvent = async (req, res, next) => {
   console.log('getEvent function called');
   console.log(req.body);
   const { _id } = req.body;
   try {
     const event = await Event.findById(_id);
     res.status(201).json(event);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getNextEvent = async (req, res) => {
+  console.log('getNExtEvents');
+  console.log(req.body);
+  const { amount } = req.body;
+  try {
+    //Get amounnt of events from Database
   } catch (error) {
     next(error);
   }

@@ -11,5 +11,7 @@ eventRouter.get('/', getAllEvents);
 eventRouter.get('/id', getEvent);
 eventRouter.post('/create', addEvent);
 eventRouter.delete('/id', deleteEvent);
+//Elvis routes for footer
+eventRouter.get('/events', getEventByAmount);
 
 module.exports = { eventRouter };
