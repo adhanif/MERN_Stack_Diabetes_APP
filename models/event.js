@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const eventSchema = new mongoose.Schema(
   {
@@ -13,15 +13,31 @@ const eventSchema = new mongoose.Schema(
     },
     creator: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
+    },
+    // location: {
+    //   lat: Number,
+    //   long: Number,
+    // },
+    address: {
+      type: String,
+      required: true,
     },
     location: {
-      long: Number,
-      lat: Number,
+      type: {
+        type: String,
+        enum: ["Point"],
+        // required: true,
+      },
+      coordinates: {
+        type: [Number],
+        index: "2dsphere",
+      },
+      formattedAddress: String,
     },
-    participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    participants: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Event', eventSchema);
+module.exports = mongoose.model("Event", eventSchema);

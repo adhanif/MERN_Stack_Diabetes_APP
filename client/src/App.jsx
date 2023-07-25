@@ -17,12 +17,14 @@ function App() {
     <>
       <Navbar />
       <Routes>
+
         <Route path='/' element={<Hero2 />} />
         <Route path='/articles' element={<h1>Articles</h1>} />
         <Route path='/events' element={<h1>Events</h1>} />
         {/* <Route path='/about' element={<AboutUs theme='theme-secondary' />} /> */}
         <Route path='/login' element={<Login />} />
         <Route path='/signUp' element={<SignUp />} />
+
       </Routes>
       <AboutUs theme='theme-secondary' />
       <Footer />

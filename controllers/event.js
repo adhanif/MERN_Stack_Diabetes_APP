@@ -1,18 +1,28 @@
-const Event = require('../models/event');
-
+const Event = require("../models/event");
+const geocoder = require("../utils/geocoder");
 const addEvent = async (req, res, next) => {
   try {
-    console.log('AddEvent');
-    console.log(req.body);
-    const { title, eventDate, creator, location } = req.body;
+
+   
+    const { title, eventDate, creator, address } = req.body;
+    const loc = await geocoder.geocode(address);
+    console.log(loc);
+    const location_co = {
+      type: "Point",
+
+      coordinates: [loc[0].latitude, loc[0].longitude],
+    };
+    
+
     //create Event
     participants = [];
     const newEvent = await Event.create({
       title,
       eventDate,
       creator,
-      location,
+      location: location_co,
       participants,
+      address,
     });
     res.status(201).json(newEvent);
   } catch (error) {
@@ -23,14 +33,14 @@ const addEvent = async (req, res, next) => {
 
 const deleteEvent = async (req, res) => {
   //TODO
-  console.log('delete Event function called');
+  console.log("delete Event function called");
   console.log(req.body);
   return true;
 };
 
 const getAllEvents = async (req, res, next) => {
-  console.log('getAllEvents function called');
-  console.log(req.body);
+  // console.log('getAllEvents function called');
+  // console.log(req.body);
   try {
     const events = await Event.find({});
     res.status(201).json(events);
@@ -41,8 +51,10 @@ const getAllEvents = async (req, res, next) => {
   return true;
 };
 
+
 const getEvent = async (req, res, next) => {
   console.log('getEvent function called');
+
   console.log(req.body);
   const { _id } = req.body;
   try {

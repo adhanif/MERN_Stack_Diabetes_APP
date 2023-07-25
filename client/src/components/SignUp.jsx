@@ -105,6 +105,7 @@ export default function SignUp() {
                 Name
               </label>
               <input
+
                 {...register('name', {
                   required: 'Please enter your name.',
                   maxLength: { value: 30, message: 'Maximum length is 30' },
@@ -112,6 +113,7 @@ export default function SignUp() {
                     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                     message: 'Please enter a valid email address.',
                   },
+
                 })}
                 type='text'
                 placeholder='Name'
