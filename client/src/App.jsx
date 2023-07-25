@@ -10,7 +10,9 @@ import ContactUs from './components/ContactUs';
 import EventsMap from './components/EventsMap';
 import Card from './components/Card';
 import AboutUs from './components/AboutUs';
+import EventForm from './components/EventForm';
 import Footer from './components/Footer';
+
 
 function App() {
   return (
@@ -20,8 +22,8 @@ function App() {
 
         <Route path='/' element={<Hero2 />} />
         <Route path='/articles' element={<h1>Articles</h1>} />
-        <Route path='/events' element={<h1>Events</h1>} />
-        {/* <Route path='/about' element={<AboutUs theme='theme-secondary' />} /> */}
+        <Route path='/events' element={<EventForm theme='theme-hero' />} />
+        <Route path='/about' element={<AboutUs theme='theme-secondary' />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signUp' element={<SignUp />} />
 
