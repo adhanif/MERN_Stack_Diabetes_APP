@@ -7,15 +7,15 @@ export default function EventCard({ image, title, info, date, address }) {
   return (
     <>
       <div className=" flex  flex-col md:flex-row border rounded-md overflow-hidden shadow-lg mb-5 lg:w-4/5">
-        <div className="md:w-1/2 lg:w-1/3 px-6 py-6">
+        <div className=" md:w-2/5 px-6 py-6">
           <img
-            className="w-full md:w-screen  h-56  rounded-md"
+            className="w-full md:w-screen  h-56  rounded-lg"
             src={image}
             alt={title}
           />
         </div>
 
-        <div className="px-6 py-4 md:pl-0 md:w-2/3 lg:w-2/3">
+        <div className="px-6 py-4 md:pl-0  md:w-3/5">
           <div className="font-bold text-2xl mb-2">{title}</div>
           <p className="text-black text-base mb-2">{info}</p>
           <div className="flex flex-col md:flex-row md:space-x-20 ">
@@ -31,13 +31,16 @@ export default function EventCard({ image, title, info, date, address }) {
 
           <div className=" pt-4 pb-2">
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black  mr-2 mb-2">
-              #photography
+              #health
             </span>
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black  mr-2 mb-2">
-              #travel
+              #sports
             </span>
             <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black 0 mr-2 mb-2">
-              #winter
+              #food
+            </span>
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black 0 mr-2 mb-2">
+              #awareness
             </span>
           </div>
         </div>
