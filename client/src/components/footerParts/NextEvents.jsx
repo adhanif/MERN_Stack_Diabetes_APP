@@ -12,7 +12,7 @@ function NextEvents() {
       setEvents(nextEvents.data);
     };
 
-    getEvents();
+    //getEvents();
   }, []);
   return (
     <div>

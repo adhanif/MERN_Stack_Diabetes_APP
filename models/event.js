@@ -5,7 +5,6 @@ const eventSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
-      unique: true,
     },
     eventDate: {
       type: Date,
@@ -19,9 +18,23 @@ const eventSchema = new mongoose.Schema(
     //   lat: Number,
     //   long: Number,
     // },
+    eventInfo: {
+      type: String,
+    },
+    targetGroup: {
+      type: String,
+    },
+    categories: {
+      type: [String],
+      enum: ["education", "awareness", "health", "support", "community", "entertainment", "food", "sports", "family-focused", "children-focused" ],
+      required: true,
+    },
     address: {
       type: String,
       required: true,
+    },
+    image: {
+      type: String,
     },
     location: {
       type: {
