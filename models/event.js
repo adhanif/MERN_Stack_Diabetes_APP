@@ -24,6 +24,11 @@ const eventSchema = new mongoose.Schema(
     targetGroup: {
       type: String,
     },
+    categories: {
+      type: [String],
+      enum: ["education", "awareness", "health", "support", "community", "entertainment", "food", "sports", "family-focused", "children-focused" ],
+      required: true,
+    },
     address: {
       type: String,
       required: true,

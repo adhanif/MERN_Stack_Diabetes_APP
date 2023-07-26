@@ -14,8 +14,6 @@ const cloudinaryUpload = async (req, res, next) => {
       process.env.UPLOAD_PRESET
     );
 
-    console.log(result);
-
     result.localPath = file.path;
     req.file = result;
 
