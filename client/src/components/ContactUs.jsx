@@ -32,7 +32,7 @@ function ContactUs({ theme }) {
 
   return (
     <div
-      className={`${theme} fluid mx-auto h-5/6 p-6 md:p-20 flex justify-center bg-skin-fill`}
+      className={`${theme} fluid mx-auto h-5/6 p-6 md:p-14 flex justify-center bg-skin-fill`}
     >
       <div className='container flex max-w-[1000px] justify-center'>
         {/* Left Side */}
@@ -40,7 +40,7 @@ function ContactUs({ theme }) {
           <img src='/src/images/28998.jpg' alt='bla' />
         </div>
         {/* Right Side */}
-        <div className='bg-white lg:w-1/2 max-w-[500px] shadow-whiteGrey flex flex-col justify-center '>
+        <div className='bg-white lg:w-1/2 max-w-[500px] border-2 shadow-whiteGrey flex flex-col justify-center '>
           <form
             onSubmit={handleSubmit(sendMessage)}
             className='flex flex-col w-full px-12 py-6'

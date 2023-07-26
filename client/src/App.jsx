@@ -26,10 +26,10 @@ function App() {
         <Route path='/signUp' element={<SignUp />} />
       </Routes>
       <AboutUs theme='theme-secondary' />
-      <ContactUs theme='theme-hero' />
+      <ContactUs theme='theme-pink' />
+
       <Footer />
       {/* <EventsMap /> */}
-      {/* <ContactUs theme="theme-4" /> */}
     </>
   );
 }

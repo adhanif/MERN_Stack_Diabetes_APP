@@ -5,17 +5,12 @@
 @layer base {
   :root {
     /* CSS HEX */
-    --thistle: #bdb2c9ff;
+    --thistle: #f4f4f4;
     --ash-gray: #b8c4b9ff;
     --white: #ffffffff;
     --denim: #275dadff;
-    --rose-red: #b33951ff;
-    /* CSS HSL */
-    --thistle: hsla(269, 18%, 74%, 1);
-    --ash-gray: hsla(125, 9%, 75%, 1);
-    --white: hsla(0, 0%, 100%, 1);
-    --denim: hsla(216, 63%, 42%, 1);
-    --rose-red: hsla(348, 52%, 46%, 1);
+    --rose-red: #E83151;
+    --jordy: #E3DFFF;
     /* CSS custom theme */
     --color-text-base: #ffffff;
     --color-text-muted: #d7d5d5;
@@ -26,7 +21,7 @@
     --color-button-secondary: #6366f1;
   }
 
-  .theme-hero {
+  .theme-pink {
     /* TextColors */
     --color-text-base: #f4f4f4;
     --color-text-inverted: #262322;
@@ -34,10 +29,11 @@
     --color-text-secondary: #383740;
     --color-text-outline-hover: #383740;
     /* Background-Colors */
-    --color-fill: #bdb2c9;
+    --color-fill: var(--thistle);
     --color-button-primary: #ffffff;
     --color-button-primary-hover: #d7d5d5;
-    --color-button-secondary: #DB5461;
+    --color-button-secondary: var(--rose-red);
+    --color-button-secondary-hover: #d12c49;
     --color-button-outline: #ffffff00;
     --color-button-outline-hover: var(--color-text-base);
     /* BorderColors */
@@ -52,7 +48,7 @@
     --color-text-secondary: #f4f4f4;
     --color-text-outline-hover: var(--color-fill);
     /* Background-Colors */
-    --color-fill: #b8c4b9;
+    --color-fill: #f1f3f1;
     --color-button-primary: #383740;
     --color-button-primary-hover: #d7d5d5;
     --color-button-secondary: #D56F3E;
@@ -60,48 +56,5 @@
     --color-button-outline-hover: var(--color-text-base);
     /* BorderColors */
     --color-border-outline: var(--color-text-base)
-  }
-
-  .theme-3 {
-    --color-text-base: #f4f4f4;
-    --color-text-inverted: #383740;
-    --color-text-primary: #383740;
-    --color-text-secondary: #383740;
-    --color-text-outline-hover: var(--color-fill);
-    /* Background-Colors */
-    --color-fill: #383740;
-    --color-button-primary: #bdb2c9;
-    --color-button-primary-hover: #d7d5d5;
-    --color-button-secondary: #b8c4b9;
-    --color-button-outline: #ffffff00;
-    --color-button-outline-hover: var(--color-text-base);
-    /* BorderColors */
-    --color-border-outline: var(--color-text-base)
-  }
-
-  .theme-4 {
-    --color-text-base: #383740;
-    --color-text-inverted: #fff;
-    --color-text-primary: #383740;
-    --color-text-secondary: #383740;
-    --color-text-outline-hover: var(--color-fill);
-    --color-text-form-error: #ef4444;
-    /* Background-Colors */
-    --color-fill: #fff;
-    --color-button-primary: #bdb2c9;
-    --color-button-primary-hover: #d7d5d5;
-    --color-button-secondary: #7f1d1d;
-    --color-button-secondary-hover: #ef4444;
-    --color-button-outline: #ffffff00;
-    --color-button-outline-hover: #ffffff00;
-    /* BorderColors */
-    --color-border-outline: #a1a2a2;
-    --color-border-outline-hover: #3b82f6;
-  }
-
-  .theme-5 {
-    --color-text-base: #ffffff;
-    /* Background-Colors */
-    --color-fill: #262322;
   }
 }
