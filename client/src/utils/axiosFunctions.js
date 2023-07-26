@@ -12,3 +12,14 @@ export const postMessage = async (props) => {
     return false;
   }
 };
+
+export const postEvent = async (data) => {
+
+  try {
+    const response = await axiosClient.post('/events', data);
+    return response.data;
+  } catch (error) {
+    console.log('ERROR OCCURED AND CATCHED');
+    return false;
+  }
+};

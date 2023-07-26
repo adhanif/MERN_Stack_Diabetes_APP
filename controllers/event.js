@@ -4,7 +4,7 @@ const addEvent = async (req, res, next) => {
   try {
 
    
-    const { title, eventDate, creator, address } = req.body;
+    const { title, eventDate, creator, eventInfo, targetGroup, image, address } = req.body;
     const loc = await geocoder.geocode(address);
     console.log(loc);
     const location_co = {
@@ -20,12 +20,16 @@ const addEvent = async (req, res, next) => {
       title,
       eventDate,
       creator,
+      eventInfo,
+      targetGroup,
+      image: req.file.secure_url,
       location: location_co,
       participants,
       address,
     });
     res.status(201).json(newEvent);
   } catch (error) {
+    console.log(error);
     console.log('error creating event');
     next(error);
   }
