@@ -11,7 +11,6 @@ function AboutUs({ theme }) {
       <p className='px-24 lg:px-52 text-xl text-center my-6'>{paragraph}</p>
       <div
         className={`${theme} w-3/4 flex flex-wrap justify-center bg-skin-fill mt-5 pb-10`}
-        S
       >
         <Card theme='theme-4' person={anne} />
         <Card theme='theme-4' person={adnan} />

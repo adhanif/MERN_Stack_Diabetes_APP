@@ -23,3 +23,25 @@ export const postEvent = async (data) => {
     return false;
   }
 };
+export const getNextEvents = async (amount) => {
+  // const neededEvents = { amount };
+  // console.log(neededEvents);
+  try {
+    const events = await axiosClient.get(`/events/next/${amount}`);
+    console.log('response got from getNextEvents');
+    //console.log(events);
+    return events;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const getBestArticles = async (amount) => {
+  try {
+    const neededArticles = await axiosClient.get(`/articles/best/${amount}`);
+    console.log('response got from getBEstArticles');
+    return neededArticles;
+  } catch (error) {
+    console.log(error.message);
+  }
+};

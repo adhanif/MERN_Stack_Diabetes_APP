@@ -28,24 +28,23 @@ export default function EventForm({ theme }) {
 
   return (
     <div
-      className={`${theme} text-black fluid mx-auto p-8 md:py-16 md:px-16 lg:px-32 xl:px-60 max-h-screen border-2 border-red-600 flex justify-center bg-skin-fill`}
+className={`${theme} fluid mx-auto p-8 md:py-16 md:px-16 lg:px-32 xl:px-60 max-h-screen flex justify-center bg-skin-fill`}
     >
       {/* Left Side */}
-      <div className='hidden lg:flex lg:w-1/2  border-2 border-green-500 overflow-hidden'>
-        <div className='w-full' style={{ paddingBottom: '75%' }}>
-          <img
-            src='/src/images/20220415_151625.jpg'
-            alt='bla'
-          />
+      <div className='hidden lg:flex lg:w-1/2 '>
+        <div className='w-full overflow-hidden'>
+          <img src='/src/images/20220415_151625.jpg' alt='bla' />
         </div>
       </div>
       {/* Right Side */}
-      <div className='w-full sm:w-4/5 md:w-3/5 lg:w-1/2 border shadow flex flex-col justify-center '>
+      <div className='w-full sm:w-4/5 md:w-3/5 lg:w-1/2  shadow flex flex-col justify-center '>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className=' text-black flex flex-col w-full px-8 py-6 h-full'
         >
-          <h1 className='max-w-2xl text-3xl font-bold my-10'>Post an Event</h1>
+          <h1 className='max-w-2xl text-3xl font-bold my-10 text-skin-base'>
+            Post an Event
+          </h1>
 
           {/* Title */}
           <div className='mb-4'>
@@ -151,8 +150,6 @@ export default function EventForm({ theme }) {
             </p>
           </div>
 
-          
-
           {/* Registration */}
           {/* <div className='mb-4'>
             <label
@@ -205,4 +202,4 @@ export default function EventForm({ theme }) {
       </div>
     </div>
   );
-};
+}
