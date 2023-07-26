@@ -34,18 +34,20 @@ function ContactUs({ theme }) {
     <div
       className={`${theme} fluid mx-auto h-5/6 p-6 md:p-14 flex justify-center bg-skin-fill`}
     >
-      <div className='container flex max-w-[1000px] justify-center'>
+      <div className='container lg:shadow-2xl flex max-w-[1000px] justify-center'>
         {/* Left Side */}
         <div className='hidden lg:flex w-1/2'>
           <img src='/src/images/28998.jpg' alt='bla' />
         </div>
         {/* Right Side */}
-        <div className='bg-white lg:w-1/2 max-w-[500px] border-2 shadow-whiteGrey flex flex-col justify-center '>
+        <div className='bg-white lg:w-1/2 max-w-[500px] shadow-2xl border-2 flex flex-col justify-center '>
           <form
             onSubmit={handleSubmit(sendMessage)}
             className='flex flex-col w-full px-12 py-6'
           >
-            <h1 className='max-w-2xl text-3xl font-bold mb-7'>Contact Us</h1>
+            <h1 className='max-w-2xl text-3xl font-bold mb-7 text-skin-inverted'>
+              Contact Us
+            </h1>
 
             {/* Name */}
             <div className='mb-4'>
