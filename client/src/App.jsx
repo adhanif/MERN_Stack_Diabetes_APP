@@ -13,22 +13,20 @@ import AboutUs from './components/AboutUs';
 import EventForm from './components/EventForm';
 import Footer from './components/Footer';
 
-
 function App() {
   return (
     <>
       <Navbar />
       <Routes>
-
         <Route path='/' element={<Hero2 />} />
         <Route path='/articles' element={<h1>Articles</h1>} />
         <Route path='/events' element={<EventForm theme='theme-hero' />} />
         <Route path='/about' element={<AboutUs theme='theme-secondary' />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signUp' element={<SignUp />} />
-
       </Routes>
       <AboutUs theme='theme-secondary' />
+      <ContactUs theme='theme-hero' />
       <Footer />
       {/* <EventsMap /> */}
       {/* <ContactUs theme="theme-4" /> */}

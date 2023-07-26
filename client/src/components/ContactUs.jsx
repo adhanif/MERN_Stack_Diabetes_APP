@@ -32,14 +32,14 @@ function ContactUs({ theme }) {
 
   return (
     <div
-      className={`${theme} fluid mx-auto p-8 md:py-16 md:px-16 lg:px-32 xl:px-60 max-h-screen border-2 border-red-600 flex justify-center bg-skin-fill`}
+      className={`${theme} fluid mx-auto p-8 md:py-16 md:px-16 lg:px-32 xl:px-60 max-h-screen  flex justify-center bg-skin-fill`}
     >
       {/* Left Side */}
-      <div className='hidden lg:flex lg:w-1/2 border-2 border-green-500'>
+      <div className='hidden lg:flex lg:w-1/2'>
         <img src='/src/images/28998.jpg' alt='bla' />
       </div>
       {/* Right Side */}
-      <div className='w-full sm:w-4/5 md:w-3/5 lg:w-1/2 border shadow flex flex-col justify-center '>
+      <div className='bg-white  w-full sm:w-4/5 md:w-3/5 lg:w-1/2 shadow shadow-whiteGrey flex flex-col justify-center '>
         <form
           onSubmit={handleSubmit(sendMessage)}
           className='flex flex-col w-full px-8 py-6'
@@ -49,7 +49,7 @@ function ContactUs({ theme }) {
           {/* Name */}
           <div className='mb-4'>
             <label
-              className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
+              className='text-sm md:text-base lg:text-xl font-bold text-skin-inverted'
               htmlFor='name'
             >
               Name
@@ -61,7 +61,7 @@ function ContactUs({ theme }) {
                   message: '* Name is required',
                 },
               })}
-              className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline'
               type='text'
               id='name'
               name='name'
@@ -75,7 +75,7 @@ function ContactUs({ theme }) {
           {/* Email */}
           <div className='mb-4'>
             <label
-              className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
+              className='text-sm md:text-base lg:text-xl font-bold text-skin-inverted'
               htmlFor='email'
             >
               Email
@@ -87,7 +87,7 @@ function ContactUs({ theme }) {
                   message: '* Email is required to get an Answer',
                 },
               })}
-              className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
+              className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline'
               type='email'
               id='email'
               name='email'

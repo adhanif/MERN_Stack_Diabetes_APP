@@ -29,7 +29,7 @@
   .theme-hero {
     /* TextColors */
     --color-text-base: #f4f4f4;
-    --color-text-inverted: #383740;
+    --color-text-inverted: #262322;
     --color-text-primary: #bdb2c9;
     --color-text-secondary: #383740;
     --color-text-outline-hover: #383740;
@@ -96,6 +96,12 @@
     --color-button-outline-hover: #ffffff00;
     /* BorderColors */
     --color-border-outline: #a1a2a2;
-    --color-border-outline-hover: #3b82f6
+    --color-border-outline-hover: #3b82f6;
+  }
+
+  .theme-5 {
+    --color-text-base: #ffffff;
+    /* Background-Colors */
+    --color-fill: #262322;
   }
 }
