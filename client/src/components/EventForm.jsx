@@ -46,7 +46,7 @@ export default function EventForm({ theme }) {
     <div
       className={`${theme}  fluid mx-auto p-6 md:p-14 flex justify-center bg-skin-fill `}
     >
-      <div className='container w-fit flex max-w-[1000px] justify-center'>
+      <div className='container w-fit flex max-w-[1200px] justify-center'>
         {/* Left Side */}
         <div className='hidden lg:flex lg:w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[52px]'>
           <div className='h-0'>
@@ -55,7 +55,7 @@ export default function EventForm({ theme }) {
         </div>
 
         {/* Right Side */}
-        <div className='bg-white lg:w-1/2 max-w-[500px] h-fit lg:shadow-2xl rounded-r-[52px] flex flex-col justify-center '>
+        <div className='bg-white lg:w-1/2 max-w-[600px] h-fit lg:shadow-2xl rounded-r-[52px] flex flex-col justify-center '>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className='flex flex-col w-full px-12 py-6 h-full'
