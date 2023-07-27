@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
 import axiosClient from "../axiosClient";
-export default function FilterEvent({ setEvents }) {
+export default function FilterEvent({ setPath }) {
   const [categories, setCategories] = useState(null);
   const [distance, setDistance] = useState(null);
 
@@ -43,19 +43,20 @@ export default function FilterEvent({ setEvents }) {
   const onSubmit = (data) => {
     data.categories = categories;
     data.distance = distance;
+    setPath(`/events?distance=${distance}&categories=${data.categories}`);
     // distance=data.distance;
 
-    console.log(data);
-    axiosClient
-      .get(
-        `/events/near-by?key=${data.keyword}&dis=${distance}&cat=${data.categories}`
-      )
-      .then((res) => {
-        setEvents(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    //   console.log(data);
+    //   axiosClient
+    //     .get(
+    //       `/events/near-by?keyword=${data.keyword}&distance=${distance}&categories=${data.categories}`
+    //     )
+    //     .then((res) => {
+    //       setEvents(res.data);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
   };
   return (
     <>

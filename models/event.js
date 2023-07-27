@@ -15,10 +15,7 @@ const eventSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    // location: {
-    //   lat: Number,
-    //   long: Number,
-    // },
+
     address: {
       type: String,
       required: true,
@@ -39,5 +36,6 @@ const eventSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
+// Event.db.articles.createIndex({ subject: "text" });
+eventSchema.index({ title: "text" });
 module.exports = mongoose.model("Event", eventSchema);
