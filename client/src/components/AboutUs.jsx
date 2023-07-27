@@ -12,9 +12,9 @@ function AboutUs({ theme }) {
       <div
         className={`${theme} w-3/4 flex flex-wrap justify-center bg-skin-fill mt-5 pb-10`}
       >
-        <Card theme='theme-4' person={anne} />
-        <Card theme='theme-4' person={adnan} />
-        <Card theme='theme-4' person={elvis} />
+        <Card theme='theme-secondary' person={anne} />
+        <Card theme='theme-secondary' person={adnan} />
+        <Card theme='theme-secondary' person={elvis} />
       </div>
     </section>
   );
