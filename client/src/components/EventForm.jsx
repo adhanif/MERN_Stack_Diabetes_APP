@@ -55,10 +55,10 @@ export default function EventForm({ theme }) {
         </div>
 
         {/* Right Side */}
-        <div className='w-full lg:w-1/2 max-w-[500px] shadow-2xl border-2 flex flex-col justify-center '>
+        <div className='bg-white lg:w-1/2 max-w-[500px] h-fit lg:shadow-2xl rounded-r-[52px] flex flex-col justify-center '>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className='flex flex-col w-full px-8 py-6 h-full'
+            className='flex flex-col w-full px-12 py-6 h-full'
           >
             <h1 className='max-w-2xl text-3xl font-bold mb-7 text-skin-inverted'>
               Post an Event

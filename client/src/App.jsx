@@ -23,7 +23,7 @@ function App() {
 
         <Route path='/events' element={<EventForm theme='theme-pink' />} />
 
-        <Route path='/about' element={<AboutUs theme='theme-secondary' />} />
+        <Route path='/about' element={<AboutUs theme='theme-pink' />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signUp' element={<SignUp />} />
       </Routes>
