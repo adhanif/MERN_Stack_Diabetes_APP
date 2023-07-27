@@ -19,14 +19,14 @@ export default function EventForm({ theme }) {
     console.log(data);
     const formData = new FormData();
 
-    formData.append("image", data.image[0]);
-    formData.append("title", data.title);
-    formData.append("eventDate", data.eventDate);
-    formData.append("time", data.time);
-    formData.append("address", data.address);
-    formData.append("targetGroup", data.targetGroup);
-    formData.append("eventInfo", data.eventInfo);
-    formData.append("categories", JSON.stringify(categories));
+    formData.append('image', data.image[0]);
+    formData.append('title', data.title);
+    formData.append('eventDate', data.eventDate);
+    formData.append('time', data.time);
+    formData.append('address', data.address);
+    formData.append('targetGroup', data.targetGroup);
+    formData.append('eventInfo', data.eventInfo);
+    formData.append('categories', JSON.stringify(categories));
     // event.preventDefault();
     // console.log(event);
     console.log(categories);
@@ -49,19 +49,19 @@ export default function EventForm({ theme }) {
     <div
       className={`${theme}  fluid mx-auto p-6 md:p-14 flex justify-center bg-skin-fill `}
     >
-      <div className='container w-fit flex max-w-[1200px] justify-center'>
+      <div className='container flex max-w-[1200px] justify-center'>
         {/* Left Side */}
-        <div className='hidden lg:flex lg:w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[52px]'>
-          <div className='h-0'>
-            <img src='/src/images/hands3.jpg' alt='bla' />
-          </div>
+
+        <div className='hidden bg-event-Image bg-cover lg:flex lg:w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[52px] '>
+          {/* <img src='/src/images/20220415_151625.jpg' alt='bla' /> */}
+
         </div>
-        
-       {/* Right Side */}
-        <div className='bg-white lg:w-1/2 max-w-[600px] h-fit lg:shadow-2xl rounded-[52px] lg:rounded-l-none flex flex-col justify-center '>
+
+        {/* Right Side */}
+        <div className='bg-white lg:w-1/2  max-w-[600px] h-fit lg:shadow-2xl rounded-[52px] lg:rounded-l-none flex flex-col justify-center '>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className='flex flex-col w-full px-12 py-6 h-full'
+            className='flex flex-col w-full px-12 py-12 h-full'
           >
             <h1 className='max-w-2xl text-3xl font-bold mb-7 text-skin-inverted'>
               Post an Event
@@ -82,7 +82,7 @@ export default function EventForm({ theme }) {
                     message: '* Title is required',
                   },
                 })}
-                className=' text-black shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline'
+                className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline'
                 type='text'
                 id='title'
                 name='title'
@@ -92,6 +92,7 @@ export default function EventForm({ theme }) {
                 {errors.title?.message}
               </p>
             </div>
+
 
           {/* Date & Time */}
           <div className="flex fluid">
@@ -264,8 +265,8 @@ export default function EventForm({ theme }) {
                 {errors.eventInfo?.message}
               </p>
             </div>
-            
-             {/* Image */} 
+
+            {/* Image */}
             <div className='mb-4'>
               <input type='file' {...register('image', { required: true })} />
             </div>
@@ -274,7 +275,6 @@ export default function EventForm({ theme }) {
             <SecondaryBtn text='Submit' />
           </form>
         </div>
-
       </div>
     </div>
   );

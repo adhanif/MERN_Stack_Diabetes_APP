@@ -39,14 +39,13 @@ function ContactUs({ theme }) {
         <div className='hidden lg:flex lg:w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[52px]'>
           <div className='h-0'>
             <img src='/src/images/Liebesbriefe2.jpg' alt='bla' />
-
           </div>
         </div>
         {/* Right Side */}
         <div className='bg-white lg:w-1/2 max-w-[600px] h-fit shadow-2xl rounded-[52px] lg:rounded-l-none flex flex-col justify-center  '>
           <form
             onSubmit={handleSubmit(sendMessage)}
-            className='flex flex-col w-full px-12 py-6'
+            className='flex flex-col w-full px-12 py-12'
           >
             <h1 className='max-w-2xl text-3xl font-bold mb-7 text-skin-inverted'>
               Contact Us
