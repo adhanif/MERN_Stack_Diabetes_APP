@@ -43,6 +43,7 @@ export default function FilterEvent({ setPath }) {
   const onSubmit = (data) => {
     data.categories = categories;
     data.distance = distance;
+    // setPath(`/events?keyword=${data.keyword}`);
     setPath(`/events?distance=${distance}&categories=${data.categories}`);
     // distance=data.distance;
 
@@ -68,7 +69,7 @@ export default function FilterEvent({ setPath }) {
         <h1 className="max-w-2xl text-2xl font-bold text-center md:text-left lg:text-left mb-8">
           Filter
         </h1>
-        <div className="mb-10 ">
+        {/* <div className="mb-10 ">
           <label className="block text-gray-700 text-medium font-bold mb-3">
             {" "}
             Keyword
@@ -81,20 +82,13 @@ export default function FilterEvent({ setPath }) {
             placeholder="Keyword"
             className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:border-gray-600 leading-tight focus:outline-none  focus:ring-2 focus:border-blue-500 `}
           />
-        </div>
+        </div> */}
         <div className="mb-10 ">
           <label className="block text-gray-700 text-medium font-bold mb-3">
             {" "}
             Distance (km)
           </label>
-          {/* <select
-            {...register("distance")}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          >
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-          </select> */}
+
           <Select
             options={distanceOptions}
             onChange={(value) => setDistance(value.value)}

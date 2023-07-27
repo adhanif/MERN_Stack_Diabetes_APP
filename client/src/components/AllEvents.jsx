@@ -4,9 +4,22 @@ import image from "../images/28998.jpg";
 import axiosClient from "../axiosClient";
 import FilterEvent from "../components/FilterEvent";
 import EventMapModal from "../components/EventMapModal";
+import { useForm } from "react-hook-form";
 export default function AllEvents() {
   const [events, setEvents] = useState([]);
   const [path, setPath] = useState("/events");
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      keyword: "",
+      distance: "",
+      categories: "",
+    },
+  });
 
   useEffect(() => {
     axiosClient
@@ -20,55 +33,45 @@ export default function AllEvents() {
       });
   }, [path]);
 
+  const onSubmit = (data) => {
+    setPath(`/events?keyword=${data.keyword}`);
+  };
+
+  // function onSearch(e) {
+  //   e.preventDefault();
+  //   setKeyword(e.target.value);
+  //   // console.log(e.target.value);
+  // }
+
   return (
     <>
-      <div className="container flex flex-col mx-auto lg:flex-row space-y-5 space-x-0 lg:space-x-5 lg:space-y-0">
+      <div className="container flex flex-col mx-auto lg:flex-row space-y-5 space-x-0 lg:space-x-5 lg:space-y-0 mt-5">
         <aside className="w-full sm:w-2/3 lg:w-1/4 ">
-          <div className="sticky top-0  w-full  ">
+          <div className="sticky top-0  w-full ">
             <EventMapModal />
             <FilterEvent setPath={setPath} events={events} />
           </div>
         </aside>
         <main role="main" className="w-full sm:w-2/3 md:w-3/4  px-2 ">
-          <form className="lg:w-4/5">
-            <label
-              for="default-search"
-              class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex space-x-5 mb-10 lg:w-4/5"
+          >
+            <input
+              {...register("keyword", {
+                maxLength: { value: 30, message: "Maximum length is 30" },
+              })}
+              type="text"
+              placeholder="Keyword"
+              className="shadow appearance-none border rounded w-full py-0 px-3 text-gray-700 dark:border-gray-600 leading-tight focus:outline-none  focus:ring-2 focus:border-blue-500 "
+            />
+            <button
+              className="p-2 w-32   font-bold text-white rounded-full bg-black hover:bg-red-500  hover:scale-110  "
+              type="submit"
             >
+              {" "}
               Search
-            </label>
-            <div class="relative">
-              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <svg
-                  class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                  />
-                </svg>
-              </div>
-              <input
-                type="search"
-                id="default-search"
-                class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search Mockups, Logos..."
-                required
-              />
-              <button
-                type="submit"
-                class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Search
-              </button>
-            </div>
+            </button>
           </form>
           {events.map((event) => {
             return (

@@ -37,9 +37,12 @@ export default function EventCard({
           </div>
 
           <div className=" pt-20 ">
-            {categories.map((category) => {
+            {categories.map((category, index) => {
               return (
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black cursor-pointer hover:scale-110 mr-2 mb-2">
+                <span
+                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black cursor-pointer hover:scale-110 mr-2 mb-2"
+                  key={index}
+                >
                   #{category}
                 </span>
               );
