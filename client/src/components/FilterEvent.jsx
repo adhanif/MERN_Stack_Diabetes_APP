@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
-import axiosClient from "../axiosClient";
-export default function FilterEvent({ setPath }) {
-  const [categories, setCategories] = useState(null);
-  const [distance, setDistance] = useState(null);
 
+export default function FilterEvent({ setPath }) {
+  const [categories, setCategories] = useState("");
+  const [distance, setDistance] = useState();
   const distanceOptions = [
-    { value: 10, label: "10" },
-    { value: 20, label: "20" },
-    { value: 50, label: "30" },
-    { value: 100, label: "40" },
-    { value: 500, label: "50" },
+    { value: 10000, label: "10" },
+    { value: 20000, label: "20" },
+    { value: 50000, label: "30" },
+    { value: 100000, label: "40" },
+    { value: 500000, label: "50" },
   ];
   const options = [
     { value: "education", label: "Education" },
@@ -43,21 +42,25 @@ export default function FilterEvent({ setPath }) {
   const onSubmit = (data) => {
     data.categories = categories;
     data.distance = distance;
-    // setPath(`/events?keyword=${data.keyword}`);
-    setPath(`/events?distance=${distance}&categories=${data.categories}`);
-    // distance=data.distance;
+    const geolocationAPI = navigator.geolocation;
 
-    //   console.log(data);
-    //   axiosClient
-    //     .get(
-    //       `/events/near-by?keyword=${data.keyword}&distance=${distance}&categories=${data.categories}`
-    //     )
-    //     .then((res) => {
-    //       setEvents(res.data);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
+    if (!geolocationAPI) {
+      setError("Geolocation API is not available in your browser!");
+      return;
+    }
+
+    geolocationAPI.getCurrentPosition(
+      (position) => {
+        // console.log(position.coords);
+        const { latitude, longitude } = position.coords;
+        setPath(
+          `/events?distance=${distance}&categories=${data.categories}&lng=${longitude}&lat=${latitude}`
+        );
+      },
+      (error) => {
+        setError("Something went wrong getting your position!");
+      }
+    );
   };
   return (
     <>
@@ -69,20 +72,7 @@ export default function FilterEvent({ setPath }) {
         <h1 className="max-w-2xl text-2xl font-bold text-center md:text-left lg:text-left mb-8">
           Filter
         </h1>
-        {/* <div className="mb-10 ">
-          <label className="block text-gray-700 text-medium font-bold mb-3">
-            {" "}
-            Keyword
-          </label>
-          <input
-            {...register("keyword", {
-              maxLength: { value: 30, message: "Maximum length is 30" },
-            })}
-            type="text"
-            placeholder="Keyword"
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:border-gray-600 leading-tight focus:outline-none  focus:ring-2 focus:border-blue-500 `}
-          />
-        </div> */}
+
         <div className="mb-10 ">
           <label className="block text-gray-700 text-medium font-bold mb-3">
             {" "}

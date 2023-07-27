@@ -25,7 +25,7 @@ export default function AllEvents() {
     axiosClient
       .get(path)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setEvents(res.data);
       })
       .catch((err) => {
@@ -36,12 +36,6 @@ export default function AllEvents() {
   const onSubmit = (data) => {
     setPath(`/events?keyword=${data.keyword}`);
   };
-
-  // function onSearch(e) {
-  //   e.preventDefault();
-  //   setKeyword(e.target.value);
-  //   // console.log(e.target.value);
-  // }
 
   return (
     <>
