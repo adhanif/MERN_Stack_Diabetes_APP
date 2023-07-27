@@ -37,7 +37,9 @@ function NextEvents() {
           ))}
         </div>
       ) : (
-        <div>No</div>
+        <div className='text-center'>
+          Unforunatly thera are no events Upcoming
+        </div>
       )}
     </div>
   );
