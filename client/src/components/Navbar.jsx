@@ -50,25 +50,25 @@ export default function Navbar() {
             ))} */}
             <NavLink
               to='/'
-              className='text-large font-semibold leading-6 text-gray-900'
+              className='text-xl font-semibold leading-6 text-gray-900 hover:text-white'
             >
               Home
             </NavLink>
             <NavLink
               to='/articles'
-              className='text-large font-semibold leading-6 text-gray-900'
+              className='text-xl font-semibold leading-6 text-gray-900 hover:text-white'
             >
               Articles
             </NavLink>
             <NavLink
               to='/events'
-              className='text-large font-semibold leading-6 text-gray-900'
+              className='text-xl font-semibold leading-6 text-gray-900 hover:text-white'
             >
               Events
             </NavLink>
             <NavLink
               to='/about'
-              className='text-large font-semibold leading-6 text-gray-900'
+              className='text-xl font-semibold leading-6 text-gray-900 hover:text-white'
             >
               About Us
             </NavLink>
@@ -76,7 +76,7 @@ export default function Navbar() {
           <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
             <NavLink
               to='/login'
-              className='text-large font-semibold leading-6 text-gray-900'
+              className='text-xl font-semibold leading-6 text-gray-900 hover:text-white'
             >
               Log in <span aria-hidden='true'>&rarr;</span>
             </NavLink>

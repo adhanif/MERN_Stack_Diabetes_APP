@@ -4,6 +4,9 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    backgroundImage: {
+      'event-Image': 'url(/src/images/20220415_151625.jpg)',
+    },
     screens: {
       xxs: '360px',
       xs: '530px',
