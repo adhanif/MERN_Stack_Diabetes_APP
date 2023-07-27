@@ -36,7 +36,7 @@ function ContactUs({ theme }) {
     >
       {/* Left Side */}
       <div className='hidden lg:flex lg:w-1/2'>
-        <img src='/src/images/28998.jpg' alt='bla' />
+        <img src='/src/images/Liebesbriefe2.jpg' alt='bla' />
       </div>
       {/* Right Side */}
       <div className='bg-white  w-full sm:w-4/5 md:w-3/5 lg:w-1/2 shadow shadow-whiteGrey flex flex-col justify-center '>

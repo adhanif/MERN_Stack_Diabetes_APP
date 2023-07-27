@@ -16,10 +16,12 @@ export default function EventForm({ theme }) {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data);
     const formData = new FormData();
     formData.append("image", data.image[0]);
     formData.append("title", data.title);
     formData.append("eventDate", data.eventDate);
+    formData.append("time", data.time);
     formData.append("address", data.address);
     formData.append("targetGroup", data.targetGroup);
     formData.append("eventInfo", data.eventInfo);
@@ -54,7 +56,7 @@ export default function EventForm({ theme }) {
       </div>
 
       {/* Right Side */}
-      <div className="w-full sm:w-4/5 md:w-3/5 lg:w-1/2  shadow flex flex-col justify-center ">
+      <div className="w-full sm:w-4/5 md:w-3/5 lg:w-1/2 shadow flex flex-col justify-center ">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col w-full px-8 py-6 h-full"
@@ -89,30 +91,58 @@ export default function EventForm({ theme }) {
             </p>
           </div>
 
-          {/* Date */}
-          <div className="mb-4">
-            <label
-              className="text-sm md:text-base lg:text-xl font-bold text-skin-base"
-              htmlFor="eventDate"
-            >
-              When?
-            </label>
-            <input
-              {...register("eventDate", {
-                required: {
-                  value: true,
-                  message: "* Date is required",
-                },
-              })}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline"
-              type="date"
-              id="eventDate"
-              name="eventDate"
-              placeholder=""
-            />
-            <p className="text-skin-form-error italic">
-              {errors.eventDate?.message}
-            </p>
+          {/* Date & Time */}
+          <div className="flex fluid">
+            {/* Date */}
+            <div className="w-1/2 mb-4">
+              <label
+                className="text-sm md:text-base lg:text-xl font-bold text-skin-base"
+                htmlFor="eventDate"
+              >
+                Date
+              </label>
+              <input
+                {...register("eventDate", {
+                  required: {
+                    value: true,
+                    message: "* Date is required",
+                  },
+                })}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline"
+                type="date"
+                id="eventDate"
+                name="eventDate"
+                placeholder=""
+              />
+              <p className="text-skin-form-error italic">
+                {errors.eventDate?.message}
+              </p>
+            </div>
+            {/* Time */}
+            <div className="w-1/2">
+              <label
+                className="text-sm md:text-base lg:text-xl font-bold text-skin-base"
+                htmlFor="time"
+              >
+                Time
+              </label>
+              <input
+                {...register("time", {
+                  required: {
+                    value: true,
+                    message: "* Time is required",
+                  },
+                })}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline"
+                type="time"
+                id="time"
+                name="time"
+                placeholder=""
+              />
+              <p className="text-skin-form-error italic">
+                {errors.time?.message}
+              </p>
+            </div>
           </div>
 
           {/* Location */}
@@ -179,6 +209,7 @@ export default function EventForm({ theme }) {
             isMulti
             onChange={(value) => setCategories(value.map((item) => item.value))}
           />
+
           {/* <p className="text-skin-form-error italic">
               {errors.categories?.message}
             </p> */}
@@ -203,31 +234,30 @@ export default function EventForm({ theme }) {
               {errors.registarion?.message}
             </p>
           </div> */}
-          {/* Further Information */}
-        
-            <label
-              className="text-sm md:text-base lg:text-xl font-bold text-skin-base"
-              htmlFor="eventInfo"
-            >
-              What else?
-            </label>
-            
-            <textarea
-              {...register("eventInfo")}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline"
-              name="eventInfo"
-              id="eventInfo"
-              placeholder="Anything else the guests have to know?"
-              cols="30"
-              rows="5"
-            ></textarea>
-            <p className="text-skin-form-error italic">
-              {errors.eventInfo?.message}
-            </p>
 
+          {/* Further Information */}
+          <label
+            className="text-sm md:text-base lg:text-xl font-bold text-skin-base"
+            htmlFor="eventInfo"
+          >
+            What else?
+          </label>
+          <textarea
+            {...register("eventInfo")}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline"
+            name="eventInfo"
+            id="eventInfo"
+            placeholder="Anything else the guests have to know?"
+            cols="30"
+            rows="5"
+          ></textarea>
+          <p className="text-skin-form-error italic">
+            {errors.eventInfo?.message}
+          </p>
+
+          {/* Image */} 
           <input type="file" {...register("image", { required: true })} />
-       
-          
+
           {/* <OutlineBtn text='Sign in with Google' /> */}
           <SecondaryBtn text="Submit" />
         </form>
