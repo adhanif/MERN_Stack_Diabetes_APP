@@ -38,4 +38,6 @@ const eventSchema = new mongoose.Schema(
 );
 // Event.db.articles.createIndex({ subject: "text" });
 eventSchema.index({ title: "text" });
-module.exports = mongoose.model("Event", eventSchema);
+const event = mongoose.model("Event", eventSchema);
+event.collection.createIndex({ location: "2dsphere" });
+module.exports = event;

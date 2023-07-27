@@ -37,7 +37,7 @@ const deleteEvent = async (req, res) => {
 
 const getAllEvents = async (req, res, next) => {
   // console.log('getAllEvents function called');
-  console.log(req.body);
+  console.log(req.eventQuery);
 
   try {
     const events = await Event.find(req.eventQuery);
