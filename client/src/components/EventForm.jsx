@@ -55,7 +55,7 @@ export default function EventForm({ theme }) {
         </div>
 
         {/* Right Side */}
-        <div className='bg-white lg:w-1/2 max-w-[600px] h-fit lg:shadow-2xl rounded-r-[52px] flex flex-col justify-center '>
+        <div className='bg-white lg:w-1/2 max-w-[600px] h-fit lg:shadow-2xl rounded-[52px] lg:rounded-l-none flex flex-col justify-center '>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className='flex flex-col w-full px-12 py-6 h-full'
