@@ -1,6 +1,13 @@
 import React from "react";
 import { MapPinIcon, CalendarDaysIcon } from "@heroicons/react/24/solid";
-export default function EventCard({ image, title, info, date, address }) {
+export default function EventCard({
+  image,
+  title,
+  info,
+  date,
+  categories,
+  address,
+}) {
   const eventDate = new Date(date).toLocaleDateString();
 
   // const date = eventDate.toLocaleDateString();
@@ -29,19 +36,14 @@ export default function EventCard({ image, title, info, date, address }) {
             </div>
           </div>
 
-          <div className=" pt-4 pb-2">
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black  mr-2 mb-2">
-              #health
-            </span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black  mr-2 mb-2">
-              #sports
-            </span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black 0 mr-2 mb-2">
-              #food
-            </span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black 0 mr-2 mb-2">
-              #awareness
-            </span>
+          <div className=" pt-20 ">
+            {categories.map((category) => {
+              return (
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black cursor-pointer hover:scale-110 mr-2 mb-2">
+                  #{category}
+                </span>
+              );
+            })}
           </div>
         </div>
       </div>

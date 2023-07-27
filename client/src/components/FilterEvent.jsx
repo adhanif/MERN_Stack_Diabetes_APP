@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
-export default function FilterEvent() {
-  const [Categories, setCategories] = useState();
-  const [distance, setDistance] = useState();
+import axiosClient from "../axiosClient";
+export default function FilterEvent({ setEvents }) {
+  const [categories, setCategories] = useState(null);
+  const [distance, setDistance] = useState(null);
+
   const distanceOptions = [
     { value: 10, label: "10" },
     { value: 20, label: "20" },
@@ -34,20 +36,26 @@ export default function FilterEvent() {
     defaultValues: {
       keyword: "",
       distance: "",
-      Categories: "",
+      categories: "",
     },
   });
 
   const onSubmit = (data) => {
-    data.Categories = Categories;
+    data.categories = categories;
     data.distance = distance;
+    // distance=data.distance;
+
     console.log(data);
-    // axiosClient
-    //   .post("/signup", data)
-    //   .then((res) => {})
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    axiosClient
+      .get(
+        `/events/near-by?key=${data.keyword}&dis=${distance}&cat=${data.categories}`
+      )
+      .then((res) => {
+        setEvents(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <>
@@ -76,27 +84,21 @@ export default function FilterEvent() {
         <div className="mb-10 ">
           <label className="block text-gray-700 text-medium font-bold mb-3">
             {" "}
-            Distance
+            Distance (km)
           </label>
+          {/* <select
+            {...register("distance")}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+          </select> */}
           <Select
             options={distanceOptions}
             onChange={(value) => setDistance(value.value)}
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          >
-            {/* <Option selected>5</Option>
-            <option value="US">10</option>
-            <option value="CA">50</option>
-            <option value="FR">100</option>
-            <option value="DE">500</option> */}
-          </Select>
-          {/* <input
-            {...register("distance", {
-              maxLength: { value: 30, message: "Maximum length is 30" },
-            })}
-            type="text"
-            placeholder="Distance"
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none  focus:ring-2 focus:ring-purple-600 `}
-          /> */}
+          ></Select>
         </div>
         <div className="mb-20 ">
           <label className="block text-gray-700 text-medium font-bold mb-3">
@@ -113,7 +115,6 @@ export default function FilterEvent() {
           <button
             className="p-2 w-32   font-bold text-white rounded-full bg-black hover:bg-red-500  hover:scale-110 mb-8 "
             type="submit"
-            // style={{ backgroundColor: "#383740" }}
           >
             {" "}
             Filter
