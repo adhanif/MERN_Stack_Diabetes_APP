@@ -51,8 +51,10 @@ export default function EventForm({ theme }) {
     >
       <div className='container flex max-w-[1200px] justify-center'>
         {/* Left Side */}
+
         <div className='hidden bg-event-Image bg-cover lg:flex lg:w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[52px] '>
           {/* <img src='/src/images/20220415_151625.jpg' alt='bla' /> */}
+
         </div>
 
         {/* Right Side */}
@@ -91,59 +93,60 @@ export default function EventForm({ theme }) {
               </p>
             </div>
 
-            {/* Date & Time */}
-            <div className='flex fluid'>
-              {/* Date */}
-              <div className='w-1/2 mb-4'>
-                <label
-                  className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
-                  htmlFor='eventDate'
-                >
-                  Date
-                </label>
-                <input
-                  {...register('eventDate', {
-                    required: {
-                      value: true,
-                      message: '* Date is required',
-                    },
-                  })}
-                  className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
-                  type='date'
-                  id='eventDate'
-                  name='eventDate'
-                  placeholder=''
-                />
-                <p className='text-skin-form-error italic'>
-                  {errors.eventDate?.message}
-                </p>
-              </div>
-              {/* Time */}
-              <div className='w-1/2'>
-                <label
-                  className='text-sm md:text-base lg:text-xl font-bold text-skin-base'
-                  htmlFor='time'
-                >
-                  Time
-                </label>
-                <input
-                  {...register('time', {
-                    required: {
-                      value: true,
-                      message: '* Time is required',
-                    },
-                  })}
-                  className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline'
-                  type='time'
-                  id='time'
-                  name='time'
-                  placeholder=''
-                />
-                <p className='text-skin-form-error italic'>
-                  {errors.time?.message}
-                </p>
-              </div>
+
+          {/* Date & Time */}
+          <div className="flex fluid">
+            {/* Date */}
+            <div className="w-1/2 mb-4">
+              <label
+                className="text-sm md:text-base lg:text-xl font-bold text-skin-inverted"
+                htmlFor="eventDate"
+              >
+                Date
+              </label>
+              <input
+                {...register("eventDate", {
+                  required: {
+                    value: true,
+                    message: "* Date is required",
+                  },
+                })}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline"
+                type="date"
+                id="eventDate"
+                name="eventDate"
+                placeholder=""
+              />
+              <p className="text-skin-form-error italic">
+                {errors.eventDate?.message}
+              </p>
             </div>
+            {/* Time */}
+            <div className="w-1/2">
+              <label
+                className="text-sm md:text-base lg:text-xl font-bold text-skin-inverted"
+                htmlFor="time"
+              >
+                Time
+              </label>
+              <input
+                {...register("time", {
+                  required: {
+                    value: true,
+                    message: "* Time is required",
+                  },
+                })}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline"
+                type="time"
+                id="time"
+                name="time"
+                placeholder=""
+              />
+              <p className="text-skin-form-error italic">
+                {errors.time?.message}
+              </p>
+            </div>
+          </div>
 
             {/* Location */}
             <div className='mb-4'>

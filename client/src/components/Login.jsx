@@ -72,6 +72,7 @@ export default function Login({ theme }) {
         />
       </div>
 
+
       <div
         className={`${theme}  fluid mx-auto p-6 md:p-14 flex justify-center bg-transparent `}
       >
