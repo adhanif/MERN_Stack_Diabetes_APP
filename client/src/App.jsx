@@ -20,16 +20,18 @@ function App() {
       <Routes>
         <Route path='/' element={<Hero2 />} />
         <Route path='/articles' element={<h1>Articles</h1>} />
-        <Route path='/events' element={<EventForm theme='theme-4' />} />
-        <Route path='/about' element={<AboutUs theme='theme-secondary' />} />
+
+        <Route path='/events' element={<EventForm theme='theme-pink' />} />
+
+        <Route path='/about' element={<AboutUs theme='theme-pink' />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signUp' element={<SignUp />} />
       </Routes>
-      <AboutUs theme='theme-secondary' />
-      <ContactUs theme='theme-hero' />
+      <AboutUs theme='theme-pink' />
+      <ContactUs theme='theme-pink' />
+
       <Footer />
       {/* <EventsMap /> */}
-      {/* <ContactUs theme="theme-4" /> */}
     </>
   );
 }
