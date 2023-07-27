@@ -16,14 +16,17 @@ export default function EventForm({ theme }) {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data);
     const formData = new FormData();
-    formData.append('image', data.image[0]);
-    formData.append('title', data.title);
-    formData.append('eventDate', data.eventDate);
-    formData.append('address', data.address);
-    formData.append('targetGroup', data.targetGroup);
-    formData.append('eventInfo', data.eventInfo);
-    formData.append('categories', JSON.stringify(categories));
+
+    formData.append("image", data.image[0]);
+    formData.append("title", data.title);
+    formData.append("eventDate", data.eventDate);
+    formData.append("time", data.time);
+    formData.append("address", data.address);
+    formData.append("targetGroup", data.targetGroup);
+    formData.append("eventInfo", data.eventInfo);
+    formData.append("categories", JSON.stringify(categories));
     // event.preventDefault();
     // console.log(event);
     console.log(categories);
@@ -53,8 +56,8 @@ export default function EventForm({ theme }) {
             <img src='/src/images/20220415_151625.jpg' alt='bla' />
           </div>
         </div>
-
-        {/* Right Side */}
+        
+       {/* Right Side */}
         <div className='bg-white lg:w-1/2 max-w-[600px] h-fit lg:shadow-2xl rounded-[52px] lg:rounded-l-none flex flex-col justify-center '>
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -90,31 +93,59 @@ export default function EventForm({ theme }) {
               </p>
             </div>
 
+          {/* Date & Time */}
+          <div className="flex fluid">
             {/* Date */}
-            <div className='mb-4'>
+            <div className="w-1/2 mb-4">
               <label
-                className='text-sm md:text-base lg:text-xl font-bold text-skin-inverted'
-                htmlFor='eventDate'
+                className="text-sm md:text-base lg:text-xl font-bold text-skin-base"
+                htmlFor="eventDate"
               >
-                When?
+                Date
               </label>
               <input
-                {...register('eventDate', {
+                {...register("eventDate", {
                   required: {
                     value: true,
-                    message: '* Date is required',
+                    message: "* Date is required",
                   },
                 })}
-                className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline'
-                type='date'
-                id='eventDate'
-                name='eventDate'
-                placeholder=''
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline"
+                type="date"
+                id="eventDate"
+                name="eventDate"
+                placeholder=""
               />
-              <p className='text-skin-form-error italic'>
+              <p className="text-skin-form-error italic">
                 {errors.eventDate?.message}
               </p>
             </div>
+            {/* Time */}
+            <div className="w-1/2">
+              <label
+                className="text-sm md:text-base lg:text-xl font-bold text-skin-base"
+                htmlFor="time"
+              >
+                Time
+              </label>
+              <input
+                {...register("time", {
+                  required: {
+                    value: true,
+                    message: "* Time is required",
+                  },
+                })}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline"
+                type="time"
+                id="time"
+                name="time"
+                placeholder=""
+              />
+              <p className="text-skin-form-error italic">
+                {errors.time?.message}
+              </p>
+            </div>
+          </div>
 
             {/* Location */}
             <div className='mb-4'>
@@ -233,6 +264,8 @@ export default function EventForm({ theme }) {
                 {errors.eventInfo?.message}
               </p>
             </div>
+            
+             {/* Image */} 
             <div className='mb-4'>
               <input type='file' {...register('image', { required: true })} />
             </div>
@@ -241,6 +274,7 @@ export default function EventForm({ theme }) {
             <SecondaryBtn text='Submit' />
           </form>
         </div>
+
       </div>
     </div>
   );

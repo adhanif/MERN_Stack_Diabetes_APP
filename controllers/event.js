@@ -6,6 +6,7 @@ const addEvent = async (req, res, next) => {
     const {
       title,
       eventDate,
+      time,
       creator,
       eventInfo,
       targetGroup,
@@ -27,6 +28,7 @@ const addEvent = async (req, res, next) => {
       title,
       eventDate,
       creator,
+      time,
       eventInfo,
       categories: JSON.parse(categories),
       targetGroup,

@@ -10,6 +10,10 @@ const eventSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
+    time: {
+      type: String,
+      required: true,
+    },
     creator: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
