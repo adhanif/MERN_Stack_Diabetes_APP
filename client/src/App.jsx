@@ -1,23 +1,29 @@
-import { Routes, Route, NavLink } from 'react-router-dom';
-import './App.css';
-import Hero2 from './components/Hero2';
-import Navbar from './components/Navbar';
-import Login from './components/Login';
-import Hero from './components/Hero';
-import Test from './components/Test';
-import SignUp from './components/SignUp';
-import ContactUs from './components/ContactUs';
-import EventsMap from './components/EventsMap';
-import Card from './components/Card';
-import AboutUs from './components/AboutUs';
-import EventForm from './components/EventForm';
-import Footer from './components/Footer';
+import { Routes, Route, NavLink } from "react-router-dom";
+import "./App.css";
+import Hero2 from "./components/Hero2";
+import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import Hero from "./components/Hero";
+import Test from "./components/Test";
+import SignUp from "./components/SignUp";
+import ContactUs from "./components/ContactUs";
+import EventsMap from "./components/EventsMap";
+import Card from "./components/Card";
+import AboutUs from "./components/AboutUs";
+import EventForm from "./components/EventForm";
+import Footer from "./components/Footer";
+import AllEvents from "./components/AllEvents";
+
 
 function App() {
   return (
     <>
-      <Navbar />
+       <Navbar /> 
       <Routes>
+
+       
+      
+
         <Route path='/' element={<Hero2 />} />
         <Route path='/articles' element={<h1>Articles</h1>} />
 
@@ -27,11 +33,12 @@ function App() {
         <Route path='/login' element={<Login theme='theme-pink' />} />
         <Route path='/signUp' element={<SignUp />} />
       </Routes>
+       <AllEvents />
       <AboutUs theme='theme-pink' />
       <ContactUs theme='theme-pink' />
 
       <Footer />
-      {/* <EventsMap /> */}
+
     </>
   );
 }
