@@ -3,7 +3,7 @@ import { BsFacebook, BsInstagram, BsTwitter, BsWhatsapp } from 'react-icons/bs';
 
 function Social() {
   return (
-    <div className='flex flex-col mb-5'>
+    <div className='flex flex-col'>
       <h4 className='text-lg font-bold mb-2'>Follow us</h4>
       <div className='flex flex-col text-3xl h-full justify-around'>
         <div className='flex justify-center gap-10 mb-5'>
