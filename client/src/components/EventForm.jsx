@@ -80,7 +80,7 @@ export default function EventForm({ theme }) {
                     message: '* Title is required',
                   },
                 })}
-                className=' text-black shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline'
+                className='shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline'
                 type='text'
                 id='title'
                 name='title'
