@@ -6,6 +6,7 @@ export default {
   theme: {
     backgroundImage: {
       'event-Image': 'url(/src/images/20220415_151625.jpg)',
+      'login-Image': 'url(/src/images/woodenDoor2.jpg)',
     },
     screens: {
       xxs: '360px',
