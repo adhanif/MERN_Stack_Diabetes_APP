@@ -5,10 +5,13 @@ const eventSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
-      unique: true,
     },
     eventDate: {
       type: Date,
+      required: true,
+    },
+    time: {
+      type: String,
       required: true,
     },
     creator: {
@@ -16,9 +19,23 @@ const eventSchema = new mongoose.Schema(
       ref: "User",
     },
 
+    eventInfo: {
+      type: String,
+    },
+    targetGroup: {
+      type: String,
+    },
+    categories: {
+      type: [String],
+      enum: ["education", "awareness", "health", "support", "community", "entertainment", "food", "sports", "family-focused", "children-focused" ],
+      required: true,
+    },
     address: {
       type: String,
       required: true,
+    },
+    image: {
+      type: String,
     },
     location: {
       type: {

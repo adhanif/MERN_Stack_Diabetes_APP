@@ -13,9 +13,17 @@ export const postMessage = async (props) => {
   }
 };
 
+export const postEvent = async (data) => {
+  try {
+    const response = await axiosClient.post('/events', data);
+    return response.data;
+  } catch (error) {
+    console.log('ERROR OCCURED AND CATCHED');
+    return false;
+  }
+};
 export const getNextEvents = async (amount) => {
-  // const neededEvents = { amount };
-  // console.log(neededEvents);
+  console.log(amount);
   try {
     const events = await axiosClient.get(`/events/next/${amount}`);
     console.log('response got from getNextEvents');

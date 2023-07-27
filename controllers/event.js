@@ -1,12 +1,26 @@
-const Event = require("../models/event");
-const geocoder = require("../utils/geocoder");
+const Event = require('../models/event');
+const geocoder = require('../utils/geocoder');
+const fs = require('fs');
 const addEvent = async (req, res, next) => {
   try {
-    const { title, eventDate, creator, address } = req.body;
+
+
+    const {
+      title,
+      eventDate,
+      time,
+      creator,
+      eventInfo,
+      targetGroup,
+      categories,
+      image,
+      address,
+    } = req.body;
+  
+
     const loc = await geocoder.geocode(address);
-    console.log(loc);
     const location_co = {
-      type: "Point",
+      type: 'Point',
 
       coordinates: [loc[0].latitude, loc[0].longitude],
     };
@@ -17,27 +31,33 @@ const addEvent = async (req, res, next) => {
       title,
       eventDate,
       creator,
+      time,
+      eventInfo,
+      categories: JSON.parse(categories),
+      targetGroup,
+      image: req.file.secure_url,
       location: location_co,
       participants,
       address,
     });
+    fs.unlink(req.file.localPath, (err, res) => {});
     res.status(201).json(newEvent);
   } catch (error) {
-    console.log("error creating event");
+
+    console.log(error);
+    console.log('error creating event');
     next(error);
   }
 };
 
 const deleteEvent = async (req, res) => {
   //TODO
-  console.log("delete Event function called");
+  console.log('delete Event function called');
   console.log(req.body);
   return true;
 };
 
 const getAllEvents = async (req, res, next) => {
-  // console.log('getAllEvents function called');
-  console.log(req.eventQuery);
 
   try {
     const events = await Event.find(req.eventQuery);
@@ -49,16 +69,6 @@ const getAllEvents = async (req, res, next) => {
   return true;
 };
 
-// const getNearByEvents = async (req, res, next) => {
-//   // console.log(req.query);
-
-//   try {
-//     const events = await Event.find(req.eventQuery);
-//     res.status(201).json(events);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
 
 const getEvent = async (req, res, next) => {
   console.log("getEvent function called");
@@ -78,6 +88,7 @@ const getNextEvents = async (req, res, next) => {
   // console.log(req.params);
   const { amount } = req.params;
   //console.log(amount);
+  console.log(amount);
   const date = new Date();
   // console.log(date.toString());
   // console.log(date.getDate());
@@ -85,10 +96,15 @@ const getNextEvents = async (req, res, next) => {
   // console.log(date.getFullYear());
   try {
     //Get amounnt of events from Database
-    console.log("before db");
-    const events = await Event.find({ eventDate: { $gte: date } }).sort({
-      eventDate: -1,
-    });
+
+    console.log('before db');
+    // const events = await Event.find();
+    const events = await Event.find({ eventDate: { $gte: date } })
+      .sort({
+        eventDate: 1,
+      })
+      .limit(amount);
+
     /*get with date string
     const dateString =
       '' +
@@ -101,8 +117,7 @@ const getNextEvents = async (req, res, next) => {
       eventDate: -1,
     };
     */
-    console.log("after db");
-    console.log(events);
+
     if (events.length == 0) {
       res.status(201).json(["No upmcoming Events"]);
     } else {

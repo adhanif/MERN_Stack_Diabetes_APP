@@ -14,23 +14,31 @@ import EventForm from "./components/EventForm";
 import Footer from "./components/Footer";
 import AllEvents from "./components/AllEvents";
 
+
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
+       <Navbar /> 
       <Routes>
-        {/* <Route path="/" element={<Hero2 />} />
-        <Route path="/articles" element={<h1>Articles</h1>} />
-        <Route path="/events" element={<EventForm theme="theme-hero" />} />
-        <Route path="/about" element={<AboutUs theme="theme-secondary" />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signUp" element={<SignUp />} /> */}
+
+       
+      
+
+        <Route path='/' element={<Hero2 />} />
+        <Route path='/articles' element={<h1>Articles</h1>} />
+
+        <Route path='/events' element={<EventForm theme='theme-pink' />} />
+
+        <Route path='/about' element={<AboutUs theme='theme-pink' />} />
+        <Route path='/login' element={<Login theme='theme-pink' />} />
+        <Route path='/signUp' element={<SignUp />} />
       </Routes>
-      <AllEvents />
-      {/* <AboutUs theme="theme-secondary" /> */}
-      {/* <Footer /> */}
-      {/* <EventsMap /> */}
-      {/* <ContactUs theme="theme-4" /> */}
+       <AllEvents />
+      <AboutUs theme='theme-pink' />
+      <ContactUs theme='theme-pink' />
+
+      <Footer />
+
     </>
   );
 }
