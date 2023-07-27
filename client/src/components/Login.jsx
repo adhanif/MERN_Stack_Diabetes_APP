@@ -73,7 +73,8 @@ export default function Login() {
       </div>
       <div className='container flex flex-row  mx-auto justify-center md:justify-center my-10 md:space-x-40'>
         <div className='w-1/2 max-w-md hidden lg:flex'>
-          <img src={login} alt='' />
+        <img src='/src/images/woodenDoor2.jpg' alt='' />
+          {/* <img src={login} alt='' /> */}
         </div>
         <div className='w-full max-w-md  lg:w-1/2'>
           <form
