@@ -53,7 +53,7 @@ export default function EventForm({ theme }) {
         {/* Left Side */}
         <div className='hidden lg:flex lg:w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[52px]'>
           <div className='h-0'>
-            <img src='/src/images/20220415_151625.jpg' alt='bla' />
+            <img src='/src/images/hands3.jpg' alt='bla' />
           </div>
         </div>
         
@@ -98,7 +98,7 @@ export default function EventForm({ theme }) {
             {/* Date */}
             <div className="w-1/2 mb-4">
               <label
-                className="text-sm md:text-base lg:text-xl font-bold text-skin-base"
+                className="text-sm md:text-base lg:text-xl font-bold text-skin-inverted"
                 htmlFor="eventDate"
               >
                 Date
@@ -110,7 +110,7 @@ export default function EventForm({ theme }) {
                     message: "* Date is required",
                   },
                 })}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline"
                 type="date"
                 id="eventDate"
                 name="eventDate"
@@ -123,7 +123,7 @@ export default function EventForm({ theme }) {
             {/* Time */}
             <div className="w-1/2">
               <label
-                className="text-sm md:text-base lg:text-xl font-bold text-skin-base"
+                className="text-sm md:text-base lg:text-xl font-bold text-skin-inverted"
                 htmlFor="time"
               >
                 Time
@@ -135,7 +135,7 @@ export default function EventForm({ theme }) {
                     message: "* Time is required",
                   },
                 })}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-base leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline"
                 type="time"
                 id="time"
                 name="time"

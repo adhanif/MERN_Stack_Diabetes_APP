@@ -8,10 +8,10 @@ import SecondaryBtn from './buttons/SecondaryBtn';
 export default function Navbar() {
   return (
     <div>
-      <nav className="relative container mx-auto bg-blue-600 p-6">
+      <nav className="relative container mx-auto p-6">
         <div className="flex items-center justify-between">
           <div className="pt-2">
-            <img src={TypeOneLogo} alt="logo" className="w-36"></img>
+            <img src={TypeOneLogo} alt="logo" className="w-36 pl-10"></img>
           </div>
           <div className='hidden md:flex space-x-6'>
             <NavLink to="/" className={'hover:text-blue-900'}>Home</NavLink>
