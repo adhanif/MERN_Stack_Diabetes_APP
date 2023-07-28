@@ -18,7 +18,7 @@ export default function Navbar() {
     <div id='navbarelvis' className=''>
       <header className=''>
         <nav
-          className='flex items-center justify-between p-6 lg:px-16'
+          className='flex items-center justify-between py-3 lg:px-16 px-6'
           aria-label='Global'
         >
           <div className='flex lg:flex-1'>
