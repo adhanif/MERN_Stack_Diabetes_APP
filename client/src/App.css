@@ -27,3 +27,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.signupback {
+  background-image: url("/src/images/RunWithUs2.jpg");
+  background-position: 0% 85%;
+}
