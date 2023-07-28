@@ -12,8 +12,10 @@ import Card from './components/Card';
 import AboutUs from './components/AboutUs';
 import EventForm from './components/EventForm';
 import Footer from './components/Footer';
+import Articles from './components/Articles';
 import AllEvents from './components/AllEvents';
 import NewSignUp from './components/NewSignUp';
+
 
 function App() {
   return (
@@ -21,7 +23,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Hero2 />} />
-        <Route path='/articles' element={<h1>Articles</h1>} />
+        <Route path='/articles' element={<Articles theme='theme-pink'/>} />
 
         <Route path='/events' element={<EventForm theme='theme-pink' />} />
 
