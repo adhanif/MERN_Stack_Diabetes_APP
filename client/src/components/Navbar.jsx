@@ -18,7 +18,7 @@ export default function Navbar() {
     <div id='navbarelvis' className=''>
       <header className=''>
         <nav
-          className='flex items-center justify-between p-6 lg:px-16'
+          className='flex items-center bg-[#315a49c4] text-white justify-between p-6 lg:px-16'
           aria-label='Global'
         >
           <div className='flex lg:flex-1'>
@@ -50,25 +50,25 @@ export default function Navbar() {
             ))} */}
             <NavLink
               to='/'
-              className='text-xl font-semibold leading-6 text-gray-900 hover:text-white'
+              className='text-xl font-semibold leading-6 hover:text-white'
             >
               Home
             </NavLink>
             <NavLink
               to='/articles'
-              className='text-xl font-semibold leading-6 text-gray-900 hover:text-white'
+              className='text-xl font-semibold leading-6 hover:text-white'
             >
               Articles
             </NavLink>
             <NavLink
               to='/events'
-              className='text-xl font-semibold leading-6 text-gray-900 hover:text-white'
+              className='text-xl font-semibold leading-6 hover:text-white'
             >
               Events
             </NavLink>
             <NavLink
               to='/about'
-              className='text-xl font-semibold leading-6 text-gray-900 hover:text-white'
+              className='text-xl font-semibold leading-6 hover:text-white'
             >
               About Us
             </NavLink>
@@ -76,7 +76,7 @@ export default function Navbar() {
           <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
             <NavLink
               to='/login'
-              className='text-xl font-semibold leading-6 text-gray-900 hover:text-white'
+              className='text-xl font-semibold leading-6 hover:text-white'
             >
               Log in <span aria-hidden='true'>&rarr;</span>
             </NavLink>
