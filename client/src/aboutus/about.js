@@ -33,7 +33,8 @@ export const adnan = {
 export const elvis = {
   name: 'Elvis Bevab',
   position: 'Sleeper',
-  profilePic: 'https://avatars.design/wp-content/uploads/2016/09/avatar1b.jpg',
+  profilePic: 'url("./images/Elvis2.jpg")',
+  // 'https://avatars.design/wp-content/uploads/2016/09/avatar1b.jpg',
   banner: {
     image:
       'https://i.pinimg.com/736x/5b/1d/06/5b1d066f724f04f580a52a48d434eda3.jpg',
