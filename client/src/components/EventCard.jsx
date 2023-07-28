@@ -19,8 +19,8 @@ export default function EventCard({ event }) {
   };
   return (
     <>
-      <div className=" flex  bg-white flex-col md:flex-row border rounded-md overflow-hidden shadow-lg mb-5 lg:w-4/5">
-        <div className=" md:w-2/5 px-6 py-6">
+      <div className=" flex  bg-white flex-col lg:flex-row border rounded-md overflow-hidden shadow-lg mb-5 lg:w-4/5">
+        <div className=" lg:w-2/5 px-6 py-6">
           <img
             className="w-full md:w-screen  h-56  rounded-lg"
             src={event.image}
@@ -28,21 +28,21 @@ export default function EventCard({ event }) {
           />
         </div>
 
-        <div className="px-6 py-4 md:pl-0  md:w-3/5">
-          <div className="font-bold text-2xl mb-2">{event.title}</div>
+        <div className="px-6 py-4 md:pl-0  lg:w-3/5">
+          <div className="font-bold text-2xl mb-3">{event.title}</div>
           <p className="text-black text-base mb-2">{event.info}</p>
-          <div className="flex flex-col md:flex-row md:space-x-20 ">
-            <div className="flex items-center space-x-2 mb-2 md:mb-0">
-              <CalendarDaysIcon className="h-10 w-6 " />
-              <p>{event.eventDate}</p>
+          <div className="flex flex-col lg:flex-row mb-5">
+            <div className="flex  space-x-2 mb-2 md:mb-3 w-full md:w-full">
+              <CalendarDaysIcon className="h-6 w-5s " />
+              <p>{event.eventDate.split("T")[0]}</p>
             </div>
-            <div className="flex items-center space-x-1">
+            <div className="flex  space-x-1 w-2/3 lg:w-full">
               <MapPinIcon className="h-6 w-5 " />
               <p>{event.address}</p>
             </div>
           </div>
           {/* mapmodal event on map */}
-          <div>
+          <div className="mb-5 md:mb-0">
             <SecondaryBtn text="Show on map" onClick={handleModalToggle} />
           </div>
           {isModalOpen && (
@@ -63,7 +63,11 @@ export default function EventCard({ event }) {
 
                 {/* MApcontainer */}
                 <MapContainer
-                  center={{ lat: 52.52, lng: 13.8 }}
+                  // center={{ lat: 52.52, lng: 13.8 }}
+                  center={{
+                    lat: event.location.coordinates[0],
+                    lng: event.location.coordinates[1],
+                  }}
                   // center={position}
                   zoom={13}
                   scrollWheelZoom={true}
@@ -87,11 +91,11 @@ export default function EventCard({ event }) {
               </div>
             </div>
           )}
-          <div className=" pt-20 ">
+          <div className=" md:pt-9 ">
             {event.categories.map((category, index) => {
               return (
                 <span
-                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-black cursor-pointer hover:scale-110 mr-2 mb-2"
+                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-md font-semibold text-black cursor-pointer hover:scale-110 mr-2 mb-2"
                   key={index}
                 >
                   #{category}
