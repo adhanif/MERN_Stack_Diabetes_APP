@@ -13,6 +13,9 @@ import AboutUs from './components/AboutUs';
 import EventForm from './components/EventForm';
 import Footer from './components/Footer';
 import Articles from './components/Articles';
+import AllEvents from './components/AllEvents';
+import NewSignUp from './components/NewSignUp';
+
 
 function App() {
   return (
@@ -26,13 +29,13 @@ function App() {
 
         <Route path='/about' element={<AboutUs theme='theme-pink' />} />
         <Route path='/login' element={<Login theme='theme-pink' />} />
-        <Route path='/signUp' element={<SignUp />} />
+        <Route path='/signUp' element={<NewSignUp theme='theme-pink' />} />
       </Routes>
+      <AllEvents theme='theme-pink' />
       <AboutUs theme='theme-pink' />
       <ContactUs theme='theme-pink' />
 
       <Footer />
-      {/* <EventsMap /> */}
     </>
   );
 }

@@ -3,6 +3,8 @@ const geocoder = require('../utils/geocoder');
 const fs = require('fs');
 const addEvent = async (req, res, next) => {
   try {
+
+
     const {
       title,
       eventDate,
@@ -14,7 +16,8 @@ const addEvent = async (req, res, next) => {
       image,
       address,
     } = req.body;
-    console.log(categories);
+  
+
     const loc = await geocoder.geocode(address);
     const location_co = {
       type: 'Point',
@@ -40,6 +43,7 @@ const addEvent = async (req, res, next) => {
     fs.unlink(req.file.localPath, (err, res) => {});
     res.status(201).json(newEvent);
   } catch (error) {
+
     console.log(error);
     console.log('error creating event');
     next(error);
@@ -54,11 +58,9 @@ const deleteEvent = async (req, res) => {
 };
 
 const getAllEvents = async (req, res, next) => {
-  // console.log('getAllEvents function called');
-  // console.log(req.body);
 
   try {
-    const events = await Event.find({});
+    const events = await Event.find(req.eventQuery);
     res.status(201).json(events);
   } catch (error) {
     next(error);
@@ -67,8 +69,9 @@ const getAllEvents = async (req, res, next) => {
   return true;
 };
 
+
 const getEvent = async (req, res, next) => {
-  console.log('getEvent function called');
+  console.log("getEvent function called");
 
   console.log(req.body);
   const { _id } = req.body;
@@ -81,7 +84,7 @@ const getEvent = async (req, res, next) => {
 };
 
 const getNextEvents = async (req, res, next) => {
-  console.log('getNExtEvents');
+  console.log("getNExtEvents");
   // console.log(req.params);
   const { amount } = req.params;
   //console.log(amount);
@@ -93,6 +96,7 @@ const getNextEvents = async (req, res, next) => {
   // console.log(date.getFullYear());
   try {
     //Get amounnt of events from Database
+
     console.log('before db');
     // const events = await Event.find();
     const events = await Event.find({ eventDate: { $gte: date } })
@@ -100,6 +104,7 @@ const getNextEvents = async (req, res, next) => {
         eventDate: 1,
       })
       .limit(amount);
+
     /*get with date string
     const dateString =
       '' +
@@ -113,11 +118,8 @@ const getNextEvents = async (req, res, next) => {
     };
     */
 
-    console.log(events);
-    console.log('after db');
-
     if (events.length == 0) {
-      res.status(201).json(['No upmcoming Events']);
+      res.status(201).json(["No upmcoming Events"]);
     } else {
       res.status(201).json(events);
     }
@@ -133,4 +135,5 @@ module.exports = {
   getAllEvents,
   getEvent,
   getNextEvents,
+  // getNearByEvents,
 };
