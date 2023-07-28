@@ -32,8 +32,8 @@
     --color-fill: var(--thistle);
     --color-button-primary: #ffffff;
     --color-button-primary-hover: #d7d5d5;
-    --color-button-secondary: var(--but-green);
-    --color-button-secondary-hover: #9096ae;
+    --color-button-secondary: #315a49c4;
+    --color-button-secondary-hover: #315a49;
     --color-button-outline: #ffffff00;
     --color-button-outline-hover: var(--color-text-base);
     /* BorderColors */
