@@ -12,7 +12,7 @@ export default function EventMapModal() {
   };
   return (
     <>
-      <div className={`flex justify-between mb-10`}>
+      <div className={`flex flex-col justify-between mb-10`}>
         {/* <button
           onClick={handleModalToggle}
           className='block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600  hover:scale-110 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
@@ -22,7 +22,13 @@ export default function EventMapModal() {
         </button> */}
 
         <SecondaryBtn text='Show on map' onClick={handleModalToggle} />
-        <button
+        <SecondaryBtn
+          text='Create Event'
+          onClick={() => {
+            navigate('/events');
+          }}
+        />
+        {/* <button
           onClick={(handleNavigate) => {
             navigate('/events');
           }}
@@ -30,7 +36,7 @@ export default function EventMapModal() {
           type='button'
         >
           Create Event
-        </button>
+        </button> */}
       </div>
 
       {isModalOpen && (

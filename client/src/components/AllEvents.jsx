@@ -5,6 +5,7 @@ import axiosClient from '../axiosClient';
 import FilterEvent from '../components/FilterEvent';
 import EventMapModal from '../components/EventMapModal';
 import { useForm } from 'react-hook-form';
+import SecondaryBtn from './buttons/SecondaryBtn';
 
 export default function AllEvents({ theme }) {
   const [events, setEvents] = useState([]);
@@ -62,13 +63,14 @@ export default function AllEvents({ theme }) {
               placeholder='Keyword'
               className='shadow appearance-none border rounded w-full py-0 px-3 text-gray-700 dark:border-gray-600 leading-tight focus:outline-none  focus:ring-2 focus:border-blue-500 '
             />
-            <button
+            <SecondaryBtn text='Search' />
+            {/* <button
               className='p-2 w-32   font-bold text-white rounded-full bg-black hover:bg-red-500  hover:scale-110  '
               type='submit'
             >
               {' '}
               Search
-            </button>
+            </button> */}
           </form>
           {events.map((event) => {
             return (
