@@ -10,6 +10,7 @@ import axiosClient from '../axiosClient';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../App.css';
 
 function NewSignUp({ theme }) {
   const navigate = useNavigate();
@@ -71,7 +72,7 @@ function NewSignUp({ theme }) {
       >
         <div className='container flex max-w-[1200px] justify-center'>
           {/* Left Side */}
-          <div className='hidden bg-login-Image bg-center bg-cover lg:flex w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[52px] '></div>
+          <div className='hidden  bg-cover signupback lg:flex w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[52px] '></div>
 
           {/* Right Side */}
           <div className='bg-white lg:w-1/2  max-w-[600px] h-fit lg:shadow-2xl rounded-[52px] lg:rounded-l-none flex flex-col justify-center '>
