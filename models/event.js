@@ -18,10 +18,7 @@ const eventSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    // location: {
-    //   lat: Number,
-    //   long: Number,
-    // },
+
     eventInfo: {
       type: String,
     },
@@ -56,5 +53,8 @@ const eventSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-module.exports = mongoose.model("Event", eventSchema);
+// Event.db.articles.createIndex({ subject: "text" });
+eventSchema.index({ title: "text" });
+const event = mongoose.model("Event", eventSchema);
+event.collection.createIndex({ location: "2dsphere" });
+module.exports = event;
