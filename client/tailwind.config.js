@@ -6,7 +6,7 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     backgroundImage: {
-      'event-Image': 'url(/src/images/20220415_151625.jpg)',
+      'event-Image': 'url(/src/images/hands3.jpg)',
       'login-Image': 'url(/src/images/woodenDoor2.jpg)',
       'signup-Image': 'url(/src/images/RunWithUs2.jpg)',
     },
