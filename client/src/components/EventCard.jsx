@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { MapPinIcon, CalendarDaysIcon } from "@heroicons/react/24/solid";
-import SecondaryBtn from "./buttons/SecondaryBtn";
+import SmallSecondaryBtn from "./buttons/SmallSecondaryBtn";
 import { XMarkIcon } from "@heroicons/react/24/solid";
+import { ClockIcon } from "@heroicons/react/24/solid";
 import LocationMarker from "../components/LocationMarker";
 import {
   MapContainer,
@@ -28,22 +29,33 @@ export default function EventCard({ event }) {
           />
         </div>
 
-        <div className="px-6 py-4 md:pl-0  lg:w-3/5">
+        <div className="px-6 py-4  lg:pl-0  lg:w-3/5">
           <div className="font-bold text-2xl mb-3">{event.title}</div>
           <p className="text-black text-base mb-2">{event.info}</p>
-          <div className="flex flex-col lg:flex-row mb-5">
-            <div className="flex  space-x-2 mb-2 md:mb-3 w-full md:w-full">
-              <CalendarDaysIcon className="h-6 w-5s " />
+          <div className="flex flex-col lg:flex-row mb-5 md:mb-3">
+            <div className="flex  space-x-2 mb-2 md:mb-3 w-full md:w-1/3">
+              <CalendarDaysIcon className="h-6 w-5 " />
               <p>{event.eventDate.split("T")[0]}</p>
             </div>
-            <div className="flex  space-x-1 w-2/3 lg:w-full">
+
+            <div className="flex  space-x-1 w-2/3 md:w-2/3">
               <MapPinIcon className="h-6 w-5 " />
               <p>{event.address}</p>
             </div>
           </div>
           {/* mapmodal event on map */}
           <div className="mb-5 md:mb-0">
-            <SecondaryBtn text="Show on map" onClick={handleModalToggle} />
+            <div className="flex space-x-1 mb-2 md:mb-4 w-full md:w-full">
+              <ClockIcon className="h-6 w-5 " />
+              <p>{event.time}</p>
+            </div>
+            <div className="space-x-5">
+              <SmallSecondaryBtn
+                text="Show on map"
+                onClick={handleModalToggle}
+              />
+              <SmallSecondaryBtn text="Join" />
+            </div>
           </div>
           {isModalOpen && (
             <div
@@ -63,12 +75,10 @@ export default function EventCard({ event }) {
 
                 {/* MApcontainer */}
                 <MapContainer
-                  // center={{ lat: 52.52, lng: 13.8 }}
                   center={{
                     lat: event.location.coordinates[0],
                     lng: event.location.coordinates[1],
                   }}
-                  // center={position}
                   zoom={13}
                   scrollWheelZoom={true}
                   style={{ height: "80vh", width: "100%" }}
@@ -83,7 +93,6 @@ export default function EventCard({ event }) {
                       event.location.coordinates[0],
                       event.location.coordinates[1],
                     ]}
-                    // position={[event.location.lat, event.location.long]}
                   >
                     <LocationMarker event={event} />
                   </Marker>
@@ -91,11 +100,11 @@ export default function EventCard({ event }) {
               </div>
             </div>
           )}
-          <div className=" md:pt-9 ">
+          <div className=" md:pt-5 ">
             {event.categories.map((category, index) => {
               return (
                 <span
-                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-md font-semibold text-black cursor-pointer hover:scale-110 mr-2 mb-2"
+                  className="inline-block bg-gray-200 rounded-full px-3  text-md font-semibold text-black cursor-pointer hover:scale-110 mr-2 "
                   key={index}
                 >
                   #{category}
