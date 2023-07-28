@@ -72,19 +72,18 @@ export default function Login({ theme }) {
         />
       </div>
 
-
       <div
         className={`${theme}  fluid mx-auto p-6 md:p-14 flex justify-center bg-transparent `}
       >
         <div className='container flex max-w-[1200px] justify-center'>
           {/* Left Side */}
-          <div className='hidden bg-event-Image bg-cover lg:flex lg:w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[52px] '></div>
+          <div className='hidden bg-login-Image bg-center bg-cover lg:flex w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[52px] '></div>
 
           {/* Right Side */}
           <div className='bg-white lg:w-1/2  max-w-[600px] h-fit lg:shadow-2xl rounded-[52px] lg:rounded-l-none flex flex-col justify-center '>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className='flex flex-col w-full px-12 py-12 h-full'
+              className='flex flex-col w-full px-12 pt-12 pb-20 h-full'
             >
               <img
                 src={TypeOne_black}
@@ -135,7 +134,7 @@ export default function Login({ theme }) {
               </div>
 
               {/* Password */}
-              <div className='mb-6'>
+              <div className='mb-12'>
                 <label className='text-sm md:text-base lg:text-xl font-bold text-skin-inverted'>
                   Password
                 </label>
@@ -156,11 +155,11 @@ export default function Login({ theme }) {
               <div className='flex flex-col items-center justify-between mb-5'>
                 <SecondaryBtn text='Login' />
 
-                <button className='mt-16 flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-3 text-sm'>
+                <button className='mt-20 flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-3 text-sm'>
                   <img src={google} alt='' className=' w-10 h-10' />
                   Sign in with Google
                 </button>
-                <button className='flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500   text-sm '>
+                <button className='flex mt-6 items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500   text-sm '>
                   <img src={facebook} alt='' className=' w-12 h-10' />
                   Sign in with Facebook
                 </button>
