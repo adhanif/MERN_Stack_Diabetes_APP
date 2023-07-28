@@ -6,7 +6,7 @@ import FilterEvent from '../components/FilterEvent';
 import EventMapModal from '../components/EventMapModal';
 import { useForm } from 'react-hook-form';
 
-export default function AllEvents() {
+export default function AllEvents({ theme }) {
   const [events, setEvents] = useState([]);
   const [path, setPath] = useState('/events');
 
@@ -39,8 +39,10 @@ export default function AllEvents() {
   };
 
   return (
-    <>
-      <div className='container flex flex-col mx-auto lg:flex-row space-y-5 space-x-0 lg:space-x-5 lg:space-y-0 mt-5'>
+    <div className={`${theme} bg-skin-fill`}>
+      <div
+        className={`container flex flex-col mx-auto lg:flex-row space-y-5 space-x-0 lg:space-x-5 lg:space-y-0`}
+      >
         <aside className='w-full sm:w-2/3 lg:w-1/4'>
           <div className='sticky top-0  w-full py-5'>
             <EventMapModal />
@@ -83,6 +85,6 @@ export default function AllEvents() {
           })}
         </main>
       </div>
-    </>
+    </div>
   );
 }

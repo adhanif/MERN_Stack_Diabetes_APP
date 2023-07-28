@@ -29,7 +29,7 @@ function App() {
         <Route path='/login' element={<Login theme='theme-pink' />} />
         <Route path='/signUp' element={<NewSignUp theme='theme-pink' />} />
       </Routes>
-      <AllEvents />
+      <AllEvents theme='theme-pink' />
       <AboutUs theme='theme-pink' />
       <ContactUs theme='theme-pink' />
 
