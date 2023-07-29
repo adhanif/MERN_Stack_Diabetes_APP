@@ -6,7 +6,8 @@ import axiosClient from "../axiosClient";
 export default function FilterEvent({ setPath }) {
   const [categories, setCategories] = useState("");
   const [distance, setDistance] = useState(10000);
-  const [cities, setCities] = useState();
+  const [cities, setCities] = useState([]);
+  
   const distanceOptions = [
     { value: 10000, label: "10" },
     { value: 20000, label: "20" },
@@ -96,6 +97,21 @@ export default function FilterEvent({ setPath }) {
           <Select
             options={distanceOptions}
             onChange={(value) => setDistance(value.value)}
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          ></Select>
+        </div>
+        <div className="mb-10 ">
+          <label className="block text-gray-700 text-medium font-bold mb-3">
+            {" "}
+            City
+          </label>
+
+          <Select
+            options={cities.map((city) => ({
+              value: city.name,
+              label: city.name,
+            }))}
+            // onChange={(value) => setDistance(value.value)}
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           ></Select>
         </div>
