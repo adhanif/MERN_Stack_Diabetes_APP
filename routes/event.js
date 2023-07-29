@@ -15,7 +15,7 @@ const {
 
 eventRouter.get("/", eventQuery, getAllEvents);
 eventRouter.get("/id", getEvent);
-eventRouter.post("/create", addEvent);
+// eventRouter.post("/create", addEvent);
 eventRouter.delete("/id", deleteEvent);
 eventRouter.post(
   "/",

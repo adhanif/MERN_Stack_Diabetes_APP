@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
 import SecondaryBtn from "./buttons/SecondaryBtn";
-
+import axiosClient from "../axiosClient";
 export default function FilterEvent({ setPath }) {
   const [categories, setCategories] = useState("");
-  const [distance, setDistance] = useState();
+  const [distance, setDistance] = useState(10000);
+  const [cities, setCities] = useState();
   const distanceOptions = [
     { value: 10000, label: "10" },
     { value: 20000, label: "20" },
@@ -25,6 +26,17 @@ export default function FilterEvent({ setPath }) {
     { value: "family-focused", label: "Family-focused" },
     { value: "children-focused", label: "Children-focused" },
   ];
+  useEffect(() => {
+    axiosClient
+      .get("/cities")
+      .then((res) => {
+        console.log(res.data);
+        setCities(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const {
     register,
@@ -40,6 +52,7 @@ export default function FilterEvent({ setPath }) {
     },
   });
 
+  // setPath("/cities");
   const onSubmit = (data) => {
     data.categories = categories;
     data.distance = distance;
