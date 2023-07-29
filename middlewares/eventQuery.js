@@ -1,7 +1,7 @@
 const ErrorResponse = require("../utils/ErrorResponse");
 const eventQuery = async (req, res, next) => {
   try {
-    const { keyword, distance, categories, lng, lat } = req.query;
+    const { keyword, distance, categories, lng, lat, city } = req.query;
 
     const eventQuery = {};
     if (keyword) eventQuery.$text = { $search: keyword };
@@ -16,8 +16,9 @@ const eventQuery = async (req, res, next) => {
         },
       };
     if (categories) eventQuery.categories = { $in: categories.split(",") };
+    if (city) eventQuery.city;
     req.eventQuery = eventQuery;
-    next();
+    // next();
   } catch (error) {
     next(error);
   }
