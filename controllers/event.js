@@ -1,10 +1,9 @@
-const Event = require('../models/event');
-const geocoder = require('../utils/geocoder');
-const fs = require('fs');
+const { Event } = require("../models/event");
+
+// const geocoder = require('../utils/geocoder');
+const fs = require("fs");
 const addEvent = async (req, res, next) => {
   try {
-
-
     const {
       title,
       eventDate,
@@ -14,16 +13,16 @@ const addEvent = async (req, res, next) => {
       targetGroup,
       categories,
       image,
+      location,
       address,
     } = req.body;
-  
 
-    const loc = await geocoder.geocode(address);
-    const location_co = {
-      type: 'Point',
+    // const loc = await geocoder.geocode(address);
+    // const location_co = {
+    //   type: 'Point',
 
-      coordinates: [loc[0].latitude, loc[0].longitude],
-    };
+    //   coordinates: [loc[0].latitude, loc[0].longitude],
+    // };
 
     //create Event
     participants = [];
@@ -36,29 +35,28 @@ const addEvent = async (req, res, next) => {
       categories: JSON.parse(categories),
       targetGroup,
       image: req.file.secure_url,
-      location: location_co,
+      location: { type: "Point", coordinates: req.location.coordinates },
+      city: { name: req.location.city },
       participants,
       address,
     });
     fs.unlink(req.file.localPath, (err, res) => {});
     res.status(201).json(newEvent);
   } catch (error) {
-
     console.log(error);
-    console.log('error creating event');
+    console.log("error creating event");
     next(error);
   }
 };
 
 const deleteEvent = async (req, res) => {
   //TODO
-  console.log('delete Event function called');
+  console.log("delete Event function called");
   console.log(req.body);
   return true;
 };
 
 const getAllEvents = async (req, res, next) => {
-
   try {
     const events = await Event.find(req.eventQuery);
     res.status(201).json(events);
@@ -68,7 +66,6 @@ const getAllEvents = async (req, res, next) => {
 
   return true;
 };
-
 
 const getEvent = async (req, res, next) => {
   console.log("getEvent function called");
@@ -97,7 +94,7 @@ const getNextEvents = async (req, res, next) => {
   try {
     //Get amounnt of events from Database
 
-    console.log('before db');
+    console.log("before db");
     // const events = await Event.find();
     const events = await Event.find({ eventDate: { $gte: date } })
       .sort({

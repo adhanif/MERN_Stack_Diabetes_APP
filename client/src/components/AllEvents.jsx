@@ -44,7 +44,7 @@ export default function AllEvents({ theme }) {
       <div
         className={`container flex flex-col mx-auto lg:flex-row space-y-5 space-x-0 lg:space-x-5 lg:space-y-0`}
       >
-        <aside className="w-full sm:w-2/3 lg:w-1/4">
+        <aside className="w-full sm:w-2/3 md:w-3/4 lg:w-1/4">
           <div className="sticky top-0  w-full py-5">
             <EventMapModal />
             <FilterEvent setPath={setPath} events={events} />
@@ -61,31 +61,12 @@ export default function AllEvents({ theme }) {
               })}
               type="text"
               placeholder="Keyword"
-              className="shadow appearance-none border rounded w-full py-0 px-3 text-gray-700 dark:border-gray-600 leading-tight focus:outline-none  focus:ring-2 focus:border-blue-500 "
+              className="shadow appearance-none border rounded w-full px-3 text-gray-700 dark:border-gray-600 leading-tight focus:outline-none  focus:ring-2 focus:border-blue-500 "
             />
             <SecondaryBtn text="Search" />
-            {/* <button
-              className='p-2 w-32   font-bold text-white rounded-full bg-black hover:bg-red-500  hover:scale-110  '
-              type='submit'
-            >
-              {' '}
-              Search
-            </button> */}
           </form>
           {events.map((event) => {
-            return (
-              <EventCard
-                key={event._id}
-                event={event}
-                // image={event.image}
-                // title={event.title}
-                // info={event.eventInfo}
-                // date={event.eventDate}
-                // address={event.address}
-                // categories={event.categories}
-                // location={event.location}
-              />
-            );
+            return <EventCard key={event._id} event={event} />;
           })}
         </main>
       </div>
