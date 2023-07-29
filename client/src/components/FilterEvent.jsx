@@ -7,7 +7,7 @@ export default function FilterEvent({ setPath }) {
   const [categories, setCategories] = useState("");
   const [distance, setDistance] = useState(10000);
   const [cities, setCities] = useState([]);
-  
+  const [city, setCity] = useState("");
   const distanceOptions = [
     { value: 10000, label: "10" },
     { value: 20000, label: "20" },
@@ -31,7 +31,7 @@ export default function FilterEvent({ setPath }) {
     axiosClient
       .get("/cities")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setCities(res.data);
       })
       .catch((err) => {
@@ -53,7 +53,7 @@ export default function FilterEvent({ setPath }) {
     },
   });
 
-  // setPath("/cities");
+
   const onSubmit = (data) => {
     data.categories = categories;
     data.distance = distance;
@@ -69,7 +69,7 @@ export default function FilterEvent({ setPath }) {
         // console.log(position.coords);
         const { latitude, longitude } = position.coords;
         setPath(
-          `/events?distance=${distance}&categories=${data.categories}&lng=${longitude}&lat=${latitude}`
+          `/events?distance=${distance}&categories=${data.categories}&lng=${longitude}&lat=${latitude}&city=${city}`
         );
       },
       (error) => {
@@ -111,7 +111,7 @@ export default function FilterEvent({ setPath }) {
               value: city.name,
               label: city.name,
             }))}
-            // onChange={(value) => setDistance(value.value)}
+            onChange={(value) => setCity(value.value)}
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           ></Select>
         </div>
