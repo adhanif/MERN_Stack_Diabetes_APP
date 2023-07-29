@@ -17,14 +17,6 @@ const addEvent = async (req, res, next) => {
       address,
     } = req.body;
 
-    // const loc = await geocoder.geocode(address);
-    // const location_co = {
-    //   type: 'Point',
-
-    //   coordinates: [loc[0].latitude, loc[0].longitude],
-    // };
-
-    //create Event
     participants = [];
     const newEvent = await Event.create({
       title,
