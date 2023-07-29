@@ -1,9 +1,10 @@
-
 const express = require("express");
 const eventRouter = express.Router();
 const { eventQuery } = require("../middlewares/eventQuery");
-const upload = require('../middlewares/multer-upload');
-const { cloudinaryUpload } = require('../middlewares/cloudinary-upload');
+const upload = require("../middlewares/multer-upload");
+const { cloudinaryUpload } = require("../middlewares/cloudinary-upload");
+const { eventGeoCoder } = require("../middlewares/geoCoder");
+const { eventCity } = require("../middlewares/cityFinder");
 const {
   addEvent,
   deleteEvent,
@@ -12,14 +13,19 @@ const {
   getNextEvents,
 } = require("../controllers/event");
 
-
-eventRouter.get("/", eventQuery,  getAllEvents);
+eventRouter.get("/", eventQuery, getAllEvents);
 eventRouter.get("/id", getEvent);
 eventRouter.post("/create", addEvent);
 eventRouter.delete("/id", deleteEvent);
-eventRouter.post('/', upload.single('image'), cloudinaryUpload, addEvent);
-eventRouter.delete('/id', deleteEvent);
-
+eventRouter.post(
+  "/",
+  upload.single("image"),
+  cloudinaryUpload,
+  eventGeoCoder,
+  eventCity,
+  addEvent
+);
+eventRouter.delete("/id", deleteEvent);
 
 //Elvis routes for footer
 eventRouter.get("/next/:amount", getNextEvents);
