@@ -5,6 +5,9 @@ const citySchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  coordinates: {
+    type: [Number],
+  },
 });
 
 const eventSchema = new mongoose.Schema(
@@ -14,7 +17,8 @@ const eventSchema = new mongoose.Schema(
       required: true,
     },
     city: {
-      type: citySchema,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "City",
       required: true,
     },
     eventDate: {

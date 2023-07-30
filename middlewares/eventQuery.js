@@ -1,11 +1,38 @@
 const ErrorResponse = require("../utils/ErrorResponse");
 const eventQuery = async (req, res, next) => {
   try {
-    const { keyword, distance, categories, lng, lat, city } = req.query;
-
+    const {
+      keyword,
+      distance,
+      categories,
+      lng,
+      lat,
+      city,
+      cityLng,
+      cityLat,
+      eventDate,
+    } = req.query;
+    console.log(req.query);
     const eventQuery = {};
+
+    // event.query
     if (keyword) eventQuery.$text = { $search: keyword };
-    if ((!keyword, distance, lng, lat))
+    if (city && !distance) {
+      eventQuery.city = city;
+    }
+    if (city && distance && cityLng && cityLat) {
+      eventQuery.city = city;
+      eventQuery.location = {
+        $near: {
+          $geometry: {
+            type: "Point",
+            coordinates: [parseFloat(cityLng), parseFloat(cityLat)],
+          },
+          $maxDistance: parseInt(distance),
+        },
+      };
+    }
+    if (!keyword && distance && lng && lat && !city)
       eventQuery.location = {
         $near: {
           $geometry: {
@@ -15,10 +42,14 @@ const eventQuery = async (req, res, next) => {
           $maxDistance: parseInt(distance),
         },
       };
+
     if (categories) eventQuery.categories = { $in: categories.split(",") };
-    if (city) eventQuery.city;
+
+    console.log(eventQuery);
+
     req.eventQuery = eventQuery;
-    // next();
+
+    next();
   } catch (error) {
     next(error);
   }

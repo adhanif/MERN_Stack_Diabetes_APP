@@ -5,15 +5,15 @@ import SecondaryBtn from "./buttons/SecondaryBtn";
 import axiosClient from "../axiosClient";
 export default function FilterEvent({ setPath }) {
   const [categories, setCategories] = useState("");
-  const [distance, setDistance] = useState(10000);
+  const [distance, setDistance] = useState();
   const [cities, setCities] = useState([]);
   const [city, setCity] = useState("");
   const distanceOptions = [
     { value: 10000, label: "10" },
     { value: 20000, label: "20" },
-    { value: 50000, label: "30" },
-    { value: 100000, label: "40" },
-    { value: 500000, label: "50" },
+    { value: 30000, label: "30" },
+    { value: 40000, label: "40" },
+    { value: 50000, label: "50" },
   ];
   const options = [
     { value: "education", label: "Education" },
@@ -42,8 +42,6 @@ export default function FilterEvent({ setPath }) {
   const {
     register,
     handleSubmit,
-    watch,
-    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -52,7 +50,6 @@ export default function FilterEvent({ setPath }) {
       categories: "",
     },
   });
-
 
   const onSubmit = (data) => {
     data.categories = categories;
@@ -69,7 +66,11 @@ export default function FilterEvent({ setPath }) {
         // console.log(position.coords);
         const { latitude, longitude } = position.coords;
         setPath(
-          `/events?distance=${distance}&categories=${data.categories}&lng=${longitude}&lat=${latitude}&city=${city}`
+          `/events?distance=${distance || ""}&categories=${
+            data.categories
+          }&lng=${longitude}&lat=${latitude}&city=${city._id}&cityLng=${
+            city.coordinates[0]
+          }&cityLat=${city.coordinates[1]}`
         );
       },
       (error) => {
@@ -108,7 +109,11 @@ export default function FilterEvent({ setPath }) {
 
           <Select
             options={cities.map((city) => ({
-              value: city.name,
+              value: {
+                name: city.name,
+                coordinates: city.coordinates,
+                _id: city._id,
+              },
               label: city.name,
             }))}
             onChange={(value) => setCity(value.value)}
