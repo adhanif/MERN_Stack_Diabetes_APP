@@ -5,7 +5,7 @@ import SecondaryBtn from "./buttons/SecondaryBtn";
 import axiosClient from "../axiosClient";
 import moment from "moment";
 import Datepicker from "react-tailwindcss-datepicker";
-export default function FilterEvent({ setPath }) {
+export default function FilterEvent({ setPath, page }) {
   const [categories, setCategories] = useState("");
   const [distance, setDistance] = useState();
   const [cities, setCities] = useState([]);
@@ -82,7 +82,9 @@ export default function FilterEvent({ setPath }) {
           }&lng=${longitude}&lat=${latitude}&city=${city._id || ""}&cityLng=${
             city.coordinates?.[0]
           }&cityLat=${city.coordinates?.[1]}
-          &startDate=${date?.startDate || ""}&endDate=${date?.endDate || ""}`
+          &startDate=${date?.startDate || ""}&endDate=${
+            date?.endDate || ""
+          }&page=${page}`
         );
       },
       (error) => {
