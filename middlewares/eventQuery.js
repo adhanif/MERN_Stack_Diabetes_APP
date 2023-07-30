@@ -1,18 +1,9 @@
 const ErrorResponse = require("../utils/ErrorResponse");
 const eventQuery = async (req, res, next) => {
   try {
-    const {
-      keyword,
-      distance,
-      categories,
-      lng,
-      lat,
-      city,
-      cityLng,
-      cityLat,
-      eventDate,
-    } = req.query;
-    console.log(req.query);
+    const { keyword, distance, categories, lng, lat, city, cityLng, cityLat } =
+      req.query;
+    console.log(distance);
     const eventQuery = {};
 
     // event.query

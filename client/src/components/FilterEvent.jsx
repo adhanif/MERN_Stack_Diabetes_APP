@@ -131,6 +131,8 @@ export default function FilterEvent({ setPath }) {
             onChange={(value) => setCategories(value.map((item) => item.value))}
           />
         </div>
+        <div></div>
+
         <div className="text-center">
           <SecondaryBtn text="Filter" />
         </div>
