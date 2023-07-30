@@ -1,12 +1,27 @@
 const ErrorResponse = require("../utils/ErrorResponse");
 const eventQuery = async (req, res, next) => {
   try {
-    const { keyword, distance, categories, lng, lat, city, cityLng, cityLat } =
-      req.query;
-    console.log(distance);
+    const {
+      keyword,
+      distance,
+      categories,
+      lng,
+      lat,
+      city,
+      cityLng,
+      cityLat,
+      startDate,
+      endDate,
+      page,
+      limit,
+    } = req.query;
+    // console.log(req.query);
     const eventQuery = {};
-
-    // event.query
+    if (startDate && endDate)
+      eventQuery.eventDate = {
+        $gte: new Date(startDate),
+        $lte: new Date(endDate),
+      };
     if (keyword) eventQuery.$text = { $search: keyword };
     if (city && !distance) {
       eventQuery.city = city;
@@ -33,10 +48,8 @@ const eventQuery = async (req, res, next) => {
           $maxDistance: parseInt(distance),
         },
       };
-
+    // if(page&limit) eventQuery
     if (categories) eventQuery.categories = { $in: categories.split(",") };
-
-    console.log(eventQuery);
 
     req.eventQuery = eventQuery;
 
