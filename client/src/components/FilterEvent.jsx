@@ -61,6 +61,7 @@ export default function FilterEvent({ setPath }) {
   });
 
   const onSubmit = (data) => {
+    console.log(date);
     data.categories = categories;
     data.distance = distance;
 
@@ -74,13 +75,14 @@ export default function FilterEvent({ setPath }) {
     geolocationAPI.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
+
         setPath(
           `/events?distance=${distance || ""}&categories=${
             data.categories
-          }&lng=${longitude}&lat=${latitude}&city=${city._id}&cityLng=${
-            city.coordinates[0]
-          }&cityLat=${city.coordinates[1]}
-          &startDate=${date.startDate}&&endDate=${date.endDate}`
+          }&lng=${longitude}&lat=${latitude}&city=${city._id || ""}&cityLng=${
+            city.coordinates?.[0]
+          }&cityLat=${city.coordinates?.[1]}
+          &startDate=${date?.startDate || ""}&endDate=${date?.endDate || ""}`
         );
       },
       (error) => {
