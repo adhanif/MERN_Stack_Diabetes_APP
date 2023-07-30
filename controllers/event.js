@@ -17,14 +17,6 @@ const addEvent = async (req, res, next) => {
       address,
     } = req.body;
 
-    // const loc = await geocoder.geocode(address);
-    // const location_co = {
-    //   type: 'Point',
-
-    //   coordinates: [loc[0].latitude, loc[0].longitude],
-    // };
-
-    //create Event
     participants = [];
     const newEvent = await Event.create({
       title,
@@ -36,10 +28,11 @@ const addEvent = async (req, res, next) => {
       targetGroup,
       image: req.file.secure_url,
       location: { type: "Point", coordinates: req.location.coordinates },
-      city: { name: req.location.city },
+      city: req.location.city._id,
       participants,
       address,
     });
+
     fs.unlink(req.file.localPath, (err, res) => {});
     res.status(201).json(newEvent);
   } catch (error) {
@@ -58,7 +51,8 @@ const deleteEvent = async (req, res) => {
 
 const getAllEvents = async (req, res, next) => {
   try {
-    const events = await Event.find(req.eventQuery);
+    console.log(req.eventQuery);
+    const events = await Event.find(req.eventQuery).populate("city");
     res.status(201).json(events);
   } catch (error) {
     next(error);

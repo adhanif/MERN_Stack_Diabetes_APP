@@ -2,13 +2,15 @@ const { City } = require("../models/event");
 
 const eventCity = async (req, res, next) => {
   try {
-    const { city } = req.location;
-    console.log(req.location);
-    const cityData = await City.findOne({ city });
+    const { name, coordinates } = req.location.city;
+
+    const cityData = await City.findOne({ name });
     if (cityData) {
+      req.location.city = cityData;
       next();
     } else {
-      const newCity = await City.create({ name: city });
+      const newCity = await City.create({ name, coordinates });
+      req.location.city = newCity;
       next();
     }
   } catch (error) {
