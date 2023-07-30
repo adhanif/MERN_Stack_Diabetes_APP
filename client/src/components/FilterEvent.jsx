@@ -11,14 +11,11 @@ export default function FilterEvent({ setPath }) {
   const [cities, setCities] = useState([]);
   const [city, setCity] = useState("");
 
-  const [value, setValue] = useState({
-    startDate: new Date(),
-    endDate: new Date().setMonth(11),
-  });
+  const [date, setDate] = useState();
 
   const handleValueChange = (newValue) => {
     console.log("newValue:", newValue);
-    setValue(newValue);
+    setDate(newValue);
   };
   const distanceOptions = [
     { value: 10000, label: "10" },
@@ -64,8 +61,10 @@ export default function FilterEvent({ setPath }) {
   });
 
   const onSubmit = (data) => {
+    console.log(date);
     data.categories = categories;
     data.distance = distance;
+
     const geolocationAPI = navigator.geolocation;
 
     if (!geolocationAPI) {
@@ -75,14 +74,15 @@ export default function FilterEvent({ setPath }) {
 
     geolocationAPI.getCurrentPosition(
       (position) => {
-        // console.log(position.coords);
         const { latitude, longitude } = position.coords;
+
         setPath(
           `/events?distance=${distance || ""}&categories=${
             data.categories
-          }&lng=${longitude}&lat=${latitude}&city=${city._id}&cityLng=${
-            city.coordinates[0]
-          }&cityLat=${city.coordinates[1]}`
+          }&lng=${longitude}&lat=${latitude}&city=${city._id || ""}&cityLng=${
+            city.coordinates?.[0]
+          }&cityLat=${city.coordinates?.[1]}
+          &startDate=${date?.startDate || ""}&endDate=${date?.endDate || ""}`
         );
       },
       (error) => {
@@ -149,8 +149,7 @@ export default function FilterEvent({ setPath }) {
             Date
           </label>
           <Datepicker
-            value={value}
-            selected={value.startDate}
+            value={date}
             minDate={moment().toDate()}
             onChange={handleValueChange}
             containerClassName="relative bg-gray-50 border border-gray-300 text-gray-900  rounded focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
