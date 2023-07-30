@@ -132,7 +132,7 @@ export default function FilterEvent({ setPath }) {
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           ></Select>
         </div>
-        <div className="mb-20 ">
+        <div className="mb-10 ">
           <label className="block text-gray-700 text-medium font-bold mb-3">
             {" "}
             Categories
@@ -143,13 +143,17 @@ export default function FilterEvent({ setPath }) {
             onChange={(value) => setCategories(value.map((item) => item.value))}
           />
         </div>
-        <div>
+        <div className="mb-10 ">
+          <label className="block text-gray-700 text-medium font-bold mb-3">
+            {" "}
+            Date
+          </label>
           <Datepicker
             value={value}
             selected={value.startDate}
             minDate={moment().toDate()}
             onChange={handleValueChange}
-            className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            containerClassName="relative bg-gray-50 border border-gray-300 text-gray-900  rounded focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
 
