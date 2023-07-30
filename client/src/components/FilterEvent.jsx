@@ -3,11 +3,23 @@ import { useForm } from "react-hook-form";
 import Select from "react-select";
 import SecondaryBtn from "./buttons/SecondaryBtn";
 import axiosClient from "../axiosClient";
+import moment from "moment";
+import Datepicker from "react-tailwindcss-datepicker";
 export default function FilterEvent({ setPath }) {
   const [categories, setCategories] = useState("");
   const [distance, setDistance] = useState();
   const [cities, setCities] = useState([]);
   const [city, setCity] = useState("");
+
+  const [value, setValue] = useState({
+    startDate: new Date(),
+    endDate: new Date().setMonth(11),
+  });
+
+  const handleValueChange = (newValue) => {
+    console.log("newValue:", newValue);
+    setValue(newValue);
+  };
   const distanceOptions = [
     { value: 10000, label: "10" },
     { value: 20000, label: "20" },
@@ -120,7 +132,7 @@ export default function FilterEvent({ setPath }) {
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           ></Select>
         </div>
-        <div className="mb-20 ">
+        <div className="mb-10 ">
           <label className="block text-gray-700 text-medium font-bold mb-3">
             {" "}
             Categories
@@ -131,6 +143,20 @@ export default function FilterEvent({ setPath }) {
             onChange={(value) => setCategories(value.map((item) => item.value))}
           />
         </div>
+        <div className="mb-10 ">
+          <label className="block text-gray-700 text-medium font-bold mb-3">
+            {" "}
+            Date
+          </label>
+          <Datepicker
+            value={value}
+            selected={value.startDate}
+            minDate={moment().toDate()}
+            onChange={handleValueChange}
+            containerClassName="relative bg-gray-50 border border-gray-300 text-gray-900  rounded focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+
         <div className="text-center">
           <SecondaryBtn text="Filter" />
         </div>
