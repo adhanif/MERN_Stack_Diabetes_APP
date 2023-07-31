@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
 import LogoWhiteIcon from '../images/TypeOne_white_noBG-hiQ.png';
 
 const navigation = [
@@ -13,6 +14,7 @@ const navigation = [
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, isLoading, logout } = useContext(AuthContext);
 
   return (
     <div id='navbarelvis' className=''>
@@ -74,12 +76,22 @@ export default function Navbar() {
             </NavLink>
           </div>
           <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
-            <NavLink
-              to='/login'
-              className='text-xl font-semibold leading-6 hover:text-white'
-            >
-              Log in <span aria-hidden='true'>&rarr;</span>
-            </NavLink>
+            {!user && (
+              <NavLink
+                to='/login'
+                className='text-xl font-semibold leading-6 hover:text-white'
+              >
+                Log in <span aria-hidden='true'>&rarr;</span>
+              </NavLink>
+            )}
+            {user && (
+              <NavLink
+                to='/profile'
+                className='text-xl font-semibold leading-6 hover:text-white'
+              >
+                {user.name}
+              </NavLink>
+            )}
           </div>
         </nav>
         <Dialog

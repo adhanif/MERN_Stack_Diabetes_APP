@@ -6,6 +6,7 @@ const ErrorResponse = require('../utils/ErrorResponse');
 // new user Signup
 const signUp = async (req, res, next) => {
   try {
+    console.log(req.body);
     const { name, email, password } = req.body;
     const alreadyUser = await User.findOne({ email });
     if (alreadyUser) {
@@ -28,12 +29,23 @@ const signUp = async (req, res, next) => {
 // user login
 const signIn = async (req, res, next) => {
   try {
+    console.log(req.body);
     const { email, password } = req.body;
     const matchUser = await User.findOne({ email }).select('+password');
     if (matchUser) {
+      console.log(matchUser);
       const matchPassword = await bcrypt.compare(password, matchUser.password);
+      console.log(password);
+      console.log(matchUser.password);
+      console.log(matchPassword);
       if (matchPassword) {
-        const payload = { email: matchUser.email, id: matchUser._id };
+        const payload = {
+          email: matchUser.email,
+          id: matchUser._id,
+          name: matchUser.name,
+        };
+        console.log(process.env.JWT_SECRET);
+
         const token = jwt.sign(payload, process.env.JWT_SECRET, {
           expiresIn: '800000s',
         });
