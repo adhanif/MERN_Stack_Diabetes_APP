@@ -15,7 +15,7 @@ const eventQuery = async (req, res, next) => {
       page,
       limit,
     } = req.query;
-    // console.log(req.query);
+
     const eventQuery = {};
     if (startDate && endDate)
       eventQuery.eventDate = {
@@ -48,7 +48,7 @@ const eventQuery = async (req, res, next) => {
           $maxDistance: parseInt(distance),
         },
       };
-    // if(page&limit) eventQuery
+
     if (categories) eventQuery.categories = { $in: categories.split(",") };
 
     req.eventQuery = eventQuery;

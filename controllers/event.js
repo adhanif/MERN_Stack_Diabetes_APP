@@ -50,22 +50,19 @@ const deleteEvent = async (req, res) => {
 
 const getAllEvents = async (req, res, next) => {
   try {
-    let { page, limit } = req.query;
-    if (!page) page = 1;
-    if (!limit) limit = 10;
-    const skip = (page - 1) * 10;
-    // console.log(req.query);
-    // console.log(req.eventQuery);
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 5;
+    const skip = (page - 1) * limit;
+    const count = await Event.estimatedDocumentCount();
+    const totalPages = Math.ceil(count / limit);
     const events = await Event.find(req.eventQuery)
-
       .populate("city")
-      .skip(skip)
-      .limit(limit);
-    res.status(201).json(events);
+      .skip(parseInt(skip))
+      .limit(parseInt(limit));
+    res.status(201).json({ page, totalPages, events });
   } catch (error) {
     next(error);
   }
-
   return true;
 };
 
