@@ -23,7 +23,7 @@ export default function EventCard({ event }) {
       <div className=" flex  bg-white flex-col lg:flex-row border rounded-md overflow-hidden shadow-lg mb-5 lg:w-11/12">
         <div className=" w-full lg:w-2/5">
           <img
-            className="w-full  object-cover h-[400px] lg:h-[300px] rounded-lg"
+            className="w-full  object-cover h-[350px] lg:h-[260px] rounded-lg"
             src={event.image}
             alt={event.title}
           />
