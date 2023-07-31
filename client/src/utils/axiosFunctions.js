@@ -34,6 +34,16 @@ export const getNextEvents = async (amount) => {
   }
 };
 
+export const getEventsOfUser = async (userId) => {
+  try {
+    const events = await axiosClient.get(`/events/${userId}`);
+    console.log(events.data);
+    return events.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 export const getBestArticles = async (amount) => {
   try {
     const neededArticles = await axiosClient.get(`/articles/best/${amount}`);
