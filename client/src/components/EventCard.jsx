@@ -4,6 +4,7 @@ import SmallSecondaryBtn from "./buttons/SmallSecondaryBtn";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { ClockIcon } from "@heroicons/react/24/solid";
 import LocationMarker from "../components/LocationMarker";
+import { Navigate, useNavigate } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
@@ -12,11 +13,17 @@ import {
   Popup,
   useMapEvents,
 } from "react-leaflet";
+
 export default function EventCard({ event }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const eventDate = new Date(event.date).toLocaleDateString();
+
+  const navigate = useNavigate();
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
+  };
+
+  const handleEventDetailCard = () => {
+    navigate(`/eventDetail/${event._id}`);
   };
   return (
     <>
@@ -66,7 +73,10 @@ export default function EventCard({ event }) {
                 text="Show on map"
                 onClick={handleModalToggle}
               />
-              <SmallSecondaryBtn text="Join" />
+              <SmallSecondaryBtn
+                text="More Details"
+                onClick={handleEventDetailCard}
+              />
             </div>
           </div>
           {isModalOpen && (
