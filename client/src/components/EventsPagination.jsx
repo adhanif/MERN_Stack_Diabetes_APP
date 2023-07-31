@@ -1,7 +1,26 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import axiosClient from "../axiosClient";
+export default function EventsPagination({ setPath, setEvents }) {
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const limit = 5;
+  useEffect(() => {
+    axiosClient
+      .get(`/events?page=${page}&limit=${limit}`)
+      .then((res) => {
+        // console.log(res.data);
+        const { events, totalPages } = res.data;
+        setEvents(events);
+        setTotalPages(totalPages);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [page]);
 
-export default function EventsPagination({ setPage, pageCount, page }) {
   const handlePrevious = () => {
+    console.log(page);
     setPage((p) => {
       if (p === 1) return p;
       return p - 1;
@@ -9,7 +28,7 @@ export default function EventsPagination({ setPage, pageCount, page }) {
   };
   const handleNext = () => {
     setPage((p) => {
-      if (p === pageCount) return p;
+      if (p === totalPages) return p;
       return p + 1;
     });
   };
@@ -23,7 +42,7 @@ export default function EventsPagination({ setPage, pageCount, page }) {
         Previous
       </button>
       <button
-        disabled={page === pageCount}
+        disabled={page === totalPages}
         onClick={handleNext}
         className="px-3 py-2 rounded bg-black text-white"
       >

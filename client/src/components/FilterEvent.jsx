@@ -5,12 +5,11 @@ import SecondaryBtn from "./buttons/SecondaryBtn";
 import axiosClient from "../axiosClient";
 import moment from "moment";
 import Datepicker from "react-tailwindcss-datepicker";
-export default function FilterEvent({ setPath, page }) {
+export default function FilterEvent({ setPath, page, limit }) {
   const [categories, setCategories] = useState("");
   const [distance, setDistance] = useState();
   const [cities, setCities] = useState([]);
   const [city, setCity] = useState("");
-
   const [date, setDate] = useState();
 
   const handleValueChange = (newValue) => {

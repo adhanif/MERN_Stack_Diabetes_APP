@@ -11,9 +11,6 @@ import EventsPagination from "../components/EventsPagination";
 export default function AllEvents({ theme }) {
   const [events, setEvents] = useState([]);
   const [path, setPath] = useState("/events");
-  //for Pagination
-  const [page, setPage] = useState(1);
-  const [pageCount, setPageCount] = useState(0);
 
   const {
     register,
@@ -31,10 +28,7 @@ export default function AllEvents({ theme }) {
     axiosClient
       .get(path)
       .then((res) => {
-        // console.log(res.data);
-        const { events, totalPage } = res.data;
         setEvents(events);
-        setPageCount(totalPage);
       })
       .catch((err) => {
         console.log(err);
@@ -53,7 +47,7 @@ export default function AllEvents({ theme }) {
         <aside className="w-full sm:w-2/3 md:w-3/4 lg:w-1/4">
           <div className="sticky top-0  w-full py-5">
             <EventMapModal />
-            <FilterEvent setPath={setPath} events={events} page={page} />
+            <FilterEvent setPath={setPath} events={events} />
           </div>
         </aside>
         <main role="main" className="w-full sm:w-2/3 md:w-3/4  px-2 pt-5">
@@ -77,11 +71,7 @@ export default function AllEvents({ theme }) {
 
           {/* Pagination  */}
 
-          <EventsPagination
-            setPage={setPage}
-            pageCount={pageCount}
-            page={page}
-          />
+          <EventsPagination setPath={setPath} setEvents={setEvents} />
         </main>
       </div>
     </div>
