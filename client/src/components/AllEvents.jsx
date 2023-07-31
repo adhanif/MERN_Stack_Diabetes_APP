@@ -6,6 +6,7 @@ import FilterEvent from "../components/FilterEvent";
 import EventMapModal from "../components/EventMapModal";
 import { useForm } from "react-hook-form";
 import SecondaryBtn from "./buttons/SecondaryBtn";
+import EventsPagination from "../components/EventsPagination";
 
 export default function AllEvents({ theme }) {
   const [events, setEvents] = useState([]);
@@ -27,8 +28,7 @@ export default function AllEvents({ theme }) {
     axiosClient
       .get(path)
       .then((res) => {
-        // console.log(res.data);
-        setEvents(res.data);
+        setEvents(events);
       })
       .catch((err) => {
         console.log(err);
@@ -68,6 +68,11 @@ export default function AllEvents({ theme }) {
           {events.map((event) => {
             return <EventCard key={event._id} event={event} />;
           })}
+
+          {/* Pagination  */}
+          <div className="ml-20">
+            <EventsPagination setPath={setPath} setEvents={setEvents} />
+          </div>
         </main>
       </div>
     </div>

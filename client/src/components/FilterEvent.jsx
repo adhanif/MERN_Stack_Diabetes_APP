@@ -10,7 +10,6 @@ export default function FilterEvent({ setPath }) {
   const [distance, setDistance] = useState();
   const [cities, setCities] = useState([]);
   const [city, setCity] = useState("");
-
   const [date, setDate] = useState();
 
   const handleValueChange = (newValue) => {

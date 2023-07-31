@@ -45,14 +45,22 @@ const addEvent = async (req, res, next) => {
 const deleteEvent = async (req, res) => {
   //TODO
   console.log("delete Event function called");
-  console.log(req.body);
   return true;
 };
 
 const getAllEvents = async (req, res, next) => {
   try {
-    console.log(req.eventQuery);
-    const events = await Event.find(req.eventQuery).populate("city");
+    let { page, limit } = req.query;
+    if (!page) page = 1;
+    if (!limit) limit = 10;
+    const skip = (page - 1) * 10;
+    // console.log(req.query);
+    // console.log(req.eventQuery);
+    const events = await Event.find(req.eventQuery)
+
+      .populate("city")
+      .skip(skip)
+      .limit(limit);
     res.status(201).json(events);
   } catch (error) {
     next(error);
