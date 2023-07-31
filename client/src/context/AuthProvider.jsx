@@ -12,7 +12,6 @@ function AuthProvider({ children }) {
   useEffect(() => {
     setIsLoading(true);
     const get = async () => {
-      q;
       const u = await getProfile();
       setUser(u);
       setIsLoading(false);
