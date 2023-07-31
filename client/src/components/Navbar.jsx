@@ -76,7 +76,7 @@ export default function Navbar() {
             </NavLink>
           </div>
           <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
-            {!user && (
+            {!isLoading && !user && (
               <NavLink
                 to='/login'
                 className='text-xl font-semibold leading-6 hover:text-white'
@@ -84,7 +84,7 @@ export default function Navbar() {
                 Log in <span aria-hidden='true'>&rarr;</span>
               </NavLink>
             )}
-            {user && (
+            {!isLoading && user && (
               <NavLink
                 to='/profile'
                 className='text-xl font-semibold leading-6 hover:text-white'
