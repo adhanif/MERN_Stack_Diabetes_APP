@@ -9,8 +9,12 @@ import SecondaryBtn from "./buttons/SecondaryBtn";
 import EventsPagination from "../components/EventsPagination";
 
 export default function AllEvents({ theme }) {
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const [events, setEvents] = useState([]);
-  const [path, setPath] = useState("/events");
+  const [path, setPath] = useState("/events?");
+  const [filters, setFilters] = useState("");
+  const [pagination, setPagination] = useState("");
 
   const {
     register,
@@ -26,14 +30,16 @@ export default function AllEvents({ theme }) {
 
   useEffect(() => {
     axiosClient
-      .get(path)
-      .then((res) => {
+      .get(path + filters + `&page=${page}&limit=${5}`)
+      .then(({ data: { page, totalPages, events } }) => {
         setEvents(events);
+        // setPage(page);
+        setTotalPages(totalPages);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [path]);
+  }, [path, filters, page]);
 
   const onSubmit = (data) => {
     setPath(`/events?keyword=${data.keyword}`);
@@ -47,7 +53,7 @@ export default function AllEvents({ theme }) {
         <aside className="w-full sm:w-2/3 md:w-3/4 lg:w-1/4">
           <div className="sticky top-0  w-full py-5">
             <EventMapModal />
-            <FilterEvent setPath={setPath} events={events} />
+            <FilterEvent setFilters={setFilters} events={events} />
           </div>
         </aside>
         <main role="main" className="w-full sm:w-2/3 md:w-3/4  px-2 pt-5">
@@ -71,7 +77,12 @@ export default function AllEvents({ theme }) {
 
           {/* Pagination  */}
           <div className="ml-20">
-            <EventsPagination setPath={setPath} setEvents={setEvents} />
+            <EventsPagination
+              setPage={setPage}
+              setPagination={setPagination}
+              totalPages={totalPages}
+              page={page}
+            />
           </div>
         </main>
       </div>

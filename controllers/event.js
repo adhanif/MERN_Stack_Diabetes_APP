@@ -52,13 +52,16 @@ const getAllEvents = async (req, res, next) => {
   try {
     const page = req.query.page || 1;
     const limit = req.query.limit || 5;
+
+    const count = await Event.countDocuments(req.eventQuery);
     const skip = (page - 1) * limit;
-    const count = await Event.estimatedDocumentCount();
     const totalPages = Math.ceil(count / limit);
+
     const events = await Event.find(req.eventQuery)
       .populate("city")
       .skip(parseInt(skip))
       .limit(parseInt(limit));
+
     res.status(201).json({ page, totalPages, events });
   } catch (error) {
     next(error);

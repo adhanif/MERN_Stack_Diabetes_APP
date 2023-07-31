@@ -20,9 +20,8 @@ export default function EventsMap() {
   useEffect(() => {
     axiosClient
       .get("/events")
-      .then((res) => {
-        console.log(res.data);
-        setEvents(res.data);
+      .then(({ data: { page, totalPages, events } }) => {
+        setEvents(events);
       })
       .catch((err) => {
         console.log(err);
