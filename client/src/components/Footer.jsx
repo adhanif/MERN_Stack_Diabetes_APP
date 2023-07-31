@@ -7,7 +7,7 @@ import ReadedArticels from './footerParts/ReadedArticels';
 
 function Footer() {
   return (
-    <div className='theme-hero flex justify-around p-4 flex-wrap text-center'>
+    <div className='theme-hero flex shadow-2xl justify-around p-4 flex-wrap text-center'>
       <div className='hidden px-2 sm:w-1/3 lg:w-1/5 lg:block'>
         <StayInTouch />
       </div>

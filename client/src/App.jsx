@@ -15,6 +15,8 @@ import Footer from './components/Footer';
 import Articles from './components/Articles';
 import AllEvents from './components/AllEvents';
 import NewSignUp from './components/NewSignUp';
+import Impressum from './components/Impressum';
+import ArticleDetail from "./components/ArticleDetail"
 
 
 function App() {
@@ -30,10 +32,13 @@ function App() {
         <Route path='/about' element={<AboutUs theme='theme-pink' />} />
         <Route path='/login' element={<Login theme='theme-pink' />} />
         <Route path='/signUp' element={<NewSignUp theme='theme-pink' />} />
+        <Route path='/article/:id' element={<ArticleDetail theme='theme-pink' />} /> 
+        
+        <Route path='/impressum' element={<Impressum />} />
       </Routes>
-      <AllEvents theme='theme-pink' />
+      {/* <AllEvents theme='theme-pink' />
       <AboutUs theme='theme-pink' />
-      <ContactUs theme='theme-pink' />
+      <ContactUs theme='theme-pink' /> */}
 
       <Footer />
     </>
