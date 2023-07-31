@@ -70,8 +70,9 @@ export default function AllEvents({ theme }) {
           })}
 
           {/* Pagination  */}
-
-          <EventsPagination setPath={setPath} setEvents={setEvents} />
+          <div className="ml-20">
+            <EventsPagination setPath={setPath} setEvents={setEvents} />
+          </div>
         </main>
       </div>
     </div>
