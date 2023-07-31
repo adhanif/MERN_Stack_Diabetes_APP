@@ -1,9 +1,24 @@
 const mongoose = require("mongoose");
+const citySchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  coordinates: {
+    type: [Number],
+  },
+});
 
 const eventSchema = new mongoose.Schema(
   {
     title: {
       type: String,
+      required: true,
+    },
+    city: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "City",
       required: true,
     },
     eventDate: {
@@ -27,7 +42,18 @@ const eventSchema = new mongoose.Schema(
     },
     categories: {
       type: [String],
-      enum: ["education", "awareness", "health", "support", "community", "entertainment", "food", "sports", "family-focused", "children-focused" ],
+      enum: [
+        "education",
+        "awareness",
+        "health",
+        "support",
+        "community",
+        "entertainment",
+        "food",
+        "sports",
+        "family-focused",
+        "children-focused",
+      ],
       required: true,
     },
     address: {
@@ -55,6 +81,7 @@ const eventSchema = new mongoose.Schema(
 );
 // Event.db.articles.createIndex({ subject: "text" });
 eventSchema.index({ title: "text" });
-const event = mongoose.model("Event", eventSchema);
-event.collection.createIndex({ location: "2dsphere" });
-module.exports = event;
+const Event = mongoose.model("Event", eventSchema);
+const City = mongoose.model("City", citySchema);
+Event.collection.createIndex({ location: "2dsphere" });
+module.exports = { Event, City };
