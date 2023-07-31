@@ -10,24 +10,30 @@ function Profile({ theme }) {
 
   useEffect(() => {
     const getEvents = async () => {
-      const e = await getEventsOfUser(user.id);
-      setEvents(e);
+      if (user) {
+        const e = await getEventsOfUser(user._id);
+        setEvents(e);
+      }
     };
 
     getEvents();
-  }, []);
+  }, [user]);
 
   return (
     <div className={`${theme} bg-skin-fill`}>
-      <ul>
-        <li>{user.id}</li>
-        <li>{user.name}</li>
-        <li>{user.email}</li>
-      </ul>
+      {!isLoading ? (
+        <ul>
+          <li>{user._id}</li>
+          <li>{user.name}</li>
+          <li>{user.email}</li>
+        </ul>
+      ) : (
+        'nothing'
+      )}
       Profile
-      {events
+      {!isLoading && events
         ? events.map((event) => <EventCard key={event._id} event={event} />)
-        : 'notiing'}
+        : 'nothing'}
       <div></div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import axiosClient from '../axiosClient';
 
 export const postMessage = async (props) => {
@@ -49,6 +50,16 @@ export const getBestArticles = async (amount) => {
     const neededArticles = await axiosClient.get(`/articles/best/${amount}`);
     console.log('response got from getBEstArticles');
     return neededArticles;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const getProfile = async () => {
+  try {
+    const user = await axiosClient.get(`/profile`);
+    console.log('getProfile');
+    return user.data;
   } catch (error) {
     console.log(error.message);
   }

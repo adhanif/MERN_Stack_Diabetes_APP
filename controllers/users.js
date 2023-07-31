@@ -41,7 +41,7 @@ const signIn = async (req, res, next) => {
       if (matchPassword) {
         const payload = {
           email: matchUser.email,
-          id: matchUser._id,
+          _id: matchUser._id,
           name: matchUser.name,
         };
         console.log(process.env.JWT_SECRET);
@@ -78,8 +78,9 @@ const logOut = async (req, res, next) => {
 
 const getProfile = async (req, res) => {
   try {
-    const { id } = req.user;
-    const userProfile = await User.findById(id);
+    console.log('getProfile');
+    const { _id } = req.user;
+    const userProfile = await User.findById(_id);
     res.json(userProfile);
   } catch (error) {
     next(error);
