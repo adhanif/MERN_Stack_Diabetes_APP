@@ -4,7 +4,7 @@ import axiosClient from "../axiosClient";
 export default function EventDetailCard({ theme }) {
   const [event, setEvent] = useState();
   const { id } = useParams();
-  //   console.log(id);
+
   useEffect(() => {
     axiosClient.get(`/events/${id}`).then((res) => {
       console.log(res.data);
