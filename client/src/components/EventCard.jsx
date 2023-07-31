@@ -16,14 +16,14 @@ import {
 
 export default function EventCard({ event }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const eventDate = new Date(event.date).toLocaleDateString();
+
   const navigate = useNavigate();
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
   };
 
   const handleEventDetailCard = () => {
-    Navigate("/");
+    navigate("/");
   };
   return (
     <>
