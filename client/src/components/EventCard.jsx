@@ -4,7 +4,7 @@ import SmallSecondaryBtn from "./buttons/SmallSecondaryBtn";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { ClockIcon } from "@heroicons/react/24/solid";
 import LocationMarker from "../components/LocationMarker";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import {
   MapContainer,
   TileLayer,
@@ -23,7 +23,7 @@ export default function EventCard({ event }) {
   };
 
   const handleEventDetailCard = () => {
-    navigate("/");
+    navigate(`/eventDetail/${event._id}`);
   };
   return (
     <>

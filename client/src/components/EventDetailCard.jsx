@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from "react";
-
+import { useParams } from "react-router-dom";
+import axiosClient from "../axiosClient";
 export default function EventDetailCard({ theme }) {
+  const [event, setEvent] = useState();
+  const { id } = useParams();
+  //   console.log(id);
+  useEffect(() => {
+    axiosClient.get(`/events/${id}`).then((res) => {
+      console.log(res.data);
+      setEvent(res.data);
+    });
+  }, []);
+
   return (
     <div
       className={`${theme} bg-skin-fill shadow-2xl rounded-xl relative m-auto my-6 flex h-full w-[65%] flex-col bg-clip-border`}

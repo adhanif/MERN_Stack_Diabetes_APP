@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <EventDetailCard theme="theme-pink" />
+      {/* <EventDetailCard theme="theme-pink" /> */}
       <Routes>
         <Route path="/" element={<Hero2 />} />
         <Route path="/articles" element={<Articles theme="theme-pink" />} />
@@ -36,7 +36,10 @@ function App() {
           element={<ArticleDetail theme="theme-pink" />}
         />
         <Route path="/impressum" element={<Impressum />} />
-        {/* <Route path="/eventDetail" element={<EventDetailCard />} /> */}
+        <Route
+          path="/eventDetail/:id"
+          element={<EventDetailCard theme="theme-pink" />}
+        />
       </Routes>
 
       <AllEvents theme="theme-pink" />
