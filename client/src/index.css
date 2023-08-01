@@ -41,6 +41,7 @@
     /* BorderColors */
     --color-border-outline: var(--color-text-base);
     --color-border-outline-hover: #3b82f600;
+    --color-border-google-hover: var(--besslans-color)
   }
 
   .theme-secondary {
