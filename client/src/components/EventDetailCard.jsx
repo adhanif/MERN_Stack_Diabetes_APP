@@ -26,6 +26,7 @@ export default function EventDetailCard({ theme }) {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -33,6 +34,7 @@ export default function EventDetailCard({ theme }) {
       .post(`/events/${id}/comments`, data)
       .then((res) => {
         setComments([res.data, ...comments]);
+        reset();
       })
       .catch((err) => {
         console.log(err);
@@ -55,7 +57,6 @@ export default function EventDetailCard({ theme }) {
       .get(`/events/${id}`)
       .then((res) => {
         setEvent(res.data);
-        console.log(res.data);
         axiosClient.get(`/events/${id}/comments`).then((res) => {
           setComments(res.data);
         });
