@@ -37,6 +37,16 @@ export default function EventDetailCard({ theme }) {
       });
   };
 
+  const handleJoin = () => {
+
+    axiosClient
+      .post(`/events/${id}/join`)
+      .then((res) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     axiosClient
       .get(`/events/${id}`)
@@ -133,7 +143,10 @@ export default function EventDetailCard({ theme }) {
           </div>
 
           <div>
-            <button className="py-1 px-5  mx-auto bg-skin-button-secondary text-white text-skin-inverted rounded-md hover:scale-110 hover:bg-skin-button-secondary-hover duration-300 hover:text-white ">
+            <button
+              className="py-1 px-5  mx-auto bg-skin-button-secondary text-white text-skin-inverted rounded-md hover:scale-110 hover:bg-skin-button-secondary-hover duration-300 hover:text-white "
+              onClick={handleJoin}
+            >
               Join
             </button>
           </div>
