@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosClient from "../axiosClient";
 import { useForm } from "react-hook-form";
+import SecondaryBtn from "./buttons/SecondaryBtn";
 import {
   MapPinIcon,
   CalendarDaysIcon,
@@ -18,6 +19,9 @@ export default function EventDetailCard({ theme }) {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const onSubmit = (data) => {};
+
   useEffect(() => {
     axiosClient.get(`/events/${id}`).then((res) => {
       console.log(res.data);
@@ -40,7 +44,7 @@ export default function EventDetailCard({ theme }) {
       ></div>
 
       {/* //General info */}
-      <div className="mt-6 flex  px-4 gap-2 flex-col">
+      <div className="mt-6 flex  px-8 gap-2 flex-col">
         <h4 className="text-xl lg:text-2xl font-bold p-1 text-center tracking-wide leading-3 mb-5">
           {event.title}
         </h4>
@@ -104,28 +108,29 @@ export default function EventDetailCard({ theme }) {
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col w-full px-12 py-12 h-full"
+          className="flex flex-col w-full px-0 py-12 h-full"
         >
-          <div className="mb-4">
+          <div>
             <label
-              className="text-sm md:text-base lg:text-xl font-bold text-skin-inverted"
+              className="mb-5 text-sm md:text-base lg:text-xl font-bold text-skin-inverted"
               htmlFor="eventInfo"
             >
-              What else?
+              Add a comment
             </label>
 
             <textarea
-              {...register("eventInfo")}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline"
+              {...register("comment")}
+              className="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline mb-3"
               name="eventInfo"
               id="eventInfo"
-              placeholder="Anything else the guests have to know?"
+              placeholder="Your Comment"
               cols="30"
               rows="5"
             ></textarea>
             <p className="text-skin-form-error italic">
-              {errors.eventInfo?.message}
+              {errors.comment?.message}
             </p>
+            <SecondaryBtn text="Comment" />
           </div>
         </form>
       </div>
