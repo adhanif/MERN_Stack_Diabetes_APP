@@ -10,9 +10,9 @@ export default function Hero() {
   return (
     <>
       {/* <div className="relative isolate px-6 pt-14 lg:px-8"> */}
-      <div className='bg-[#315a49c4] flex flex-col-reverse items-center gap-20 px-6 pb-20 w-full space-y-0 md:space-y-0 md:flex-row'>
+      <div className='bg-[#315a49c4] flex flex-col-reverse items-center gap-18 px-8 lg:px-16 pb-20 w-full min-h-[100vh] space-y-0 md:space-y-0 md:flex-row'>
         {/* ---------------------------Middle Part-------------------------- */}
-        <div className='flex flex-col space-y-8 md:w-1/2  lg:py-10'>
+        <div className='flex flex-col space-y-8 md:w-1/2  lg:py-4'>
           {/* ---------------Text Part--------------- */}
           <div className='text-center'>
             {/* ---------------Big Logo--------------- */}
@@ -60,7 +60,7 @@ export default function Hero() {
           </div>
         </div>
         {/* Image */}
-        <div className='  md:w-1/2  lg:pt-32'>
+        <div className='  md:w-1/2  lg:pt-8'>
           <img src={HappyKids2} alt='' />
         </div>
       </div>

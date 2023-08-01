@@ -22,7 +22,7 @@ import EventDetailCard from './components/EventDetailCard';
 
 function App() {
   return (
-    <>
+    <div className='fluid flex flex-col min-h-[100vh] justify-between'>
       <Navbar />
       {/* <EventDetailCard theme="theme-pink" /> */}
       <Routes>
@@ -44,12 +44,12 @@ function App() {
         />
       </Routes>
 
-      {/* <AllEvents theme="theme-pink" /> */}
+      <AllEvents theme='theme-pink' />
       {/* <AboutUs theme="theme-pink" />
       <ContactUs theme="theme-pink" /> */}
 
-      <Footer />
-    </>
+      <Footer theme='theme-footer' />
+    </div>
   );
 }
 

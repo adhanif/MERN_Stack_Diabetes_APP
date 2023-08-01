@@ -1,8 +1,6 @@
-/* body {
-  background-image: url('./images/bg_landingPage.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
+body {
+  height: 100vh;
+}
 
 .leaflet-popup-content {
   margin: 0;
