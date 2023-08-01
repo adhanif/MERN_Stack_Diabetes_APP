@@ -44,22 +44,22 @@ export default function EventDetailCard({ theme }) {
       ></div>
 
       {/* //General info */}
-      <div className="mt-6 flex  px-8 gap-2 flex-col">
-        <h4 className="text-xl lg:text-2xl font-bold p-1 text-center tracking-wide leading-3 mb-5">
+      <div className="mt-10 flex  px-8 gap-2 flex-col ">
+        <h4 className="text-lg  md:text-2xl font-bold p-1 text-center tracking-wide leading-3 mb-10">
           {event.title}
         </h4>
 
         <div className="md:mb-6">
           <div className="flex space-x-2 items-center mb-2">
             <TagIcon className="h-4 w-4" />
-            <p className="text-sm text-gray-600">Categories</p>
+            <p className="text-sm md:text-base text-gray-600">Categories</p>
           </div>
           <div className="md:mb-1 pl-5">
             {event &&
               event.categories &&
               event.categories.map((category, index) => (
                 <div
-                  className="inline-block bg-gray-200 rounded-full px-3  text-md   cursor-pointer hover:scale-110 mr-2 mb-5 md:mb-0"
+                  className="inline-block bg-gray-200 rounded-full px-3 text-md  md:text-base lg:text-xl   cursor-pointer hover:scale-110 mr-2 mb-5 md:mb-0"
                   key={index}
                 >
                   #{category}
@@ -72,38 +72,54 @@ export default function EventDetailCard({ theme }) {
           <div>
             <div className="flex space-x-2 items-center">
               <PencilIcon className="h-4 w-4" />
-              <p className="text-sm text-gray-600">Created</p>
+              <p className="text-sm md:text-base text-gray-600">Created</p>
             </div>
-            <p className="ml-6">
+            <p className="ml-6 text-md  md:text-base lg:text-xl">
               {event && event.createdAt && event.createdAt.split("T")[0]}
             </p>
           </div>
-          <div className="md:ml-40">
+          <div className="md:ml-[11rem]">
             <div className="flex space-x-2 items-center ">
               <CalendarDaysIcon className="h-4 w-4" />
-              <p className="text-sm text-gray-600">Start Date</p>
+              <p className="text-sm md:text-base text-gray-600">Start Date</p>
             </div>
-            <p className="ml-6 text-base">
+            <p className="ml-6  text-md  md:text-base lg:text-xl">
               {event && event.eventDate && event.eventDate.split("T")[0]}
             </p>
           </div>
           <div></div>
         </div>
 
-        <div className="md:mb-6">
-          <div className="flex space-x-2 items-center ">
-            <MapPinIcon className="h-4 w-4" />
-            <p className="text-sm text-gray-600">Location</p>
+        <div className="md:mb-6 flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0 sm:mb-6">
+          <div>
+            <div className="flex space-x-2 items-center ">
+              <MapPinIcon className="h-4 w-4" />
+              <p className="text-sm md:text-base text-gray-600">Location</p>
+            </div>
+            <p className="ml-6 text-md  md:text-base lg:text-xl">
+              {event.address}
+            </p>
           </div>
-          <p className="ml-6 text-base">{event.address}</p>
+          <div className="md:ml">
+            <div className="flex space-x-2 items-center ">
+              <MapPinIcon className="h-4 w-4" />
+              <p className="text-sm md:text-base text-gray-600">Time</p>
+            </div>
+            <p className="ml-6 text-md  md:text-base lg:text-xl">
+              {event.time}
+            </p>
+          </div>
+          <div></div>
         </div>
 
         <div className="md:mb-6">
           <div className="flex space-x-2 items-center mb-5">
             <ClipboardDocumentIcon className="h-4 w-4" />
-            <p className="text-sm text-gray-600">Description</p>
+            <p className="text-sm md:text-base text-gray-600">Description</p>
           </div>
-          <p className="ml-6 text-base">{event.eventInfo}</p>
+          <p className="ml-6 text-md  md:text-base lg:text-xl">
+            {event.eventInfo}
+          </p>
         </div>
 
         <form
