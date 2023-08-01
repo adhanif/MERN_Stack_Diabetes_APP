@@ -44,20 +44,30 @@ const addEvent = async (req, res, next) => {
 
 const deleteEvent = async (req, res) => {
   //TODO
-  console.log('delete Event function called');
-  console.log(req.body);
+
+  console.log("delete Event function called");
   return true;
 };
 
 const getAllEvents = async (req, res, next) => {
   try {
-    console.log(req.eventQuery);
-    const events = await Event.find(req.eventQuery).populate('city');
-    res.status(201).json(events);
+
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 5;
+
+    const count = await Event.countDocuments(req.eventQuery);
+    const skip = (page - 1) * limit;
+    const totalPages = Math.ceil(count / limit);
+
+    const events = await Event.find(req.eventQuery)
+      .populate("city")
+      .skip(parseInt(skip))
+      .limit(parseInt(limit));
+
+    res.status(201).json({ page, totalPages, events });
   } catch (error) {
     next(error);
   }
-
   return true;
 };
 

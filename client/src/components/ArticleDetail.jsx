@@ -3,7 +3,7 @@ import { articles } from "../articles/welcome";
 import { useParams } from "react-router-dom";
 
 export default function ArticleDetail({ theme }) {
-  const {id} = useParams();
+  const { id } = useParams();
   const [article, setArticle] = useState(
     articles.find((article) => {
       return article._id === +id;
@@ -32,9 +32,7 @@ export default function ArticleDetail({ theme }) {
 
       {/* //General info */}
       <div className="mt-6 flex  px-4 gap-2 flex-col">
-        <h4 className="text-xl lg:text-2xl font-bold p-1">
-          {title}
-        </h4>
+        <h4 className="text-xl lg:text-2xl font-bold p-1">{title}</h4>
 
         <div className="flex gap-3 lg:text-lg p-1">
           {tags.map((tag, index) => (
