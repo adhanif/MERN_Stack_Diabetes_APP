@@ -20,7 +20,11 @@ function NextEvents() {
       {events ? (
         <div className='flex flex-col'>
           {events.map((event) => (
-            <a key={event._id} href='' className='hover:text-skin-base mb-2'>
+            <a
+              key={event._id}
+              href={`/eventDetail/${event._id}`}
+              className='hover:text-skin-base mb-2'
+            >
               <div className='flex justify-center text-lg'>
                 {/* <div className='w-1/3'>
                   <img src={event.image} alt='' />{' '}
