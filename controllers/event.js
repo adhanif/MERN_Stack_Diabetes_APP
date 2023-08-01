@@ -162,7 +162,27 @@ const getAllEventComments = async (req, res, next) => {
   }
 };
 
+const getJoinEvent = async (req, res, next) => {
+  const { id } = req.params;
+  const { _id } = req.user;
+  console.log(_id);
+  try {
+    const joinEvent = await Event.findByIdAndUpdate(
+      id,
+      { $addToSet: { participants: _id } },
+      { new: true }
+    );
+    if (!joinEvent) {
+      return res.status(404).json({ error: "Event not found" });
+    }
+    res.status(200).json(joinEvent);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
+  getJoinEvent,
   addEvent,
   deleteEvent,
   getAllEvents,
