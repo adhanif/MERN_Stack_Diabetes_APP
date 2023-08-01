@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { MapPinIcon, CalendarDaysIcon } from "@heroicons/react/24/solid";
-import SmallSecondaryBtn from "./buttons/SmallSecondaryBtn";
-import { XMarkIcon } from "@heroicons/react/24/solid";
-import { ClockIcon } from "@heroicons/react/24/solid";
-import LocationMarker from "../components/LocationMarker";
-import { Navigate, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { MapPinIcon, CalendarDaysIcon } from '@heroicons/react/24/solid';
+import SmallSecondaryBtn from './buttons/SmallSecondaryBtn';
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import { ClockIcon } from '@heroicons/react/24/solid';
+import LocationMarker from '../components/LocationMarker';
+import { Navigate, useNavigate } from 'react-router-dom';
 import {
   MapContainer,
   TileLayer,
@@ -12,7 +12,6 @@ import {
   Marker,
   Popup,
   useMapEvents,
-
 } from 'react-leaflet';
 
 export default function EventCard({ event }) {
@@ -28,40 +27,38 @@ export default function EventCard({ event }) {
   };
   return (
     <>
-
-      <div className=" flex  bg-white flex-col lg:flex-row border rounded-md overflow-hidden shadow-lg mb-5 lg:w-11/12">
-        <div className=" w-full lg:w-2/5">
+      <div className=' flex  bg-white flex-col lg:flex-row border rounded-xl overflow-hidden shadow-lg mb-5 lg:w-full'>
+        <div className=' w-full lg:w-2/5'>
           <img
-            className="w-full  object-cover h-[350px] lg:h-[260px] rounded-lg"
+            className='w-full  object-cover h-[350px] lg:h-[260px] rounded-l-lg'
             src={event.image}
             alt={event.title}
           />
         </div>
 
-
-        <div className="px-6 py-4    w-3/5">
-          <div className="font-bold text-2xl mb-3">{event.title}</div>
-          <p className="text-black text-base mb-2">{event.info}</p>
-          <div className="flex flex-col  lg:flex-row  mb-2 md:mb-1">
-            <div className="flex space-x-2 mb-2 md:mb-3 w-full ">
-              <CalendarDaysIcon className="h-6 w-5 " />
-              <p>{event.eventDate.split("T")[0]}</p>
+        <div className='px-6 py-4    w-3/5'>
+          <div className='font-bold text-2xl mb-3'>{event.title}</div>
+          <p className='text-black text-base mb-2'>{event.info}</p>
+          <div className='flex flex-col  lg:flex-row  mb-2 md:mb-1'>
+            <div className='flex space-x-2 mb-2 md:mb-3 w-full '>
+              <CalendarDaysIcon className='h-6 w-5 ' />
+              <p>{event.eventDate.split('T')[0]}</p>
             </div>
-            <div className="flex space-x-1 mb-2 md:mb-4 w-full md:w-full">
-              <ClockIcon className="h-6 w-5 " />
+            <div className='flex space-x-1 mb-2 md:mb-4 w-full md:w-full'>
+              <ClockIcon className='h-6 w-5 ' />
               <p>{event.time}</p>
             </div>
           </div>
-          <div className="flex  space-x-1 mb-5 md:mb-0 ">
-            <MapPinIcon className="h-6 w-5 " />
+          <div className='flex  space-x-1 mb-5 md:mb-0 '>
+            <MapPinIcon className='h-6 w-5 ' />
             <p>{event.address}</p>
           </div>
 
-          <div className=" md:pt-5  mb-2 md:mb-4">
+          <div className=' md:pt-5  mb-2 md:mb-4'>
             {event.categories.map((category, index) => {
               return (
                 <span
-                  className="inline-block bg-gray-200 rounded-full px-3  text-md font-semibold text-black cursor-pointer hover:scale-110 mr-2 mb-5 md:mb-0"
+                  className='inline-block bg-gray-200 rounded-lg px-3  text-md  mr-2 mb-5 md:mb-0'
                   key={index}
                 >
                   #{category}
@@ -70,15 +67,15 @@ export default function EventCard({ event }) {
             })}
           </div>
           {/* mapmodal event on map */}
-          <div className=" flex flex-row mb-5 md:mb-0">
-            <div className=" space-x-5">
+          <div className=' flex flex-row mb-5 md:mb-0'>
+            <div className=' space-x-5'>
               <SmallSecondaryBtn
                 text='Show on map'
                 onClick={handleModalToggle}
               />
 
               <SmallSecondaryBtn
-                text="More Details"
+                text='More Details'
                 onClick={handleEventDetailCard}
               />
             </div>
@@ -126,7 +123,6 @@ export default function EventCard({ event }) {
               </div>
             </div>
           )}
-
         </div>
       </div>
     </>

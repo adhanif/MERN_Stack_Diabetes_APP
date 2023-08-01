@@ -79,7 +79,7 @@ export default function Login({ theme }) {
       </div>
 
       <div
-        className={`${theme}  fluid mx-auto p-6 md:p-14 flex justify-center bg-transparent `}
+        className={`${theme} w-full fluid mx-auto p-6 md:p-14 flex justify-center bg-skin-fill `}
       >
         <div className='container flex max-w-[1200px] justify-center'>
           {/* Left Side */}
@@ -161,11 +161,11 @@ export default function Login({ theme }) {
               <div className='flex flex-col items-center justify-between mb-5'>
                 <SecondaryBtn text='Login' />
 
-                <button className='mt-20 flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500  mb-3 text-sm'>
+                <button className='mt-20 flex items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-lg hover:border-skin-border-google-hover  mb-3 text-sm'>
                   <img src={google} alt='' className=' w-10 h-10' />
                   Sign in with Google
                 </button>
-                <button className='flex mt-6 items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-full  hover:border-blue-500   text-sm '>
+                <button className='flex mt-6 items-center justify-center p-1 w-80 border shadow font-bold text-black  rounded-lg  hover:border-skin-border-google-hover   text-sm '>
                   <img src={facebook} alt='' className=' w-12 h-10' />
                   Sign in with Facebook
                 </button>
