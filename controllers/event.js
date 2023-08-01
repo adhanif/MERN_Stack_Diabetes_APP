@@ -142,7 +142,8 @@ const addEventComment = async (req, res, next) => {
       event: id,
       comment,
     });
-    res.status(201).json(newComment);
+
+    res.status(201).json({ ...newComment._doc, creater: req.user });
   } catch (error) {
     next(error);
   }

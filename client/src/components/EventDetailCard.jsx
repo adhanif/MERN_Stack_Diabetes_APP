@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axiosClient from "../axiosClient";
 import { useForm } from "react-hook-form";
@@ -12,7 +12,11 @@ import {
   ClockIcon,
   ClipboardDocumentIcon,
 } from "@heroicons/react/24/solid";
+import { AuthContext } from "../context/AuthProvider";
+
 export default function EventDetailCard({ theme }) {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   const [event, setEvent] = useState([]);
   const [comments, setComments] = useState([]);
   const { id } = useParams();
@@ -26,7 +30,9 @@ export default function EventDetailCard({ theme }) {
   const onSubmit = (data) => {
     axiosClient
       .post(`/events/${id}/comments`, data)
-      .then((res) => {})
+      .then((res) => {
+        setComments([res.data, ...comments]);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -45,7 +51,7 @@ export default function EventDetailCard({ theme }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [id, comments]);
+  }, [id]);
 
   return (
     <div
