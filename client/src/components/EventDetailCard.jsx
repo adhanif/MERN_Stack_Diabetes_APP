@@ -115,7 +115,7 @@ export default function EventDetailCard({ theme }) {
               className="mb-5 text-sm md:text-base lg:text-xl font-bold text-skin-inverted"
               htmlFor="eventInfo"
             >
-              Add a comment
+              Add a comment more
             </label>
 
             <textarea

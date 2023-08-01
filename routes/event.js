@@ -14,9 +14,13 @@ const {
   getEventsOfUser,
 } = require('../controllers/event');
 
-eventRouter.get('/', eventQuery, getAllEvents);
-eventRouter.get('/id', getEvent);
+
+eventRouter.get("/", eventQuery, getAllEvents);
+eventRouter.get("/:id", getEvent);
+
+
 eventRouter.get('/:userId', getEventsOfUser);
+
 // eventRouter.post("/create", addEvent);
 eventRouter.delete('/id', deleteEvent);
 eventRouter.post(
