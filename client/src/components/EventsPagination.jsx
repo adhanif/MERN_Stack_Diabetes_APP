@@ -18,7 +18,7 @@ export default function EventsPagination({ totalPages, page, setPage }) {
     setPage(page + 1);
   };
   return (
-    <footer className="flex space-x-5">
+    <footer className="flex space-x-5  mb-10">
       <button
         disabled={page === 1}
         onClick={handlePrevious}
