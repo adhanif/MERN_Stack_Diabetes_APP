@@ -62,7 +62,7 @@ export default function EventForm({ theme }) {
 
   return (
     <div
-      className={`${theme}  fluid mx-auto p-6 md:p-14 flex justify-center bg-skin-fill `}
+      className={`${theme} w-full fluid mx-auto p-6 md:p-14 flex justify-center bg-skin-fill `}
     >
       <div className='container flex max-w-[1200px] justify-center'>
         {/* Left Side */}
