@@ -3,7 +3,7 @@ import React from 'react';
 export default function CommentDetail({ comment, theme }) {
   return (
     <div
-      className={`${theme} bg-skin-fill shadow-2xl rounded-xl relative m-auto my-6 p-2 flex w-4/5 bg-clip-border`}
+      className={`${theme} bg-white shadow-2xl rounded-xl relative m-auto mb-6 p-4 flex w-[65%] bg-clip-border`}
     >
       {/* ----- left side ------ */}
       <div>
@@ -17,9 +17,9 @@ export default function CommentDetail({ comment, theme }) {
       {/* ----- right side ------ */}
       <div className='pl-6 flex fluid flex-col w-full'>
         <div className='flex justify-between w-full'>
-          <div>{comment.creator.name}</div>
+          <div className='font-bold'>{comment.creator.name}</div>
 
-          <p className='pr-6 text-gray-400'>
+          <p className=' text-gray-400'>
             Updated: {new Date(comment.updatedAt).toLocaleDateString()}
           </p>
         </div>
