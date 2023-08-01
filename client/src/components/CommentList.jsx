@@ -37,17 +37,15 @@ export default function CommentList({theme}) {
     }
 
   return (
-    <div className={`${theme} bg-skin-fill`}>
+    
       <div
-        className={`container flex flex-col mx-auto lg:flex-row space-y-5 space-x-0 lg:space-x-5 lg:space-y-0`}
+        className={`${theme} bg-skin-fill fluid flex `}
       >
-        <div className="w-full sm:w-2/3 md:w-3/4  px-2 pt-5">
-          
           {comments && comments.map((comment, index) => {
             return <CommentDetail key={comment._id} theme="theme-pink" comment={comment} />;
           })}
-        </div>
+        
       </div>
-    </div>
+    
   )
 }

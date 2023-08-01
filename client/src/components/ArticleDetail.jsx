@@ -76,10 +76,11 @@ export default function ArticleDetail({ theme }) {
                 </p>
               </div>
             </div>
-          </>
-        )}
-      </div>
-      <CommentList />
+          </div>
+        </>
+      )}
+    </div>
+    <CommentList theme='theme-pink'/>
     </div>
   );
 }

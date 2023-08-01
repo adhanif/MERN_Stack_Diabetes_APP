@@ -12,7 +12,6 @@ import Card from './components/Card';
 import AboutUs from './components/AboutUs';
 import EventForm from './components/EventForm';
 import Footer from './components/Footer';
-import Articles from './components/Articles';
 import AllEvents from './components/AllEvents';
 import NewSignUp from './components/NewSignUp';
 import Impressum from './components/Impressum';
@@ -45,7 +44,7 @@ function App() {
         />
       </Routes>
 
-      <AllEvents theme='theme-pink' />
+      {/* <AllEvents theme="theme-pink" /> */}
       {/* <AboutUs theme="theme-pink" />
       <ContactUs theme="theme-pink" /> */}
 
