@@ -11,6 +11,7 @@
     --denim: #275dadff;
     --rose-red: #E83151;
     --but-green: #B4bbda;
+    --besslans-color: #315a49c4;
     /* CSS custom theme */
     --color-text-base: #ffffff;
     --color-text-muted: #d7d5d5;
@@ -28,6 +29,7 @@
     --color-text-primary: #bdb2c9;
     --color-text-secondary: #383740;
     --color-text-outline-hover: #383740;
+    --color-text-form-error: var(--rose-red);
     /* Background-Colors */
     --color-fill: var(--thistle);
     --color-button-primary: #ffffff;
@@ -39,6 +41,7 @@
     /* BorderColors */
     --color-border-outline: var(--color-text-base);
     --color-border-outline-hover: #3b82f600;
+    --color-border-google-hover: var(--besslans-color)
   }
 
   .theme-secondary {

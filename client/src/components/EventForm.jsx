@@ -7,6 +7,10 @@ import Select from 'react-select';
 import { AuthContext } from '../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
+//Test
+import { ToastContainer, toast } from 'react-toastify';
+import { failToast, successToast } from '../utils/toasts.js';
+
 export default function EventForm({ theme }) {
   const [categories, setCategories] = useState();
   const { user } = useContext(AuthContext);
@@ -38,8 +42,9 @@ export default function EventForm({ theme }) {
       console.log(categories);
       postEvent(formData);
     } else {
-      console.log('else');
-      navigate('/login');
+      // console.log('else');
+      failToast('You have to be logged in to create an event.');
+      // navigate('/login');
     }
   };
   const options = [
@@ -285,6 +290,7 @@ export default function EventForm({ theme }) {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
