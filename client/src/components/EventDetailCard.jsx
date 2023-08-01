@@ -69,7 +69,7 @@ export default function EventDetailCard({ theme }) {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between space-y-4 md:space-y-0 sm:mb-6">
+        <div className="flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 sm:mb-6">
           <div>
             <div className="flex space-x-2 items-center">
               <PencilIcon className="h-4 w-4" />
@@ -79,7 +79,7 @@ export default function EventDetailCard({ theme }) {
               {event && event.createdAt && event.createdAt.split("T")[0]}
             </p>
           </div>
-          <div className="md:ml-[6rem]">
+          <div className="">
             <div className="flex space-x-2 items-center ">
               <CalendarDaysIcon className="h-4 w-4" />
               <p className="text-sm md:text-base text-gray-600">Start Date</p>
@@ -88,10 +88,18 @@ export default function EventDetailCard({ theme }) {
               {event && event.eventDate && event.eventDate.split("T")[0]}
             </p>
           </div>
-          <div></div>
+          <div className="md:ml">
+            <div className="flex space-x-2 items-center pr-10">
+              <ClockIcon className="h-4 w-4" />
+              <p className="text-sm md:text-base text-gray-600">Time</p>
+            </div>
+            <p className="ml-6 text-md  md:text-base lg:text-xl">
+              {event.time}
+            </p>
+          </div>
         </div>
 
-        <div className="md:mb-6 flex flex-col sm:flex-row justify-start md:space-x-40 space-y-4 md:space-y-0 sm:mb-6">
+        <div className=" flex flex-col md:flex-row  md:space-x-20  lg:space-x-20 space-y-4 md:space-y-0 mb-6 ">
           <div>
             <div className="flex space-x-2 items-center ">
               <MapPinIcon className="h-4 w-4" />
@@ -101,15 +109,7 @@ export default function EventDetailCard({ theme }) {
               {event.address}
             </p>
           </div>
-          <div className="md:ml">
-            <div className="flex space-x-2 items-center ">
-              <ClockIcon className="h-4 w-4" />
-              <p className="text-sm md:text-base text-gray-600">Time</p>
-            </div>
-            <p className="ml-6 text-md  md:text-base lg:text-xl">
-              {event.time}
-            </p>
-          </div>
+
           <div>
             <button className="py-1 px-5  mx-auto bg-skin-button-secondary text-white text-skin-inverted rounded-md hover:scale-110 hover:bg-skin-button-secondary-hover duration-300 hover:text-white ">
               Join
