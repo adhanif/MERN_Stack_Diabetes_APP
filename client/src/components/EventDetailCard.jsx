@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axiosClient from "../axiosClient";
 import { useForm } from "react-hook-form";
 import SecondaryBtn from "./buttons/SecondaryBtn";
+import SmallSecondaryBtn from "./buttons/SmallSecondaryBtn";
 import {
   MapPinIcon,
   CalendarDaysIcon,
@@ -68,7 +69,7 @@ export default function EventDetailCard({ theme }) {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0 sm:mb-6">
+        <div className="flex flex-col sm:flex-row justify-between space-y-4 md:space-y-0 sm:mb-6">
           <div>
             <div className="flex space-x-2 items-center">
               <PencilIcon className="h-4 w-4" />
@@ -78,7 +79,7 @@ export default function EventDetailCard({ theme }) {
               {event && event.createdAt && event.createdAt.split("T")[0]}
             </p>
           </div>
-          <div className="md:ml-[11rem]">
+          <div className="md:ml-[6rem]">
             <div className="flex space-x-2 items-center ">
               <CalendarDaysIcon className="h-4 w-4" />
               <p className="text-sm md:text-base text-gray-600">Start Date</p>
@@ -90,7 +91,7 @@ export default function EventDetailCard({ theme }) {
           <div></div>
         </div>
 
-        <div className="md:mb-6 flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0 sm:mb-6">
+        <div className="md:mb-6 flex flex-col sm:flex-row justify-start md:space-x-40 space-y-4 md:space-y-0 sm:mb-6">
           <div>
             <div className="flex space-x-2 items-center ">
               <MapPinIcon className="h-4 w-4" />
@@ -109,7 +110,11 @@ export default function EventDetailCard({ theme }) {
               {event.time}
             </p>
           </div>
-          <div></div>
+          <div>
+            <button className="py-1 px-5  mx-auto bg-skin-button-secondary text-white text-skin-inverted rounded-md hover:scale-110 hover:bg-skin-button-secondary-hover duration-300 hover:text-white ">
+              Join
+            </button>
+          </div>
         </div>
 
         <div className="md:mb-6">
