@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function CardArticle({ theme, article }) {
+export default function CardArticle({ theme, article }) {
   const navigate = useNavigate();
-  const { _id, title, banner, author, date, tags, textSum } = article;
+  // const { _id, title, banner, author, date, tag, textSum } = article;
+  const { _id, image, title, author, updated, tags, textSum } = article;
   //   console.log(title);
   const handleClick=()=>{
       navigate(`/article/${_id}`)
@@ -15,17 +16,11 @@ function CardArticle({ theme, article }) {
     >
 
       <div
-        className="relative min-h-[320px] max-h-[320px] flex w-full justify-center rounded-t-xl"
+        className="relative min-h-[320px] bg-cover bg-no-repeat max-h-[320px] flex w-full justify-center rounded-t-xl"
         style={{
-          backgroundImage: "url(" + banner.image + ")",
-          backgroundRepeat: banner.repeat,
-          backgroundSize: banner.size,
+          backgroundImage: "url(" + image + ")",
         }}
       >
-        {/* //Profile picture (separate div for future positioning) */}
-        {/* <div className='absolute -bottom-12 flex h-[95px] w-[95px] items-center justify-center rounded-full border-[4px] border-white'>
-          <img className='h-full w-full rounded-full' src={profilePic} alt='' />
-        </div> */}
       </div>
 
       {/* //General info */}
@@ -35,14 +30,14 @@ function CardArticle({ theme, article }) {
         </h4>
 
         <div className="flex flex-wrap gap-3 lg:text-lg p-1">
-          {tags.map((tag, index) => (
+          {tags? tags.map((tag, index) => (
             <div
               className="bg-gray-200 rounded-xl  px-3 py-0.5 border-2"
               key={index}
             >
               {tag}
             </div>
-          ))}
+          )) : (null)}
         </div>
 
       
@@ -51,11 +46,11 @@ function CardArticle({ theme, article }) {
         <p className="text-denim italic lg:text-xl">{textSum}</p>
       </div>
       <div className="flex justify-between text-gray-400 w-full p-1 text-base">
-        <p className="">Author: {author}</p>
-        <p className="">Updated: {date}</p>
+        <p className="">Author: {author.name}</p>
+        <p className="">Updated: {new Date(updated).toLocaleDateString()}</p>
       </div></div>
     </div>
   );
 }
 
-export default CardArticle;
+
