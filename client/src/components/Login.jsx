@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import google from '../assets/Google_Logo1.svg';
 import login from '../assets/Login-amico1.svg';
@@ -10,12 +10,15 @@ import axiosClient from '../axiosClient';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+//For Authorization
+import { AuthContext } from '../context/AuthProvider';
 
 export default function Login({ theme }) {
   const navigate = useNavigate();
   const navigateToSignUp = useNavigate();
   const notify = () => toast.success('The form has been submitted');
   const notifyError = () => toast.error('The form has not submitted');
+  const { login } = useContext(AuthContext);
 
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -36,6 +39,9 @@ export default function Login({ theme }) {
     axiosClient
       .post('/login', data)
       .then((res) => {
+        // console.log('In then');
+        // console.log(res.data);
+        login(res.data);
         notify();
         navigate('/');
       })
