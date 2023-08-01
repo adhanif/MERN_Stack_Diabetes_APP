@@ -67,12 +67,12 @@ export default function EventForm({ theme }) {
       <div className='container flex max-w-[1200px] justify-center'>
         {/* Left Side */}
 
-        <div className='hidden bg-event-Image bg-cover lg:flex lg:w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[15px] '>
+        <div className='hidden bg-event-Image bg-cover lg:flex lg:w-1/2 overflow-hidden lg:shadow-lg rounded-l-[15px] '>
           {/* <img src='/src/images/20220415_151625.jpg' alt='bla' /> */}
         </div>
 
         {/* Right Side */}
-        <div className='bg-white lg:w-1/2  max-w-[600px] h-fit lg:shadow-2xl rounded-[15px] lg:rounded-l-none flex flex-col justify-center '>
+        <div className='bg-white lg:w-1/2  max-w-[600px] h-fit lg:shadow-lg rounded-[15px] lg:rounded-l-none flex flex-col justify-center '>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className='flex flex-col w-full px-12 py-12 h-full'
