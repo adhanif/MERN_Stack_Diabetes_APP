@@ -1,7 +1,7 @@
-const { Event } = require('../models/event');
+const { Event } = require("../models/event");
 
 // const geocoder = require('../utils/geocoder');
-const fs = require('fs');
+const fs = require("fs");
 const addEvent = async (req, res, next) => {
   try {
     const {
@@ -27,7 +27,7 @@ const addEvent = async (req, res, next) => {
       categories: JSON.parse(categories),
       targetGroup,
       image: req.file.secure_url,
-      location: { type: 'Point', coordinates: req.location.coordinates },
+      location: { type: "Point", coordinates: req.location.coordinates },
       city: req.location.city._id,
       participants,
       address,
@@ -37,7 +37,7 @@ const addEvent = async (req, res, next) => {
     res.status(201).json(newEvent);
   } catch (error) {
     console.log(error);
-    console.log('error creating event');
+    console.log("error creating event");
     next(error);
   }
 };
@@ -51,7 +51,6 @@ const deleteEvent = async (req, res) => {
 
 const getAllEvents = async (req, res, next) => {
   try {
-
     const page = req.query.page || 1;
     const limit = req.query.limit || 5;
 
@@ -72,12 +71,10 @@ const getAllEvents = async (req, res, next) => {
 };
 
 const getEvent = async (req, res, next) => {
-  console.log('getEvent function called');
+  const { id } = req.params;
 
-  console.log(req.body);
-  const { _id } = req.body;
   try {
-    const event = await Event.findById(_id);
+    const event = await Event.findById(id);
     res.status(201).json(event);
   } catch (error) {
     next(error);
@@ -85,7 +82,7 @@ const getEvent = async (req, res, next) => {
 };
 
 const getNextEvents = async (req, res, next) => {
-  console.log('getNExtEvents');
+  console.log("getNExtEvents");
   // console.log(req.params);
   const { amount } = req.params;
   //console.log(amount);
@@ -98,7 +95,6 @@ const getNextEvents = async (req, res, next) => {
   try {
     //Get amounnt of events from Database
 
-    console.log('before db');
     // const events = await Event.find();
     const events = await Event.find({ eventDate: { $gte: date } })
       .sort({
@@ -120,7 +116,7 @@ const getNextEvents = async (req, res, next) => {
     */
 
     if (events.length == 0) {
-      res.status(201).json(['No upmcoming Events']);
+      res.status(201).json(["No upmcoming Events"]);
     } else {
       res.status(201).json(events);
     }
@@ -132,7 +128,6 @@ const getNextEvents = async (req, res, next) => {
 
 const getEventsOfUser = async (req, res, next) => {
   const userId = req.params.userId;
-  console.log(userId);
   try {
     const events = await Event.find({ creator: userId });
     res.status(201).json(events);
@@ -140,6 +135,11 @@ const getEventsOfUser = async (req, res, next) => {
     console.log(error);
     next(error);
   }
+};
+
+const getAllEventComments = async (req, res, next) => {
+  const { eventId } = req.params;
+  console.log(eventId);
 };
 
 module.exports = {
@@ -150,4 +150,5 @@ module.exports = {
   getNextEvents,
   // getNearByEvents,
   getEventsOfUser,
+  getAllEventComments,
 };

@@ -7,7 +7,7 @@ export const anne = {
     'https://media.licdn.com/dms/image/D4E03AQEzDBqwufCEXA/profile-displayphoto-shrink_800_800/0/1687971813661?e=1695254400&v=beta&t=bE9bLuqsH_eOXpTVOW6NBRbqUR05JfPHgERvYUqJFBE',
   banner: {
     image:
-      'https://media.licdn.com/dms/image/D4E16AQFrvycMf6HNeQ/profile-displaybackgroundimage-shrink_350_1400/0/1687941091720?e=1695254400&v=beta&t=tclhbUIgVgZpMJn05HIHq_uhP-QSsxnxX5AM8rV5eVM',
+      'https://images.unsplash.com/photo-1517384084767-6bc118943770?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
     repeat: 'no-repeat',
     size: 'cover',
   },

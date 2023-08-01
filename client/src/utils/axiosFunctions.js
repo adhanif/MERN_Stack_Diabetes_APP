@@ -24,10 +24,10 @@ export const postEvent = async (data) => {
   }
 };
 export const getNextEvents = async (amount) => {
-  console.log(amount);
+  // console.log(amount);
   try {
     const events = await axiosClient.get(`/events/next/${amount}`);
-    console.log('response got from getNextEvents');
+    //console.log('response got from getNextEvents');
     //console.log(events);
     return events;
   } catch (error) {
