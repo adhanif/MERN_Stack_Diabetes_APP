@@ -16,7 +16,6 @@ import Articles from './components/Articles';
 import AllEvents from './components/AllEvents';
 import NewSignUp from './components/NewSignUp';
 import Impressum from './components/Impressum';
-
 import ArticlesAll from './components/ArticlesAll';
 import ArticleDetail from './components/ArticleDetail';
 import Profile from './components/Profile';
