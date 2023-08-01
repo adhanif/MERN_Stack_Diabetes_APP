@@ -1,14 +1,13 @@
 const { Event } = require("../models/event");
-
+const EventComment = require("../models/eventCommentSchema");
 // const geocoder = require('../utils/geocoder');
-const fs = require("fs");
+const fs = require('fs');
 const addEvent = async (req, res, next) => {
   try {
     const {
       title,
       eventDate,
       time,
-      creator,
       eventInfo,
       targetGroup,
       categories,
@@ -16,18 +15,18 @@ const addEvent = async (req, res, next) => {
       location,
       address,
     } = req.body;
-    console.log(creator);
+
     participants = [];
     const newEvent = await Event.create({
       title,
       eventDate,
-      creator,
+      creator: req.user._id,
       time,
       eventInfo,
       categories: JSON.parse(categories),
       targetGroup,
       image: req.file.secure_url,
-      location: { type: "Point", coordinates: req.location.coordinates },
+      location: { type: 'Point', coordinates: req.location.coordinates },
       city: req.location.city._id,
       participants,
       address,
@@ -37,7 +36,7 @@ const addEvent = async (req, res, next) => {
     res.status(201).json(newEvent);
   } catch (error) {
     console.log(error);
-    console.log("error creating event");
+    console.log('error creating event');
     next(error);
   }
 };
@@ -45,7 +44,7 @@ const addEvent = async (req, res, next) => {
 const deleteEvent = async (req, res) => {
   //TODO
 
-  console.log("delete Event function called");
+  console.log('delete Event function called');
   return true;
 };
 
@@ -59,7 +58,7 @@ const getAllEvents = async (req, res, next) => {
     const totalPages = Math.ceil(count / limit);
 
     const events = await Event.find(req.eventQuery)
-      .populate("city")
+      .populate('city')
       .skip(parseInt(skip))
       .limit(parseInt(limit));
 
@@ -82,16 +81,11 @@ const getEvent = async (req, res, next) => {
 };
 
 const getNextEvents = async (req, res, next) => {
-  console.log("getNExtEvents");
-  // console.log(req.params);
+
   const { amount } = req.params;
-  //console.log(amount);
-  console.log(amount);
+
   const date = new Date();
-  // console.log(date.toString());
-  // console.log(date.getDate());
-  // console.log(date.getMonth());
-  // console.log(date.getFullYear());
+
   try {
     //Get amounnt of events from Database
 
@@ -116,7 +110,7 @@ const getNextEvents = async (req, res, next) => {
     */
 
     if (events.length == 0) {
-      res.status(201).json(["No upmcoming Events"]);
+      res.status(201).json(['No upmcoming Events']);
     } else {
       res.status(201).json(events);
     }
@@ -137,18 +131,65 @@ const getEventsOfUser = async (req, res, next) => {
   }
 };
 
+const addEventComment = async (req, res, next) => {
+  const { comment } = req.body;
+  const { id } = req.params;
+  const { _id: userID } = req.user;
+
+  try {
+    const newComment = await EventComment.create({
+      creater: userID,
+      event: id,
+      comment,
+    });
+
+    res.status(201).json({ ...newComment._doc, creater: req.user });
+  } catch (error) {
+    next(error);
+  }
+};
+
 const getAllEventComments = async (req, res, next) => {
-  const { eventId } = req.params;
-  console.log(eventId);
+  const { id } = req.params;
+
+  try {
+    const comments = await EventComment.find({ event: id })
+      .sort("-createdAt")
+      .populate("creater");
+    res.status(200).json(comments);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getJoinEvent = async (req, res, next) => {
+  const { id } = req.params;
+  const { _id } = req.user;
+  console.log(_id);
+  try {
+    const joinEvent = await Event.findByIdAndUpdate(
+      id,
+      { $addToSet: { participants: _id } },
+      { new: true }
+    );
+    if (!joinEvent) {
+      return res.status(404).json({ error: "Event not found" });
+    }
+    res.status(200).json(joinEvent);
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = {
+  getJoinEvent,
   addEvent,
   deleteEvent,
   getAllEvents,
   getEvent,
   getNextEvents,
   // getNearByEvents,
+  addEventComment,
   getEventsOfUser,
   getAllEventComments,
 };

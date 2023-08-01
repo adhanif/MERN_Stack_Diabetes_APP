@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import { AuthContext } from '../context/AuthProvider';
+import AuthProvider, { AuthContext } from '../context/AuthProvider';
 import { useContext, useState } from 'react';
-import { getEventsOfUser } from '../utils/axiosFunctions';
-import EventCard from './EventCard';
+import { getEventsOfUser, postProfilePicture } from '../utils/axiosFunctions';
+
 import ProfileEvent from './ProfileEvent';
+import { useForm } from 'react-hook-form';
+import SecondaryBtn from './buttons/SecondaryBtn';
 
 function Profile({ theme }) {
-  const { user, isLoading, logout } = useContext(AuthContext);
+  const { user, isLoading, login, logout } = useContext(AuthContext);
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -14,6 +16,7 @@ function Profile({ theme }) {
       if (user) {
         const e = await getEventsOfUser(user._id);
         setEvents(e);
+        console.log(user);
       } else {
       }
     };
@@ -21,29 +24,54 @@ function Profile({ theme }) {
     getEvents();
   }, [user]);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    if (user) {
+      const formData = new FormData();
+      formData.append('image', data.image[0]);
+      const u = postProfilePicture(formData);
+
+      login(u);
+    }
+  };
+
   return (
     <div
-      className={`${theme}  fluid mx-auto p-6 md:p-14 flex justify-center bg-skin-fill `}
+      className={`${theme}  fluid w-full mx-auto p-6 md:p-14 flex justify-center bg-skin-fill `}
     >
       <div className='container flex max-w-[1200px] justify-center'>
         {/* Left Side */}
         <div className='hidden lg:flex bg-white w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[15px] '>
           <div className='w-1/2 flex justify-center items-center  bg-white'>
-            {/* <img
-              className='h-2/3 rounded-full'
-              src='https://tecdn.b-cdn.net/img/new/avatars/2.webp'
-              alt='Avatar'
-            /> */}
-            {!isLoading ? (
-              <div className='h-[200px] my-10 w-[200px] flex rounded-full items-center bg-skin-besslans-color '>
-                <div className='mx-auto text-[100px]'>{user.name.at(0)}</div>
+            {user ? (
+              <div className='flex flex-col'>
+                <div className='h-[200px] my-10 w-[200px] flex rounded-full items-center justify-center bg-skin-besslans-color text-8xl text-white'>
+                  <img
+                    className='h-[200px] w-[200px] rounded-full'
+                    src={user.image}
+                    alt='Avatar'
+                  />
+                </div>
+                <form onSubmit={handleSubmit(onSubmit)} action=''>
+                  <input
+                    className='block mb-4'
+                    type='file'
+                    {...register('image', { required: true })}
+                  />
+                  <SecondaryBtn text='Submit' />
+                </form>
               </div>
             ) : (
               ''
             )}
           </div>
           <div className='w-1/2 h-full flex flex-col justify-center gap-5'>
-            {!isLoading ? (
+            {!isLoading && user ? (
               <>
                 <h2 className='text-4xl font-extrabold '>{user.name}</h2>
                 <h3 className='text-xl'>{user.email}</h3>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getNextEvents } from '../../utils/axiosFunctions';
+import { NavLink } from 'react-router-dom';
 
 function NextEvents() {
   const [events, setEvents] = useState([]);
@@ -20,7 +21,11 @@ function NextEvents() {
       {events ? (
         <div className='flex flex-col'>
           {events.map((event) => (
-            <a key={event._id} href='' className='hover:text-skin-base mb-2'>
+            <NavLink
+              to={`/eventDetail/${event._id}`}
+              key={event._id}
+              className='hover:text-skin-base mb-2'
+            >
               <div className='flex justify-center text-lg'>
                 {/* <div className='w-1/3'>
                   <img src={event.image} alt='' />{' '}
@@ -33,7 +38,7 @@ function NextEvents() {
                   {event.eventDate.split('T')[0]}
                 </div>
               </div>
-            </a>
+            </NavLink>
           ))}
         </div>
       ) : (

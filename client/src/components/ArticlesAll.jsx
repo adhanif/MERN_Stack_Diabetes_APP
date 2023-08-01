@@ -1,23 +1,22 @@
-import { useState, useEffect } from "react";
-import CardArticle from "./CardArticle";
-import axiosClient from "../axiosClient";
+import { useState, useEffect } from 'react';
+import CardArticle from './CardArticle';
+import axiosClient from '../axiosClient';
 
-export default function ArticlesAll({theme}) {
-    const [articles, setArticles] = useState([]);
-    const [path, setPath] = useState("/articles");
+export default function ArticlesAll({ theme }) {
+  const [articles, setArticles] = useState([]);
+  const [path, setPath] = useState('/articles');
 
-    useEffect(() => {
-        axiosClient
-            .get(path)
-            .then((res) => {
-                console.log(res.data);
-                setArticles(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, [path]);
-
+  useEffect(() => {
+    axiosClient
+      .get(path)
+      .then((res) => {
+        console.log(res.data);
+        setArticles(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [path]);
 
   return (
     <div className={`${theme} bg-skin-fill flex fluid`}>
@@ -32,5 +31,5 @@ export default function ArticlesAll({theme}) {
         </div>
       
     </div>
-  )
+  );
 }

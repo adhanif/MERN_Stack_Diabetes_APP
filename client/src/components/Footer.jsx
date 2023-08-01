@@ -5,9 +5,11 @@ import StayInTouch from './footerParts/StayInTouch';
 import Social from './footerParts/Social';
 import ReadedArticels from './footerParts/ReadedArticels';
 
-function Footer() {
+function Footer({ theme }) {
   return (
-    <div className='theme-hero flex shadow-2xl justify-around p-4 flex-wrap text-center'>
+    <div
+      className={`${theme} bg-skin-fill flex  shadow-2xl justify-around p-4 flex-wrap text-center`}
+    >
       <div className='hidden px-2 sm:w-1/3 lg:w-1/5 lg:block'>
         <StayInTouch />
       </div>

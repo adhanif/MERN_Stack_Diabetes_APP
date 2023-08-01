@@ -41,7 +41,7 @@
     /* BorderColors */
     --color-border-outline: var(--color-text-base);
     --color-border-outline-hover: #3b82f600;
-    --color-border-google-hover: var(--besslans-color)
+    --color-border-google-hover: var(--besslans-color);
   }
 
   .theme-secondary {
@@ -58,6 +58,23 @@
     --color-button-outline: #ffffff00;
     --color-button-outline-hover: var(--color-text-base);
     /* BorderColors */
-    --color-border-outline: var(--color-text-base)
+    --color-border-outline: var(--color-text-base);
+  }
+
+  .theme-footer {
+    --color-text-base: #383740;
+    --color-text-inverted: #ffffff;
+    --color-text-primary: #bdb2c9;
+    --color-text-secondary: #f4f4f4;
+    --color-text-outline-hover: var(--color-fill);
+    /* Background-Colors */
+    --color-fill: #315a4993;
+    --color-button-primary: #315a4975;
+    --color-button-primary-hover: #d7d5d5;
+    --color-button-secondary: #D56F3E;
+    --color-button-outline: #ffffff00;
+    --color-button-outline-hover: var(--color-text-base);
+    /* BorderColors */
+    --color-border-outline: var(--color-text-base);
   }
 }
