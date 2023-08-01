@@ -8,7 +8,7 @@ import {
   CalendarDaysIcon,
   TagIcon,
   PencilIcon,
-  DocumentIcon,
+  ClockIcon,
   ClipboardDocumentIcon,
 } from "@heroicons/react/24/solid";
 export default function EventDetailCard({ theme }) {
@@ -102,7 +102,7 @@ export default function EventDetailCard({ theme }) {
           </div>
           <div className="md:ml">
             <div className="flex space-x-2 items-center ">
-              <MapPinIcon className="h-4 w-4" />
+              <ClockIcon className="h-4 w-4" />
               <p className="text-sm md:text-base text-gray-600">Time</p>
             </div>
             <p className="ml-6 text-md  md:text-base lg:text-xl">
