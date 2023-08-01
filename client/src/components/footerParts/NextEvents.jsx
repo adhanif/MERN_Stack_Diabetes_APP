@@ -8,7 +8,7 @@ function NextEvents() {
   useEffect(() => {
     const getEvents = async () => {
       const nextEvents = await getNextEvents(amountEventsWanted);
-      console.log(nextEvents.data);
+      //console.log(nextEvents.data);
       setEvents(nextEvents.data);
     };
 
@@ -38,7 +38,7 @@ function NextEvents() {
         </div>
       ) : (
         <div className='text-center'>
-          Unforunatly thera are no events Upcoming
+          Unforunatly there are no events Upcoming
         </div>
       )}
     </div>

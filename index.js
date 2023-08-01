@@ -7,7 +7,9 @@ const { userRouter } = require("./routes/users");
 const { messageRouter } = require("./routes/message");
 const { errorHandler } = require("./middlewares/errorHandler");
 const { eventRouter } = require("./routes/event");
+const { articleRouter } = require("./routes/article");
 const { cityRouter } = require("./routes/city");
+
 const app = express();
 const port = 3000;
 
@@ -27,6 +29,7 @@ app.use("/", userRouter);
 app.use("/message", messageRouter);
 app.use("/events", eventRouter);
 app.use("/cities", cityRouter);
+app.use("/articles", articleRouter);
 
 //Errorhandler
 app.use(errorHandler);
