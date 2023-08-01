@@ -57,6 +57,7 @@ export default {
         skin: {
           'border-outline': 'var(--color-border-outline)',
           'border-outline-hover': 'var(--color-border-outline-hover)',
+          'border-google-hover': 'var(--color-border-google-hover)',
         },
       },
       colors: {

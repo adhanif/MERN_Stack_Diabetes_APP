@@ -14,6 +14,7 @@ function Profile({ theme }) {
       if (user) {
         const e = await getEventsOfUser(user._id);
         setEvents(e);
+      } else {
       }
     };
 
