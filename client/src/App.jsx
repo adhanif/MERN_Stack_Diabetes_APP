@@ -44,7 +44,7 @@ function App() {
         />
       </Routes>
 
-      {/* <AllEvents theme="theme-pink" /> */}
+      <AllEvents theme='theme-pink' />
       {/* <AboutUs theme="theme-pink" />
       <ContactUs theme="theme-pink" /> */}
 
