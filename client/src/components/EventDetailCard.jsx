@@ -1,10 +1,9 @@
-
-import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
-import axiosClient from "../axiosClient";
-import { useForm } from "react-hook-form";
-import SecondaryBtn from "./buttons/SecondaryBtn";
-import dummy from "../assets/dummy.png";
+import React, { useEffect, useState, useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import axiosClient from '../axiosClient';
+import { useForm } from 'react-hook-form';
+import SecondaryBtn from './buttons/SecondaryBtn';
+import dummy from '../assets/dummy.png';
 import {
   MapPinIcon,
   CalendarDaysIcon,
@@ -12,10 +11,8 @@ import {
   PencilIcon,
   ClockIcon,
   ClipboardDocumentIcon,
-
-} from "@heroicons/react/24/solid";
-import { AuthContext } from "../context/AuthProvider";
-
+} from '@heroicons/react/24/solid';
+import { AuthContext } from '../context/AuthProvider';
 
 export default function EventDetailCard({ theme }) {
   const { user } = useContext(AuthContext);
@@ -42,7 +39,6 @@ export default function EventDetailCard({ theme }) {
   };
 
   useEffect(() => {
-
     axiosClient
       .get(`/events/${id}`)
       .then((res) => {
@@ -55,7 +51,6 @@ export default function EventDetailCard({ theme }) {
       .catch((err) => {
         console.log(err);
       });
-
   }, [id]);
 
   return (
@@ -168,37 +163,42 @@ export default function EventDetailCard({ theme }) {
                 Add a comment more
               </label>
 
+              <textarea
+                {...register('comment')}
+                className='mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline mb-3'
+                id='eventInfo'
+                placeholder='Your Comment'
+                cols='30'
+                rows='5'
+              ></textarea>
+              <p className='text-skin-form-error italic'>
+                {errors.comment?.message}
+              </p>
 
-            <textarea
-              {...register("comment")}
-              className="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline mb-3"
-              id="eventInfo"
-              placeholder="Your Comment"
-              cols="30"
-              rows="5"
-            ></textarea>
-            <p className="text-skin-form-error italic">
-              {errors.comment?.message}
-            </p>
-
-            <SecondaryBtn text="Comment" type="submit" />
-          </div>
-        </form>
-        <div className="space-y-5 mb-10">
-          {comments &&
-            comments.map((comment) => {
-              return (
-                <div key={comment._id} className="rounded-md bg-white p-5">
-                  <div className="flex flex-row space-x-6 mb-5">
-                    <img src={dummy} alt="" className="rounded-full w-6 h-6" />
-                    <div className="font-semibold">{comment.creater.name}</div>
-                    <div>{comment.createdAt.split("T")[0]}</div>
+              <SecondaryBtn text='Comment' type='submit' />
+            </div>
+          </form>
+          <div className='space-y-5 mb-10'>
+            {comments &&
+              comments.map((comment) => {
+                return (
+                  <div key={comment._id} className='rounded-md bg-white p-5'>
+                    <div className='flex flex-row space-x-6 mb-5'>
+                      <img
+                        src={dummy}
+                        alt=''
+                        className='rounded-full w-6 h-6'
+                      />
+                      <div className='font-semibold'>
+                        {comment.creater.name}
+                      </div>
+                      <div>{comment.createdAt.split('T')[0]}</div>
+                    </div>
+                    "{comment.comment}"
                   </div>
-                  "{comment.comment}"
-                </div>
-              );
-            })}
-
+                );
+              })}
+          </div>
         </div>
       </div>
     </div>
