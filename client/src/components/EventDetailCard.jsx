@@ -11,12 +11,14 @@ import {
   PencilIcon,
   ClockIcon,
   ClipboardDocumentIcon,
+  UserGroupIcon,
 } from "@heroicons/react/24/solid";
 import { AuthContext } from "../context/AuthProvider";
 
 export default function EventDetailCard({ theme }) {
   const { user } = useContext(AuthContext);
   const [event, setEvent] = useState([]);
+
   const [comments, setComments] = useState([]);
   const { id } = useParams();
 
@@ -38,10 +40,11 @@ export default function EventDetailCard({ theme }) {
   };
 
   const handleJoin = () => {
-
     axiosClient
       .post(`/events/${id}/join`)
-      .then((res) => {})
+      .then((res) => {
+        setEvent(res.data);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -104,12 +107,13 @@ export default function EventDetailCard({ theme }) {
         <div className="flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 sm:mb-6">
           <div>
             <div className="flex space-x-2 items-center">
-              <PencilIcon className="h-4 w-4" />
-              <p className="text-sm md:text-base text-gray-600">Created</p>
+              <UserGroupIcon className="h-4 w-4" />
+              <p className="text-sm md:text-base text-gray-600">
+                {event && event.participants && event.participants.length}{" "}
+                people going
+              </p>
             </div>
-            <p className="ml-6 text-md  md:text-base lg:text-xl">
-              {event && event.createdAt && event.createdAt.split("T")[0]}
-            </p>
+            <p className="ml-6 text-md  md:text-base lg:text-xl"></p>
           </div>
           <div className="">
             <div className="flex space-x-2 items-center ">
