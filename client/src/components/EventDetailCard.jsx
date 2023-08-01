@@ -16,7 +16,6 @@ import { AuthContext } from "../context/AuthProvider";
 
 export default function EventDetailCard({ theme }) {
   const { user } = useContext(AuthContext);
-  console.log(user);
   const [event, setEvent] = useState([]);
   const [comments, setComments] = useState([]);
   const { id } = useParams();
@@ -183,11 +182,13 @@ export default function EventDetailCard({ theme }) {
               return (
                 <div key={comment._id} className="rounded-md bg-white p-5">
                   <div className="flex flex-row space-x-6 mb-5">
-                    <img src={dummy} alt="" className="rounded-full w-6 h-6" />
+                    <img src={dummy} alt="" className="rounded-full w-6 " />
                     <div className="font-semibold">{comment.creater.name}</div>
                     <div>{comment.createdAt.split("T")[0]}</div>
                   </div>
-                  "{comment.comment}"
+                  <div>
+                    <p className="">"{comment.comment}"</p>
+                  </div>
                 </div>
               );
             })}
