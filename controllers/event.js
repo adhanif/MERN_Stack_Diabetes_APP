@@ -16,7 +16,7 @@ const addEvent = async (req, res, next) => {
       location,
       address,
     } = req.body;
-    console.log(creator);
+
     participants = [];
     const newEvent = await Event.create({
       title,
@@ -82,16 +82,10 @@ const getEvent = async (req, res, next) => {
 };
 
 const getNextEvents = async (req, res, next) => {
-  console.log("getNExtEvents");
-  // console.log(req.params);
   const { amount } = req.params;
-  //console.log(amount);
-  console.log(amount);
+
   const date = new Date();
-  // console.log(date.toString());
-  // console.log(date.getDate());
-  // console.log(date.getMonth());
-  // console.log(date.getFullYear());
+
   try {
     //Get amounnt of events from Database
 
@@ -155,8 +149,13 @@ const addEventComment = async (req, res, next) => {
 };
 
 const getAllEventComments = async (req, res, next) => {
-  const { eventId } = req.params;
-  console.log(eventId);
+  const { id } = req.params;
+  try {
+    const comments = await EventComment.find({ event: id });
+    res.status(200).json(comments);
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = {
