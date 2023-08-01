@@ -46,10 +46,10 @@ export default function EventDetailCard({ theme }) {
         {/* <hr className="h-px my-4 bg-gray-400 border-1 dark:bg-gray-700" /> */}
         <div className="mb-6  ">
           <div className="flex space-x-2 items-center mb-2">
-            <TagIcon className="h-6 w-5 " />
+            <TagIcon className="h-4 w-4" />
             <p className="text-sm text-gray-600">Categories</p>
           </div>
-          <div className="mb-2 md:mb-3">
+          <div className="md:mb-2 pl-5">
             {event &&
               event.categories &&
               event.categories.map((category, index) => (
@@ -62,13 +62,25 @@ export default function EventDetailCard({ theme }) {
               ))}
           </div>
         </div>
-        <div>
-          <div className="flex space-x-2 items-center mb-2">
-            <PencilIcon className="h-5 w-5" />
-            <p className="text-sm text-gray-600">Created</p>
+
+        <div className="flex flex-col md:flex-row md:space-x-40 space-y-4 md:space-y-0">
+          <div>
+            <div className="flex space-x-2 items-center">
+              <PencilIcon className="h-4 w-4" />
+              <p className="text-sm text-gray-600">Created</p>
+            </div>
+            <p className="ml-6">{event.createdAt.split("T")[0]}</p>
           </div>
-          <p className="ml-7">{event.createdAt}</p>
+          <div>
+            <div className="flex space-x-2 items-center ">
+              <CalendarDaysIcon className="h-4 w-4" />
+              <p className="text-sm text-gray-600">Start Date</p>
+            </div>
+            <p className="ml-6 text-base">{event.eventDate.split("T")[0]}</p>
+          </div>
         </div>
+        
+
         <div className="w-full flex justify-around p-1">
           <div className="lg:text-xl">{event.eventInfo}</div>
         </div>
