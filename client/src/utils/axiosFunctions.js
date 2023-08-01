@@ -37,7 +37,7 @@ export const getNextEvents = async (amount) => {
 
 export const getEventsOfUser = async (userId) => {
   try {
-    const events = await axiosClient.get(`/events/${userId}`);
+    const events = await axiosClient.get(`/events/myEvents/${userId}`);
     console.log(events.data);
     return events.data;
   } catch (error) {

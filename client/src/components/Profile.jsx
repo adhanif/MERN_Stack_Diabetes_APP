@@ -23,7 +23,7 @@ function Profile({ theme }) {
 
   return (
     <div
-      className={`${theme}  fluid mx-auto p-6 md:p-14 flex justify-center bg-skin-fill `}
+      className={`${theme}  fluid w-full mx-auto p-6 md:p-14 flex justify-center bg-skin-fill `}
     >
       <div className='container flex max-w-[1200px] justify-center'>
         {/* Left Side */}
@@ -35,9 +35,20 @@ function Profile({ theme }) {
               alt='Avatar'
             /> */}
             {!isLoading ? (
-              <div className='h-[200px] my-10 w-[200px] flex rounded-full items-center bg-skin-besslans-color '>
-                <div className='mx-auto text-[100px]'>{user.name.at(0)}</div>
-              </div>
+              <>
+                <div className='flex flex-col'>
+                  <div className='h-[200px] my-10 w-[200px] flex rounded-full items-center justify-center bg-skin-besslans-color text-8xl text-white'>
+                    <div>?</div>
+                  </div>
+                  <div>
+                    <input
+                      className='block mb-4'
+                      type='file'
+                      // {...register('image', { required: true })}
+                    />
+                  </div>
+                </div>
+              </>
             ) : (
               ''
             )}

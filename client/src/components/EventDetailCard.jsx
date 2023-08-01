@@ -27,13 +27,14 @@ export default function EventDetailCard({ theme }) {
     axiosClient.get(`/events/${id}`).then((res) => {
       console.log(res.data);
       setEvent(res.data);
+      window.scrollTo(0, 0);
     });
   }, [id]);
 
   return (
     <div className={`${theme} bg-skin-fill`}>
       <div
-        className={`bg-white shadow-xl rounded-xl relative m-auto my-10 flex max-w-[600px] flex-col bg-clip-border`}
+        className={`bg-white shadow-xl w-2/4 rounded-xl relative m-auto my-10 flex  flex-col bg-clip-border`}
       >
         <div
           className='relative bg-center flex h-96 max-w-[1200px] justify-center rounded-md'
