@@ -29,6 +29,7 @@
     --color-text-primary: #bdb2c9;
     --color-text-secondary: #383740;
     --color-text-outline-hover: #383740;
+    --color-text-form-error: var(--rose-red);
     /* Background-Colors */
     --color-fill: var(--thistle);
     --color-button-primary: #ffffff;
