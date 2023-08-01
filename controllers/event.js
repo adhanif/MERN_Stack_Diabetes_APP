@@ -70,12 +70,9 @@ const getAllEvents = async (req, res, next) => {
 };
 
 const getEvent = async (req, res, next) => {
-  console.log("getEvent function called");
-
-  console.log(req.body);
-  const { _id } = req.body;
+  const { id } = req.params;
   try {
-    const event = await Event.findById(_id);
+    const event = await Event.findById(id);
     res.status(201).json(event);
   } catch (error) {
     next(error);
@@ -96,7 +93,6 @@ const getNextEvents = async (req, res, next) => {
   try {
     //Get amounnt of events from Database
 
-    console.log("before db");
     // const events = await Event.find();
     const events = await Event.find({ eventDate: { $gte: date } })
       .sort({
