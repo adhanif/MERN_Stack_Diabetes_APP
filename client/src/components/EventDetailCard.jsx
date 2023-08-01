@@ -14,21 +14,37 @@ import {
 } from "@heroicons/react/24/solid";
 export default function EventDetailCard({ theme }) {
   const [event, setEvent] = useState([]);
+  const [comments, setComments] = useState([]);
   const { id } = useParams();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {};
+  const onSubmit = (data) => {
+    axiosClient
+      .post(`/events/${id}/comments`, data)
+      .then((res) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
-    axiosClient.get(`/events/${id}`).then((res) => {
-      console.log(res.data);
-      setEvent(res.data);
-    });
-  }, [id]);
+    axiosClient
+      .get(`/events/${id}`)
+      .then((res) => {
+        setEvent(res.data);
+        axiosClient.get(`/events/${id}/comments`).then((res) => {
+          setComments(res.data);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id, comments]);
 
   return (
     <div
@@ -142,7 +158,6 @@ export default function EventDetailCard({ theme }) {
             <textarea
               {...register("comment")}
               className="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline mb-3"
-              name="eventInfo"
               id="eventInfo"
               placeholder="Your Comment"
               cols="30"
@@ -151,9 +166,16 @@ export default function EventDetailCard({ theme }) {
             <p className="text-skin-form-error italic">
               {errors.comment?.message}
             </p>
-            <SecondaryBtn text="Comment" />
+
+            <SecondaryBtn text="Comment" type="submit" />
           </div>
         </form>
+        <div>
+          {comments &&
+            comments.map((comment) => {
+              return <div key={comment._id}>{comment.comment}</div>;
+            })}
+        </div>
       </div>
     </div>
   );

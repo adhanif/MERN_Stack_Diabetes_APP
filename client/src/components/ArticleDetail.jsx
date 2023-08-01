@@ -7,6 +7,7 @@ import CommentList from "./CommentList";
 export default function ArticleDetail({ theme }) {
   const { id } = useParams();
   const [article, setArticle] = useState();
+  
 
   useEffect(() => {
     axiosClient
