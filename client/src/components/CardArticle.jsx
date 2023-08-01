@@ -11,12 +11,12 @@ export default function CardArticle({ theme, article }) {
   }
   return (
     <div
-      className={`${theme} bg-skin-fill shadow-2xl rounded-xl relative m-5 flex h-auto flex-col bg-clip-border cursor-pointer lg:w-[45%]`}
+      className={`${theme} bg-skin-fill lg:w-[40%] min-w-[400px] shadow-2xl rounded-xl m-5 flex h-auto flex-col bg-clip-border cursor-pointer`}
     onClick={handleClick}
     >
 
       <div
-        className="relative min-h-[320px] bg-cover bg-no-repeat max-h-[320px] flex w-full justify-center rounded-t-xl"
+        className="relative min-h-[320px] bg-cover bg-center bg-no-repeat max-h-[320px] flex w-full justify-center rounded-t-xl"
         style={{
           backgroundImage: "url(" + image + ")",
         }}
@@ -45,7 +45,7 @@ export default function CardArticle({ theme, article }) {
       <div className="w-full flex justify-around p-1">
         <p className="text-denim italic lg:text-xl">{textSum}</p>
       </div>
-      <div className="flex justify-between text-gray-400 w-full p-1 text-base">
+      <div className="flex justify-between text-gray-400 w-full p-1 pb-2 text-base">
         <p className="">Author: {author.name}</p>
         <p className="">Updated: {new Date(updated).toLocaleDateString()}</p>
       </div></div>

@@ -91,11 +91,11 @@ export default function Login({ theme }) {
               onSubmit={handleSubmit(onSubmit)}
               className='flex flex-col w-full px-12 pt-12 pb-20 h-full'
             >
-              <img
+              {/* <img
                 src={TypeOne_black}
                 alt=''
                 className='object-contain h-14 w-full mx-auto mb-6  lg:hidden'
-              />
+              /> */}
 
               <h1 className='max-w-2xl text-3xl font-bold mb-7 text-skin-inverted'>
                 Sign in
