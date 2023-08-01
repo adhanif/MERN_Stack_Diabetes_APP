@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosClient from "../axiosClient";
+import { useForm } from "react-hook-form";
 import {
   MapPinIcon,
   CalendarDaysIcon,
@@ -12,7 +13,11 @@ import {
 export default function EventDetailCard({ theme }) {
   const [event, setEvent] = useState([]);
   const { id } = useParams();
-
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   useEffect(() => {
     axiosClient.get(`/events/${id}`).then((res) => {
       console.log(res.data);
@@ -50,7 +55,7 @@ export default function EventDetailCard({ theme }) {
               event.categories &&
               event.categories.map((category, index) => (
                 <div
-                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-md   cursor-pointer hover:scale-110 mr-2 mb-5 md:mb-0"
+                  className="inline-block bg-gray-200 rounded-full px-3  text-md   cursor-pointer hover:scale-110 mr-2 mb-5 md:mb-0"
                   key={index}
                 >
                   #{category}
@@ -59,7 +64,7 @@ export default function EventDetailCard({ theme }) {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:mb-6">
+        <div className="flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0 sm:mb-6">
           <div>
             <div className="flex space-x-2 items-center">
               <PencilIcon className="h-4 w-4" />
@@ -97,16 +102,32 @@ export default function EventDetailCard({ theme }) {
           <p className="ml-6 text-base">{event.eventInfo}</p>
         </div>
 
-        <div className="border border-gray-300 rounded-lg mb-40 bg-white">
-          <form action="">
-            <div className="p-5">
-              <textarea
-                placeholder="comment"
-                className="w-full bg-gray-100 rounded border border-gray-400 leading-normal resize-none h-40 py-2 px-3 text-sm  placeholder-gray-700 focus:outline-none focus:bg-white"
-              ></textarea>
-            </div>
-          </form>
-        </div>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col w-full px-12 py-12 h-full"
+        >
+          <div className="mb-4">
+            <label
+              className="text-sm md:text-base lg:text-xl font-bold text-skin-inverted"
+              htmlFor="eventInfo"
+            >
+              What else?
+            </label>
+
+            <textarea
+              {...register("eventInfo")}
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-skin-inverted leading-tight focus:outline-none focus:shadow-outline"
+              name="eventInfo"
+              id="eventInfo"
+              placeholder="Anything else the guests have to know?"
+              cols="30"
+              rows="5"
+            ></textarea>
+            <p className="text-skin-form-error italic">
+              {errors.eventInfo?.message}
+            </p>
+          </div>
+        </form>
       </div>
     </div>
   );
