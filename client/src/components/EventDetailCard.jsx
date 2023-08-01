@@ -80,57 +80,76 @@ export default function EventDetailCard({ theme }) {
       ></div>
 
       {/* //General info */}
-      <div className="mt-10 flex  px-8 gap-2 flex-col ">
-        <h4 className="text-lg  md:text-2xl font-bold p-1 text-center tracking-wide leading-3 mb-10">
+      <div className="mt-20 flex  px-8 gap-2 flex-col ">
+        <h4 className="text-lg  md:text-4xl font-bold p-1 text-center tracking-wide leading-3 mb-20">
           {event.title}
         </h4>
 
-        <div className="md:mb-6">
+        <div className="flex space-x-2 mb-5 md:mb-10">
+          <div>
+            <div className="bg-gray-200 p-2 rounded-lg">
+              <ClipboardDocumentIcon className="h-4 w-4" />
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <p className="text-sm md:text-base text-gray-600">Description</p>
+            <p className=" text-base font-semibold w-100 md:w-3/4">
+              {event.eventInfo}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row md:space-x-40 space-y-5 md:space-y-0 mb-5 md:mb-10">
+          <div className="flex space-x-2 ">
+            <div>
+              <div className="bg-gray-200 p-2 rounded-lg">
+                <CalendarDaysIcon className="h-4 w-4 " />
+              </div>
+            </div>
+            <div>
+              <p className="text-sm md:text-base text-gray-600">
+                Date and Time
+              </p>
+              <p className="text-base font-semibold">
+                {event && event.eventDate && event.eventDate.split("T")[0]},
+                <span className="ml-3">
+                  {event && event && event.time} CEST
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="flex space-x-2 ">
+            <div>
+              <div className="bg-gray-200 p-2 rounded-lg">
+                <MapPinIcon className="h-4 w-4 " />
+              </div>
+            </div>
+            <div>
+              <p className="text-sm md:text-base text-gray-600">Location</p>
+              <p className="text-base font-semibold">{event.address}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="md:mb-8">
           <div className="flex space-x-2 items-center mb-2">
-            <TagIcon className="h-4 w-4" />
+            <div className="bg-gray-200 p-2 rounded-lg">
+              <TagIcon className="h-4 w-4 " />
+            </div>
             <p className="text-sm md:text-base text-gray-600">Categories</p>
           </div>
-          <div className="md:mb-1 pl-5">
+          <div className="md:mb-1 pl-10">
             {event &&
               event.categories &&
               event.categories.map((category, index) => (
                 <div
-                  className="inline-block bg-gray-200 rounded-full px-3 text-md  md:text-base lg:text-xl   cursor-pointer hover:scale-110 mr-2 mb-5 md:mb-0"
+                  className="inline-block bg-gray-200 rounded-full px-3 text-base  font-semibold    cursor-pointer hover:scale-110 mr-2 mb-5 md:mb-0"
                   key={index}
                 >
                   #{category}
                 </div>
               ))}
-          </div>
-        </div>
-
-        <div className="flex flex-col md:flex-row space-x-20 space-y-4 md:space-y-0 sm:mb-6">
-          <div className="">
-            <div className="flex space-x-2 items-center ">
-              <CalendarDaysIcon className="h-4 w-4" />
-              <p className="text-sm md:text-base text-gray-600">Start Date</p>
-            </div>
-            <p className="ml-6  text-sm  md:text-base lg:text-xl">
-              {event && event.eventDate && event.eventDate.split("T")[0]}
-            </p>
-          </div>
-          <div className="md:ml">
-            <div className="flex space-x-2 items-center pr-10">
-              <ClockIcon className="h-4 w-4" />
-              <p className="text-sm md:text-base text-gray-600">Time</p>
-            </div>
-            <p className="ml-6 text-md  md:text-base lg:text-xl">
-              {event.time}
-            </p>
-          </div>
-          <div>
-            <div className="flex space-x-2 items-center ">
-              <MapPinIcon className="h-4 w-4" />
-              <p className="text-sm md:text-base text-gray-600">Location</p>
-            </div>
-            <p className="ml-6 text-md  md:text-base lg:text-xl">
-              {event.address}
-            </p>
           </div>
         </div>
 
@@ -151,16 +170,6 @@ export default function EventDetailCard({ theme }) {
           >
             Join
           </button>
-        </div>
-
-        <div className="md:mb-6">
-          <div className="flex space-x-2 items-center mb-5">
-            <ClipboardDocumentIcon className="h-4 w-4" />
-            <p className="text-sm md:text-base text-gray-600">Description</p>
-          </div>
-          <p className="ml-6 text-md  md:text-base lg:text-xl">
-            {event.eventInfo}
-          </p>
         </div>
 
         <form
