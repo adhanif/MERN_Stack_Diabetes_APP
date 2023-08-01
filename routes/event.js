@@ -15,6 +15,7 @@ const {
   getEventsOfUser,
   getAllEventComments,
   addEventComment,
+  getJoinEvent,
 } = require("../controllers/event");
 
 eventRouter.get("/", eventQuery, getAllEvents);
@@ -22,6 +23,7 @@ eventRouter.get("/:id", getEvent);
 //adnan
 eventRouter.get("/:id/comments", getAllEventComments);
 eventRouter.post("/:id/comments", verifyToken, addEventComment);
+eventRouter.post("/:id/join", verifyToken, getJoinEvent);
 
 eventRouter.get("/:userId", getEventsOfUser);
 

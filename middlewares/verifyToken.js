@@ -6,6 +6,7 @@ const verifyToken = async (req, res, next) => {
     if (token) {
       const payload = jwt.verify(token, process.env.JWT_SECRET);
       req.user = payload;
+
       return next();
     } else {
       throw new ErrorResponse("Forbidden !!!", 403);

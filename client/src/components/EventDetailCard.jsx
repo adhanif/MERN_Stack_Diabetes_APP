@@ -42,8 +42,8 @@ export default function EventDetailCard({ theme }) {
       .get(`/events/${id}`)
       .then((res) => {
         setEvent(res.data);
+        console.log(res.data);
         axiosClient.get(`/events/${id}/comments`).then((res) => {
-          console.log(res.data);
           setComments(res.data);
         });
       })
