@@ -12,7 +12,8 @@ import {
   Marker,
   Popup,
   useMapEvents,
-} from "react-leaflet";
+
+} from 'react-leaflet';
 
 export default function EventCard({ event }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,6 +28,7 @@ export default function EventCard({ event }) {
   };
   return (
     <>
+
       <div className=" flex  bg-white flex-col lg:flex-row border rounded-md overflow-hidden shadow-lg mb-5 lg:w-11/12">
         <div className=" w-full lg:w-2/5">
           <img
@@ -35,6 +37,7 @@ export default function EventCard({ event }) {
             alt={event.title}
           />
         </div>
+
 
         <div className="px-6 py-4    w-3/5">
           <div className="font-bold text-2xl mb-3">{event.title}</div>
@@ -70,9 +73,10 @@ export default function EventCard({ event }) {
           <div className=" flex flex-row mb-5 md:mb-0">
             <div className=" space-x-5">
               <SmallSecondaryBtn
-                text="Show on map"
+                text='Show on map'
                 onClick={handleModalToggle}
               />
+
               <SmallSecondaryBtn
                 text="More Details"
                 onClick={handleEventDetailCard}
@@ -81,17 +85,17 @@ export default function EventCard({ event }) {
           </div>
           {isModalOpen && (
             <div
-              id="defaultModal"
-              tabIndex="-1"
-              aria-hidden="true"
-              className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full  h-full bg-gray-800 bg-opacity-75"
+              id='defaultModal'
+              tabIndex='-1'
+              aria-hidden='true'
+              className='fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full  h-full bg-gray-800 bg-opacity-75'
             >
               <div
-                className="relative bg-white rounded-lg shadow dark:bg-gray-700"
-                style={{ width: "80%" }}
+                className='relative bg-white rounded-lg shadow dark:bg-gray-700'
+                style={{ width: '80%' }}
               >
                 <XMarkIcon
-                  className="h-8 w-8 cursor-pointer hover:bg-gray-200 hover:text-gray-900"
+                  className='h-8 w-8 cursor-pointer hover:bg-gray-200 hover:text-gray-900'
                   onClick={handleModalToggle}
                 />
 
@@ -103,11 +107,11 @@ export default function EventCard({ event }) {
                   }}
                   zoom={13}
                   scrollWheelZoom={true}
-                  style={{ height: "80vh", width: "100%" }}
+                  style={{ height: '80vh', width: '100%' }}
                 >
                   <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                   />
 
                   <Marker
@@ -122,6 +126,7 @@ export default function EventCard({ event }) {
               </div>
             </div>
           )}
+
         </div>
       </div>
     </>
