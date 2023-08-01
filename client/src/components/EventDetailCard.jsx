@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axiosClient from "../axiosClient";
+import {
+  MapPinIcon,
+  CalendarDaysIcon,
+  TagIcon,
+  PencilIcon,
+} from "@heroicons/react/24/solid";
 export default function EventDetailCard({ theme }) {
   const [event, setEvent] = useState([]);
   const { id } = useParams();
@@ -34,23 +40,35 @@ export default function EventDetailCard({ theme }) {
 
       {/* //General info */}
       <div className="mt-6 flex  px-4 gap-2 flex-col">
-        <h4 className="text-xl lg:text-2xl font-bold p-1 text-center">
+        <h4 className="text-xl lg:text-2xl font-bold p-1 text-center tracking-wide leading-3 mb-5">
           {event.title}
         </h4>
-        <hr className="h-px my-4 bg-gray-400 border-1 dark:bg-gray-700" />
-        <div className="flex gap-3 lg:text-lg p-1">
-          {event &&
-            event.categories &&
-            event.categories.map((category, index) => (
-              <div
-                className="bg-gray-200 rounded-xl  px-3 py-0.5 border-2 cursor-pointer hover:scale-110"
-                key={index}
-              >
-                #{category}
-              </div>
-            ))}
+        {/* <hr className="h-px my-4 bg-gray-400 border-1 dark:bg-gray-700" /> */}
+        <div className="mb-6  ">
+          <div className="flex space-x-2 items-center mb-2">
+            <TagIcon className="h-6 w-5 " />
+            <p className="text-sm text-gray-600">Categories</p>
+          </div>
+          <div className="mb-2 md:mb-3">
+            {event &&
+              event.categories &&
+              event.categories.map((category, index) => (
+                <div
+                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-md   cursor-pointer hover:scale-110 mr-2 mb-5 md:mb-0"
+                  key={index}
+                >
+                  #{category}
+                </div>
+              ))}
+          </div>
         </div>
-
+        <div>
+          <div className="flex space-x-2 items-center mb-2">
+            <PencilIcon className="h-5 w-5" />
+            <p className="text-sm text-gray-600">Created</p>
+          </div>
+          <p className="ml-7">{event.createdAt}</p>
+        </div>
         <div className="w-full flex justify-around p-1">
           <div className="lg:text-xl">{event.eventInfo}</div>
         </div>
