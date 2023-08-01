@@ -5,6 +5,7 @@ const upload = require("../middlewares/multer-upload");
 const { cloudinaryUpload } = require("../middlewares/cloudinary-upload");
 const { eventGeoCoder } = require("../middlewares/geoCoder");
 const { eventCity } = require("../middlewares/cityFinder");
+const { verifyToken } = require("../middlewares/verifyToken");
 const {
   addEvent,
   deleteEvent,
@@ -20,7 +21,7 @@ eventRouter.get("/", eventQuery, getAllEvents);
 eventRouter.get("/:id", getEvent);
 //adnan
 eventRouter.get("/:id/comments", getAllEventComments);
-eventRouter.post("/:id/comments", addEventComment);
+eventRouter.post("/:id/comments", verifyToken, addEventComment);
 
 eventRouter.get("/:userId", getEventsOfUser);
 

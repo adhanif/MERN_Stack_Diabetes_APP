@@ -1,5 +1,5 @@
 const { Event } = require("../models/event");
-
+const EventComment = require("../models/eventCommentSchema");
 // const geocoder = require('../utils/geocoder');
 const fs = require("fs");
 const addEvent = async (req, res, next) => {
@@ -138,10 +138,20 @@ const getEventsOfUser = async (req, res, next) => {
 };
 
 const addEventComment = async (req, res, next) => {
-  const { creater, event, comment } = req.params;
-  console.log(req.body);
+  const { comment } = req.body;
+  const { id } = req.params;
+  const { _id: userID } = req.user;
+
   try {
-  } catch (error) {}
+    const newComment = await EventComment.create({
+      creater: userID,
+      event: id,
+      comment,
+    });
+    res.status(201).json(newComment);
+  } catch (error) {
+    next(error);
+  }
 };
 
 const getAllEventComments = async (req, res, next) => {

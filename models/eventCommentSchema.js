@@ -11,12 +11,12 @@ const eventCommSchema = new mongoose.Schema(
       ref: "Event",
     },
     comment: {
-      type: stringify,
+      type: String,
       required: true,
     },
   },
   { timestamps: true }
 );
 
-const eventComment = mongoose.model("eventComment", eventCommSchema);
-module.exports = eventComment;
+const EventComment = mongoose.model("eventComment", eventCommSchema);
+module.exports = EventComment;
