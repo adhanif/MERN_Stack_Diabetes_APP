@@ -33,7 +33,6 @@ export default function AllEvents({ theme }) {
       .get(path + filters + `&page=${page}&limit=${5}`)
       .then(({ data: { page, totalPages, events } }) => {
         setEvents(events);
-        console.log(events);
         // setPage(page);
         setTotalPages(totalPages);
       })

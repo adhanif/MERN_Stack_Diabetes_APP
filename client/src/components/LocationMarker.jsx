@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Marker, Popup, useMapEvents } from "react-leaflet";
 import { BeakerIcon, MapPinIcon } from "@heroicons/react/24/solid";
+import { useNavigate } from "react-router-dom";
 export default function LocationMarker({ event }) {
   const eventDate = new Date(event.eventDate);
 
   const year = eventDate.getFullYear().toString().slice(-2);
   const month = (eventDate.getMonth() + 1).toString().padStart(2, "0");
   const day = eventDate.getDate().toString().padStart(2, "0");
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate(`/eventDetail/${event._id}`);
+  };
 
   return (
     <>
@@ -48,7 +53,12 @@ export default function LocationMarker({ event }) {
           </div>
 
           <div className="bg-grey py-2 rounded mt-6">
-            <h1 className="text-center text-white text-base ">More detail</h1>
+            <h1
+              className="text-center text-white text-base cursor-pointer"
+              onClick={handleNavigate}
+            >
+              More detail
+            </h1>
           </div>
         </div>
       </Popup>
