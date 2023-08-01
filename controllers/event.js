@@ -137,6 +137,13 @@ const getEventsOfUser = async (req, res, next) => {
   }
 };
 
+const addEventComment = async (req, res, next) => {
+  const { creater, event, comment } = req.params;
+  console.log(req.body);
+  try {
+  } catch (error) {}
+};
+
 const getAllEventComments = async (req, res, next) => {
   const { eventId } = req.params;
   console.log(eventId);
@@ -149,6 +156,7 @@ module.exports = {
   getEvent,
   getNextEvents,
   // getNearByEvents,
+  addEventComment,
   getEventsOfUser,
   getAllEventComments,
 };

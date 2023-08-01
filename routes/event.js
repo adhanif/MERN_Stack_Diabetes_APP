@@ -13,13 +13,15 @@ const {
   getNextEvents,
   getEventsOfUser,
   getAllEventComments,
+  addEventComment,
 } = require("../controllers/event");
 
 eventRouter.get("/", eventQuery, getAllEvents);
 eventRouter.get("/:id", getEvent);
 //adnan
 eventRouter.get("/:id/comments", getAllEventComments);
-  
+eventRouter.post("/:id/comments", addEventComment);
+
 eventRouter.get("/:userId", getEventsOfUser);
 
 // eventRouter.post("/create", addEvent);

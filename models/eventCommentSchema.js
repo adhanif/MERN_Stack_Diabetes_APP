@@ -10,7 +10,7 @@ const eventCommSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Event",
     },
-    text: {
+    comment: {
       type: stringify,
       required: true,
     },
