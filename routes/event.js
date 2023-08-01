@@ -1,10 +1,12 @@
 const express = require('express');
 const eventRouter = express.Router();
-const { eventQuery } = require('../middlewares/eventQuery');
-const upload = require('../middlewares/multer-upload');
-const { cloudinaryUpload } = require('../middlewares/cloudinary-upload');
-const { eventGeoCoder } = require('../middlewares/geoCoder');
-const { eventCity } = require('../middlewares/cityFinder');
+const { eventQuery } = require("../middlewares/eventQuery");
+const upload = require("../middlewares/multer-upload");
+const { cloudinaryUpload } = require("../middlewares/cloudinary-upload");
+const { eventGeoCoder } = require("../middlewares/geoCoder");
+const { eventCity } = require("../middlewares/cityFinder");
+const { verifyToken } = require("../middlewares/verifyToken");
+
 const {
   addEvent,
   deleteEvent,
@@ -13,15 +15,22 @@ const {
   getNextEvents,
   getEventsOfUser,
   getAllEventComments,
-} = require('../controllers/event');
-const { verifyToken } = require('../middlewares/verifyToken');
+
+  addEventComment,
+} = require("../controllers/event");
+
 
 eventRouter.get('/', eventQuery, getAllEvents);
 eventRouter.get('/:id', getEvent);
 //adnan
-eventRouter.get('/:id/comments', getAllEventComments);
+
 
 eventRouter.get('/myEvents/:userId', getEventsOfUser);
+eventRouter.get("/:id/comments", getAllEventComments);
+eventRouter.post("/:id/comments", verifyToken, addEventComment);
+
+eventRouter.get("/:userId", getEventsOfUser);
+
 
 // eventRouter.post("/create", addEvent);
 eventRouter.delete('/id', deleteEvent);
