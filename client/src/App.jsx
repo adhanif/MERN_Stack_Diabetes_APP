@@ -22,7 +22,7 @@ import EventDetailCard from './components/EventDetailCard';
 
 function App() {
   return (
-    <>
+    <div className=''>
       <Navbar />
       {/* <EventDetailCard theme="theme-pink" /> */}
       <Routes>
@@ -48,8 +48,8 @@ function App() {
       {/* <AboutUs theme="theme-pink" />
       <ContactUs theme="theme-pink" /> */}
 
-      <Footer />
-    </>
+      <Footer theme='theme-footer' />
+    </div>
   );
 }
 

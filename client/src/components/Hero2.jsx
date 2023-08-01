@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <>
       {/* <div className="relative isolate px-6 pt-14 lg:px-8"> */}
-      <div className='bg-[#315a49c4] flex flex-col-reverse items-center gap-20 px-6 pb-20 w-full space-y-0 md:space-y-0 md:flex-row'>
+      <div className='bg-[#315a49c4] flex flex-col-reverse items-center gap-20 px-6 pb-20 w-full h-full space-y-0 md:space-y-0 md:flex-row'>
         {/* ---------------------------Middle Part-------------------------- */}
         <div className='flex flex-col space-y-8 md:w-1/2  lg:py-10'>
           {/* ---------------Text Part--------------- */}
