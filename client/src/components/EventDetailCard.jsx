@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axiosClient from "../axiosClient";
 import { useForm } from "react-hook-form";
 import SecondaryBtn from "./buttons/SecondaryBtn";
-import SmallSecondaryBtn from "./buttons/SmallSecondaryBtn";
+import dummy from "../assets/dummy.png";
 import {
   MapPinIcon,
   CalendarDaysIcon,
@@ -38,6 +38,7 @@ export default function EventDetailCard({ theme }) {
       .then((res) => {
         setEvent(res.data);
         axiosClient.get(`/events/${id}/comments`).then((res) => {
+          console.log(res.data);
           setComments(res.data);
         });
       })
@@ -170,10 +171,19 @@ export default function EventDetailCard({ theme }) {
             <SecondaryBtn text="Comment" type="submit" />
           </div>
         </form>
-        <div>
+        <div className="space-y-5 mb-10">
           {comments &&
             comments.map((comment) => {
-              return <div key={comment._id}>{comment.comment}</div>;
+              return (
+                <div key={comment._id} className="rounded-md bg-white p-5">
+                  <div className="flex flex-row space-x-6 mb-5">
+                    <img src={dummy} alt="" className="rounded-full w-6 h-6" />
+                    <div className="font-semibold">{comment.creater.name}</div>
+                    <div>{comment.createdAt.split("T")[0]}</div>
+                  </div>
+                  "{comment.comment}"
+                </div>
+              );
             })}
         </div>
       </div>

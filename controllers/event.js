@@ -150,8 +150,11 @@ const addEventComment = async (req, res, next) => {
 
 const getAllEventComments = async (req, res, next) => {
   const { id } = req.params;
+
   try {
-    const comments = await EventComment.find({ event: id });
+    const comments = await EventComment.find({ event: id })
+      .sort("-createdAt")
+      .populate("creater");
     res.status(200).json(comments);
   } catch (error) {
     next(error);
