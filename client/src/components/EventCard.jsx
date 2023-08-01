@@ -27,10 +27,10 @@ export default function EventCard({ event }) {
   };
   return (
     <>
-      <div className=' flex  bg-white flex-col lg:flex-row border rounded-md overflow-hidden shadow-lg mb-5 lg:w-full'>
+      <div className=' flex  bg-white flex-col lg:flex-row border rounded-xl overflow-hidden shadow-lg mb-5 lg:w-full'>
         <div className=' w-full lg:w-2/5'>
           <img
-            className='w-full  object-cover h-[350px] lg:h-[260px] rounded-lg'
+            className='w-full  object-cover h-[350px] lg:h-[260px] rounded-l-lg'
             src={event.image}
             alt={event.title}
           />
