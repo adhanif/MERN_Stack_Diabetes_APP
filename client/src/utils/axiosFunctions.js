@@ -64,3 +64,15 @@ export const getProfile = async () => {
     console.log(error.message);
   }
 };
+
+//To Do route for profile pic
+export const postProfilePicture = async (data) => {
+  try {
+    console.log('in post picture');
+    const response = await axiosClient.post('/profile', data);
+    return response.data;
+  } catch (error) {
+    console.log('ERROR OCCURED AND CATCHED');
+    return false;
+  }
+};

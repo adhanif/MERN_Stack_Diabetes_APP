@@ -17,6 +17,7 @@ const signUp = async (req, res, next) => {
         name,
         password: hashedPassword,
         email,
+        image: '',
       });
       res.status(201).json(createUser);
     }
@@ -76,7 +77,7 @@ const logOut = async (req, res, next) => {
   }
 };
 
-const getProfile = async (req, res) => {
+const getProfile = async (req, res, next) => {
   try {
     console.log('getProfile');
     const { _id } = req.user;
@@ -87,4 +88,18 @@ const getProfile = async (req, res) => {
   }
 };
 
-module.exports = { signUp, signIn, logOut, getProfile };
+const setProfilePicture = async (req, res, next) => {
+  try {
+    console.log(req.user);
+    const { image } = req.body;
+    // const user = await User.findOne(req.user._id).select('+password');
+    await User.updateOne({ _id: req.user._id }, { image: req.file.secure_url });
+    const user = await User.findById(req.user._id);
+    console.log(user);
+    res.status(201).json(user);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { signUp, signIn, logOut, getProfile, setProfilePicture };

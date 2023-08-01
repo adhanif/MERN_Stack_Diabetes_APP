@@ -14,6 +14,7 @@ const {
   getEventsOfUser,
   getAllEventComments,
 } = require('../controllers/event');
+const { verifyToken } = require('../middlewares/verifyToken');
 
 eventRouter.get('/', eventQuery, getAllEvents);
 eventRouter.get('/:id', getEvent);
@@ -26,6 +27,7 @@ eventRouter.get('/myEvents/:userId', getEventsOfUser);
 eventRouter.delete('/id', deleteEvent);
 eventRouter.post(
   '/',
+  verifyToken,
   upload.single('image'),
   cloudinaryUpload,
   eventGeoCoder,
