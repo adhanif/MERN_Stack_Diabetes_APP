@@ -3,6 +3,7 @@ import { AuthContext } from '../context/AuthProvider';
 import { useContext, useState } from 'react';
 import { getEventsOfUser } from '../utils/axiosFunctions';
 import EventCard from './EventCard';
+import ProfileEvent from './ProfileEvent';
 
 function Profile({ theme }) {
   const { user, isLoading, logout } = useContext(AuthContext);
@@ -26,15 +27,19 @@ function Profile({ theme }) {
       <div className='container flex max-w-[1200px] justify-center'>
         {/* Left Side */}
         <div className='hidden lg:flex bg-white w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[15px] '>
-          <div className='w-1/2 flex justify-center items-center'>
+          <div className='w-1/2 flex justify-center items-center  bg-white'>
             {/* <img
               className='h-2/3 rounded-full'
               src='https://tecdn.b-cdn.net/img/new/avatars/2.webp'
               alt='Avatar'
             /> */}
-            <div className='h-[200px] w-[200px] flex rounded-full items-center bg-skin-besslans-color '>
-              <div className='mx-auto text-[100px]'>E</div>
-            </div>
+            {!isLoading ? (
+              <div className='h-[200px] my-10 w-[200px] flex rounded-full items-center bg-skin-besslans-color '>
+                <div className='mx-auto text-[100px]'>{user.name.at(0)}</div>
+              </div>
+            ) : (
+              ''
+            )}
           </div>
           <div className='w-1/2 h-full flex flex-col justify-center gap-5'>
             {!isLoading ? (
@@ -48,11 +53,12 @@ function Profile({ theme }) {
           </div>
         </div>
         {/* Right Side */}
-        <div className='bg-white lg:w-1/2  max-w-[600px] h-fit lg:shadow-2xl rounded-[15px] lg:rounded-l-none flex flex-col justify-center '>
+        <div className='bg-white lg:w-1/2  max-w-[600px]  lg:shadow-2xl rounded-[15px] lg:rounded-l-none flex flex-col justify-center '>
           {!isLoading && events ? (
-            <div className='w-3/4'>
+            <div className='w-full p-6'>
+              <h3 className='text-2xl font-bold mb-6'>My Events</h3>
               {events.map((event) => (
-                <EventCard key={event._id} event={event} />
+                <ProfileEvent key={event._id} event={event} />
               ))}
             </div>
           ) : (

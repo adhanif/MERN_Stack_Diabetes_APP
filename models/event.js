@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const citySchema = new mongoose.Schema({
   name: {
     type: String,
@@ -18,7 +18,7 @@ const eventSchema = new mongoose.Schema(
     },
     city: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "City",
+      ref: 'City',
       required: true,
     },
     eventDate: {
@@ -31,7 +31,7 @@ const eventSchema = new mongoose.Schema(
     },
     creator: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
     },
 
     eventInfo: {
@@ -43,16 +43,16 @@ const eventSchema = new mongoose.Schema(
     categories: {
       type: [String],
       enum: [
-        "education",
-        "awareness",
-        "health",
-        "support",
-        "community",
-        "entertainment",
-        "food",
-        "sports",
-        "family-focused",
-        "children-focused",
+        'education',
+        'awareness',
+        'health',
+        'support',
+        'community',
+        'entertainment',
+        'food',
+        'sports',
+        'family-focused',
+        'children-focused',
       ],
       required: true,
     },
@@ -66,22 +66,22 @@ const eventSchema = new mongoose.Schema(
     location: {
       type: {
         type: String,
-        enum: ["Point"],
+        enum: ['Point'],
         // required: true,
       },
       coordinates: {
         type: [Number],
-        index: "2dsphere",
+        index: '2dsphere',
       },
       formattedAddress: String,
     },
-    participants: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   },
   { timestamps: true }
 );
 // Event.db.articles.createIndex({ subject: "text" });
-eventSchema.index({ title: "text" });
-const Event = mongoose.model("Event", eventSchema);
-const City = mongoose.model("City", citySchema);
-Event.collection.createIndex({ location: "2dsphere" });
+eventSchema.index({ title: 'text' });
+const Event = mongoose.model('Event', eventSchema);
+const City = mongoose.model('City', citySchema);
+Event.collection.createIndex({ location: '2dsphere' });
 module.exports = { Event, City };
