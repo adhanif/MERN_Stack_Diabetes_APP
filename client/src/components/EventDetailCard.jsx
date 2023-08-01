@@ -104,23 +104,13 @@ export default function EventDetailCard({ theme }) {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 sm:mb-6">
-          <div>
-            <div className="flex space-x-2 items-center">
-              <UserGroupIcon className="h-4 w-4" />
-              <p className="text-sm md:text-base text-gray-600">
-                {event && event.participants && event.participants.length}{" "}
-                people going
-              </p>
-            </div>
-            <p className="ml-6 text-md  md:text-base lg:text-xl"></p>
-          </div>
+        <div className="flex flex-col md:flex-row space-x-20 space-y-4 md:space-y-0 sm:mb-6">
           <div className="">
             <div className="flex space-x-2 items-center ">
               <CalendarDaysIcon className="h-4 w-4" />
               <p className="text-sm md:text-base text-gray-600">Start Date</p>
             </div>
-            <p className="ml-6  text-md  md:text-base lg:text-xl">
+            <p className="ml-6  text-sm  md:text-base lg:text-xl">
               {event && event.eventDate && event.eventDate.split("T")[0]}
             </p>
           </div>
@@ -133,9 +123,6 @@ export default function EventDetailCard({ theme }) {
               {event.time}
             </p>
           </div>
-        </div>
-
-        <div className=" flex flex-col md:flex-row  md:space-x-20  lg:space-x-20 space-y-4 md:space-y-0 mb-6 ">
           <div>
             <div className="flex space-x-2 items-center ">
               <MapPinIcon className="h-4 w-4" />
@@ -145,15 +132,25 @@ export default function EventDetailCard({ theme }) {
               {event.address}
             </p>
           </div>
+        </div>
 
+        <div className=" flex flex-col md:flex-row  md:space-x-20  lg:space-x-20 space-y-4 md:space-y-0 mb-6 ">
           <div>
-            <button
-              className="py-1 px-5  mx-auto bg-skin-button-secondary text-white text-skin-inverted rounded-md hover:scale-110 hover:bg-skin-button-secondary-hover duration-300 hover:text-white "
-              onClick={handleJoin}
-            >
-              Join
-            </button>
+            <div className="flex space-x-2 items-center">
+              <UserGroupIcon className="h-4 w-4" />
+              <p className="text-sm md:text-lg font-semibold text-gray-600">
+                {event && event.participants && event.participants.length}{" "}
+                people going
+              </p>
+            </div>
+            <p className="ml-6 text-md  md:text-base lg:text-xl"></p>
           </div>
+          <button
+            className="py-1 px-5  mx-auto bg-skin-button-secondary text-white text-skin-inverted rounded-md hover:scale-110 hover:bg-skin-button-secondary-hover duration-300 hover:text-white "
+            onClick={handleJoin}
+          >
+            Join
+          </button>
         </div>
 
         <div className="md:mb-6">

@@ -32,6 +32,7 @@ eventRouter.delete("/id", deleteEvent);
 eventRouter.post(
   "/",
   upload.single("image"),
+  verifyToken,
   cloudinaryUpload,
   eventGeoCoder,
   eventCity,

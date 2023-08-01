@@ -21,7 +21,7 @@ const addEvent = async (req, res, next) => {
     const newEvent = await Event.create({
       title,
       eventDate,
-      creator,
+      creator: req.user._id,
       time,
       eventInfo,
       categories: JSON.parse(categories),
