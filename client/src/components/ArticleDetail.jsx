@@ -35,7 +35,6 @@ export default function ArticleDetail({ theme }) {
         }}
       >
       </div>
-
           {/* //General info */}
           <div className="mt-6 flex  px-4 gap-2 flex-col">
             <h4 className="text-xl lg:text-2xl font-bold p-1">

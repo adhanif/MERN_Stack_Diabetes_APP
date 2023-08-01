@@ -5,12 +5,11 @@ import SecondaryBtn from "./buttons/SecondaryBtn";
 import axiosClient from "../axiosClient";
 import moment from "moment";
 import Datepicker from "react-tailwindcss-datepicker";
-export default function FilterEvent({ setPath }) {
+export default function FilterEvent({ setFilters }) {
   const [categories, setCategories] = useState("");
   const [distance, setDistance] = useState();
   const [cities, setCities] = useState([]);
   const [city, setCity] = useState("");
-
   const [date, setDate] = useState();
 
   const handleValueChange = (newValue) => {
@@ -61,7 +60,6 @@ export default function FilterEvent({ setPath }) {
   });
 
   const onSubmit = (data) => {
-    console.log(date);
     data.categories = categories;
     data.distance = distance;
 
@@ -76,13 +74,18 @@ export default function FilterEvent({ setPath }) {
       (position) => {
         const { latitude, longitude } = position.coords;
 
-        setPath(
-          `/events?distance=${distance || ""}&categories=${
-            data.categories
-          }&lng=${longitude}&lat=${latitude}&city=${city._id || ""}&cityLng=${
-            city.coordinates?.[0]
-          }&cityLat=${city.coordinates?.[1]}
-          &startDate=${date?.startDate || ""}&endDate=${date?.endDate || ""}`
+        setFilters(
+          `${
+            distance
+              ? `distance=${distance}&lng=${longitude}&lat=${latitude}}`
+              : ""
+          }${data.categories ? `&categories=${data.categories}` : ""}${
+            city._id
+              ? `&city=${city._id}&cityLng=${city.coordinates?.[0]}&cityLat=${city.coordinates?.[1]}`
+              : ""
+          }${date?.startDate ? `&startDate=${date?.startDate}` : ""}${
+            date?.endDate ? `&endDate=${date?.endDate}` : ""
+          }`
         );
       },
       (error) => {
