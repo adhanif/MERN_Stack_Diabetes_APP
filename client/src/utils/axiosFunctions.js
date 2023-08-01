@@ -37,7 +37,7 @@ export const getNextEvents = async (amount) => {
 
 export const getEventsOfUser = async (userId) => {
   try {
-    const events = await axiosClient.get(`/events/${userId}`);
+    const events = await axiosClient.get(`/events/myEvents/${userId}`);
     console.log(events.data);
     return events.data;
   } catch (error) {
@@ -61,5 +61,17 @@ export const getProfile = async () => {
     return user.data;
   } catch (error) {
     console.log(error.message);
+  }
+};
+
+//To Do route for profile pic
+export const postProfilePicture = async (data) => {
+  try {
+    console.log('in post picture');
+    const response = await axiosClient.post('/profile', data);
+    return response.data;
+  } catch (error) {
+    console.log('ERROR OCCURED AND CATCHED');
+    return false;
   }
 };

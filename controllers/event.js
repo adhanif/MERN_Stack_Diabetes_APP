@@ -1,14 +1,13 @@
 const { Event } = require("../models/event");
 const EventComment = require("../models/eventCommentSchema");
 // const geocoder = require('../utils/geocoder');
-const fs = require("fs");
+const fs = require('fs');
 const addEvent = async (req, res, next) => {
   try {
     const {
       title,
       eventDate,
       time,
-      creator,
       eventInfo,
       targetGroup,
       categories,
@@ -27,7 +26,7 @@ const addEvent = async (req, res, next) => {
       categories: JSON.parse(categories),
       targetGroup,
       image: req.file.secure_url,
-      location: { type: "Point", coordinates: req.location.coordinates },
+      location: { type: 'Point', coordinates: req.location.coordinates },
       city: req.location.city._id,
       participants,
       address,
@@ -37,7 +36,7 @@ const addEvent = async (req, res, next) => {
     res.status(201).json(newEvent);
   } catch (error) {
     console.log(error);
-    console.log("error creating event");
+    console.log('error creating event');
     next(error);
   }
 };
@@ -45,7 +44,7 @@ const addEvent = async (req, res, next) => {
 const deleteEvent = async (req, res) => {
   //TODO
 
-  console.log("delete Event function called");
+  console.log('delete Event function called');
   return true;
 };
 
@@ -59,7 +58,7 @@ const getAllEvents = async (req, res, next) => {
     const totalPages = Math.ceil(count / limit);
 
     const events = await Event.find(req.eventQuery)
-      .populate("city")
+      .populate('city')
       .skip(parseInt(skip))
       .limit(parseInt(limit));
 
@@ -82,6 +81,7 @@ const getEvent = async (req, res, next) => {
 };
 
 const getNextEvents = async (req, res, next) => {
+
   const { amount } = req.params;
 
   const date = new Date();
@@ -110,7 +110,7 @@ const getNextEvents = async (req, res, next) => {
     */
 
     if (events.length == 0) {
-      res.status(201).json(["No upmcoming Events"]);
+      res.status(201).json(['No upmcoming Events']);
     } else {
       res.status(201).json(events);
     }
