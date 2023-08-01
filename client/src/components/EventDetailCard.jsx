@@ -16,8 +16,20 @@ export default function EventDetailCard({ theme }) {
     <div
       className={`${theme} bg-skin-fill shadow-2xl rounded-xl relative m-auto my-6 flex h-full w-[65%] flex-col bg-clip-border`}
     >
-      <div className="relative bg-center flex h-96 max-w-[1200px] justify-center ">
-        <img src={event.image} alt={event.title} className="rounded-t-xl" />
+      <div
+        className="relative bg-center flex h-96 max-w-[1200px] justify-center rounded-md"
+        style={{
+          backgroundImage: `url(${event.image})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* <img
+          src={event.image}
+          alt={event.title}
+          className="w-full  object-cover rounded-t-xl"
+        /> */}
       </div>
 
       {/* //General info */}
@@ -25,7 +37,7 @@ export default function EventDetailCard({ theme }) {
         <h4 className="text-xl lg:text-2xl font-bold p-1 text-center">
           {event.title}
         </h4>
-
+        <hr className="h-px my-4 bg-gray-400 border-1 dark:bg-gray-700" />
         <div className="flex gap-3 lg:text-lg p-1">
           {event &&
             event.categories &&
@@ -40,7 +52,7 @@ export default function EventDetailCard({ theme }) {
         </div>
 
         <div className="w-full flex justify-around p-1">
-          <div className="lg:text-xl">text</div>
+          <div className="lg:text-xl">{event.eventInfo}</div>
         </div>
         <div className="flex justify-between text-gray-400 w-full p-1 text-base">
           <p className="">Author: author</p>
