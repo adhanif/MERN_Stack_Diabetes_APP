@@ -4,8 +4,6 @@ import { BeakerIcon, MapPinIcon } from "@heroicons/react/24/solid";
 export default function LocationMarker({ event }) {
   const eventDate = new Date(event.eventDate);
 
-  const hours = eventDate.getHours();
-  const minutes = eventDate.getMinutes();
   const year = eventDate.getFullYear().toString().slice(-2);
   const month = (eventDate.getMonth() + 1).toString().padStart(2, "0");
   const day = eventDate.getDate().toString().padStart(2, "0");
@@ -27,10 +25,7 @@ export default function LocationMarker({ event }) {
           </div>
 
           <div className="flex space-x-4 justify-center mb-3">
-            <div
-              className="flex flex-col bg-mint rounded text-white text-center px-0 py-4 w-24 justify-center"
-              // style={{ flex: "1 0 0" }}
-            >
+            <div className="flex flex-col bg-mint rounded text-white text-center px-0 py-4 w-24 justify-center">
               <p style={{ margin: "0" }} className="font-bold text-base">
                 {day}-{month}-{year}
               </p>
@@ -43,7 +38,8 @@ export default function LocationMarker({ event }) {
               // style={{ flex: "1 0 0" }}
             >
               <p style={{ margin: "0" }} className="font-bold text-base">
-                {hours}:{minutes}
+                {/* {hours}:{minutes} */}
+                {event.time}
               </p>
               <p style={{ margin: "0" }} className="text-base">
                 Starts
