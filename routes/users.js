@@ -14,7 +14,7 @@ const { verifyToken } = require('../middlewares/verifyToken');
 
 userRouter.post('/signup', signUp);
 userRouter.post('/login', signIn);
-userRouter.post('/logout', logOut);
+userRouter.get('/logout', verifyToken, logOut);
 userRouter.get('/profile', verifyToken, getProfile);
 userRouter.post(
   '/profile',

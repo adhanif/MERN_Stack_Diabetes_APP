@@ -71,7 +71,7 @@ function Profile({ theme }) {
                   <img
                     className='h-[200px] w-[200px] rounded-full'
                     src={user.image}
-                    alt='Avatar'
+                    alt=''
                   />
                 </div>
               </div>

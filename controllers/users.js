@@ -70,9 +70,10 @@ const signIn = async (req, res, next) => {
 // user logout
 const logOut = async (req, res, next) => {
   try {
+    console.log('in logout');
     res
       .cookie('access_token', '', { maxAge: 0 })
-      .end('You have been logged out successfully!');
+      .send('You have been logged out successfully!');
   } catch (error) {
     next(error);
   }
