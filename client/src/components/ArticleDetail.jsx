@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 //import { articles } from "../articles/welcome";
 import { useParams } from "react-router-dom";
 import axiosClient from "../axiosClient";
 import CommentList from "./CommentList";
 import SecondaryBtn from "./buttons/SecondaryBtn";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../context/AuthProvider";
 
 export default function ArticleDetail({ theme }) {
+  const { user } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -46,7 +48,7 @@ export default function ArticleDetail({ theme }) {
       .post(`/articles/${id}/comments`, data)
       .then((res) => {
         console.log(res.data);
-        setComments([ res.data, ...comments]);
+        setComments([{ ...res.data, creator: user }, ...comments]);
       })
       .catch((err) => {
         console.log(err);

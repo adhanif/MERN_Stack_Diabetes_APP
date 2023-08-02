@@ -46,12 +46,12 @@ export default function AllEvents({ theme }) {
   };
 
   return (
-    <div className={`${theme} bg-skin-fill`}>
+    <div className={`${theme} bg-skin-fill mt-20 mb-20`}>
       <div
         className={`container flex flex-col mx-auto lg:flex-row  max-w-[1200px] space-y-5 space-x-0 lg:space-x-5 lg:space-y-0`}
       >
         <aside className="w-full sm:w-2/3 md:w-3/4 lg:w-1/4 ">
-          <div className="sticky top-0  w-full py-5">
+          <div className="sticky top-0  w-full py-3">
             <EventMapModal />
             <FilterEvent setFilters={setFilters} events={events} />
           </div>
@@ -76,7 +76,7 @@ export default function AllEvents({ theme }) {
           })}
 
           {/* Pagination  */}
-          <div className="flex w-full justify-center">
+          <div className="flex w-full justify-center mt-10">
             <EventsPagination
               setPage={setPage}
               setPagination={setPagination}

@@ -19,7 +19,8 @@ export default function EventMapModal() {
         <PrimaryBtn
           text='Create Event'
           onClick={() => {
-            navigate('/events');
+
+            navigate("/createEvents");
           }}
         />
       </div>
