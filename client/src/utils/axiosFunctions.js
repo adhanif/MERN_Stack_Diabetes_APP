@@ -37,11 +37,12 @@ export const getNextEvents = async (amount) => {
 
 export const getEventsOfUser = async (userId) => {
   try {
-    const events = await axiosClient.get(`/events/myEvents/${userId}`);
+    const events = await axiosClient.get(`/events/myEvents`);
     console.log(events.data);
     return events.data;
   } catch (error) {
     console.log(error.message);
+    return false;
   }
 };
 
@@ -71,7 +72,16 @@ export const postProfilePicture = async (data) => {
     const response = await axiosClient.post('/profile', data);
     return response.data;
   } catch (error) {
-    console.log('ERROR OCCURED AND CATCHED');
+    console.log('ERROR OCCURED AND CATCHEloginD');
     return false;
+  }
+};
+
+export const getJoinedEvents = async () => {
+  try {
+    const response = await axiosClient.get('/events/joined');
+    return response.data;
+  } catch (error) {
+    console.log('ERROR OCCURED AND CATCHED while tyrin to ge joined Events');
   }
 };

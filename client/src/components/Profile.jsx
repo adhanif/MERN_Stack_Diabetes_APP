@@ -1,24 +1,33 @@
 import React, { useEffect } from 'react';
 import AuthProvider, { AuthContext } from '../context/AuthProvider';
 import { useContext, useState } from 'react';
-import { getEventsOfUser, postProfilePicture } from '../utils/axiosFunctions';
+import {
+  getEventsOfUser,
+  getJoinedEvents,
+  postProfilePicture,
+} from '../utils/axiosFunctions';
 
 import ProfileEvent from './ProfileEvent';
 import { useForm } from 'react-hook-form';
 import SecondaryBtn from './buttons/SecondaryBtn';
 
+//Toasts
+import { ToastContainer, toast } from 'react-toastify';
+import { failToast, successToast } from '../utils/toasts.js';
+
 function Profile({ theme }) {
   const { user, isLoading, login, logout } = useContext(AuthContext);
   const [events, setEvents] = useState([]);
+  const [joined, setJoined] = useState([]);
 
   useEffect(() => {
     const getEvents = async () => {
-      if (user) {
-        const e = await getEventsOfUser(user._id);
-        setEvents(e);
-        console.log(user);
-      } else {
-      }
+      const e = await getEventsOfUser();
+      const j = await getJoinedEvents();
+      setEvents(e);
+      setJoined(j);
+      // console.log(e);
+      // console.log(user);
     };
 
     getEvents();
@@ -31,13 +40,20 @@ function Profile({ theme }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    if (user) {
+    const sendPicture = async () => {
       const formData = new FormData();
       formData.append('image', data.image[0]);
-      const u = postProfilePicture(formData);
-
-      login(u);
-    }
+      const u = await postProfilePicture(formData);
+      console.log(u);
+      if (u != false) {
+        login(u);
+      } else {
+        failToast(
+          'Profile Picture could not be updated. Please try again later.'
+        );
+      }
+    };
+    sendPicture();
   };
 
   return (
@@ -57,14 +73,6 @@ function Profile({ theme }) {
                     alt='Avatar'
                   />
                 </div>
-                <form onSubmit={handleSubmit(onSubmit)} action=''>
-                  <input
-                    className='block mb-4'
-                    type='file'
-                    {...register('image', { required: true })}
-                  />
-                  <SecondaryBtn text='Submit' />
-                </form>
               </div>
             ) : (
               ''
@@ -82,19 +90,53 @@ function Profile({ theme }) {
           </div>
         </div>
         {/* Right Side */}
-        <div className='bg-white lg:w-1/2  max-w-[600px]  lg:shadow-2xl rounded-[15px] lg:rounded-l-none flex flex-col justify-center '>
+        <div className='bg-white lg:w-1/2  max-w-[600px]  lg:shadow-2xl rounded-[15px] lg:rounded-l-none flex flex-col'>
           {!isLoading && events ? (
-            <div className='w-full p-6'>
-              <h3 className='text-2xl font-bold mb-6'>My Events</h3>
-              {events.map((event) => (
-                <ProfileEvent key={event._id} event={event} />
-              ))}
+            <div className='flex flex-col p-6 h-full justify-between'>
+              {/* Created Events */}
+              <div className='w-full'>
+                <h3 className='text-2xl font-bold mb-6'>My Events</h3>
+                {events.length == 0 ? <p>You should create an event.</p> : ''}
+                {events.map((event) => (
+                  <ProfileEvent key={event._id} event={event} />
+                ))}
+              </div>
+
+              {/* Joined Events */}
+              <div className='w-full'>
+                <h3 className='text-2xl font-bold mb-6'>Me Joining</h3>
+                {joined.length == 0 ? <p>You should join some event.</p> : ''}
+                {joined.map((event) => (
+                  <ProfileEvent key={event._id} event={event} />
+                ))}
+              </div>
+
+              {/* Upload pictures */}
+              <div className='flex flex-col'>
+                <h3 className='text-2xl font-bold mb-2'>
+                  Upload Profile Picture
+                </h3>
+                <form
+                  className='flex items-center'
+                  onSubmit={handleSubmit(onSubmit)}
+                  action=''
+                >
+                  <input
+                    className='block mb-4'
+                    type='file'
+                    {...register('image', { required: true })}
+                  />
+
+                  <SecondaryBtn text='Submit' />
+                </form>
+              </div>
             </div>
           ) : (
             'nothing'
           )}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

@@ -1,5 +1,5 @@
-const { Event } = require("../models/event");
-const EventComment = require("../models/eventCommentSchema");
+const { Event } = require('../models/event');
+const EventComment = require('../models/eventCommentSchema');
 // const geocoder = require('../utils/geocoder');
 const fs = require('fs');
 const addEvent = async (req, res, next) => {
@@ -81,7 +81,6 @@ const getEvent = async (req, res, next) => {
 };
 
 const getNextEvents = async (req, res, next) => {
-
   const { amount } = req.params;
 
   const date = new Date();
@@ -121,9 +120,9 @@ const getNextEvents = async (req, res, next) => {
 };
 
 const getEventsOfUser = async (req, res, next) => {
-  const userId = req.params.userId;
   try {
-    const events = await Event.find({ creator: userId });
+    console.log(req.user);
+    const events = await Event.find({ creator: req.user._id });
     res.status(201).json(events);
   } catch (error) {
     console.log(error);
@@ -154,10 +153,24 @@ const getAllEventComments = async (req, res, next) => {
 
   try {
     const comments = await EventComment.find({ event: id })
-      .sort("-createdAt")
-      .populate("creater");
+      .sort('-createdAt')
+      .populate('creater');
     res.status(200).json(comments);
   } catch (error) {
+    next(error);
+  }
+};
+
+const getJoinedEvents = async (req, res, next) => {
+  console.log(' in get joined');
+
+  try {
+    const joinedEvents = await Event.find({
+      participants: { $in: req.user.id },
+    });
+    console.log(joinedEvents);
+    res.status(201).json(joinedEvents);
+      } catch (error) {
     next(error);
   }
 };
@@ -176,6 +189,7 @@ const getJoinEvent = async (req, res, next) => {
       return res.status(404).json({ error: "Event not found" });
     }
     res.status(200).json(joinEvent);
+
   } catch (error) {
     next(error);
   }
@@ -192,4 +206,5 @@ module.exports = {
   addEventComment,
   getEventsOfUser,
   getAllEventComments,
+  getJoinedEvents,
 };
