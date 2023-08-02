@@ -18,7 +18,10 @@ const {
 
   addEventComment,
   getJoinedEvents,
-} = require('../controllers/event');
+  getJoinEvent,
+} = require("../controllers/event");
+
+>>>>>main
 
 eventRouter.get('/', eventQuery, getAllEvents);
 eventRouter.get('/myEvents', verifyToken, getEventsOfUser);
@@ -27,15 +30,23 @@ eventRouter.get('/joined', verifyToken, getJoinedEvents);
 eventRouter.get('/:id', getEvent);
 //adnan
 
-eventRouter.get('/:id/comments', getAllEventComments);
-eventRouter.post('/:id/comments', verifyToken, addEventComment);
+
+
+eventRouter.get('/myEvents/:userId', getEventsOfUser);
+eventRouter.get("/:id/comments", getAllEventComments);
+eventRouter.post("/:id/comments", verifyToken, addEventComment);
+eventRouter.post("/:id/join", verifyToken, getJoinEvent);
+
+eventRouter.get("/:userId", getEventsOfUser);
+
+
 
 // eventRouter.post("/create", addEvent);
 eventRouter.delete('/id', deleteEvent);
 eventRouter.post(
-  '/',
+  "/",
+  upload.single("image"),
   verifyToken,
-  upload.single('image'),
   cloudinaryUpload,
   eventGeoCoder,
   eventCity,

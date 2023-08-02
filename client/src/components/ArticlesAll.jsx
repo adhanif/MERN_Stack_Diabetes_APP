@@ -19,24 +19,17 @@ export default function ArticlesAll({ theme }) {
   }, [path]);
 
   return (
-    <div className={`${theme} bg-skin-fill min-h-[80vh]`}>
-      <div
-        className={`container flex flex-col mx-auto lg:flex-row space-y-5 space-x-0 lg:space-x-5 lg:space-y-0`}
-      >
-        <div className='w-full sm:w-2/3 md:w-3/4  px-2 pt-5'>
-          {articles
-            ? articles.map((article, index) => {
-                return (
-                  <CardArticle
-                    key={article._id}
-                    theme='theme-secondary'
-                    article={article}
-                  />
-                );
-              })
-            : 'no articles available'}
+    <div className={`${theme} bg-skin-fill flex fluid`}>
+      {/* <div
+        className='container justify-center mx-auto space-y-5 space-x-0 lg:flex-row lg:space-x-5 lg:space-y-0'
+      ></div> */}
+        <div className="flex flex-col md:flex-wrap lg:justify-center md:flex-row  px-2 py-5">
+          
+          {articles? articles.map((article, index) => {
+            return <CardArticle key={article._id} theme="theme-secondary" article={article} />;
+          }) : ("no articles available")}
         </div>
-      </div>
+      
     </div>
   );
 }

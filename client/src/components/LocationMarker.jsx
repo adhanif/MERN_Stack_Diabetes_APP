@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Marker, Popup, useMapEvents } from "react-leaflet";
 import { BeakerIcon, MapPinIcon } from "@heroicons/react/24/solid";
+import { useNavigate } from "react-router-dom";
 export default function LocationMarker({ event }) {
   const eventDate = new Date(event.eventDate);
 
-  const hours = eventDate.getHours();
-  const minutes = eventDate.getMinutes();
   const year = eventDate.getFullYear().toString().slice(-2);
   const month = (eventDate.getMonth() + 1).toString().padStart(2, "0");
   const day = eventDate.getDate().toString().padStart(2, "0");
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate(`/eventDetail/${event._id}`);
+  };
 
   return (
     <>
@@ -27,10 +30,7 @@ export default function LocationMarker({ event }) {
           </div>
 
           <div className="flex space-x-4 justify-center mb-3">
-            <div
-              className="flex flex-col bg-mint rounded text-white text-center px-0 py-4 w-24 justify-center"
-              // style={{ flex: "1 0 0" }}
-            >
+            <div className="flex flex-col bg-mint rounded text-white text-center px-0 py-4 w-24 justify-center">
               <p style={{ margin: "0" }} className="font-bold text-base">
                 {day}-{month}-{year}
               </p>
@@ -43,7 +43,8 @@ export default function LocationMarker({ event }) {
               // style={{ flex: "1 0 0" }}
             >
               <p style={{ margin: "0" }} className="font-bold text-base">
-                {hours}:{minutes}
+                {/* {hours}:{minutes} */}
+                {event.time}
               </p>
               <p style={{ margin: "0" }} className="text-base">
                 Starts
@@ -52,7 +53,12 @@ export default function LocationMarker({ event }) {
           </div>
 
           <div className="bg-grey py-2 rounded mt-6">
-            <h1 className="text-center text-white text-base ">More detail</h1>
+            <h1
+              className="text-center text-white text-base cursor-pointer"
+              onClick={handleNavigate}
+            >
+              More detail
+            </h1>
           </div>
         </div>
       </Popup>

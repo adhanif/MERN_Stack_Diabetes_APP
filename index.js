@@ -10,6 +10,10 @@ const { eventRouter } = require("./routes/event");
 const { articleRouter } = require("./routes/article");
 const { cityRouter } = require("./routes/city");
 
+// for deployment (donot delete)
+// const path = require("path");
+// app.use(express.static(path.join(__dirname, "client", "dist")));
+
 const app = express();
 const port = 3000;
 
@@ -31,6 +35,21 @@ app.use("/events", eventRouter);
 app.use("/cities", cityRouter);
 app.use("/articles", articleRouter);
 
+//for deployment (donot delete)
+//For deployment put "/api" before all the routes
+
+// app.use("/api/", userRouter);
+// app.use("/api/message", messageRouter);
+// app.use("/api/events", eventRouter);
+// app.use("/api/cities", cityRouter);
+// app.use("/api/articles", articleRouter);
+
+// for deployment (donot delete)
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+// });
+
+//
 //Errorhandler
 app.use(errorHandler);
 
