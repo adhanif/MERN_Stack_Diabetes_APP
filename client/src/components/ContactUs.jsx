@@ -23,7 +23,7 @@ function ContactUs({ theme }) {
     console.log(data);
     const status = await postMessage(data);
     if (status) {
-      successToast('Thanks for the Message.\nWe will answer in two years');
+      successToast('Thanks for the Message.');
       reset();
     } else {
       failToast('Hallo');
@@ -122,7 +122,7 @@ function ContactUs({ theme }) {
                 type='text'
                 id='subject'
                 name='subject'
-                placeholder='Event'
+                placeholder=''
               />
               <p className='text-skin-form-error italic'>
                 {errors.subject?.message}
