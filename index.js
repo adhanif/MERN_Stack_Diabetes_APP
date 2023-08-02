@@ -27,13 +27,6 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 
-//Routing
-// app.use("/", userRouter);
-// app.use("/message", messageRouter);
-// app.use("/events", eventRouter);
-// app.use("/cities", cityRouter);
-// app.use("/articles", articleRouter);
-
 //for deployment (donot delete)
 //For deployment put "/api" before all the routes
 
