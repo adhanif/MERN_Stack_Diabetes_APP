@@ -18,7 +18,7 @@ export default function EventMapModal() {
         <SecondaryBtn
           text="Create Event"
           onClick={() => {
-            navigate("/events");
+            navigate("/createEvents");
           }}
         />
       </div>
