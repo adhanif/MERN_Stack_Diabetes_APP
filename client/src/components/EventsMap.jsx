@@ -6,8 +6,6 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useState, useEffect } from "react";
 
 export default function EventsMap({ handleModalToggle }) {
-  console.log(handleModalToggle);
-
   const [events, setEvents] = useState(null);
 
   useEffect(() => {
