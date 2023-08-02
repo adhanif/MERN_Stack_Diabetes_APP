@@ -34,7 +34,9 @@ function Profile({ theme }) {
       formData.append('image', data.image[0]);
       const u = await postProfilePicture(formData);
       console.log(u);
-      login(u);
+      if (u != false) {
+        login(u);
+      }
     };
     sendPicture();
   };

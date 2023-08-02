@@ -42,6 +42,7 @@ export const getEventsOfUser = async (userId) => {
     return events.data;
   } catch (error) {
     console.log(error.message);
+    return false;
   }
 };
 
