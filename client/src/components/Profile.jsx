@@ -13,12 +13,10 @@ function Profile({ theme }) {
 
   useEffect(() => {
     const getEvents = async () => {
-      if (user) {
-        const e = await getEventsOfUser(user._id);
-        setEvents(e);
-        console.log(user);
-      } else {
-      }
+      const e = await getEventsOfUser();
+      setEvents(e);
+      console.log(e);
+      console.log(user);
     };
 
     getEvents();
@@ -31,13 +29,14 @@ function Profile({ theme }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    if (user) {
+    const sendPicture = async () => {
       const formData = new FormData();
       formData.append('image', data.image[0]);
-      const u = postProfilePicture(formData);
-
+      const u = await postProfilePicture(formData);
+      console.log(u);
       login(u);
-    }
+    };
+    sendPicture();
   };
 
   return (
@@ -63,6 +62,7 @@ function Profile({ theme }) {
                     type='file'
                     {...register('image', { required: true })}
                   />
+
                   <SecondaryBtn text='Submit' />
                 </form>
               </div>
