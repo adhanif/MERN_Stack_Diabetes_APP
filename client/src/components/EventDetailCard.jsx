@@ -229,18 +229,19 @@ export default function EventDetailCard({ theme }) {
         </div> */}
 
         <div className=' flex flex-col  mb-6 '>
-          <div className='flex space-x-2 items-center mb-2'>
+          <div className='flex space-x-2 mb-2'>
             <div className='bg-gray-200 p-2 h-[60%] rounded-lg'>
               <UserGroupIcon className='h-4 w-4' />
             </div>
-
-            <p className='text-sm md:text-lg '>
-              {event && event.participants && event.participants.length} people
-              going
-            </p>
+            <div>
+              <p className='text-sm md:text-lg '>
+                {event && event.participants && event.participants.length}{' '}
+                people going
+              </p>
+              <SecondaryBtn text='Join' onClick={handleJoin} />
+            </div>
           </div>
           <div className='pl-6'>
-            <SecondaryBtn text='Join' onClick={handleJoin} />
             {/* <button
               className='py-1 px-5  mx-auto bg-skin-button-secondary text-white text-skin-inverted rounded-md hover:scale-110 hover:bg-skin-button-secondary-hover duration-300 hover:text-white '
               onClick={handleJoin}
