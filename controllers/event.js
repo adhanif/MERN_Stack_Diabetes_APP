@@ -161,6 +161,20 @@ const getAllEventComments = async (req, res, next) => {
   }
 };
 
+const getJoinedEvents = async (req, res, next) => {
+  console.log(' in get joined');
+
+  try {
+    const joinedEvents = await Event.find({
+      participants: { $in: req.user.id },
+    });
+    console.log(joinedEvents);
+    res.status(201).json(joinedEvents);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   addEvent,
   deleteEvent,
@@ -171,4 +185,5 @@ module.exports = {
   addEventComment,
   getEventsOfUser,
   getAllEventComments,
+  getJoinedEvents,
 };

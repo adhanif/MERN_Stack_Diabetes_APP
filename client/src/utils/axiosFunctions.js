@@ -77,3 +77,12 @@ export const postProfilePicture = async (data) => {
     return false;
   }
 };
+
+export const getJoinedEvents = async () => {
+  try {
+    const response = await axiosClient.get('/events/joined');
+    return response.data;
+  } catch (error) {
+    console.log('ERROR OCCURED AND CATCHED while tyrin to ge joined Events');
+  }
+};
