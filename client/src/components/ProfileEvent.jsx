@@ -25,7 +25,7 @@ function ProfileEvent({ event }) {
         <p>{event.address}</p>
       </div> */}
       <div className='flex w-4/12 justify-end '>
-        <TrashIcon className='hidden group-hover:block hover:text-red-700 w-6 ' />
+        <TrashIcon className='hidden  hover:text-red-700 w-6 ' />
       </div>
     </div>
   );

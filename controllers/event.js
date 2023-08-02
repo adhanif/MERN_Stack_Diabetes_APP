@@ -165,12 +165,13 @@ const getJoinedEvents = async (req, res, next) => {
   console.log(' in get joined');
 
   try {
+    console.log(req.user._id);
     const joinedEvents = await Event.find({
-      participants: { $in: req.user.id },
+      participants: { $in: req.user._id },
     });
     console.log(joinedEvents);
     res.status(201).json(joinedEvents);
-      } catch (error) {
+  } catch (error) {
     next(error);
   }
 };
@@ -186,10 +187,9 @@ const getJoinEvent = async (req, res, next) => {
       { new: true }
     );
     if (!joinEvent) {
-      return res.status(404).json({ error: "Event not found" });
+      return res.status(404).json({ error: 'Event not found' });
     }
     res.status(200).json(joinEvent);
-
   } catch (error) {
     next(error);
   }

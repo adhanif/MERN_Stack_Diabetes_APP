@@ -60,9 +60,7 @@ export const getProfile = async () => {
   try {
     const user = await axiosClient.get(`/profile`);
     return user.data;
-  } catch (error) {
-    console.log(error.message);
-  }
+  } catch (error) {}
 };
 
 //To Do route for profile pic
@@ -80,6 +78,8 @@ export const postProfilePicture = async (data) => {
 export const getJoinedEvents = async () => {
   try {
     const response = await axiosClient.get('/events/joined');
+    console.log('events joined');
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log('ERROR OCCURED AND CATCHED while tyrin to ge joined Events');
