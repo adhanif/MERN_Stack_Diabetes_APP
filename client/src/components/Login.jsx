@@ -39,8 +39,8 @@ export default function Login({ theme }) {
     axiosClient
       .post('/login', data)
       .then((res) => {
-        // console.log('In then');
-        // console.log(res.data);
+        console.log('Now login Data');
+        console.log(res.data);
         login(res.data);
         notify();
         navigate('/');

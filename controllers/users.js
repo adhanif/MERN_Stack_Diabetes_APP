@@ -44,6 +44,7 @@ const signIn = async (req, res, next) => {
           email: matchUser.email,
           _id: matchUser._id,
           name: matchUser.name,
+          image: matchUser.image,
         };
         console.log(process.env.JWT_SECRET);
 

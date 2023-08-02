@@ -31,6 +31,7 @@ function Profile({ theme }) {
     };
 
     getEvents();
+    getJoinedEvents();
   }, [user]);
 
   const {
@@ -84,9 +85,7 @@ function Profile({ theme }) {
                 <h2 className='text-4xl font-extrabold '>{user.name}</h2>
                 <h3 className='text-xl'>{user.email}</h3>
               </>
-            ) : (
-              'nothing'
-            )}
+            ) : null}
           </div>
         </div>
         {/* Right Side */}
@@ -131,9 +130,7 @@ function Profile({ theme }) {
                 </form>
               </div>
             </div>
-          ) : (
-            'nothing'
-          )}
+          ) : null}
         </div>
       </div>
       <ToastContainer />
