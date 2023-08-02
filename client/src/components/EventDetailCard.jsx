@@ -74,10 +74,11 @@ export default function EventDetailCard({ theme }) {
 
   return (
     <div
-      className={`${theme} bg-skin-fill shadow-2xl rounded-xl relative m-auto my-6 flex h-full w-[65%] flex-col bg-clip-border`}
+      className={`${theme} bg-skin-fill shadow-2xl rounded-xl relative m-auto my-6 flex h-full w-[55%] flex-col bg-clip-border`}
     >
       <div
-        className='relative bg-center flex h-96 max-w-[1200px] justify-center rounded-md'
+
+        className="relative bg-center flex h-96 max-w-[1200px] justify-center rounded-t-md"
         style={{
           backgroundImage: `url(${event.image})`,
           backgroundRepeat: 'no-repeat',
@@ -86,11 +87,10 @@ export default function EventDetailCard({ theme }) {
         }}
       ></div>
 
-      {/* 
-            //Title
-       */}
-      <div className='mt-20 flex  px-8 gap-2 flex-col '>
-        <h4 className='text-lg  md:text-4xl font-bold p-1 text-center tracking-wide leading-10 mb-20'>
+
+      {/* //General info */}
+      <div className="mt-10 flex px-8 gap-2 flex-col ">
+        <h4 className="text-lg  md:text-4xl font-bold p-1 pl-9 tracking-wide leading-10 mb-10">
           {event.title}
         </h4>
 
@@ -103,9 +103,10 @@ export default function EventDetailCard({ theme }) {
               <ClipboardDocumentIcon className='h-4 w-4' />
             </div>
           </div>
-          <div className='flex flex-col'>
-            <p className='text-sm md:text-base text-gray-600'>Description</p>
-            <p className=' text-base font-semibold w-100 md:w-4/5'>
+
+          <div className="flex flex-col">
+            <p className="text-sm md:text-base text-gray-600">Description</p>
+            <p className=" text-base font-semibold w-100 pr-9">
               {event.eventInfo}
             </p>
           </div>
