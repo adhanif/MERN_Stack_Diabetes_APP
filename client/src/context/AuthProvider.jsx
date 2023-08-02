@@ -26,7 +26,8 @@ function AuthProvider({ children }) {
     setIsLoading(false);
   };
 
-  const logout = () => {
+  const logout = async () => {
+    console.log('in Logout');
     setUser(false);
     setIsLoading(false);
   };
