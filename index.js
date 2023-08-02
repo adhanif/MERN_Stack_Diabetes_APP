@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config();
 require("./handlers/db");
 const cors = require("cors");
+const path = require("path");
 const { userRouter } = require("./routes/users");
 const { messageRouter } = require("./routes/message");
 const { errorHandler } = require("./middlewares/errorHandler");
@@ -11,12 +12,10 @@ const { articleRouter } = require("./routes/article");
 const { cityRouter } = require("./routes/city");
 
 // for deployment (donot delete)
-// const path = require("path");
-// app.use(express.static(path.join(__dirname, "client", "dist")));
 
 const app = express();
 const port = 3000;
-
+app.use(express.static(path.join(__dirname, "client", "dist")));
 // Configure CORS
 const corsOptions = {
   origin: "http://localhost:5173",
@@ -29,25 +28,25 @@ app.use(cookieParser());
 app.use(express.json());
 
 //Routing
-app.use("/", userRouter);
-app.use("/message", messageRouter);
-app.use("/events", eventRouter);
-app.use("/cities", cityRouter);
-app.use("/articles", articleRouter);
+// app.use("/", userRouter);
+// app.use("/message", messageRouter);
+// app.use("/events", eventRouter);
+// app.use("/cities", cityRouter);
+// app.use("/articles", articleRouter);
 
 //for deployment (donot delete)
 //For deployment put "/api" before all the routes
 
-// app.use("/api/", userRouter);
-// app.use("/api/message", messageRouter);
-// app.use("/api/events", eventRouter);
-// app.use("/api/cities", cityRouter);
-// app.use("/api/articles", articleRouter);
+app.use("/api/", userRouter);
+app.use("/api/message", messageRouter);
+app.use("/api/events", eventRouter);
+app.use("/api/cities", cityRouter);
+app.use("/api/articles", articleRouter);
 
 // for deployment (donot delete)
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 
 //
 //Errorhandler
