@@ -16,10 +16,10 @@ function Footer({ theme }) {
       <div className='px-2 w-2/3 xxs:w-1/2 xs:w-1/4 sm:w-1/4 lg:w-1/5'>
         <Social />
       </div>
-      <div className='px-2 w-2/3 xxs:w-1/2 xs:w-1/4 sm:w-1/4 lg:w-1/5'>
+      {/* <div className='px-2 w-2/3 xxs:w-1/2 xs:w-1/4 sm:w-1/4 lg:w-1/5'>
         <ReadedArticels />
-      </div>
-      <div className='px-2 w-2/3 xxs:w-1/2 xs:w-1/4 sm:w-1/4 lg:w-1/5'>
+      </div> */}
+      <div className='px-2 w-2/3 xxs:w-1/2 xs:w-1/4 sm:w-1/4 lg:w-[28%]'>
         <NextEvents />
       </div>
       <div className='px-2 w-2/3 xxs:w-1/2 xs:w-1/4 sm:w-1/4 lg:w-1/5'>
