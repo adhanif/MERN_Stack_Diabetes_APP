@@ -5,14 +5,7 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 import { ClockIcon } from "@heroicons/react/24/solid";
 import LocationMarker from "../components/LocationMarker";
 import { Navigate, useNavigate } from "react-router-dom";
-import {
-  MapContainer,
-  TileLayer,
-  useMap,
-  Marker,
-  Popup,
-  useMapEvents,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 
 export default function EventCard({ event }) {
   const [isModalOpen, setIsModalOpen] = useState(false);

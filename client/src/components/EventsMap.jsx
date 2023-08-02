@@ -2,14 +2,7 @@ import React from "react";
 import axiosClient from "../axiosClient";
 import LocationMarker from "../components/LocationMarker";
 import UserMapLocation from "../components/UserMapLocation";
-import {
-  MapContainer,
-  TileLayer,
-  useMap,
-  Marker,
-  Popup,
-  useMapEvents,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useState, useEffect } from "react";
 
 export default function EventsMap({ handleModalToggle }) {

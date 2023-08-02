@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Marker, Popup, useMapEvents } from "react-leaflet";
+import { Popup } from "react-leaflet";
 import { BeakerIcon, MapPinIcon } from "@heroicons/react/24/solid";
 import { useNavigate } from "react-router-dom";
 
