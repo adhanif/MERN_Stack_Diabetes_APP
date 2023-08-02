@@ -16,7 +16,6 @@ export default function UserMapLocation() {
     },
     locationfound(e) {
       setPosition(e.latlng);
-      console.log(e.latlng);
       map.flyTo(e.latlng, map.getZoom());
     },
   });

@@ -10,6 +10,7 @@ export default function EventMapModal() {
   const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen);
   };
+
   return (
     <>
       <div className={`flex flex-col justify-between mb-10`}>
@@ -38,7 +39,7 @@ export default function EventMapModal() {
               onClick={handleModalToggle}
             />
 
-            <EventsMap />
+            <EventsMap handleModalToggle={handleModalToggle} />
           </div>
         </div>
       )}
