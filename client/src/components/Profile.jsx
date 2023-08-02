@@ -67,7 +67,7 @@ function Profile({ theme }) {
           <div className='w-1/2 flex justify-center items-center  bg-white'>
             {user ? (
               <div className='flex flex-col'>
-                <div className='h-[200px] my-10 w-[200px] flex rounded-full items-center justify-center bg-skin-besslans-color text-8xl text-white'>
+                <div className='h-[200px] my-10 w-[200px] flex rounded-xl items-center justify-center bg-skin-besslans-color text-8xl text-white'>
                   <img
                     className='h-[200px] w-[200px] rounded-full'
                     src={user.image}

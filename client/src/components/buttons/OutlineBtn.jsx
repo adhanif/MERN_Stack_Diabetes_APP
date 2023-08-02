@@ -1,5 +1,6 @@
 import React from 'react';
 import StandardBtn from './StandardBtn';
+import OutStdBtn from './OutStdBtn';
 
 function OutlineBtn({ text, onClick, onSubmit }) {
   const classNames =
@@ -7,7 +8,7 @@ function OutlineBtn({ text, onClick, onSubmit }) {
   const hoverClasses =
     'hover:text-skin-outline-hover hover:border-skin-border-outline-hover hover:bg-skin-button-outline-hover duration-500';
   return (
-    <StandardBtn
+    <OutStdBtn
       text={text}
       onClick={onClick}
       classNames={classNames + hoverClasses}
