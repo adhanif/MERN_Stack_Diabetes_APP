@@ -7,6 +7,10 @@ import ProfileEvent from './ProfileEvent';
 import { useForm } from 'react-hook-form';
 import SecondaryBtn from './buttons/SecondaryBtn';
 
+//Toasts
+import { ToastContainer, toast } from 'react-toastify';
+import { failToast, successToast } from '../utils/toasts.js';
+
 function Profile({ theme }) {
   const { user, isLoading, login, logout } = useContext(AuthContext);
   const [events, setEvents] = useState([]);
@@ -36,6 +40,10 @@ function Profile({ theme }) {
       console.log(u);
       if (u != false) {
         login(u);
+      } else {
+        failToast(
+          'Profile Picture could not be updated. Please try again later.'
+        );
       }
     };
     sendPicture();
@@ -97,6 +105,7 @@ function Profile({ theme }) {
           )}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
