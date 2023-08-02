@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import EventCard from "./EventCard";
-import image from "../images/28998.jpg";
+
 import axiosClient from "../axiosClient";
 import FilterEvent from "../components/FilterEvent";
 import EventMapModal from "../components/EventMapModal";

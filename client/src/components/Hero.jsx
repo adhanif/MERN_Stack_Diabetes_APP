@@ -1,8 +1,7 @@
-import LogoWhiteInline from '../images/TypeOne_white_noBG_inline-hiQ.png';
-import HappyKids2 from '../images/happy-kids2.png';
-import OutlineBtn from './buttons/OutlineBtn';
-import Test from './Test';
-import { useNavigate } from 'react-router-dom';
+import LogoWhiteInline from "../images/TypeOne_white_noBG_inline-hiQ.png";
+import HappyKids2 from "../images/happy-kids2.png";
+import OutlineBtn from "./buttons/OutlineBtn";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
   const navigate = useNavigate();
@@ -10,21 +9,21 @@ export default function Hero() {
   return (
     <>
       {/* <div className="relative isolate px-6 pt-14 lg:px-8"> */}
-      <div className='bg-[#315a49c4] flex flex-col-reverse items-center gap-18 px-8 lg:px-16 pb-20 w-full min-h-[100vh] space-y-0 md:space-y-0 md:flex-row'>
+      <div className="bg-[#315a49c4] flex flex-col-reverse items-center gap-18 px-8 lg:px-16 pb-20 w-full min-h-[100vh] space-y-0 md:space-y-0 md:flex-row">
         {/* ---------------------------Middle Part-------------------------- */}
-        <div className='flex flex-col space-y-8 md:w-1/2  lg:py-4'>
+        <div className="flex flex-col space-y-8 md:w-1/2  lg:py-4">
           {/* ---------------Text Part--------------- */}
-          <div className='text-center'>
+          <div className="text-center">
             {/* ---------------Big Logo--------------- */}
-            <img src={LogoWhiteInline} alt='' className='h-30'></img>
+            <img src={LogoWhiteInline} alt="" className="h-30"></img>
             {/* ---------------Big Text--------------- */}
             {/* <h1 className='my-8 text-xl font-bold text-left pl-5 text-gray-100 md:text-lg lg:text-4xl lg:leading-[2.5rem]'>
               Welcome to your personal first aid guide to manage your diabetes
             </h1> */}
-            <h1 className='my-8 text-xl font-bold text-center text-gray-100 md:text-lg lg:text-4xl lg:leading-[2.5rem]'>
+            <h1 className="my-8 text-xl font-bold text-center text-gray-100 md:text-lg lg:text-4xl lg:leading-[2.5rem]">
               - make diabetes your buddy -
             </h1>
-            <p className='text-xl text-left px-5 my-6 text-gray-300'>
+            <p className="text-xl text-left px-5 my-6 text-gray-300">
               Welcome to the TypeOne-app, where young superheroes can learn
               about diabetes, read informative articles and find local events to
               connect with others on a similar journey. Join us to embrace a
@@ -36,11 +35,11 @@ export default function Hero() {
               make diabetes your buddy
             </p> */}
             {/* ---------------Get Started Button--------------- */}
-            <div className='mt-10 flex items-center justify-center gap-x-6'>
+            <div className="mt-10 flex items-center justify-center gap-x-6">
               <OutlineBtn
-                text='Get Started'
+                text="Get Started"
                 onClick={(handleNavigate) => {
-                  navigateToArticles('/articles');
+                  navigateToArticles("/articles");
                 }}
               />
               {/* <a
@@ -60,8 +59,8 @@ export default function Hero() {
           </div>
         </div>
         {/* Image */}
-        <div className='  md:w-1/2  lg:pt-8'>
-          <img src={HappyKids2} alt='' />
+        <div className="  md:w-1/2  lg:pt-8">
+          <img src={HappyKids2} alt="" />
         </div>
       </div>
     </>

@@ -1,11 +1,9 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import "./App.css";
-import Hero2 from "./components/Hero2";
+import Hero2 from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-import Hero from "./components/Hero";
-import Test from "./components/Test";
-import SignUp from "./components/SignUp";
+
 import ContactUs from "./components/ContactUs";
 import EventsMap from "./components/EventsMap";
 import Card from "./components/Card";
