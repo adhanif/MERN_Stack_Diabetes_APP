@@ -14,7 +14,9 @@ import {
 } from "react-leaflet";
 import { useState, useEffect } from "react";
 
-export default function EventsMap() {
+export default function EventsMap({ handleModalToggle }) {
+  console.log(handleModalToggle);
+
   const [events, setEvents] = useState(null);
 
   useEffect(() => {
@@ -51,7 +53,10 @@ export default function EventsMap() {
                 ]}
                 // position={[event.location.lat, event.location.long]}
               >
-                <LocationMarker event={event} />
+                <LocationMarker
+                  event={event}
+                  handleModalToggle={handleModalToggle}
+                />
               </Marker>
             );
           })}

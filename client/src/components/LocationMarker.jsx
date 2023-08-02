@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Marker, Popup, useMapEvents } from "react-leaflet";
 import { BeakerIcon, MapPinIcon } from "@heroicons/react/24/solid";
 import { useNavigate } from "react-router-dom";
-export default function LocationMarker({ event }) {
-  const eventDate = new Date(event.eventDate);
 
+export default function LocationMarker({ event, handleModalToggle }) {
+  const eventDate = new Date(event.eventDate);
   const year = eventDate.getFullYear().toString().slice(-2);
   const month = (eventDate.getMonth() + 1).toString().padStart(2, "0");
   const day = eventDate.getDate().toString().padStart(2, "0");
   const navigate = useNavigate();
+
   const handleNavigate = () => {
+    handleModalToggle();
+
     navigate(`/eventDetail/${event._id}`);
   };
 
@@ -38,12 +41,8 @@ export default function LocationMarker({ event }) {
                 Date
               </p>
             </div>
-            <div
-              className="flex flex-col bg-lilac rounded text-white text-center px-0 py-4  w-24 justify-center"
-              // style={{ flex: "1 0 0" }}
-            >
+            <div className="flex flex-col bg-lilac rounded text-white text-center px-0 py-4  w-24 justify-center">
               <p style={{ margin: "0" }} className="font-bold text-base">
-                {/* {hours}:{minutes} */}
                 {event.time}
               </p>
               <p style={{ margin: "0" }} className="text-base">
