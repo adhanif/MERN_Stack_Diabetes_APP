@@ -160,23 +160,22 @@ export default function EventDetailCard({ theme }) {
           </div>
         </div>
 
-        <div className=" flex flex-col md:flex-row  md:space-x-20  lg:space-x-20 space-y-4 md:space-y-0 mb-6 ">
-          <div>
-            <div className="flex space-x-2 items-center">
-              <UserGroupIcon className="h-4 w-4" />
-              <p className="text-sm md:text-lg font-semibold text-gray-600">
-                {event && event.participants && event.participants.length}{" "}
-                people going
-              </p>
-            </div>
-            <p className="ml-6 text-md  md:text-base lg:text-xl"></p>
+        <div className=" flex flex-col  mb-6 ">
+          <div className="flex space-x-2 items-center mb-2">
+            <UserGroupIcon className="h-4 w-4" />
+            <p className="text-sm md:text-lg font-semibold text-gray-600">
+              {event && event.participants && event.participants.length} people
+              going
+            </p>
           </div>
-          <button
-            className="py-1 px-5  mx-auto bg-skin-button-secondary text-white text-skin-inverted rounded-md hover:scale-110 hover:bg-skin-button-secondary-hover duration-300 hover:text-white "
-            onClick={handleJoin}
-          >
-            Join
-          </button>
+          <div className="pl-6">
+            <button
+              className="py-1 px-5  mx-auto bg-skin-button-secondary text-white text-skin-inverted rounded-md hover:scale-110 hover:bg-skin-button-secondary-hover duration-300 hover:text-white "
+              onClick={handleJoin}
+            >
+              Join
+            </button>
+          </div>
         </div>
 
         <form
@@ -230,7 +229,7 @@ export default function EventDetailCard({ theme }) {
                 <div key={comment._id} className="rounded-md bg-white p-5">
                   <div className="flex flex-row space-x-6 mb-5">
                     <img src={dummy} alt="" className="rounded-full w-6 " />
-                    <div className="font-semibold">{comment.creater.name}</div>
+                    <div className="font-semibold">{comment.creater?.name}</div>
                     <div>{comment.createdAt.split("T")[0]}</div>
                     <div>{`${hours}:${minutes}`}</div>
                   </div>
