@@ -77,8 +77,7 @@ export default function EventDetailCard({ theme }) {
       className={`${theme} bg-skin-fill shadow-2xl rounded-xl relative m-auto my-6 flex h-full w-[55%] flex-col bg-clip-border`}
     >
       <div
-
-        className="relative bg-center flex h-96 max-w-[1200px] justify-center rounded-t-md"
+        className='relative bg-center flex h-96 max-w-[1200px] justify-center rounded-t-md'
         style={{
           backgroundImage: `url(${event.image})`,
           backgroundRepeat: 'no-repeat',
@@ -87,10 +86,9 @@ export default function EventDetailCard({ theme }) {
         }}
       ></div>
 
-
       {/* //General info */}
-      <div className="mt-10 flex px-8 gap-2 flex-col ">
-        <h4 className="text-lg  md:text-4xl font-bold p-1 pl-9 tracking-wide leading-10 mb-10">
+      <div className='mt-10 flex px-8 gap-2 flex-col '>
+        <h4 className='text-lg  md:text-4xl font-bold p-1 pl-9 tracking-wide leading-10 mb-10'>
           {event.title}
         </h4>
 
@@ -104,24 +102,20 @@ export default function EventDetailCard({ theme }) {
             </div>
           </div>
 
-          <div className="flex flex-col">
-            <p className="text-sm md:text-base text-gray-600">Description</p>
-            <p className=" text-base font-semibold w-100 pr-9">
-              {event.eventInfo}
-            </p>
+          <div className='flex flex-col'>
+            <p className='text-sm md:text-lg'>Description</p>
+            <p className=' text-gray-600  w-100 pr-9'>{event.eventInfo}</p>
           </div>
         </div>
 
-        <div className='flex justify-between mb-6'>
+        <div className='flex justify-between mb-6 pr-9'>
           <div className='flex gap-2'>
             <div className='bg-gray-200 h-[60%] p-2 rounded-lg'>
               <CalendarDaysIcon className='h-4 w-4 ' />
             </div>
             <div>
-              <p className='text-sm md:text-base text-gray-600'>
-                Date and Time
-              </p>
-              <p className='text-base font-semibold'>
+              <p className='text-sm md:text-lg'>Date and Time</p>
+              <p className=' text-gray-600 '>
                 {event && event.eventDate && event.eventDate.split('T')[0]},
                 <span className='ml-3'>
                   {event && event && event.time} CEST
@@ -136,8 +130,8 @@ export default function EventDetailCard({ theme }) {
                 <MapPinIcon className='h-4 w-4 ' />
               </div>
               <div>
-                <p className='text-sm md:text-base text-gray-600'>Location</p>
-                <p className='text-base font-semibold'>{event.address}</p>
+                <p className='text-sm md:text-lg '>Location</p>
+                <p className='text-gray-600'>{event.address}</p>
               </div>
             </div>
           </div>
@@ -148,13 +142,13 @@ export default function EventDetailCard({ theme }) {
                 <TagIcon className='h-4 w-4 ' />
               </div>
               <div>
-                <p className='text-sm md:text-base text-gray-600'>Categories</p>
+                <p className='text-sm md:text-lg mb-1'>Categories</p>
                 <div className=''>
                   {event &&
                     event.categories &&
                     event.categories.map((category, index) => (
                       <div
-                        className='inline-block bg-gray-200 rounded-full px-3 text-base  font-semibold    cursor-pointer hover:scale-110 mr-2 mb-5 md:mb-0'
+                        className='inline-block bg-gray-200 rounded-full px-3 text-base cursor-pointer hover:scale-110 mr-2 mb-5 md:mb-0'
                         key={index}
                       >
                         #{category}
@@ -188,7 +182,7 @@ export default function EventDetailCard({ theme }) {
                 <p className='text-sm md:text-base text-gray-600'>
                   Date and Time
                 </p>
-                <p className='text-base font-semibold'>
+                <p className='text-base '>
                   {event && event.eventDate && event.eventDate.split('T')[0]},
                   <span className='ml-3'>
                     {event && event && event.time} CEST
@@ -206,7 +200,7 @@ export default function EventDetailCard({ theme }) {
               </div>
               <div>
                 <p className='text-sm md:text-base text-gray-600'>Location</p>
-                <p className='text-base font-semibold'>{event.address}</p>
+                <p className='text-base '>{event.address}</p>
               </div>
             </div>
           </div>
@@ -224,7 +218,7 @@ export default function EventDetailCard({ theme }) {
                 event.categories &&
                 event.categories.map((category, index) => (
                   <div
-                    className='inline-block bg-gray-200 rounded-full px-3 text-base  font-semibold    cursor-pointer hover:scale-110 mr-2 mb-5 md:mb-0'
+                    className='inline-block bg-gray-200 rounded-full px-3 text-base      cursor-pointer hover:scale-110 mr-2 mb-5 md:mb-0'
                     key={index}
                   >
                     #{category}
@@ -236,19 +230,23 @@ export default function EventDetailCard({ theme }) {
 
         <div className=' flex flex-col  mb-6 '>
           <div className='flex space-x-2 items-center mb-2'>
-            <UserGroupIcon className='h-4 w-4' />
-            <p className='text-sm md:text-lg font-semibold text-gray-600'>
+            <div className='bg-gray-200 p-2 h-[60%] rounded-lg'>
+              <UserGroupIcon className='h-4 w-4' />
+            </div>
+
+            <p className='text-sm md:text-lg '>
               {event && event.participants && event.participants.length} people
               going
             </p>
           </div>
           <div className='pl-6'>
-            <button
+            <SecondaryBtn text='Join' onClick={handleJoin} />
+            {/* <button
               className='py-1 px-5  mx-auto bg-skin-button-secondary text-white text-skin-inverted rounded-md hover:scale-110 hover:bg-skin-button-secondary-hover duration-300 hover:text-white '
               onClick={handleJoin}
             >
               Join
-            </button>
+            </button> */}
           </div>
         </div>
         <div
@@ -310,7 +308,7 @@ export default function EventDetailCard({ theme }) {
                 <div key={comment._id} className='rounded-md bg-white p-5'>
                   <div className='flex flex-row space-x-6 mb-5'>
                     <img src={dummy} alt='' className='rounded-full w-6 ' />
-                    <div className='font-semibold'>{comment.creater?.name}</div>
+                    <div className=''>{comment.creater?.name}</div>
                     <div>{comment.createdAt.split('T')[0]}</div>
                     <div>{`${hours}:${minutes}`}</div>
                   </div>
