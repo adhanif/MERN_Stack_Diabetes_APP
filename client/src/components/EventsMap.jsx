@@ -1,6 +1,4 @@
 import React from "react";
-import markerIconPng from "leaflet/dist/images/marker-icon.png";
-import { Icon } from "leaflet";
 import axiosClient from "../axiosClient";
 import LocationMarker from "../components/LocationMarker";
 import UserMapLocation from "../components/UserMapLocation";
