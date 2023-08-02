@@ -66,15 +66,6 @@ function Profile({ theme }) {
                     alt='Avatar'
                   />
                 </div>
-                <form onSubmit={handleSubmit(onSubmit)} action=''>
-                  <input
-                    className='block mb-4'
-                    type='file'
-                    {...register('image', { required: true })}
-                  />
-
-                  <SecondaryBtn text='Submit' />
-                </form>
               </div>
             ) : (
               ''
@@ -92,13 +83,34 @@ function Profile({ theme }) {
           </div>
         </div>
         {/* Right Side */}
-        <div className='bg-white lg:w-1/2  max-w-[600px]  lg:shadow-2xl rounded-[15px] lg:rounded-l-none flex flex-col justify-center '>
+        <div className='bg-white lg:w-1/2  max-w-[600px]  lg:shadow-2xl rounded-[15px] lg:rounded-l-none flex flex-col'>
           {!isLoading && events ? (
-            <div className='w-full p-6'>
-              <h3 className='text-2xl font-bold mb-6'>My Events</h3>
-              {events.map((event) => (
-                <ProfileEvent key={event._id} event={event} />
-              ))}
+            <div className='flex flex-col p-6 h-full justify-between'>
+              <div className='w-full'>
+                <h3 className='text-2xl font-bold mb-6'>My Events</h3>
+                {events.length == 0 ? <p>You have not created a Event</p> : ''}
+                {events.map((event) => (
+                  <ProfileEvent key={event._id} event={event} />
+                ))}
+              </div>
+              <div className='flex flex-col'>
+                <h3 className='text-2xl font-bold mb-2'>
+                  Upload Profile Picture
+                </h3>
+                <form
+                  className='flex items-center'
+                  onSubmit={handleSubmit(onSubmit)}
+                  action=''
+                >
+                  <input
+                    className='block mb-4'
+                    type='file'
+                    {...register('image', { required: true })}
+                  />
+
+                  <SecondaryBtn text='Submit' />
+                </form>
+              </div>
             </div>
           ) : (
             'nothing'
