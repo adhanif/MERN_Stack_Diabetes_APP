@@ -69,7 +69,7 @@ export default function EventDetailCard({ theme }) {
   }, [id]);
 
   const handleGoBack = () => {
-    navigate('/events');
+    navigate(-1);
   };
 
   return (
