@@ -19,6 +19,7 @@ export default function EventForm({ theme }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -41,6 +42,8 @@ export default function EventForm({ theme }) {
       // console.log(event);
       console.log(categories);
       postEvent(formData);
+      reset();
+      navigate('/events');
     } else {
       // console.log('else');
       failToast('You have to be logged in to create an event.');
