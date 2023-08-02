@@ -50,7 +50,7 @@ function App() {
         <Route path="/about" element={<AboutUs theme="theme-pink" />} />
       </Routes>
 
-      <ContactUs theme="theme-pink" />
+      {/* <ContactUs theme="theme-pink" /> */}
 
       <Footer theme="theme-footer" />
     </div>
