@@ -58,7 +58,7 @@ export default function EventCard({ event }) {
             {event.categories.map((category, index) => {
               return (
                 <span
-                  className="inline-block bg-gray-200 rounded-lg px-3  text-md  mr-2 mb-5 md:mb-0"
+                  className="inline-block bg-gray-200 rounded-lg px-3 py-0.5 text-md  mr-2 mb-5 md:mb-0"
                   key={index}
                 >
                   #{category}
