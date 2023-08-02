@@ -23,6 +23,6 @@ articleRouter.post("/", addArticle);
 
 articleRouter.get("/comments/:id", getComment);
 articleRouter.get("/:id/comments", getAllComments)
-articleRouter.post("/comments", verifyToken, addComment);
+articleRouter.post("/:id/comments", verifyToken, addComment);
 
 module.exports = { articleRouter };

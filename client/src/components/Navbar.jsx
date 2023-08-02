@@ -26,7 +26,13 @@ export default function Navbar() {
           <div className='flex lg:flex-1'>
             <a href='#' className='-m-1.5 p-1.5'>
               <span className='sr-only'>Your Company</span>
+              <NavLink
+              to='/'
+              className='text-xl font-semibold leading-6 hover:text-white'
+            >
               <img className='w-28' src={LogoWhiteIcon} alt='' />
+            </NavLink>
+              
             </a>
           </div>
           <div className='flex lg:hidden'>

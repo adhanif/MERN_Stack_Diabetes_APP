@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BsLinkedin, BsGithub, BsFillEnvelopeFill } from 'react-icons/bs';
 
 function Card({ theme, person }) {
-  const { name, position, profilePic, banner, email, linkedIn, github } =
+  const { name, position, position2, profilePic, banner, email, linkedIn, github } =
     person;
   // console.log(email);
 
@@ -19,18 +19,19 @@ function Card({ theme, person }) {
         }}
       >
         {/* //Profile picture (separate div for future positioning) */}
-        <div className='absolute -bottom-12 flex h-[95px] w-[95px] items-center justify-center rounded-full border-[4px] border-white'>
+        <div className='absolute -bottom-9 flex h-[95px] w-[95px] items-center justify-center rounded-full border-[4px] border-white'>
           <img className='h-full w-full rounded-full' src={profilePic} alt='' />
         </div>
       </div>
 
       {/* //General info */}
-      <div className='mt-16 flex flex-col items-center'>
+      <div className='mt-9 flex flex-col items-center'>
         <h4 className='text-skin-base text-xl lg:text-2xl font-bold'>{name}</h4>
-        <p className='text-denim italic lg:text-xl'>{position}</p>
+        <p className='text-denim italic lg:text-lg'>{position}</p>
+        <p className='text-denim italic lg:text-lg'>{position2}</p>
       </div>
 
-      <div className='mt-6 mb-3 w-full flex justify-around p-2'>
+      <div className='mt-3 mb-3 w-full flex justify-around p-2'>
         <div className='flex flex-col items-center justify-center text-3xl hover:scale-125 duration-300'>
           <a href={`mailto:${email}?subject= Das ist ein Betreff`}>
             <BsFillEnvelopeFill />
