@@ -93,8 +93,8 @@ function Profile({ theme }) {
           {!isLoading && events ? (
             <div className='flex flex-col p-6 h-full justify-between'>
               {/* Created Events */}
-              <div className='w-full'>
-                <h3 className='text-2xl font-bold mb-6'>My Events</h3>
+              <div className='w-full mb-4'>
+                <h3 className='text-2xl font-bold mb-1'>My Events</h3>
                 {events.length == 0 ? <p>You should create an event.</p> : ''}
                 {events.map((event) => (
                   <ProfileEvent key={event._id} event={event} />
@@ -102,8 +102,8 @@ function Profile({ theme }) {
               </div>
 
               {/* Joined Events */}
-              <div className='w-full'>
-                <h3 className='text-2xl font-bold mb-6'>Me Joining</h3>
+              <div className='w-full mb-4'>
+                <h3 className='text-2xl font-bold mb-1'>Me Joining</h3>
                 {joined.length == 0 ? <p>You should join some event.</p> : ''}
                 {joined.map((event) => (
                   <ProfileEvent key={event._id} event={event} />
@@ -112,7 +112,7 @@ function Profile({ theme }) {
 
               {/* Upload pictures */}
               <div className='flex flex-col'>
-                <h3 className='text-2xl font-bold mb-2'>
+                <h3 className='text-2xl font-bold mb-1'>
                   Upload Profile Picture
                 </h3>
                 <form
