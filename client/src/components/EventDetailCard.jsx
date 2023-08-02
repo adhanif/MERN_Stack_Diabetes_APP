@@ -82,7 +82,7 @@ export default function EventDetailCard({ theme }) {
 
       {/* //General info */}
       <div className="mt-20 flex  px-8 gap-2 flex-col ">
-        <h4 className="text-lg  md:text-4xl font-bold p-1 text-center tracking-wide leading-3 mb-20">
+        <h4 className="text-lg  md:text-4xl font-bold p-1 text-center tracking-wide leading-10 mb-20">
           {event.title}
         </h4>
 
@@ -94,7 +94,7 @@ export default function EventDetailCard({ theme }) {
           </div>
           <div className="flex flex-col">
             <p className="text-sm md:text-base text-gray-600">Description</p>
-            <p className=" text-base font-semibold w-100 md:w-3/4">
+            <p className=" text-base font-semibold w-100 md:w-4/5">
               {event.eventInfo}
             </p>
           </div>
