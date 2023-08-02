@@ -39,7 +39,7 @@ export default function Navbar() {
           aria-label='Global'
         >
           <div className='flex lg:flex-1'>
-            <a href='#' className='-m-1.5 p-1.5'>
+            <div className='-m-1.5 p-1.5'>
               <span className='sr-only'>Your Company</span>
               <NavLink
                 to='/'
@@ -47,7 +47,7 @@ export default function Navbar() {
               >
                 <img className='w-28' src={LogoWhiteIcon} alt='' />
               </NavLink>
-            </a>
+            </div>
           </div>
           <div className='flex lg:hidden'>
             <button
