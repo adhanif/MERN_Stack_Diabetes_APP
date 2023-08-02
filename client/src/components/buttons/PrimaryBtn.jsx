@@ -1,16 +1,20 @@
 import React from 'react';
 import StandardBtn from './StandardBtn';
+import TestBtn from './TestBtn';
 
-function PrimaryBtn({ text, onClick, onSubmit }) {
+function PrimaryBtn({ text, onClick, onSubmit, type }) {
   const classNames =
-    'bg-skin-button-primary text-skin-primary hover:text-white hover:shadow-[inset_13rem_0_0_0] hover:shadow-orange-600 duration-[400ms,700ms] transition-[color,box-shadow]';
+    'bg-skin-button-secondary text-skin-base' +
+    ' hover:scale-110 hover:bg-skin-button-secondary-hover' +
+    ' duration-300 hover:text-white';
 
   return (
-    <StandardBtn
+    <TestBtn
       text={text}
       onClick={onClick}
       onSubmit={onSubmit}
       classNames={classNames}
+      type={type}
     />
   );
 }
