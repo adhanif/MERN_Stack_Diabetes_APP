@@ -216,15 +216,26 @@ export default function EventDetailCard({ theme }) {
         <div className="space-y-5 mb-10">
           {comments &&
             comments.map((comment) => {
+              const createdAtDate = new Date(comment.createdAt);
+              const hours = createdAtDate
+                .getHours()
+                .toString()
+                .padStart(2, "0");
+              const minutes = createdAtDate
+                .getMinutes()
+                .toString()
+                .padStart(2, "0");
+
               return (
                 <div key={comment._id} className="rounded-md bg-white p-5">
                   <div className="flex flex-row space-x-6 mb-5">
                     <img src={dummy} alt="" className="rounded-full w-6 " />
                     <div className="font-semibold">{comment.creater.name}</div>
                     <div>{comment.createdAt.split("T")[0]}</div>
+                    <div>{`${hours}:${minutes}`}</div>
                   </div>
                   <div>
-                    <p className="">"{comment.comment}"</p>
+                    <p className="">{`"${comment.comment}"`}</p>
                   </div>
                 </div>
               );
