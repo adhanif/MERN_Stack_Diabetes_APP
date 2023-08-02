@@ -26,13 +26,15 @@ function NextEvents() {
               key={event._id}
               className='hover:text-skin-base mb-2'
             >
-              <div className='flex text-lg w-full justify-between'>
-                <div className=''>
+              <div className='flex text-lg w-full justify-center gap-5'>
+                {/* <div className=''>
                   <img className='w-[50px]' src={event.image} alt='' />{' '}
-                </div>
-                <div className='text-center w-3/6 '>{event.title}</div>
+                </div> */}
+                <div className='text-right w-1/2 '>{event.title}</div>
 
-                <div className='text-left'>{event.eventDate.split('T')[0]}</div>
+                <div className='text-left w-1/2'>
+                  {event.eventDate.split('T')[0]}
+                </div>
               </div>
             </NavLink>
           ))}
