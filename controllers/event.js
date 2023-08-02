@@ -53,7 +53,7 @@ const getAllEvents = async (req, res, next) => {
     const page = req.query.page || 1;
     const limit = req.query.limit || 5;
 
-    const count = await Event.countDocuments(req.eventQuery);
+    const count = await Event.count(req.eventQuery);
     const skip = (page - 1) * limit;
     const totalPages = Math.ceil(count / limit);
 

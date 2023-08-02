@@ -63,13 +63,13 @@ function Profile({ theme }) {
     >
       <div className='container flex max-w-[1200px] justify-center'>
         {/* Left Side */}
-        <div className='hidden lg:flex bg-white w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[15px] '>
-          <div className='w-1/2 flex justify-center items-center  bg-white'>
+        <div className='hidden lg:flex  bg-white w-1/2  overflow-hidden lg:shadow-2xl rounded-l-[15px] '>
+          <div className='w-full flex flex-col justify-end items-center  bg-white'>
             {user ? (
-              <div className='flex flex-col'>
-                <div className='h-[200px] my-10 w-[200px] flex rounded-xl items-center justify-center bg-skin-besslans-color text-8xl text-white'>
+              <div className='flex flex-col pr-5'>
+                <div className='h-[250px] my-10 w-[250px] flex rounded-xl items-center justify-center bg-skin-besslans-color text-8xl text-white'>
                   <img
-                    className='h-[200px] w-[200px] rounded-full'
+                    className='h-[250px] w-[250px] rounded-xl'
                     src={user.image}
                     alt=''
                   />
@@ -78,14 +78,14 @@ function Profile({ theme }) {
             ) : (
               ''
             )}
-          </div>
-          <div className='w-1/2 h-full flex flex-col justify-center gap-5'>
-            {!isLoading && user ? (
-              <>
-                <h2 className='text-4xl font-extrabold '>{user.name}</h2>
-                <h3 className='text-xl'>{user.email}</h3>
-              </>
-            ) : null}
+            <div className='w-full h-full text-center flex flex-col  gap-2'>
+              {!isLoading && user ? (
+                <>
+                  <h2 className='text-4xl font-extrabold '>{user.name}</h2>
+                  <h3 className='text-xl'>{user.email}</h3>
+                </>
+              ) : null}
+            </div>
           </div>
         </div>
         {/* Right Side */}
