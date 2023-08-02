@@ -4,6 +4,7 @@ import axiosClient from "../axiosClient";
 import { useForm } from "react-hook-form";
 import SecondaryBtn from "./buttons/SecondaryBtn";
 import dummy from "../assets/dummy.png";
+import { useNavigate } from "react-router-dom";
 import {
   MapPinIcon,
   CalendarDaysIcon,
@@ -12,15 +13,16 @@ import {
   ClockIcon,
   ClipboardDocumentIcon,
   UserGroupIcon,
+  ArrowLeftIcon,
 } from "@heroicons/react/24/solid";
 import { AuthContext } from "../context/AuthProvider";
 
 export default function EventDetailCard({ theme }) {
   const { user } = useContext(AuthContext);
   const [event, setEvent] = useState([]);
-
   const [comments, setComments] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -66,6 +68,10 @@ export default function EventDetailCard({ theme }) {
       });
   }, [id]);
 
+  const handleGoBack = () => {
+    navigate("/events");
+  };
+
   return (
     <div
       className={`${theme} bg-skin-fill shadow-2xl rounded-xl relative m-auto my-6 flex h-full w-[65%] flex-col bg-clip-border`}
@@ -82,7 +88,7 @@ export default function EventDetailCard({ theme }) {
 
       {/* //General info */}
       <div className="mt-20 flex  px-8 gap-2 flex-col ">
-        <h4 className="text-lg  md:text-4xl font-bold p-1 text-center tracking-wide leading-3 mb-20">
+        <h4 className="text-lg  md:text-4xl font-bold p-1 text-center tracking-wide leading-10 mb-20">
           {event.title}
         </h4>
 
@@ -94,7 +100,7 @@ export default function EventDetailCard({ theme }) {
           </div>
           <div className="flex flex-col">
             <p className="text-sm md:text-base text-gray-600">Description</p>
-            <p className=" text-base font-semibold w-100 md:w-3/4">
+            <p className=" text-base font-semibold w-100 md:w-4/5">
               {event.eventInfo}
             </p>
           </div>
@@ -198,6 +204,13 @@ export default function EventDetailCard({ theme }) {
             </p>
 
             <SecondaryBtn text="Comment" type="submit" />
+          </div>
+          <div
+            className="flex items-center mt-5 cursor-pointer space-x-1"
+            onClick={handleGoBack}
+          >
+            <ArrowLeftIcon className="h-10 w-5  " />
+            <p className="font-medium">Back</p>
           </div>
         </form>
         <div className="space-y-5 mb-10">
