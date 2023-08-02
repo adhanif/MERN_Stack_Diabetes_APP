@@ -57,32 +57,32 @@ export default function Navbar() {
               </NavLink>
             ))} */}
             <NavLink
-              to='/'
-              className='text-xl font-semibold leading-6 hover:text-gray-800'
+              to="/"
+              className="text-xl font-semibold leading-6 hover:text-gray-800"
             >
               Home
             </NavLink>
             <NavLink
-              to='/articles'
-              className='text-xl font-semibold leading-6 hover:text-gray-800'
+              to="/articles"
+              className="text-xl font-semibold leading-6 hover:text-gray-800"
             >
               Articles
             </NavLink>
             <NavLink
-              to='/events'
-              className='text-xl font-semibold leading-6 hover:text-gray-800'
+              to="/events"
+              className="text-xl font-semibold leading-6 hover:text-gray-800"
             >
               Events
             </NavLink>
             <NavLink
-              to='/about'
-              className='text-xl font-semibold leading-6 hover:text-gray-800'
+              to="/about"
+              className="text-xl font-semibold leading-6 hover:text-gray-800"
             >
               About Us
             </NavLink>
             <NavLink
               to="/contactUs"
-              className="text-xl font-semibold leading-6 hover:text-white"
+              className="text-xl font-semibold leading-6 hover:text-gray-800"
             >
               Contact Us
             </NavLink>
@@ -90,16 +90,16 @@ export default function Navbar() {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             {!isLoading && !user && (
               <NavLink
-                to='/login'
-                className='text-xl font-semibold leading-6 hover:text-gray-800'
+                to="/login"
+                className="text-xl font-semibold leading-6 hover:text-gray-800"
               >
                 Log in <span aria-hidden="true">&rarr;</span>
               </NavLink>
             )}
             {!isLoading && user && (
               <NavLink
-                to='/profile'
-                className='text-xl font-semibold leading-6 hover:text-gray-800'
+                to="/profile"
+                className="text-xl font-semibold leading-6 hover:text-gray-800"
               >
                 {user.name}
               </NavLink>
