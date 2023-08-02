@@ -2,7 +2,8 @@ import Elvis2 from "../images/Elvis2.jpg";
 
 export const anne = {
   name: 'Anne Pohlman',
-  position: 'CEO',
+  position: 'Junior Web Dev &',
+  position2: 'Mum of a TypeOne-kid',
   profilePic:
     'https://media.licdn.com/dms/image/D4E03AQEzDBqwufCEXA/profile-displayphoto-shrink_800_800/0/1687971813661?e=1695254400&v=beta&t=bE9bLuqsH_eOXpTVOW6NBRbqUR05JfPHgERvYUqJFBE',
   banner: {
@@ -18,12 +19,13 @@ export const anne = {
 
 export const adnan = {
   name: 'Adnan Hanif',
-  position: 'Tailwindmaster',
+  position: 'Junior Web Dev &',
+  position2: 'Master of Happiness',
   profilePic:
     'https://media.licdn.com/dms/image/D4E35AQFCZAGFrikmGA/profile-framedphoto-shrink_800_800/0/1687940883138?e=1691154000&v=beta&t=Scex3Yk1zwdQr4lQpD1LblLjv7aarIpyW6oJow-pW7s',
   banner: {
     image:
-      'https://media.licdn.com/dms/image/D4E16AQFrvycMf6HNeQ/profile-displaybackgroundimage-shrink_350_1400/0/1687941091720?e=1695254400&v=beta&t=tclhbUIgVgZpMJn05HIHq_uhP-QSsxnxX5AM8rV5eVM',
+      'https://res.cloudinary.com/dwwcxiqr0/image/upload/v1690964201/sands-small_t2e8pa.jpg',
     repeat: 'no-repeat',
     size: 'cover',
   },
@@ -34,12 +36,13 @@ export const adnan = {
 
 export const elvis = {
   name: 'Elvis Bevab',
-  position: 'Sleeper',
+  position: 'Junior Web Dev &',
+  position2: 'Tailwind-Master',
   profilePic: Elvis2,
   // 'https://avatars.design/wp-content/uploads/2016/09/avatar1b.jpg',
   banner: {
     image:
-      'https://i.pinimg.com/736x/5b/1d/06/5b1d066f724f04f580a52a48d434eda3.jpg',
+      'https://res.cloudinary.com/dwwcxiqr0/image/upload/v1690964465/mountains-dark_an88wq.jpg',
     repeat: 'no-repeat',
     size: 'cover',
   },

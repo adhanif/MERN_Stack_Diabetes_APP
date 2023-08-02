@@ -4,11 +4,18 @@ import { useParams } from "react-router-dom";
 import axiosClient from "../axiosClient";
 import CommentList from "./CommentList";
 import SecondaryBtn from "./buttons/SecondaryBtn";
+import { useForm } from "react-hook-form";
 
 export default function ArticleDetail({ theme }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const { id } = useParams();
   const [article, setArticle] = useState();
-  
+
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     axiosClient
@@ -21,6 +28,30 @@ export default function ArticleDetail({ theme }) {
         console.log(err);
       });
   }, [id]);
+
+  useEffect(() => {
+    axiosClient
+      .get(`/articles/${id}/comments`)
+      .then((res) => {
+        console.log(res.data);
+        setComments(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
+
+  const onSubmit = (data) => {
+    axiosClient
+      .post(`/articles/${id}/comments`, data)
+      .then((res) => {
+        console.log(res.data);
+        setComments([ res.data, ...comments]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className={`${theme} bg-skin-fill`}>
@@ -70,7 +101,8 @@ export default function ArticleDetail({ theme }) {
                     );
                   } else if (item.type === "br") {
                     return (
-                      <p key={index} className="mb-2"><br />
+                      <p key={index} className="mb-2">
+                        <br />
                         {item.value}
                       </p>
                     );
@@ -87,11 +119,19 @@ export default function ArticleDetail({ theme }) {
           </>
         )}
       </div>
-      <form className='items-center rounded-xl relative m-auto my-6 justify-between flex gap-4  w-[65%]'>
-        <input placeholder="Add your comment..." type="text" className="rounded-xl pl-4 w-full h-12 "/>
-        <SecondaryBtn text='Send'/>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="items-center rounded-xl relative m-auto my-6 justify-between flex gap-4  w-[65%]"
+      >
+        <input
+          {...register("text")}
+          placeholder="Add your comment..."
+          type="text"
+          className="rounded-xl pl-4 w-full h-12 "
+        />
+        <SecondaryBtn text="Send" />
       </form>
-      <CommentList theme="theme-pink" />
+      <CommentList theme="theme-pink" comments={comments} />
     </div>
   );
 }
