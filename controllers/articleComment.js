@@ -12,7 +12,7 @@ const addComment = async (req, res, next) => {
       text,
     });
 
-    res.status(201).json({ ...comment._doc, creator: req.user });
+    res.status(201).json(comment);
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -23,7 +23,7 @@ const getComment = async (req, res, next) => {
     const {
       params: { id },
     } = req;
-    console.log(id, "HELLO");
+
     const comment = await Comment.findById(id).populate("creator", "article");
     // const comment = await Article.findOne({_id: id});
 
@@ -34,7 +34,7 @@ const getComment = async (req, res, next) => {
 };
 
 const getAllComments = async (req, res, next) => {
-  console.log("hello");
+
   const { id } = req.params;
   try {
     const comments = await Comment.find({ article: id }).populate("creator");

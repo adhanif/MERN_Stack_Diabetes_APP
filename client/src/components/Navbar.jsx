@@ -58,25 +58,25 @@ export default function Navbar() {
             ))} */}
             <NavLink
               to='/'
-              className='text-xl font-semibold leading-6 hover:text-white'
+              className='text-xl font-semibold leading-6 hover:text-gray-800'
             >
               Home
             </NavLink>
             <NavLink
               to='/articles'
-              className='text-xl font-semibold leading-6 hover:text-white'
+              className='text-xl font-semibold leading-6 hover:text-gray-800'
             >
               Articles
             </NavLink>
             <NavLink
               to='/events'
-              className='text-xl font-semibold leading-6 hover:text-white'
+              className='text-xl font-semibold leading-6 hover:text-gray-800'
             >
               Events
             </NavLink>
             <NavLink
               to='/about'
-              className='text-xl font-semibold leading-6 hover:text-white'
+              className='text-xl font-semibold leading-6 hover:text-gray-800'
             >
               About Us
             </NavLink>
@@ -85,7 +85,7 @@ export default function Navbar() {
             {!isLoading && !user && (
               <NavLink
                 to='/login'
-                className='text-xl font-semibold leading-6 hover:text-white'
+                className='text-xl font-semibold leading-6 hover:text-gray-800'
               >
                 Log in <span aria-hidden='true'>&rarr;</span>
               </NavLink>
@@ -93,7 +93,7 @@ export default function Navbar() {
             {!isLoading && user && (
               <NavLink
                 to='/profile'
-                className='text-xl font-semibold leading-6 hover:text-white'
+                className='text-xl font-semibold leading-6 hover:text-gray-800'
               >
                 {user.name}
               </NavLink>
