@@ -227,8 +227,8 @@ export default function EventDetailCard({ theme }) {
             </div>
           </div>
         </div> */}
-
-        <div className=' flex flex-col  mb-6 '>
+        {/* People going */}
+        <div className=' flex flex-col'>
           <div className='flex space-x-2 mb-2'>
             <div className='bg-gray-200 p-2 h-[60%] rounded-lg'>
               <UserGroupIcon className='h-4 w-4' />
