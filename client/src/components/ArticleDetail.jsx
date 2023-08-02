@@ -58,7 +58,7 @@ export default function ArticleDetail({ theme }) {
   return (
     <div className={`${theme} bg-skin-fill`}>
       <div
-        className={`bg-skin-fill shadow-2xl rounded-xl relative m-auto pt-6 mb-6 flex h-full w-[65%] flex-col bg-clip-border`}
+        className={`bg-skin-fill shadow-2xl rounded-xl relative m-auto pt-6 mb-6 flex h-full w-[55%] flex-col bg-clip-border`}
       >
         {article && (
           <>
@@ -69,7 +69,7 @@ export default function ArticleDetail({ theme }) {
               }}
             ></div>
             {/* //General info */}
-            <div className="mt-6 flex  px-4 gap-2 flex-col">
+            <div className="mt-6 flex  px-12 gap-2 flex-col">
               <h4 className="text-xl lg:text-5xl font-bold p-1">
                 {article.title}
               </h4>
@@ -111,7 +111,7 @@ export default function ArticleDetail({ theme }) {
                   }
                 })}
               </div>
-              <div className="flex justify-between text-gray-400 w-full p-1 text-base">
+              <div className="flex justify-between text-gray-400 w-full p-1 pb-2 text-base">
                 <p className="">Author: {article.author.name}</p>
                 <p className="">
                   Updated: {new Date(article.updated).toLocaleDateString()}
@@ -123,7 +123,7 @@ export default function ArticleDetail({ theme }) {
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="items-center rounded-xl relative m-auto my-6 justify-between flex gap-4  w-[65%]"
+        className="items-center rounded-xl relative m-auto my-6 justify-between flex gap-4  w-[55%]"
       >
         <input
           {...register("text")}

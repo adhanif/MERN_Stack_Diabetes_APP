@@ -3,7 +3,7 @@ import React from "react";
 export default function CommentDetail({ comment, theme }) {
   return (
     <div
-      className={`${theme} bg-white shadow-2xl rounded-xl relative m-auto mb-6 p-4 flex w-[65%] bg-clip-border`}
+      className={`${theme} bg-white shadow-2xl rounded-xl relative m-auto mb-6 p-4 flex w-[55%] bg-clip-border`}
     >
       {/* ----- left side ------ */}
       <div>
