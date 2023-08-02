@@ -28,7 +28,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Hero2 />} />
         <Route path="/articles" element={<ArticlesAll theme="theme-pink" />} />
-        <Route path="/createEvents" element={<EventForm theme="theme-pink" />} />
+        <Route
+          path="/createEvents"
+          element={<EventForm theme="theme-pink" />}
+        />
         <Route path="/about" element={<AboutUs theme="theme-pink" />} />
         <Route path="/login" element={<Login theme="theme-pink" />} />
         <Route path="/signUp" element={<NewSignUp theme="theme-pink" />} />
@@ -44,9 +47,9 @@ function App() {
           element={<EventDetailCard theme="theme-pink" />}
         />
         <Route path="/events" element={<AllEvents theme="theme-pink" />} />
+        <Route path="/about" element={<AboutUs theme="theme-pink" />} />
       </Routes>
 
-      <AboutUs theme="theme-pink" />
       <ContactUs theme="theme-pink" />
 
       <Footer theme="theme-footer" />
