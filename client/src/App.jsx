@@ -48,9 +48,8 @@ function App() {
         />
         <Route path="/events" element={<AllEvents theme="theme-pink" />} />
         <Route path="/about" element={<AboutUs theme="theme-pink" />} />
+        <Route path="/contactUs" element={<ContactUs theme="theme-pink" />} />
       </Routes>
-
-      {/* <ContactUs theme="theme-pink" /> */}
 
       <Footer theme="theme-footer" />
     </div>
