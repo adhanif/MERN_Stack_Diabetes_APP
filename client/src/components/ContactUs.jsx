@@ -38,7 +38,10 @@ function ContactUs({ theme }) {
         {/* Left Side */}
         <div className='hidden lg:flex lg:w-1/2 overflow-hidden lg:shadow-2xl rounded-l-[15px]'>
           <div className='h-0'>
-            <img src='/src/images/Liebesbriefe2.jpg' alt='bla' />
+            <img
+              src='https://res.cloudinary.com/dwwcxiqr0/image/upload/v1690914294/Liebesbriefe2_hfqosp.jpg'
+              alt='bla'
+            />
           </div>
         </div>
         {/* Right Side */}
