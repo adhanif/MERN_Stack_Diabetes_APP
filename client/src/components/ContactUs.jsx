@@ -40,7 +40,7 @@ function ContactUs({ theme }) {
           <div className='h-0'>
             <img
               src='https://res.cloudinary.com/dwwcxiqr0/image/upload/v1690914294/Liebesbriefe2_hfqosp.jpg'
-              alt='bla'
+              alt='Was ist da los'
             />
           </div>
         </div>
