@@ -98,9 +98,18 @@ The project follows a typical MERN stack folder structure:
 Contributions to the TypeOne Diabetes App are welcomed and encouraged! To contribute:
 
 1. Fork the repository.
-2. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name`
-3. Commit your changes: `git commit -m "Add your commit message"`
-4. Push to your branch: `git push origin feature/your-feature-name`
+2. Create a new branch for your feature or bug fix:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add your commit message"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
 5. Create a pull request detailing your changes and explaining the purpose of your contribution.
 
 # License
