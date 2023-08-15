@@ -30,6 +30,7 @@ The TypeOne Diabetes App utilizes modern technologies to provide a seamless and 
 - **Additional Dependencies:** express-session for session management, node-geocoder for geocoding, nodemailer for emails.
 
 # Installation
+
 To get started with TypeOne Diabetes App, follow these steps:
 
 1. Clone the repository:
@@ -37,18 +38,20 @@ To get started with TypeOne Diabetes App, follow these steps:
    ```bash
    git clone https://github.com/adhanif/MERN_Stack_Diabetes_APP.git)https://github.com/adhanif/MERN_Stack_Diabetes_APP.git
    ```
+
 2. Navigate to the project directory:
+
    ```bash
    cd MERN_Stack_Diabetes_APP
    ```
 
- 3. Install backend and frontend dependencies: Run `npm install` in both the root directory and the `client` directory.
-    ```bash
-    npm install
-    ```
+3. Install backend and frontend dependencies: Run `npm install` in both the root directory and the `client` directory.
+   ```bash
+   npm install
+   ```
 4. Create a `.env` file in the root directory based on the provided .env.example file. Fill in your environment variables.
-    ```bash
-   - GEOCODER_PROVIDER= 
+   ```bash
+   - GEOCODER_PROVIDER=
    - GEOCODER_API_KEY=
    - MONGODB_CONNECTION_STRING=
    - JWT_SECRET=
@@ -58,8 +61,37 @@ To get started with TypeOne Diabetes App, follow these steps:
    - UPLOAD_PRESET=
    - MAIL=EXAMPLE@gmail.com
    - MAIL_PASSWORD=******
-    ```
+   ```
 5. Start the development server: Run `npm run dev` in the root directory for the backend, and `npm run dev` in the `client` directory for the frontend.
-    ```bash
-    npm run dev
-    ```
+   ```bash
+   npm run dev
+   ```
+6. Open your web browser and visit `http://localhost:3000` to access the TypeOne Diabetes App.
+   ```bash
+   http://localhost:3000
+   ```
+7. Sign up or log in to your account to access the full range of features.
+8. To stop running this application locally, press <kbd>Ctrl</kbd><kbd>C</kbd>.
+
+## Project Folder Structure
+
+The project follows a typical MERN stack folder structure:
+
+- `client/` - Contains the frontend React application.
+- `client/src/` - Contains the frontend source code.
+- `client/src/components/` - Contains reusable React components.
+- `server/` - Contains the backend Node.js application.
+- `server/controllers/` - Contains the controllers for handling business logic.
+- `server/handlers/` - Contains the connection setup for MongoDB mongoose.
+- `server/middleware/` - Contains middleware functions used by the routes.
+- `server/models/` - Contains the Mongoose models for interacting with the MongoDB database.
+- `server/routes/` - Contains the API routes for handling different endpoints.
+- `server/utils/` - Contains the error response function and  geocoder connection setup.
+- `server/index.js` - Entry point for the backend application.
+- `server/uploads/` - Stores uploaded files.
+
+
+
+
+
+
