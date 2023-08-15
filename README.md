@@ -28,3 +28,38 @@ The TypeOne Diabetes App utilizes modern technologies to provide a seamless and 
 - **API Communication:** Axios for making asynchronous API requests
 - **Deployment:** Express static server, dotenv for environment variables.
 - **Additional Dependencies:** express-session for session management, node-geocoder for geocoding, nodemailer for emails.
+
+# Installation
+To get started with TypeOne Diabetes App, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/adhanif/MERN_Stack_Diabetes_APP.git)https://github.com/adhanif/MERN_Stack_Diabetes_APP.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd MERN_Stack_Diabetes_APP
+   ```
+
+ 3. Install backend and frontend dependencies: Run `npm install` in both the root directory and the `client` directory.
+    ```bash
+    npm install
+    ```
+4. Create a `.env` file in the root directory based on the provided .env.example file. Fill in your environment variables.
+    ```bash
+   - GEOCODER_PROVIDER= 
+   - GEOCODER_API_KEY=
+   - MONGODB_CONNECTION_STRING=
+   - JWT_SECRET=
+   - CLOUD_NAME=
+   - CLOUDINARY_API_KEY=
+   - CLOUDINARY_APISECRET=
+   - UPLOAD_PRESET=
+   - MAIL=EXAMPLE@gmail.com
+   - MAIL_PASSWORD=******
+    ```
+5. Start the development server: Run `npm run dev` in the root directory for the backend, and `npm run dev` in the `client` directory for the frontend.
+    ```bash
+    npm run dev
+    ```
