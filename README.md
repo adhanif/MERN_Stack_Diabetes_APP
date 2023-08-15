@@ -66,12 +66,15 @@ To get started with TypeOne Diabetes App, follow these steps:
    ```bash
    npm run dev
    ```
-6. Open your web browser and visit `http://localhost:3000` to access the TypeOne Diabetes App.
+
+# Usage
+
+1. Open your web browser and visit `http://localhost:3000` to access the TypeOne Diabetes App.
    ```bash
    http://localhost:3000
    ```
-7. Sign up or log in to your account to access the full range of features.
-8. To stop running this application locally, press <kbd>Ctrl</kbd><kbd>C</kbd>.
+2. Sign up or log in to your account to access the full range of features.
+3. To stop running this application locally, press <kbd>Ctrl</kbd><kbd>C</kbd>.
 
 ## Project Folder Structure
 
@@ -86,12 +89,20 @@ The project follows a typical MERN stack folder structure:
 - `server/middleware/` - Contains middleware functions used by the routes.
 - `server/models/` - Contains the Mongoose models for interacting with the MongoDB database.
 - `server/routes/` - Contains the API routes for handling different endpoints.
-- `server/utils/` - Contains the error response function and  geocoder connection setup.
+- `server/utils/` - Contains the error response function and geocoder connection setup.
 - `server/index.js` - Entry point for the backend application.
 - `server/uploads/` - Stores uploaded files.
 
+# Contributing
 
+Contributions to the TypeOne Diabetes App are welcomed and encouraged! To contribute:
 
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name`
+3. Commit your changes: `git commit -m "Add your commit message"`
+4. Push to your branch: `git push origin feature/your-feature-name`
+5. Create a pull request detailing your changes and explaining the purpose of your contribution.
 
+# License
 
-
+This project is licensed under the **TYPE ONE APP Team**.
