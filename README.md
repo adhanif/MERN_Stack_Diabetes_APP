@@ -126,7 +126,12 @@ Contributions to the TypeOne Diabetes App are welcomed and encouraged! To contri
 
 ## Visit the TypeOne Diabetes App
 
-Experience the TypeOne Diabetes App and explore its features by visiting our website: [TypeOne Diabetes App](https://mern-stack-diabetes-app.onrender.com/).
+Experience the TypeOne Diabetes App and explore its features by visiting our website:
+<br/>
+<br/>
+[TypeOne Diabetes App](https://mern-stack-diabetes-app.onrender.com/)
+<br/>
+<br/>
 We're dedicated to providing a valuable resource for individuals seeking to enhance their knowledge about diabetes and connect with a supportive community. Join us on this journey towards a healthier and more informed lifestyle.
 
 # License
