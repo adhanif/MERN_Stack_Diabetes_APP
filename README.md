@@ -6,10 +6,11 @@
 
 TypeOne is a web application designed to empower individuals with diabetes by providing valuable educational resources and fostering connections within the diabetes community. With a focus on knowledge enhancement and community building, TypeOne allows registered users to access informative articles about diabetes and discover nearby events where they can connect with others sharing a similar journey. The application is built using modern web technologies, including the MERN stack (MongoDB, Express.js, React, and Node.js) for the backend and frontend development.
 <br/>
+
 <div align="center">
 <br/>
 <br/>
-<img src="./client/src/assets/project.gif"/>
+<img src="./client/src/assets/gif.gif"/>
 
 </div>
 <br/>
@@ -131,8 +132,6 @@ Contributions to the TypeOne Diabetes App are welcomed and encouraged! To contri
    git push origin feature/your-feature-name
    ```
 5. Create a pull request detailing your changes and explaining the purpose of your contribution.
-
-
 
 # License
 
