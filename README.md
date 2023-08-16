@@ -5,13 +5,24 @@
 <br/>
 
 TypeOne is a web application designed to empower individuals with diabetes by providing valuable educational resources and fostering connections within the diabetes community. With a focus on knowledge enhancement and community building, TypeOne allows registered users to access informative articles about diabetes and discover nearby events where they can connect with others sharing a similar journey. The application is built using modern web technologies, including the MERN stack (MongoDB, Express.js, React, and Node.js) for the backend and frontend development.
-
+<br/>
 <div align="center">
-
+<br/>
+<br/>
 <img src="./client/src/assets/project.gif"/>
 
 </div>
 <br/>
+
+## Visit the TypeOne Diabetes App
+
+Experience the TypeOne Diabetes App and explore its features by visiting our website:
+<br/>
+<br/>
+[TypeOne Diabetes App](https://mern-stack-diabetes-app.onrender.com/)
+<br/>
+<br/>
+We're dedicated to providing a valuable resource for individuals seeking to enhance their knowledge about diabetes and connect with a supportive community. Join us on this journey towards a healthier and more informed lifestyle.
 
 # Features
 
@@ -121,15 +132,7 @@ Contributions to the TypeOne Diabetes App are welcomed and encouraged! To contri
    ```
 5. Create a pull request detailing your changes and explaining the purpose of your contribution.
 
-## Visit the TypeOne Diabetes App
 
-Experience the TypeOne Diabetes App and explore its features by visiting our website:
-<br/>
-<br/>
-[TypeOne Diabetes App](https://mern-stack-diabetes-app.onrender.com/)
-<br/>
-<br/>
-We're dedicated to providing a valuable resource for individuals seeking to enhance their knowledge about diabetes and connect with a supportive community. Join us on this journey towards a healthier and more informed lifestyle.
 
 # License
 
