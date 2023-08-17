@@ -4,7 +4,7 @@
 
 <br/>
 
-TypeOne is a web application designed to empower individuals with diabetes by providing valuable educational resources and fostering connections within the diabetes community. With a focus on knowledge enhancement and community building, TypeOne allows registered users to access informative articles about diabetes and discover nearby events where they can connect with others sharing a similar journey. The application is built using modern web technologies, including the MERN stack (MongoDB, Express.js, React, and Node.js) for the backend and frontend development.
+TypeOne is a web application designed to empower individuals with diabetes by providing valuable educational resources and fostering connections within the diabetes community. With a focus on knowledge enhancement and community building, TypeOne allows registered users to access informative articles about diabetes and discover nearby events where they can connect with others sharing a similar journey. The application is built using modern web technologies, including the **MERN Stack (MongoDB, Express.js, React, and Node.js)** for the backend and frontend development.
 <br/>
 
 <div align="center">
