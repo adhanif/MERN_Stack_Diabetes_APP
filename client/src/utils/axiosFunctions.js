@@ -1,25 +1,25 @@
-import { ArrowPathIcon } from '@heroicons/react/24/outline';
-import axiosClient from '../axiosClient';
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import axiosClient from "../axiosClient";
 
 export const postMessage = async (props) => {
   const { name, email, subject, message } = props;
   console.log(props, name);
   try {
-    const bla = await axiosClient.post('/message', props);
-    console.log(bla);
+    const bla = await axiosClient.post("/message", props);
+  
     return true;
   } catch (error) {
-    console.log('ERROR OCCURED AND CATCHED');
+    console.log("ERROR OCCURED AND CATCHED");
     return false;
   }
 };
 
 export const postEvent = async (data) => {
   try {
-    const response = await axiosClient.post('/events', data);
+    const response = await axiosClient.post("/events", data);
     return response.data;
   } catch (error) {
-    console.log('ERROR OCCURED AND CATCHED');
+    console.log("ERROR OCCURED AND CATCHED");
     return false;
   }
 };
@@ -49,7 +49,7 @@ export const getEventsOfUser = async (userId) => {
 export const getBestArticles = async (amount) => {
   try {
     const neededArticles = await axiosClient.get(`/articles/best/${amount}`);
-    console.log('response got from getBEstArticles');
+    console.log("response got from getBEstArticles");
     return neededArticles;
   } catch (error) {
     console.log(error.message);
@@ -60,37 +60,39 @@ export const getProfile = async () => {
   try {
     const user = await axiosClient.get(`/profile`);
     return user.data;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 //To Do route for profile pic
 export const postProfilePicture = async (data) => {
   try {
-    console.log('in post picture');
-    const response = await axiosClient.post('/profile', data);
+
+    const response = await axiosClient.post("/profile", data);
     return response.data;
   } catch (error) {
-    console.log('ERROR OCCURED AND CATCHEloginD');
+    console.log("ERROR OCCURED AND CATCHEloginD");
     return false;
   }
 };
 
 export const getJoinedEvents = async () => {
   try {
-    const response = await axiosClient.get('/events/joined');
-    console.log('events joined');
-    console.log(response.data);
+    const response = await axiosClient.get("/events/joined");
+    console.log("events joined");
+   
     return response.data;
   } catch (error) {
-    console.log('ERROR OCCURED AND CATCHED while tyrin to ge joined Events');
+    console.log("ERROR OCCURED AND CATCHED while tyrin to ge joined Events");
   }
 };
 
 export const logOutTheUser = async () => {
   try {
-    const response = await axiosClient.get('/logout');
-    console.log(response);
+    const response = await axiosClient.get("/logout");
+    
   } catch (error) {
-    console.log('ERROR during logout');
+    console.log("ERROR during logout");
   }
 };

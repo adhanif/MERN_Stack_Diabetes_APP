@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react';
-import AuthProvider, { AuthContext } from '../context/AuthProvider';
-import { useContext, useState } from 'react';
+import React, { useEffect } from "react";
+import AuthProvider, { AuthContext } from "../context/AuthProvider";
+import { useContext, useState } from "react";
 import {
   getEventsOfUser,
   getJoinedEvents,
   postProfilePicture,
-} from '../utils/axiosFunctions';
-
-import ProfileEvent from './ProfileEvent';
-import { useForm } from 'react-hook-form';
-import SecondaryBtn from './buttons/SecondaryBtn';
-
-//Toasts
-import { ToastContainer, toast } from 'react-toastify';
-import { failToast, successToast } from '../utils/toasts.js';
+} from "../utils/axiosFunctions";
+import ProfileEvent from "./ProfileEvent";
+import { useForm } from "react-hook-form";
+import SecondaryBtn from "./buttons/SecondaryBtn";
+import { ToastContainer, toast } from "react-toastify";
+import { failToast, successToast } from "../utils/toasts.js";
 
 function Profile({ theme }) {
   const { user, isLoading, login, logout } = useContext(AuthContext);
@@ -26,8 +23,6 @@ function Profile({ theme }) {
       const j = await getJoinedEvents();
       setEvents(e);
       setJoined(j);
-      // console.log(e);
-      // console.log(user);
     };
 
     getEvents();
@@ -43,14 +38,14 @@ function Profile({ theme }) {
   const onSubmit = (data) => {
     const sendPicture = async () => {
       const formData = new FormData();
-      formData.append('image', data.image[0]);
+      formData.append("image", data.image[0]);
       const u = await postProfilePicture(formData);
       console.log(u);
       if (u != false) {
         login(u);
       } else {
         failToast(
-          'Profile Picture could not be updated. Please try again later.'
+          "Profile Picture could not be updated. Please try again later."
         );
       }
     };
@@ -61,72 +56,72 @@ function Profile({ theme }) {
     <div
       className={`${theme}  fluid w-full mx-auto p-6 md:p-14 flex justify-center bg-skin-fill `}
     >
-      <div className='container flex max-w-[1200px] justify-center'>
+      <div className="container flex max-w-[1200px] justify-center">
         {/* Left Side */}
-        <div className='hidden lg:flex  bg-white w-1/2  overflow-hidden lg:shadow-2xl rounded-l-[15px] '>
-          <div className='w-full flex flex-col justify-end items-center  bg-white'>
+        <div className="hidden lg:flex  bg-white w-1/2  overflow-hidden lg:shadow-2xl rounded-l-[15px] ">
+          <div className="w-full flex flex-col justify-end items-center  bg-white">
             {user ? (
-              <div className='flex flex-col pr-5'>
-                <div className='h-[250px] my-10 w-[250px] flex rounded-xl items-center justify-center bg-skin-besslans-color text-8xl text-white'>
+              <div className="flex flex-col pr-5">
+                <div className="h-[250px] my-10 w-[250px] flex rounded-xl items-center justify-center bg-skin-besslans-color text-8xl text-white">
                   <img
-                    className='h-[250px] w-[250px] rounded-xl'
+                    className="h-[250px] w-[250px] rounded-xl"
                     src={user.image}
-                    alt=''
+                    alt=""
                   />
                 </div>
               </div>
             ) : (
-              ''
+              ""
             )}
-            <div className='w-full h-full text-center flex flex-col  gap-2'>
+            <div className="w-full h-full text-center flex flex-col  gap-2">
               {!isLoading && user ? (
                 <>
-                  <h2 className='text-4xl font-extrabold '>{user.name}</h2>
-                  <h3 className='text-xl'>{user.email}</h3>
+                  <h2 className="text-4xl font-extrabold ">{user.name}</h2>
+                  <h3 className="text-xl">{user.email}</h3>
                 </>
               ) : null}
             </div>
           </div>
         </div>
         {/* Right Side */}
-        <div className='bg-white lg:w-1/2  max-w-[600px]  lg:shadow-2xl rounded-[15px] lg:rounded-l-none flex flex-col'>
+        <div className="bg-white lg:w-1/2  max-w-[600px]  lg:shadow-2xl rounded-[15px] lg:rounded-l-none flex flex-col">
           {!isLoading && events ? (
-            <div className='flex flex-col p-6 h-full justify-between'>
+            <div className="flex flex-col p-6 h-full justify-between">
               {/* Created Events */}
-              <div className='w-full mb-4'>
-                <h3 className='text-2xl font-bold mb-1'>My Events</h3>
-                {events.length == 0 ? <p>You should create an event.</p> : ''}
+              <div className="w-full mb-4">
+                <h3 className="text-2xl font-bold mb-1">My Events</h3>
+                {events.length == 0 ? <p>You should create an event.</p> : ""}
                 {events.map((event) => (
                   <ProfileEvent key={event._id} event={event} />
                 ))}
               </div>
 
               {/* Joined Events */}
-              <div className='w-full mb-4'>
-                <h3 className='text-2xl font-bold mb-1'>Me Joining</h3>
-                {joined.length == 0 ? <p>You should join some event.</p> : ''}
+              <div className="w-full mb-4">
+                <h3 className="text-2xl font-bold mb-1">Me Joining</h3>
+                {joined.length == 0 ? <p>You should join some event.</p> : ""}
                 {joined.map((event) => (
                   <ProfileEvent key={event._id} event={event} />
                 ))}
               </div>
 
               {/* Upload pictures */}
-              <div className='flex flex-col'>
-                <h3 className='text-2xl font-bold mb-1'>
+              <div className="flex flex-col">
+                <h3 className="text-2xl font-bold mb-1">
                   Upload Profile Picture
                 </h3>
                 <form
-                  className='flex items-center'
+                  className="flex items-center"
                   onSubmit={handleSubmit(onSubmit)}
-                  action=''
+                  action=""
                 >
                   <input
-                    className='block mb-4'
-                    type='file'
-                    {...register('image', { required: true })}
+                    className="block mb-4"
+                    type="file"
+                    {...register("image", { required: true })}
                   />
 
-                  <SecondaryBtn text='Submit' />
+                  <SecondaryBtn text="Submit" />
                 </form>
               </div>
             </div>

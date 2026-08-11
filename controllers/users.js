@@ -6,7 +6,6 @@ const ErrorResponse = require('../utils/ErrorResponse');
 // new user Signup
 const signUp = async (req, res, next) => {
   try {
-    console.log(req.body);
     const { name, email, password } = req.body;
     const alreadyUser = await User.findOne({ email });
     if (alreadyUser) {
@@ -30,15 +29,11 @@ const signUp = async (req, res, next) => {
 // user login
 const signIn = async (req, res, next) => {
   try {
-    console.log(req.body);
     const { email, password } = req.body;
     const matchUser = await User.findOne({ email }).select('+password');
     if (matchUser) {
-      console.log(matchUser);
       const matchPassword = await bcrypt.compare(password, matchUser.password);
-      console.log(password);
-      console.log(matchUser.password);
-      console.log(matchPassword);
+
       if (matchPassword) {
         const payload = {
           email: matchUser.email,
@@ -46,7 +41,6 @@ const signIn = async (req, res, next) => {
           name: matchUser.name,
           image: matchUser.image,
         };
-        console.log(process.env.JWT_SECRET);
 
         const token = jwt.sign(payload, process.env.JWT_SECRET, {
           expiresIn: '800000s',
@@ -71,9 +65,7 @@ const signIn = async (req, res, next) => {
 const logOut = async (req, res, next) => {
   try {
     console.log('in logout');
-    res
-      .cookie('access_token', '', { maxAge: 0 })
-      .send('You have been logged out successfully!');
+    res.cookie('access_token', '', { maxAge: 0 }).send('You have been logged out successfully!');
   } catch (error) {
     next(error);
   }
@@ -81,7 +73,6 @@ const logOut = async (req, res, next) => {
 
 const getProfile = async (req, res, next) => {
   try {
-    console.log('getProfile');
     const { _id } = req.user;
     const userProfile = await User.findById(_id);
     res.json(userProfile);
@@ -92,12 +83,10 @@ const getProfile = async (req, res, next) => {
 
 const setProfilePicture = async (req, res, next) => {
   try {
-    console.log(req.user);
     const { image } = req.body;
     // const user = await User.findOne(req.user._id).select('+password');
     await User.updateOne({ _id: req.user._id }, { image: req.file.secure_url });
     const user = await User.findById(req.user._id);
-    console.log(user);
     res.status(201).json(user);
   } catch (error) {
     next(error);

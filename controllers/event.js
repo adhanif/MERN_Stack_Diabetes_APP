@@ -1,7 +1,7 @@
-const { Event } = require('../models/event');
-const EventComment = require('../models/eventCommentSchema');
+const { Event } = require("../models/event");
+const EventComment = require("../models/eventCommentSchema");
 // const geocoder = require('../utils/geocoder');
-const fs = require('fs');
+const fs = require("fs");
 const addEvent = async (req, res, next) => {
   try {
     const {
@@ -26,7 +26,7 @@ const addEvent = async (req, res, next) => {
       categories: JSON.parse(categories),
       targetGroup,
       image: req.file.secure_url,
-      location: { type: 'Point', coordinates: req.location.coordinates },
+      location: { type: "Point", coordinates: req.location.coordinates },
       city: req.location.city._id,
       participants,
       address,
@@ -36,7 +36,7 @@ const addEvent = async (req, res, next) => {
     res.status(201).json(newEvent);
   } catch (error) {
     console.log(error);
-    console.log('error creating event');
+    console.log("error creating event");
     next(error);
   }
 };
@@ -44,7 +44,7 @@ const addEvent = async (req, res, next) => {
 const deleteEvent = async (req, res) => {
   //TODO
 
-  console.log('delete Event function called');
+  console.log("delete Event function called");
   return true;
 };
 
@@ -58,7 +58,7 @@ const getAllEvents = async (req, res, next) => {
     const totalPages = Math.ceil(count / limit);
 
     const events = await Event.find(req.eventQuery)
-      .populate('city')
+      .populate("city")
       .skip(parseInt(skip))
       .limit(parseInt(limit));
 
@@ -109,7 +109,7 @@ const getNextEvents = async (req, res, next) => {
     */
 
     if (events.length == 0) {
-      res.status(201).json(['No upmcoming Events']);
+      res.status(201).json(["No upmcoming Events"]);
     } else {
       res.status(201).json(events);
     }
@@ -121,7 +121,6 @@ const getNextEvents = async (req, res, next) => {
 
 const getEventsOfUser = async (req, res, next) => {
   try {
-    console.log(req.user);
     const events = await Event.find({ creator: req.user._id });
     res.status(201).json(events);
   } catch (error) {
@@ -153,8 +152,8 @@ const getAllEventComments = async (req, res, next) => {
 
   try {
     const comments = await EventComment.find({ event: id })
-      .sort('-createdAt')
-      .populate('creater');
+      .sort("-createdAt")
+      .populate("creater");
     res.status(200).json(comments);
   } catch (error) {
     next(error);
@@ -162,14 +161,13 @@ const getAllEventComments = async (req, res, next) => {
 };
 
 const getJoinedEvents = async (req, res, next) => {
-  console.log(' in get joined');
+  console.log(" in get joined");
 
   try {
-    console.log(req.user._id);
     const joinedEvents = await Event.find({
       participants: { $in: req.user._id },
     });
-    console.log(joinedEvents);
+
     res.status(201).json(joinedEvents);
   } catch (error) {
     next(error);
@@ -179,7 +177,7 @@ const getJoinedEvents = async (req, res, next) => {
 const getJoinEvent = async (req, res, next) => {
   const { id } = req.params;
   const { _id } = req.user;
-  console.log(_id);
+  
   try {
     const joinEvent = await Event.findByIdAndUpdate(
       id,
@@ -187,7 +185,7 @@ const getJoinEvent = async (req, res, next) => {
       { new: true }
     );
     if (!joinEvent) {
-      return res.status(404).json({ error: 'Event not found' });
+      return res.status(404).json({ error: "Event not found" });
     }
     res.status(200).json(joinEvent);
   } catch (error) {

@@ -33,7 +33,7 @@ function NextEvents() {
                 <div className='text-right w-1/2 '>{event.title}</div>
 
                 <div className='text-left w-1/2'>
-                  {event.eventDate.split('T')[0]}
+                  {event.eventDate ? event.eventDate.split('T')[0] : 'No date available'}
                 </div>
               </div>
             </NavLink>

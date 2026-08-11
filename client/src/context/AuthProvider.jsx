@@ -20,14 +20,11 @@ function AuthProvider({ children }) {
   }, []);
 
   const login = (userData) => {
-    // console.log('In the Authprovider');
-    // console.log(userData);
     setUser(userData);
     setIsLoading(false);
   };
 
   const logout = async () => {
-    console.log('in Logout');
     setUser(false);
     setIsLoading(false);
   };
