@@ -1,0 +1,44 @@
+services:
+  client:
+    image: hello-frontend-dev
+    volumes:
+      - ./client:/usr/src/app
+      - /usr/src/app/node_modules
+
+  express-server:
+    image: hello-backend-dev
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      # - CONNECTION_STRING=mongodb://the_username:the_password@mongo:27017/the_database?authSource=the_database
+      - CONNECTION_STRING=
+      - GEOCODER_PROVIDER=
+      - GEOCODER_API_KEY=
+      - JWT_SECRET=
+      - CLOUD_NAME=
+      - API_KEY=
+      - APISECRET=
+      - UPLOAD_PRESET=
+      - MAIL=
+      - MAIL_PASSWORD=
+
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+
+    volumes:
+      - mongo_data:/data/db
+  nginx:
+    image: nginx:1.29
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - client
+      - express-server
+volumes:
+  mongo_data:
