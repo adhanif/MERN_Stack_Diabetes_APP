@@ -1,22 +1,22 @@
-import { Routes, Route, NavLink } from "react-router-dom";
-import "./App.css";
-import Hero2 from "./components/Hero";
-import Navbar from "./components/Navbar";
-import Login from "./components/Login";
+import { Routes, Route, NavLink } from 'react-router-dom';
+import './App.css';
+import Hero2 from './components/Hero';
+import Navbar from './components/Navbar';
+import Login from './components/Login';
 
-import ContactUs from "./components/ContactUs";
-import EventsMap from "./components/EventsMap";
-import Card from "./components/Card";
-import AboutUs from "./components/AboutUs";
-import EventForm from "./components/EventForm";
-import Footer from "./components/Footer";
-import AllEvents from "./components/AllEvents";
-import NewSignUp from "./components/NewSignUp";
-import Impressum from "./components/Impressum";
-import ArticlesAll from "./components/ArticlesAll";
-import ArticleDetail from "./components/ArticleDetail";
-import Profile from "./components/Profile";
-import EventDetailCard from "./components/EventDetailCard";
+import ContactUs from './components/ContactUs';
+import EventsMap from './components/EventsMap';
+import Card from './components/Card';
+import AboutUs from './components/AboutUs';
+import EventForm from './components/EventForm';
+import Footer from './components/Footer';
+import AllEvents from './components/AllEvents';
+import NewSignUp from './components/NewSignUp';
+import Impressum from './components/Impressum';
+import ArticlesAll from './components/ArticlesAll';
+import ArticleDetail from './components/ArticleDetail';
+import Profile from './components/Profile';
+import EventDetailCard from './components/EventDetailCard';
 
 function App() {
   return (
