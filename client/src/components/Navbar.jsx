@@ -1,18 +1,18 @@
-import { useContext, useState } from "react";
-import { Dialog } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { NavLink, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthProvider";
-import LogoWhiteIcon from "../images/TypeOne_white_noBG-hiQ.png";
-import { BiLogIn } from "react-icons/bi";
-import { logOutTheUser } from "../utils/axiosFunctions";
+import { useContext, useState } from 'react';
+import { Dialog } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
+import LogoWhiteIcon from '../images/TypeOne_white_noBG-hiQ.png';
+import { BiLogIn } from 'react-icons/bi';
+import { logOutTheUser } from '../utils/axiosFunctions';
 
 const navigation = [
-  { name: "Home" },
-  { name: "Articles" },
-  { name: "Events" },
-  { name: "About Us" },
-  { name: "Contact Us" },
+  { name: 'Home' },
+  { name: 'Articles' },
+  { name: 'Events' },
+  { name: 'About Us' },
+  { name: 'Contact Us' },
 ];
 
 export default function Navbar() {
@@ -23,9 +23,9 @@ export default function Navbar() {
   const logoutUser = async () => {
     try {
       await logOutTheUser();
-      console.log("after response");
+      console.log('after response');
       logout();
-      navigate("/");
+      navigate('/');
     } catch (error) {
       console.log(error.message);
     }
@@ -60,16 +60,6 @@ export default function Navbar() {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            {/* {navigation.map((item) => (
-              <NavLink
-                to={`${item.name}`}
-                key={item.name}
-                href={item.href}
-                className="text-sm font-semibold leading-6 text-gray-900"
-              >
-                {item.name}
-              </NavLink>
-            ))} */}
             <NavLink
               to="/"
               className="text-xl font-semibold leading-6 hover:text-gray-800"

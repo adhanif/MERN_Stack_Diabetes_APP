@@ -9,38 +9,35 @@ function NextEvents() {
   useEffect(() => {
     const getEvents = async () => {
       const nextEvents = await getNextEvents(amountEventsWanted);
-      //console.log(nextEvents.data);
       setEvents(nextEvents.data);
     };
 
     getEvents();
   }, []);
   return (
-    <div className='flex flex-col justify-center'>
-      <h4 className='text-lg font-bold mb-2'>Next Events</h4>
+    <div className="flex flex-col justify-center">
+      <h4 className="text-lg font-bold mb-2">Next Events</h4>
       {events ? (
-        <div className='flex flex-col'>
+        <div className="flex flex-col">
           {events.map((event) => (
             <NavLink
               to={`/eventDetail/${event._id}`}
               key={event._id}
-              className='hover:text-skin-base mb-2'
+              className="hover:text-skin-base mb-2"
             >
-              <div className='flex text-lg w-full justify-center gap-5'>
-                {/* <div className=''>
-                  <img className='w-[50px]' src={event.image} alt='' />{' '}
-                </div> */}
-                <div className='text-right w-1/2 '>{event.title}</div>
-
-                <div className='text-left w-1/2'>
-                  {event.eventDate ? event.eventDate.split('T')[0] : 'No date available'}
+              <div className="flex text-lg w-full justify-center gap-5">
+                <div className="text-right w-1/2 ">{event.title}</div>
+                <div className="text-left w-1/2">
+                  {event.eventDate
+                    ? event.eventDate.split('T')[0]
+                    : 'No date available'}
                 </div>
               </div>
             </NavLink>
           ))}
         </div>
       ) : (
-        <div className='text-center'>
+        <div className="text-center">
           Unforunatly there are no events Upcoming
         </div>
       )}

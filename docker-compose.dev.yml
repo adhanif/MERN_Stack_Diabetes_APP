@@ -1,12 +1,19 @@
 services:
   client:
     image: hello-frontend-dev
+    build:
+      context: ./client
+      dockerfile: dev.Dockerfile
     volumes:
       - ./client:/usr/src/app
       - /usr/src/app/node_modules
 
   express-server:
     image: hello-backend-dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    container_name: backend-container
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules

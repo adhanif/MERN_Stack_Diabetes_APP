@@ -1,0 +1,42 @@
+services:
+  client:
+    image: frontend
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: frontend-container
+
+  backend:
+    image: backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend-container
+    environment:
+      - CONNECTION_STRING=
+      - GEOCODER_PROVIDER=
+      - GEOCODER_API_KEY=
+      - JWT_SECRET=
+      - CLOUD_NAME=
+      - API_KEY=
+      - APISECRET=
+      - UPLOAD_PRESET=
+      - MAIL=
+      - MAIL_PASSWORD=
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    container_name: mongo-container
+  nginx:
+    image: nginx:1.29
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - client
+      - backend
+volumes:
+  mongo_data:
